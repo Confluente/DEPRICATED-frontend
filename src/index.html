@@ -10,7 +10,7 @@
     <script src="/js/bundle.js"></script>
 
     <link href="images/favicon.ico" rel="shortcut icon" type="image/x-icon">
-    <title>{{title}} - HSA Confluente</title>
+    <title ng-bind="title + ' - HSA Confluente'">HSA Confluente</title>
 </head>
 <body ng-cloak>
   <header id="header">
@@ -75,11 +75,11 @@
           </div>
       </nav>
   </header>
-  <div id="content" class="row">
+  <div id="content">
       <div class="view col-xs-6 center" ng-view></div>
   </div>
   <footer id="footer">
-      <div class="container">
+      <div class="footer-content container">
           <div class="row">
               <div class="col-sm-offset-1 col-sm-3 text-justify">
                   <h3>Visiting address</h3>
@@ -98,10 +98,10 @@
                   <h5>Web Committee</h5>
                   <a href="mailto:board@hsaconfluente.nl">web@hsaconfluente.nl</a>
               </div>
-          </div>
-          <div class="row copyright">
-              <p>This site is maintained by the <span class="hsa">H.S.A Confluente</span> Web Committee</p>
-              <p>&copy; 2017 - All rights reserved.</p>
+              <div class="col-sm-5 copyright">
+                  <p>This site is maintained by the <span class="hsa">H.S.A Confluente</span> Web Committee</p>
+                  <p>&copy; 2017 - All rights reserved.</p>
+              </div>
           </div>
       </div>
   </footer>
