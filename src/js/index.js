@@ -1,8 +1,9 @@
 var angular = require("angular");
 var ngRoute = require("angular-route");
 var ngCookies = require("angular-cookies");
+require("angular-ui-bootstrap");
 
-var app = angular.module("confluente", ["ngRoute", "ngCookies"]);
+var app = angular.module("confluente", ["ngRoute", "ngCookies", "ui.bootstrap"]);
 var routes = require("./routes");
 
 require("./authService");

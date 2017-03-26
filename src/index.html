@@ -7,7 +7,6 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="css/style.css" type="text/css"/>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
     <script src="/js/bundle.js"></script>
 
     <link href="images/favicon.ico" rel="shortcut icon" type="image/x-icon">
@@ -25,13 +24,13 @@
               <div class="navbar-header navbar-right pull-right">
                   <ul class="nav navbar-nav navbar-settings pull-left">
                       <div ng-if="user.loggedIn">
-                          <li class="dropdown hidden-sm hidden-xs">
-                              <a class="dropdown-toggle" data-toggle="dropdown" role="button">
+                          <li class="dropdown hidden-sm hidden-xs" uib-dropdown auto-close="outsideClick">
+                              <a class="dropdown-toggle" uib-dropdown-toggle>
                                   <p>
                                       {{ user.displayName}}
                                   </p>
                               </a>
-                              <ul class="dropdown-menu dropdown-user">
+                              <ul class="dropdown-menu dropdown-user" uib-dropdown-menu>
                                   <li><a href="/user/profile"><span class="pull-left">Profile</span><span class="fa fa-user-circle pull-right"></span></a></li>
                                   <li><a href="/manage"><span class="pull-left">Manage</span><span class="fa fa-sliders pull-right"></span></a></li>
                                   <li><a ng-click="logout()"><span class="pull-left">Logout</span><span class="fa fa-sign-out pull-right"></span></a></li>
@@ -45,9 +44,9 @@
                           <li class="visible-xs">
                               <a href="user/login"><span class="fa fa-user"></span></a>
                           </li>
-                          <li class="dropdown hidden-xs">
-                            <a class="dropdown-toggle" data-toggle="dropdown" role="button"><span class="fa fa-user"></span></a>
-                            <div class="dropdown-menu dropdown-login">
+                          <li class="dropdown hidden-xs" uib-dropdown auto-close="outsideClick">
+                            <a class="dropdown-toggle"><span class="fa fa-user" uib-dropdown-toggle></span></a>
+                            <div class="dropdown-menu dropdown-login" uib-dropdown-menu>
                               <form>
                                 <div class="form-group row">
                                     <input ng-model="email" class="form-control" placeholder="Email address" type="email">
