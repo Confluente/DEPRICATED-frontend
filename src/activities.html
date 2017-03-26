@@ -1,0 +1,17 @@
+<div class="activities">
+  <a class="btn btn-default" href="/manage/activities/create" ng-if="user.canOrganize">Create activity</a>
+  <a class="btn btn-default" disabled href="/manage/activities/" ng-if="user.canOrganize">Manage activities</a>
+  <div class="activity row panel panel-default" ng-repeat="activity in activities">
+    <div class="activity-title panel-heading col-xs-12">
+      <h3><a ng-href="/activities/{{activity.id}}">{{activity.name}}</a></h3><span ng-if="!activity.approved">(Unlisted)</span>
+    </div>
+    <div class="activity-content col-xs-8">
+      <div class="sadf">
+        {{activity.description}}
+      </div>
+    </div>
+    <div class="activity-details col-xs-4">
+      <p>When: {{activity.startTime}}</p>
+      <p>Where: {{activity.location}}</p>
+    </div>
+</div>

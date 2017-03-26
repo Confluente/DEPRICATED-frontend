@@ -1,0 +1,118 @@
+@import "bootstrap.css";
+@import url(https://fonts.googleapis.com/css?family=Lato:400);
+@font-face {
+    font-family: "Rounded Elegance";
+    src: url(../fonts/Rounded_Elegance.otf);
+}
+
+html, body, div, span, ol, ul, li, a, p, h1, h2, h3 {
+    margin: 0;
+    padding: 0;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: "Lato", Verdana, "Helvetica Neue", Arial, sans-serif;
+}
+
+ol, ul {
+    list-style: outside none none;
+}
+
+a, button {
+    cursor: pointer;
+    text-decoration: none;
+}
+
+a:focus {
+    outline: none;
+}
+
+body {
+    background: #F8F8F8;
+    line-height: 1.35;
+    overflow: auto;
+    position: relative;
+    width: 100%;
+    font-family: "Lato", Verdana, "Helvetica Neue", Arial, sans-serif;
+    color: #161616;
+}
+
+.hsa {
+    font-family: "Rounded Elegance", sans-serif;
+}
+
+#content {
+    padding-top: 35px;
+    background: #EEE;
+    padding-bottom: 45px;
+}
+
+.agenda-item {
+    margin-bottom: 15px;
+}
+
+.agenda-item .location {
+    opacity: 0.8;
+    font-size: 0.8em;
+    margin-left: 8px;
+}
+
+
+.news-item ol, .news-item ul {
+    list-style: initial;
+    list-style-position: inside;
+    padding: inherit;
+}
+
+.news-item .date {
+    opacity: 0.8;
+    font-size: 0.9em;
+    margin-top: 10px;
+}
+
+.panel-body{
+    word-wrap: break-word;
+}
+
+.center {
+  margin: 0 auto;
+  float: none;
+}
+
+.activity {
+  margin-bottom: 10px;
+  text-align: left;
+}
+
+.activity-title {
+  margin-bottom: 10px;
+}
+
+.navbar .logo {
+  background-color: #fff;
+}
+
+.divider {
+  width: 100%;
+  margin: 0 15px;
+  border-bottom: solid 1px #53bcb9;
+  float: left;
+}
+
+#footer {
+    border-top: solid 1px #53c2c3;
+    background: #F8F8F8;
+    font-size: 0.85em;
+    color: #555;
+    padding: 20px;
+}
+
+#footer h3 {
+    margin-bottom: 10px;
+    font-size: 1.8em;
+}
+
+#footer .copyright {
+    margin-top: 15px;
+    padding: 5px;
+}

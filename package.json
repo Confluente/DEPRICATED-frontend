@@ -1,0 +1,27 @@
+{
+  "name": "hsaconfluente.nl-frontend",
+  "version": "0.1.0",
+  "description": "Frontend for the H.S.A. Confluente website",
+  "author": "H.S.A. Confluente",
+  "scripts": {
+    "dev": "grunt dev",
+    "build": "grunt build"
+  },
+  "license": "",
+  "dependencies": {
+    "angular": "^1.6.3",
+    "angular-cookies": "^1.6.3",
+    "angular-route": "^1.6.3"
+  },
+  "devDependencies": {
+    "grunt": "^1.0.1",
+    "grunt-contrib-clean": "^1.0.0",
+    "grunt-contrib-copy": "^1.0.0",
+    "grunt-contrib-jshint": "^1.1.0",
+    "grunt-contrib-uglify": "^2.2.0",
+    "grunt-contrib-watch": "^1.0.0",
+    "grunt-jscs": "^3.0.1",
+    "grunt-webpack": "^2.0.1",
+    "webpack-dev-server": "^2.4.1"
+  }
+}
