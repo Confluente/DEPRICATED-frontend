@@ -1,9 +1,8 @@
 app = angular.module("confluente");
 
-app.factory("authService", ["$rootScope", "$http", "$cookies", function ($rootScope, $http, $cookies) {
+app.factory("authService", ["$rootScope", "$http", "$cookies", "$location", function ($rootScope, $http, $cookies, $location) {
   var auth = {
     user: {
-      displayName: "Henk",
       loggedIn: false,
     }
   };
@@ -12,15 +11,22 @@ app.factory("authService", ["$rootScope", "$http", "$cookies", function ($rootSc
     $http.post("/api/user/login", {email: email, password: password}).then(function (result) {
       console.log(result.data);
       auth.user.loggedIn = true;
+      getProfile();
     });
   };
 
   auth.logout = function () {
     $cookies.remove("session");
-    auth.user.loggedIn = false;
+    auth.user = {loggedIn: false};
+    $rootScope.user = auth.user;
+    $location.path("/");
   };
 
   if ($cookies.get("session")) {
+    getProfile();
+  }
+
+  function getProfile() {
     $http.get("/api/user/").then(function (result) {
       console.log(result.data);
       auth.user = result.data;
