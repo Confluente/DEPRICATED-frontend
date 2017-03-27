@@ -1,8 +1,8 @@
 @import "bootstrap.css";
 @import url(https://fonts.googleapis.com/css?family=Lato:400);
 @font-face {
-    font-family: "Rounded Elegance";
-    src: url(../fonts/Rounded_Elegance.otf);
+  font-family: "Rounded Elegance";
+  src: url(../fonts/Rounded_Elegance.otf);
 }
 
 html {
@@ -11,37 +11,37 @@ html {
 }
 
 html, body, div, span, ol, ul, li, a, p, h1, h2, h3 {
-    margin: 0;
-    padding: 0;
+  margin: 0;
+  padding: 0;
 }
 
 h1, h2, h3, h4, h5, h6 {
-    font-family: "Lato", Verdana, "Helvetica Neue", Arial, sans-serif;
+  font-family: "Lato", Verdana, "Helvetica Neue", Arial, sans-serif;
 }
 
 ol, ul {
-    list-style: outside none none;
+  list-style: outside none none;
 }
 
 a, button {
-    cursor: pointer;
-    text-decoration: none;
+  cursor: pointer;
+  text-decoration: none;
 }
 
 a:focus {
-    outline: none;
+  outline: none;
 }
 
 body {
-    background: #F8F8F8;
-    line-height: 1.35;
-    overflow: auto;
-    height: 100%;
-    width: 100%;
-    font-family: "Lato", Verdana, "Helvetica Neue", Arial, sans-serif;
-    color: #161616;
-    display: flex;
-    flex-direction: column;
+  background: #F8F8F8;
+  line-height: 1.35;
+  overflow: auto;
+  height: 100%;
+  width: 100%;
+  font-family: "Lato", Verdana, "Helvetica Neue", Arial, sans-serif;
+  color: #161616;
+  display: flex;
+  flex-direction: column;
 }
 
 body > * {
@@ -49,40 +49,40 @@ body > * {
 }
 
 .hsa {
-    font-family: "Rounded Elegance", sans-serif;
+  font-family: "Rounded Elegance", sans-serif;
 }
 
 #content {
-    flex: 1 0 auto;
-    padding-top: 35px;
-    padding-bottom: 45px;
+  flex: 1 0 auto;
+  padding-top: 35px;
+  padding-bottom: 45px;
 }
 
 .agenda-item {
-    margin-bottom: 15px;
+  margin-bottom: 15px;
 }
 
 .agenda-item .location {
-    opacity: 0.8;
-    font-size: 0.8em;
-    margin-left: 8px;
+  opacity: 0.8;
+  font-size: 0.8em;
+  margin-left: 8px;
 }
 
 
 .news-item ol, .news-item ul {
-    list-style: initial;
-    list-style-position: inside;
-    padding: inherit;
+  list-style: initial;
+  list-style-position: inside;
+  padding: inherit;
 }
 
 .news-item .date {
-    opacity: 0.8;
-    font-size: 0.9em;
-    margin-top: 10px;
+  opacity: 0.8;
+  font-size: 0.9em;
+  margin-top: 10px;
 }
 
 .panel-body{
-    word-wrap: break-word;
+  word-wrap: break-word;
 }
 
 .center {
@@ -111,10 +111,10 @@ body > * {
 }
 
 #footer {
-    border-top: solid 1px #53c2c3;
-    background: #F8F8F8;
-    font-size: 0.85em;
-    color: #555;
+  border-top: solid 1px #53c2c3;
+  background: #F8F8F8;
+  font-size: 0.85em;
+  color: #555;
 }
 
 .footer-content {
@@ -122,11 +122,11 @@ body > * {
 }
 
 #footer h3 {
-    margin-bottom: 10px;
-    font-size: 1.8em;
+  margin-bottom: 10px;
+  font-size: 1.8em;
 }
 
 #footer .copyright {
-    margin-top: 15px;
-    padding: 5px;
+  margin-top: 15px;
+  padding: 5px;
 }
