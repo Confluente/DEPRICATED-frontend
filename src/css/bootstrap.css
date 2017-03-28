@@ -40,7 +40,16 @@
   color: #fdfdfd;
   padding-left: 20px;
   padding-right: 20px;
+  padding-bottom: 0;
   transition: ease 0.2s;
+}
+
+.nav li a.icon {
+  background: none !important;
+  color: #fff;
+  width: 50px;
+  text-align: center;
+  display: inline-block;
 }
 
 .navbar-default .navbar-nav > li > a:hover,
@@ -69,9 +78,9 @@
   background-color: #3ca8a9;
 }
 .navbar-default .navbar-toggle {
-  margin-top: 28px;
-  margin-bottom: 25px;
-  margin-left: 30px;
+  margin: 0;
+  padding: 0;
+  border: none;
 }
 .navbar-default .navbar-toggle .icon-bar {
   background-color: #fdfdfd;
@@ -129,9 +138,16 @@ input {
 
 .navbar-brand,
 .navbar-nav li a {
-  line-height: 100px;
-  height: 100px;
+  line-height: 50px;
   padding-top: 0;
+}
+
+.navbar-default .navbar-brand {
+  color: #fff !important;
+}
+
+.navbar-default .navbar-brand:hover {
+  color: #5e5e5e !important;
 }
 
 .dropdown-user .fa {
@@ -173,14 +189,20 @@ input {
     background-color: #3ca8a9;
   }
 
-  .navbar-default .navbar-nav li a {
-    line-height: 55px;
-    height: 55px;
+  .navbar a.navbar-brand,
+  .navbar-toggle,
+  .navbar-nav li a {
+    line-height: 80px;
+    padding-top: 0;
+    font-size: 120%;
   }
 
-  .navbar-default .navbar-settings li a{
-    line-height: 100px;
-    height: 100px;
+  .nav li a.icon {
+    width: 60px;
+  }
+
+  .navbar-default .fa {
+    font-size: 30px;
   }
 }
 

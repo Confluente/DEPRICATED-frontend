@@ -19,4 +19,8 @@ app.controller("navbarController", ["authService", "$rootScope", "$scope", "$loc
 
   $scope.logout = auth.logout;
 
+  $scope.isNavCollapsed = true;
+
+  $scope.report = console.log;
+
 }]);
