@@ -14,4 +14,8 @@
       <p>When: {{activity.startTime}}</p>
       <p>Where: {{activity.location}}</p>
     </div>
+  </div>
+  <div class="no-activities" ng-if="!activities.length">
+    No planned activities yet :(
+  </div>
 </div>

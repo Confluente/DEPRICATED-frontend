@@ -58,6 +58,10 @@ body > * {
   padding-bottom: 45px;
 }
 
+#content .view {
+  max-width: 1000px;
+}
+
 .agenda-item {
   margin-bottom: 15px;
 }
@@ -108,6 +112,10 @@ body > * {
   margin: 0 15px;
   border-bottom: solid 1px #53bcb9;
   float: left;
+}
+
+.social img {
+  margin: 10px;
 }
 
 #footer {
