@@ -23,7 +23,7 @@ app.config(["$routeProvider", "$locationProvider", function ($routeProvider, $lo
   }
 
   $routeProvider.otherwise({
-    redirectTo: "/page/404"
+    templateUrl: "/404.html"
   });
 
   $locationProvider.html5Mode(true);
