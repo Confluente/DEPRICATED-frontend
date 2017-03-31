@@ -12,6 +12,11 @@ app.factory("pages", ["$http", "$timeout", function ($http, $timeout) {
         return result.data;
       });
     },
+    get: function (id) {
+      return $http.get("/api/page/" + id).then(function (result) {
+        return result.data;
+      });
+    },
     create: function (page) {
       //console.log(page);
       return $http.put("/api/page/" + page.url, page).then(function (result) {

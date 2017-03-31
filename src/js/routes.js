@@ -9,7 +9,8 @@ var routes = [
   require("./page/view"),
   require("./manage"),
   require("./page/manage"),
-  require("./page/create")
+  require("./page/create"),
+  require("./page/edit")
 ];
 
 module.exports = routes;
