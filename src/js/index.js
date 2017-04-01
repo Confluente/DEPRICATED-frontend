@@ -3,7 +3,7 @@ var ngRoute = require("angular-route");
 var ngCookies = require("angular-cookies");
 require("angular-ui-bootstrap");
 
-var app = angular.module("confluente", ["ngRoute", "ngCookies", "ui.bootstrap"]);
+var app = angular.module("confluente", ["ngRoute", "ngCookies", "ui.bootstrap", require('angular-sanitize')]);
 var routes = require("./routes");
 
 require("./authService");
@@ -18,7 +18,8 @@ app.config(["$routeProvider", "$locationProvider", function ($routeProvider, $lo
       title: route.name,
       parent: route.parent,
       controller: route.controller,
-      templateUrl: route.templateUrl
+      templateUrl: route.templateUrl,
+      template: route.template
     });
   }
 

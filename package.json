@@ -12,6 +12,7 @@
     "angular": "^1.6.3",
     "angular-cookies": "^1.6.3",
     "angular-route": "^1.6.3",
+    "angular-sanitize": "^1.6.3",
     "angular-ui-bootstrap": "^2.5.0"
   },
   "devDependencies": {
