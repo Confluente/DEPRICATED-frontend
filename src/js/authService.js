@@ -8,7 +8,7 @@ app.factory("authService", ["$rootScope", "$http", "$cookies", "$location", func
   };
 
   auth.login = function (email, password) {
-    $http.post("/api/user/login", {email: email, password: password}).then(function (result) {
+    $http.post("/api/auth/login", {email: email, password: password}).then(function (result) {
       console.log(result.data);
       auth.user.loggedIn = true;
       getProfile();
@@ -27,7 +27,7 @@ app.factory("authService", ["$rootScope", "$http", "$cookies", "$location", func
   }
 
   function getProfile() {
-    $http.get("/api/user/").then(function (result) {
+    $http.get("/api/auth/").then(function (result) {
       console.log(result.data);
       auth.user = result.data;
       auth.user.loggedIn = true;
