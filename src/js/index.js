@@ -9,6 +9,8 @@ var routes = require("./routes");
 require("./authService");
 require("./activitiesService");
 require("./pagesService");
+require("./usersService");
+require("./groupsService");
 require("./navbarController");
 
 app.config(["$routeProvider", "$locationProvider", function ($routeProvider, $locationProvider) {

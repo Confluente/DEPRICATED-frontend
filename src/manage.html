@@ -1,7 +1,82 @@
 <h1>Management Dashboard</h1>
-
-<ul>
-<li><a href="/manage/page">Manage pages</a></li>
-<li><a href="/manage/activities">Manage activities</a></li>
-<li><a href="/manage/user">Manage users</a></li>
-</ul>
+<uib-tabset active="active">
+  <uib-tab index="0" heading="Pages">
+    <a class="btn btn-default" href="/manage/page/create">Create page</a>
+    <table class="table table-striped">
+      <thead>
+        <th>url</th>
+        <th>title</th>
+        <th>actions</th>
+      </thead>
+      </tbody>
+        <tr class="table-row" ng-repeat="page in pages">
+          <td class=table-cell><a ng-href="/page/{{page.url}}">/page/{{page.url}}</a></td>
+          <td class=table-cell>{{page.title}}</td>
+          <td><a ng-href="/manage/page/{{page.url}}">Edit</a></td>
+        </tr>
+      </tbody>
+    </table>
+  </uib-tab>
+  <uib-tab index="1" heading="Activities">
+    <table class="table table-striped">
+      <thead>
+        <th>#</th>
+        <th>url</th>
+        <th>title</th>
+        <th>organizer</th>
+        <th>approved</th>
+        <th>actions</th>
+      </thead>
+      </tbody>
+        <tr class="table-row" ng-repeat="activity in activities">
+          <td class=table-cell>{{activity.id}}</td>
+          <td class=table-cell><a ng-href="/activities/{{activity.id}}">/activities/{{activity.id}}</a></td>
+          <td class=table-cell>{{activity.name}}</td>
+          <td class=table-cell>{{activity.Organizer.displayName}}</td>
+          <td class=table-cell>{{activity.approved}}</td>
+          <td><a ng-href="/manage/activities/{{activity.id}}">Edit</a></td>
+        </tr>
+      </tbody>
+    </table>
+  </uib-tab>
+  <uib-tab index="2" heading="Users">
+    <table class="table table-striped">
+      <thead>
+        <th>#</th>
+        <th>name</th>
+        <th>email</th>
+        <th>admin</th>
+        <th>actions</th>
+      </thead>
+      </tbody>
+        <tr class="table-row" ng-repeat="user in users">
+          <td class=table-cell>{{user.id}}</td>
+          <td class=table-cell><a ng-href="/user/{{user.id}}">{{user.displayName}}</a></td>
+          <td class=table-cell>{{user.email}}</td>
+          <td class=table-cell>{{user.isAdmin}}</td>
+          <td><a ng-href="/manage/user/{{user.id}}">Edit</a></td>
+        </tr>
+      </tbody>
+    </table>
+  </uib-tab>
+  <uib-tab index="3" heading="Groups">
+    <table class="table table-striped">
+      <thead>
+        <th>#</th>
+        <th>name</th>
+        <th>email</th>
+        <th>can organize</th>
+        <th>actions</th>
+      </thead>
+      </tbody>
+        <tr class="table-row" ng-repeat="group in groups">
+          <td class=table-cell>{{group.id}}</td>
+          <td class=table-cell><a ng-href="/group/{{group.id}}">{{group.fullName}} ({{group.displayName}})</a></td>
+          <td class=table-cell>{{group.email}}</td>
+          <td class=table-cell>{{group.canOrganize}}</td>
+          <td><a ng-href="/manage/group/{{group.id}}">Edit</a></td>
+        </tr>
+      </tbody>
+    </table>
+  </uib-tab>
+</uib-tabset>

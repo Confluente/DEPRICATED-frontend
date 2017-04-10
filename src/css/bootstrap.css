@@ -288,3 +288,11 @@ input {
 .btn-group .btn {
   width: auto;
 }
+
+.tab-content {
+  border: 1px solid #ddd;
+  border-top: none;
+  border-radius: 0 0 4px 4px ;
+  padding: 10px;
+  background-color: #fff;
+}
