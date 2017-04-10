@@ -1,6 +1,6 @@
 module.exports = {
   id: 1,
-  name: "Homeigheid",
+  name: "Home",
   url: "/",
   parent: null,
   templateUrl: "/home.html",
