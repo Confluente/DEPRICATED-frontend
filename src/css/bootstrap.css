@@ -46,9 +46,7 @@
 
 .nav li a.icon {
   background: none !important;
-  color: #fff;
   width: 50px;
-  text-align: center;
   display: inline-block;
 }
 
@@ -137,9 +135,12 @@ input {
 }
 
 .navbar-brand,
-.navbar-nav li a {
+.navbar-nav li a,
+.navbar-toggle.icon {
   line-height: 50px;
   padding-top: 0;
+  text-align: center;
+  color: #fff;
 }
 
 .navbar-default .navbar-brand {
@@ -190,14 +191,15 @@ input {
   }
 
   .navbar a.navbar-brand,
-  .navbar-toggle,
+  .navbar-toggle.icon,
   .navbar-nav li a {
     line-height: 80px;
     padding-top: 0;
     font-size: 120%;
   }
 
-  .nav li a.icon {
+  .nav li a.icon,
+  .navbar-toggle.icon {
     width: 60px;
   }
 
