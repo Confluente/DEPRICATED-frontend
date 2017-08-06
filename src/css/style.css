@@ -10,7 +10,7 @@ html {
   height: 100%;
 }
 
-html, body, div, span, ol, ul, li, a, p, h1, h2, h3 {
+html, body, div, span, ol, ul, li, a, p, .nospace {
   margin: 0;
   padding: 0;
 }
@@ -54,7 +54,7 @@ body > * {
 
 #content {
   flex: 1 0 auto;
-  padding-top: 35px;
+  padding-top: 15px;
   padding-bottom: 45px;
 }
 
@@ -112,6 +112,11 @@ body > * {
   margin: 0 15px;
   border-bottom: solid 1px #53bcb9;
   float: left;
+}
+
+.image-holder img {
+  max-width: 100%;
+  margin: 15px 0;
 }
 
 .social img {
