@@ -95,12 +95,13 @@ body > * {
 }
 
 .activity {
+  padding: 15px;
   margin-bottom: 10px;
   text-align: left;
 }
 
-.activity-title {
-  margin-bottom: 10px;
+.panel-heading.activity-title {
+  margin: 0 0 10px 0;
 }
 
 .navbar .logo {

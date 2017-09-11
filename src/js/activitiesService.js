@@ -36,6 +36,9 @@ app.factory("activities", ["$http", "$timeout", function ($http, $timeout) {
         console.log(result.data);
         return result.data;
       });
+    },
+    delete: function (id) {
+      return $http.delete("/api/activities", id);
     }
   };
 }]);
