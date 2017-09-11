@@ -19,10 +19,6 @@ h1, h2, h3, h4, h5, h6 {
   font-family: "Lato", Verdana, "Helvetica Neue", Arial, sans-serif;
 }
 
-ol, ul {
-  list-style: outside none none;
-}
-
 a, button {
   cursor: pointer;
   text-decoration: none;
@@ -143,4 +139,16 @@ body > * {
 #footer .copyright {
   margin-top: 15px;
   padding: 5px;
+}
+
+.page {
+  line-height: 1.6;
+}
+
+.page p {
+  margin: 0 0 10px 0;
+}
+
+.page img {
+  max-width: 500px;
 }
