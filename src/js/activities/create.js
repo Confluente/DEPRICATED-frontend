@@ -10,7 +10,8 @@ app.controller("activityCreateController", ["$scope", "activities", function ($s
       description: $scope.description,
       organizer: $scope.organizer,
       startTime: $scope.startTime,
-      location: $scope.location
+      location: $scope.location,
+      approved: true
     }).then(function (result) {
       $scope.loading = false;
       window.location.href = "/activities/" + result.id;
