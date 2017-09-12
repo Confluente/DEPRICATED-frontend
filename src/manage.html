@@ -1,22 +1,5 @@
 <h1>Management Dashboard</h1>
 <uib-tabset active="active">
-  <uib-tab index="0" heading="Pages">
-    <a class="btn btn-default" href="/manage/page/create">Create page</a>
-    <table class="table table-striped">
-      <thead>
-        <th>url</th>
-        <th>title</th>
-        <th>actions</th>
-      </thead>
-      </tbody>
-        <tr class="table-row" ng-repeat="page in pages">
-          <td class=table-cell><a ng-href="/page/{{page.url}}">/page/{{page.url}}</a></td>
-          <td class=table-cell>{{page.title}}</td>
-          <td><a ng-href="/manage/page/{{page.url}}">Edit</a></td>
-        </tr>
-      </tbody>
-    </table>
-  </uib-tab>
   <uib-tab index="1" heading="Activities">
     <table class="table table-striped">
       <thead>
