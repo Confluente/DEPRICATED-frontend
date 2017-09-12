@@ -5,20 +5,17 @@
     <div class="activity-title panel-heading col-xs-12">
       <h3 class="nospace">{{activity.name}}</h3><span ng-if="!activity.approved">(Unlisted)</span>
     </div>
-    <div class="activity-content col-xs-8">
-      <div class="sadf">
-        {{activity.description}}
-      </div>
+    <div class="activity-content col-xs-8" ng-bind-html="activity.description_html">
     </div>
     <div class="activity-details col-xs-4">
-      <p>When: {{activity.startTime}}</p>
-      <p>Where: {{activity.location}}</p>
+      <p ng-if="activity.startTime">When: {{activity.startTime}}</p>
+      <p ng-if="activity.location">Where: {{activity.location}}</p>
     </div>
     <div class="col-xs-12 activity-buttons" ng-if="user.loggedIn">
-      <a class="btn btn-default" href="/manage/activities/1">Edit</a>
+      <a href="/manage/activities/1">Edit</a>
     </div>
   </div>
-  <div class="no-activities" ng-if="!activities.length">
+  <div class="no-activities" ng-if="!activities.length && !loading">
     No planned activities yet :(
   </div>
 </div>
