@@ -1,25 +1,23 @@
 var app = angular.module("confluente");
 
 app.factory("activities", ["$http", "$timeout", function ($http, $timeout) {
-  var activities = [];
-
-  function give(value) {
-    return function () {
-      return value;
-    };
-  }
 
   return {
     getAll: function () {
       return $http.get("/api/activities").then(function (result) {
         //console.log(result);
-        activities = result.data;
-        return result.data;
+        var activities = result.data;
+        return activities.map(function (activity) {
+          activity.startTime = !isNaN(Date.parse(activity.startTime)) ? new Date(activity.startTime) : null;
+          return activity;
+        });
       });
     },
     get: function (id) {
       return $http.get("/api/activities/" + id).then(function (result) {
-        return result.data;
+        var activity = result.data;
+        activity.startTime = !isNaN(Date.parse(activity.startTime)) ? new Date(activity.startTime) : null;
+        return activity;
       });
     },
     create: function (activity) {

@@ -8,7 +8,7 @@
     <div class="activity-content col-xs-8" ng-bind-html="activity.description_html">
     </div>
     <div class="activity-details col-xs-4">
-      <p ng-if="activity.startTime">When: {{activity.startTime}}</p>
+      <p ng-if="activity.startTime">When: {{activity.startTime | date:'d MMMM yyyy'}}</p>
       <p ng-if="activity.location">Where: {{activity.location}}</p>
     </div>
     <div class="col-xs-12 activity-buttons" ng-if="user.loggedIn">

@@ -4,7 +4,6 @@ app.controller("activityCreateController", ["$scope", "activities", function ($s
   $scope.loading = false;
   $scope.submit = function () {
     $scope.loading = true;
-    console.log($scope);
     activities.create({
       name: $scope.name,
       description: $scope.description,
@@ -16,6 +15,18 @@ app.controller("activityCreateController", ["$scope", "activities", function ($s
       $scope.loading = false;
       window.location.href = "/activities/" + result.id;
     });
+  };
+
+  $scope.datepicker = {open: false};
+  $scope.openDatePicker = function () {
+    $scope.datepicker.open = true;
+  };
+
+  $scope.dateOptions = {
+    formatYear: 'yy',
+    maxDate: new Date(2020, 5, 22),
+    minDate: new Date(2000, 1, 1),
+    startingDay: 1
   };
 }]);
 

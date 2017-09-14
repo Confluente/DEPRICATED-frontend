@@ -8,7 +8,13 @@
     Description (Markdown supported)<textarea ng-model="activity.description" class="form-control"></textarea>
   </div>
   <div class="form-group row">
-    Starting time (optional)<input ng-model="activity.startTime" class="form-control"></input>
+    Date
+    <p class="input-group">
+      <input type="text" class="form-control" ng-model="activity.startTime" uib-datepicker-popup="yyyy-MM-dd" is-open="datepicker.open" datepicker-options="dateOptions" close-text="Close"/>
+      <span class="input-group-btn">
+        <button type="button" class="btn btn-default" ng-click="openDatePicker()"><i class="glyphicon glyphicon-calendar"></i></button>
+      </span>
+    </p>
   </div>
   <div class="form-group row">
     Location (optional)<input ng-model="activity.location" class="form-control"></input>
