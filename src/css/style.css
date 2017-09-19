@@ -141,15 +141,15 @@ body > * {
   padding: 5px;
 }
 
-.page {
+.content {
   line-height: 1.6;
 }
 
-.page p {
+.content p {
   margin: 0 0 10px 0;
 }
 
-.page img {
+.content img {
   max-width: 100%;
 }
 
