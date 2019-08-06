@@ -25,11 +25,11 @@ module.exports = function (grunt) {
             },
             output: {
               beautify: false,
-              preamble: "/*! Copyright 2017 H.S.A. Confluente */"
+              preamble: "/*! Copyright 2019 H.S.A. Confluente */"
             },
             mangle: true,
             comments: false
-          })
+          }) 
         ],
         output: {
           path: __dirname + '/build/js',
