@@ -25,6 +25,7 @@
     "grunt-contrib-watch": "^1.0.0",
     "grunt-jscs": "^3.0.1",
     "grunt-webpack": "^2.0.1",
+    "webpack-cli": "^3.3.6",
     "webpack-dev-server": "^2.4.1"
   }
 }
