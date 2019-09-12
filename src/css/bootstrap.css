@@ -41,7 +41,7 @@
 
 .navbar-default .navbar-nav > li > a {
   color: #161616;
-  padding: 0 2% 0 5%;
+  padding: 2% 6%;
   transition: ease 0.2s;
   display: inline-block;
 }
