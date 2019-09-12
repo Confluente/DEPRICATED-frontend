@@ -1,4 +1,4 @@
-@import "bootstrap.css";
+/*@import "bootstrap.css";*/
 @import url(https://fonts.googleapis.com/css?family=Lato:400);
 @font-face {
   font-family: "Rounded Elegance";
@@ -46,6 +46,8 @@ body > * {
 
 .hsa {
   font-family: "Rounded Elegance", sans-serif;
+  font-size: 1.1em;
+  color: #161616;
 }
 
 #content {
@@ -58,28 +60,6 @@ body > * {
   max-width: 1000px;
 }
 
-.agenda-item {
-  margin-bottom: 15px;
-}
-
-.agenda-item .location {
-  opacity: 0.8;
-  font-size: 0.8em;
-  margin-left: 8px;
-}
-
-
-.news-item ol, .news-item ul {
-  list-style: initial;
-  list-style-position: inside;
-  padding: inherit;
-}
-
-.news-item .date {
-  opacity: 0.8;
-  font-size: 0.9em;
-  margin-top: 10px;
-}
 
 .panel-body{
   word-wrap: break-word;
