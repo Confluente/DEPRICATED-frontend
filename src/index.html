@@ -26,142 +26,39 @@
             <span class="sr-only">Toggle navigation</span>
             <span class="fa fa-bars"></span>
           </button>
-          <a class="navbar-brand" href="/">Honors Study Association Confluente</a>
+          <a class="navbar-brand hsa" href="/">Honors Study Association Confluente</a>
         </div>
 
         <div class="collapse navbar-collapse" id="main-navbar__content">
           <ul class="nav navbar-nav navbar-right">
             <li><a href="/page/association">About</a></li>
             <li><a href="/page/education">Honors Academy</a></li>
-            <li ng-if="user.loggedIn"><a href="#">Events</a></li>
+            <li><a href="#">Events</a></li>
             <li ng-if="user.loggedIn"><a href="/files">Photos</a></li>
             <li><a href="/page/partners">Career</a></li>
-            <li ng-if="!user.loggedIn"><a href="#">Student login</a></li>
+            <li ng-if="!user.loggedIn"><a href="/page/login">Student login</a></li>
 
-            <li class="dropdown">
+            <li ng-if="user.loggedIn" class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
                 {{user.displayName}} <span class="caret"></span>
               </a>
               <ul class="dropdown-menu">
-                <li><a href="/user/profile"><span class="fa fa-user-circle pull-right"></span> Profile</a></li>
-                <li><a href="/manage"><span class="fa fa-sliders pull-right"></span> Manage</a></li>
+                <li><a href="/user/profile"><span class="fa fa-user-circle"></span>Profile</a></li>
+                <li><a href="/manage"><span class="fa fa-sliders"></span>Manage</a></li>
                 <li role="separator" class="divider"></li>
-                <li><a ng-click="logout()"><span class="fa fa-sign-out pull-right"></span> Logout</a></li>
+                <li><a ng-click="logout()"><span class="fa fa-sign-out"></span>Logout</a></li>
               </ul>
             </li>
 
 
           </ul>
         </div>
-<!--
-
-
-
-
-
-        <div class="navbar-header navbar-left pull-left">
-          <a href="/" class="navbar-brand">
-            Honors Study Association Confluente
-          </a>
-        </div>
-
-        <div class="navbar-header navbar-right pull-right">
-          <ul class="nav navbar-nav navbar-settings pull-left">
-
-            <div ng-if="user.loggedIn">
-              <li class="dropdown hidden-sm hidden-xs" uib-dropdown auto-close="outsideClick">
-                <a class="dropdown-toggle" uib-dropdown-toggle>
-                  <p>{{ user.displayName}}</p>
-                </a>
-                <ul class="dropdown-menu dropdown-user" uib-dropdown-menu>
-                  <li>
-                    <a href="/user/profile">
-                      <span class="pull-left">Profile</span><span class="fa fa-user-circle pull-right"></span>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="/manage">
-                      <span class="pull-left">Manage</span><span class="fa fa-sliders pull-right"></span>
-                    </a>
-                  </li>
-                  <li>
-                    <a ng-click="logout()">
-                      <span class="pull-left">Logout</span><span class="fa fa-sign-out pull-right"></span>
-                    </a>
-                  </li>
-                </ul>
-              </li>
-              <li class="visible-sm visible-xs">
-                <a href="user/profile">
-                  <span class="fa fa-gear"></span>
-                </a>
-              </li>
-            </div>
-
-            <div ng-if="!user.loggedIn">
-              <!--
-              <li class="visible-xs">
-                <a class="icon" href="user/login"><span class="fa fa-user"></span></a>
-              </li>
-            --><!--
-              <li class="dropdown hidden-xs" uib-dropdown auto-close="outsideClick">
-
-                <a class="dropdown-toggle icon">
-                  <span class="fa fa-user" uib-dropdown-toggle></span>
-                </a>
-
-                <div class="dropdown-menu dropdown-login" uib-dropdown-menu>
-                  <form>
-
-                    <div class="form-group row">
-                      <input ng-model="email" class="form-control" placeholder="Email address">
-                    </div>
-
-                    <div class="form-group row">
-                      <input ng-model="password" class="form-control" placeholder="Password" type="password">
-                    </div>
-
-                    <button ng-click="login(email, password)" class="btn btn-primary btn-block">
-                      Login<span class="fa fa-sign-in"></span>
-                    </button>
-
-                  </form>
-                </div>
-
-              </li>
-
-            </div>
-
-          </ul>
-          <a class="navbar-toggle icon" ng-click="report(isNavCollapsed = !isNavCollapsed)"><span class="fa fa-bars"></span></a>
-        </div>
-
-        <div class="collapse navbar-collapse" uib-collapse="isNavCollapsed">
-          <ul class="nav navbar-nav" ng-click="isNavCollapsed = true">
-
-            <li class="association">
-              <a href="/page/association">Association</a>
-            </li>
-            <li class="education">
-              <a href="/page/education">Education</a>
-            </li>
-            <li class="partners">
-              <a href="/page/partners">Partners</a>
-            </li>
-
-            <li class="documents" ng-if="user.loggedIn">
-              <a href="/files">Documents</a>
-            </li>
-
-          </ul>
-        </div>-->
-
       </div>
     </nav>
   </header>
 
   <div id="content" class="content">
-    <div class="view col-xs-12 col-sm-10 center" ng-view>
+    <div class="container" ng-view>
     </div>
   </div>
 
@@ -190,11 +87,11 @@
             Board<br>
             <a href="mailto:board@hsaconfluente.nl">board@hsaconfluente.nl</a><br>
             Web Committee<br>
-            <a href="mailto:board@hsaconfluente.nl">web@hsaconfluente.nl</a>
+            <a href="mailto:web@hsaconfluente.nl">web@hsaconfluente.nl</a>
           </p>
         </div>
 
-        <div class="col-sm-4 col-xs-12 copyright pull-right">
+        <div class="col-sm-4 col-xs-12 copyright pull-right text-right">
           <p>This site is maintained by the <span class="hsa">H.S.A Confluente</span> Web Committee</p>
           <p>&copy; 2019 - All rights reserved.</p>
         </div>

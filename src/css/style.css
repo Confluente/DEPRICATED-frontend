@@ -34,9 +34,8 @@ html, body, div, span, ol, ul, li, a, p, .nospace {
 }
 
 html {
-  position: relative;
-  height: 100%;
   font-size: 10pt;
+  overflow-y: scroll
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -55,41 +54,54 @@ a:focus {
 }
 
 
-/*header {
-  height: 80px;
-  position: sticky;
-  top: 0;
-  z-index: 1;
-}
-
-header:after {
-  content:"";
-  position: absolute;
-  width:100%;
-  height: 80px;
-  top: 0;
-  background-color: var(--color-accent);
-  display: block;
-  z-index: -2;
-}*/
-
 .navbar {
+  background: var(--color-accent);
+  border-radius: 0;
+  border: 0;
+  min-height: 80px;
+}
+.navbar > .container {
   padding-top: 26px;
-  border: none;
-  margin-bottom: 4px;
-  background: none;
 }
 
+.navbar button, .navbar a {
+  color: var(--color-dark)
+}
+.navbar-nav .fa {
+  margin-right: 6px
+}
+.navbar-nav > li > a {
+  padding-top: 17px;
+  padding-bottom: 17px;
+}
+.dropdown-menu {
+  box-shadow: none;
+  padding: 0;
+  border-radius: 0;
+}
+.dropdown-menu > li > a {
+  padding: 10px 20px
+}
+.dropdown-menu .divider {
+  margin: 0
+}
+
+.navbar-brand {
+  height: 54px;
+  padding-top: 17px;
+  padding-bottom: 17px;
+}
 
 body {
-  background: #fff;
-  line-height: 1.6;
   font-family: Assistant, Calibri, "Helvetica Neue", Arial, sans-serif;
-  font-size: 1.2rem;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  font-weight: 400;
   color: var(--color-dark);
+  
   display: flex;
   flex-direction: column;
-  font-weight: 400;
+  min-height: 100vh;
 }
 
 .hsa {
@@ -98,13 +110,25 @@ body {
 }
 
 #content {
-  flex: 1 0 auto;
-  padding-top: 15px;
-  padding-bottom: 45px;
+  flex-grow: 1;
+  margin-bottom: 20px;
+}
+
+#footer {
+  font-size: 0.9rem;
+  margin-bottom: 20px;
+  margin-top: 20px;
+}
+
+#footer h3 {
+  margin-top: 0;
+  font-size: 1rem;
+  text-transform: uppercase
 }
 
 
 
+/*
 
 .panel-body{
   word-wrap: break-word;
@@ -190,4 +214,4 @@ body {
   max-height: 100px;
   max-width: 150px;
   margin: 0 auto;
-}
+}*/
