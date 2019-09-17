@@ -5,8 +5,8 @@
   <meta charset="UTF-8">
   <meta content="width=device-width, initial-scale=1" name="viewport">
   <base href="/"/>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"/>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
   <link rel="stylesheet" href="css/style.css" type="text/css"/>
 
   <script src="/js/bundle.js"></script>
@@ -18,12 +18,50 @@
 <body ng-cloak>
 
   <header id="header">
-    <nav role="navigation" class="navbar navbar-default">
+    <nav role="navigation" class="navbar">
       <div class="container" ng-controller="navbarController as nav">
+
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#main-navbar__content" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="fa fa-bars"></span>
+          </button>
+          <a class="navbar-brand" href="/">Honors Study Association Confluente</a>
+        </div>
+
+        <div class="collapse navbar-collapse" id="main-navbar__content">
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="/page/association">About</a></li>
+            <li><a href="/page/education">Honors Academy</a></li>
+            <li ng-if="user.loggedIn"><a href="#">Events</a></li>
+            <li ng-if="user.loggedIn"><a href="/files">Photos</a></li>
+            <li><a href="/page/partners">Career</a></li>
+            <li ng-if="!user.loggedIn"><a href="#">Student login</a></li>
+
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                {{user.displayName}} <span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu">
+                <li><a href="/user/profile"><span class="fa fa-user-circle pull-right"></span> Profile</a></li>
+                <li><a href="/manage"><span class="fa fa-sliders pull-right"></span> Manage</a></li>
+                <li role="separator" class="divider"></li>
+                <li><a ng-click="logout()"><span class="fa fa-sign-out pull-right"></span> Logout</a></li>
+              </ul>
+            </li>
+
+
+          </ul>
+        </div>
+<!--
+
+
+
+
 
         <div class="navbar-header navbar-left pull-left">
           <a href="/" class="navbar-brand">
-            <span class="hsa">H.S.A. Confluente</span>
+            Honors Study Association Confluente
           </a>
         </div>
 
@@ -65,7 +103,7 @@
               <li class="visible-xs">
                 <a class="icon" href="user/login"><span class="fa fa-user"></span></a>
               </li>
-              -->
+            --><!--
               <li class="dropdown hidden-xs" uib-dropdown auto-close="outsideClick">
 
                 <a class="dropdown-toggle icon">
@@ -116,7 +154,7 @@
             </li>
 
           </ul>
-        </div>
+        </div>-->
 
       </div>
     </nav>
@@ -165,5 +203,8 @@
     </div>
   </footer>
 
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>
 </body>
 </html>
