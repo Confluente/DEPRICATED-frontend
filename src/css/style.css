@@ -1,13 +1,30 @@
-@import "bootstrap.css";
-@import url(https://fonts.googleapis.com/css?family=Lato:400);
 @font-face {
   font-family: "Rounded Elegance";
   src: url(../fonts/Rounded_Elegance.otf);
 }
 
-html {
-  position: relative;
-  height: 100%;
+@font-face {
+  font-family: 'Assistant';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(../fonts/Assistant-Regular.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: 'Assistant';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: local('Assistant SemiBold'), local('Assistant-SemiBold'), url(../fonts/Assistant-SemiBold.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+
+:root {
+  --color-accent: #54c2c3;
+  --color-dark:   #2a2a2a;
 }
 
 html, body, div, span, ol, ul, li, a, p, .nospace {
@@ -15,71 +32,103 @@ html, body, div, span, ol, ul, li, a, p, .nospace {
   padding: 0;
 }
 
+html {
+  font-size: 10pt;
+  overflow-y: scroll
+}
+
+body {
+  font-family: Assistant, "Helvetica Neue", Arial, sans-serif;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  font-weight: 400;
+  color: var(--color-dark);
+
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
 h1, h2, h3, h4, h5, h6 {
-  font-family: "Lato", Verdana, "Helvetica Neue", Arial, sans-serif;
+  font-family: Assistant, "Helvetica Neue", Arial, sans-serif;
+  font-weight: 600;
 }
 
 a, button {
   cursor: pointer;
   text-decoration: none;
+  color: var(--color-accent)
 }
 
 a:focus {
-  outline: none;
+  outline: none
 }
 
-body {
-  background: #F8F8F8;
-  line-height: 1.35;
-  overflow: auto;
-  height: 100%;
-  width: 100%;
-  font-family: "Lato", Verdana, "Helvetica Neue", Arial, sans-serif;
-  color: #161616;
-  display: flex;
-  flex-direction: column;
+.navbar {
+  background: var(--color-accent);
+  border: 0;
+  border-radius: 0;
+  min-height: 80px;
+}
+.navbar > .container {
+  padding-top: 26px;
 }
 
-body > * {
-  flex: 0 0 auto;
+.navbar button, .navbar a {
+  color: var(--color-dark)
+}
+
+.navbar-nav .fa {
+  margin-right: 6px
+}
+.navbar-nav > li > a {
+  padding-top: 17px;
+  padding-bottom: 17px;
+}
+
+.dropdown-menu {
+  box-shadow: none;
+  padding: 0;
+  border-radius: 0;
+}
+.dropdown-menu > li > a {
+  padding: 10px 20px
+}
+.dropdown-menu .divider {
+  margin: 0
+}
+
+.navbar-brand {
+  height: 54px;
+  padding-top: 17px;
+  padding-bottom: 17px;
 }
 
 .hsa {
   font-family: "Rounded Elegance", sans-serif;
+  color: var(--color-dark);
 }
 
 #content {
-  flex: 1 0 auto;
-  padding-top: 15px;
-  padding-bottom: 45px;
+  flex-grow: 1;
+  margin-bottom: 20px;
 }
 
-#content .view {
-  max-width: 1000px;
+#footer {
+  font-size: 0.9rem;
+  margin-bottom: 20px;
+  margin-top: 20px;
 }
 
-.agenda-item {
-  margin-bottom: 15px;
-}
-
-.agenda-item .location {
-  opacity: 0.8;
-  font-size: 0.8em;
-  margin-left: 8px;
+#footer h3 {
+  margin-top: 0;
+  font-size: 1rem;
+  text-transform: uppercase
 }
 
 
-.news-item ol, .news-item ul {
-  list-style: initial;
-  list-style-position: inside;
-  padding: inherit;
-}
 
-.news-item .date {
-  opacity: 0.8;
-  font-size: 0.9em;
-  margin-top: 10px;
-}
+/*
 
 .panel-body{
   word-wrap: break-word;
@@ -121,10 +170,8 @@ body > * {
 }
 
 #footer {
-  border-top: solid 1px #53c2c3;
-  background: #F8F8F8;
-  font-size: 0.85em;
-  color: #555;
+  background: none;
+  font-size: 0.9rem;
 }
 
 .footer-content {
@@ -133,16 +180,12 @@ body > * {
 
 #footer h3 {
   margin-bottom: 10px;
-  font-size: 1.8em;
+  font-size: 1rem;
 }
 
 #footer .copyright {
   margin-top: 15px;
   padding: 5px;
-}
-
-.content {
-  line-height: 1.6;
 }
 
 .content p {
@@ -171,4 +214,4 @@ body > * {
   max-height: 100px;
   max-width: 150px;
   margin: 0 auto;
-}
+}*/
