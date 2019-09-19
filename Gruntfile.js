@@ -1,6 +1,7 @@
 module.exports = function (grunt) {
 
-  var webpack = require('webpack');
+  var webpack = require('webpack');8
+  const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
   // Project configuration.
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
@@ -19,16 +20,15 @@ module.exports = function (grunt) {
         context: __dirname + '/src/js',
         entry: './index.js',
         plugins: [
-          new webpack.optimize.UglifyJsPlugin({
-            compress: {
-              warnings: false
+          new UglifyJsPlugin({
+            cache: true,
+            parallel: true,
+            uglifyOptions: {
+              compress: false,
+              ecma: 6,
+              mangle: true
             },
-            output: {
-              beautify: false,
-              preamble: "/*! Copyright 2017 H.S.A. Confluente */"
-            },
-            mangle: true,
-            comments: false
+            sourceMap: true
           })
         ],
         output: {

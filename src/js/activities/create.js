@@ -24,8 +24,8 @@ app.controller("activityCreateController", ["$scope", "activities", function ($s
 
   $scope.dateOptions = {
     formatYear: 'yy',
-    maxDate: new Date(2020, 5, 22),
-    minDate: new Date(2000, 1, 1),
+    maxDate: new Date(2025, 5, 22),
+    minDate: new Date(2015, 1, 1),
     startingDay: 1
   };
 }]);
