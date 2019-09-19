@@ -1,14 +1,23 @@
 <h1>Edit page</h1>
 <a class="btn btn-default" href="/manage/page">Back</a>
+
 <form ng-disabled="loading">
-  <div class="form-group row">
-    Url: <input ng-model="page.url" class="form-control" disabled></input>
+
+  <div class="form-group">
+    <label for="pageEdit-url">Url</label>
+    <input type="url" ng-model="page.url" class="form-control" id="pageEdit-url" disabled></input>
   </div>
-  <div class="form-group row">
-    Title<input ng-model="page.title" class="form-control"></input>
+
+  <div class="form-group">
+    <label for="pageEdit-title">Title</label>
+    <input type="text" ng-model="page.title" class="form-control" id="pageEdit-title"></input>
   </div>
-  <div class="form-group row">
-    Content<textarea ng-model="page.content" class="form-control"></textarea>
+
+  <div class="form-group">
+    <label for="pageEdit-content">Content</label>
+    <textarea ng-model="page.content" class="form-control" id="pageEdit-content"></textarea>
   </div>
-  <button class="btn btn-default" ng-click="submit()" ng-disabled="loading">Save</button>
+
+  <button type="submit" class="btn btn-default" ng-click="submit()" ng-disabled="loading">Save</button>
+
 </form>

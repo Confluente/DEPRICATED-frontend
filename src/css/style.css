@@ -22,7 +22,6 @@
 }
 
 
-
 :root {
   --color-accent: #54c2c3;
   --color-dark:   #2a2a2a;
@@ -38,6 +37,18 @@ html {
   overflow-y: scroll
 }
 
+body {
+  font-family: Assistant, "Helvetica Neue", Arial, sans-serif;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  font-weight: 400;
+  color: var(--color-dark);
+
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
 h1, h2, h3, h4, h5, h6 {
   font-family: Assistant, "Helvetica Neue", Arial, sans-serif;
   font-weight: 600;
@@ -50,14 +61,13 @@ a, button {
 }
 
 a:focus {
-  outline: none;
+  outline: none
 }
-
 
 .navbar {
   background: var(--color-accent);
-  border-radius: 0;
   border: 0;
+  border-radius: 0;
   min-height: 80px;
 }
 .navbar > .container {
@@ -67,6 +77,7 @@ a:focus {
 .navbar button, .navbar a {
   color: var(--color-dark)
 }
+
 .navbar-nav .fa {
   margin-right: 6px
 }
@@ -74,6 +85,7 @@ a:focus {
   padding-top: 17px;
   padding-bottom: 17px;
 }
+
 .dropdown-menu {
   box-shadow: none;
   padding: 0;
@@ -90,18 +102,6 @@ a:focus {
   height: 54px;
   padding-top: 17px;
   padding-bottom: 17px;
-}
-
-body {
-  font-family: Assistant, Calibri, "Helvetica Neue", Arial, sans-serif;
-  font-size: 1.1rem;
-  line-height: 1.6;
-  font-weight: 400;
-  color: var(--color-dark);
-  
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
 }
 
 .hsa {
