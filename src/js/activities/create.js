@@ -1,39 +1,33 @@
 var app = angular.module("confluente");
-
 app.controller("activityCreateController", ["$scope", "activities", function ($scope, activities) {
+
   $scope.loading = false;
-  $scope.submit = function () {
+
+  $scope.submit = function() {
     $scope.loading = true;
+
     activities.create({
-      name: $scope.name,
+      name:        $scope.name,
       description: $scope.description,
-      organizer: $scope.organizer,
-      startTime: $scope.startTime,
-      location: $scope.location,
-      approved: true
-    }).then(function (result) {
-      $scope.loading = false;
-      window.location.href = "/activities/" + result.id;
-    });
-  };
+      organizer:   $scope.organizer,
+      startTime:   $scope.startTime,
+      location:    $scope.location,
+      approved:    true
 
-  $scope.datepicker = {open: false};
-  $scope.openDatePicker = function () {
-    $scope.datepicker.open = true;
-  };
-
-  $scope.dateOptions = {
-    formatYear: 'yy',
-    maxDate: new Date(2025, 5, 22),
-    minDate: new Date(2015, 1, 1),
-    startingDay: 1
+    }).then(
+      function(result) {
+        $scope.loading       = false;
+        window.location.href = "/activities/" + result.id;
+      });
   };
 }]);
 
+////
+
 module.exports = {
-  name: "New Activity",
-  url: "/manage/activities/create",
-  parent: "/manage/activities/",
-  templateUrl: "/activityCreate.html",
-  controller: "activityCreateController"
+  name:        "New Activity",
+  url:         "/manage/activities/create",
+  parent:      "/manage/activities/",
+  templateUrl: "/www/templates/activities/activityCreate.html",
+  controller:  "activityCreateController"
 };

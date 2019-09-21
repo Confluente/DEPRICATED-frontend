@@ -16,6 +16,6 @@ module.exports = {
   name: "New Page",
   url: "/manage/page/create",
   parent: "/manage/page",
-  templateUrl: "/pageCreate.html",
+  templateUrl: "/www/templates/pages/pageCreate.html",
   controller: "pageCreateController"
 };

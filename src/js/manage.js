@@ -1,7 +1,7 @@
 var app = angular.module("confluente");
-
 app.controller("manageController", ["$scope", "$q", "pages", "activities", "users", "groups",
-function ($scope, $q, pages, activities, users, groups) {
+  function ($scope, $q, pages, activities, users, groups) {
+
   $scope.loading = true;
 
   //Wait until all data is retrieved
@@ -11,24 +11,32 @@ function ($scope, $q, pages, activities, users, groups) {
     pages.getAll().then(function (pages) {
       $scope.pages = pages;
     }),
+
     activities.getAll().then(function (activities) {
       $scope.activities = activities;
     }),
+
     users.getAll().then(function (users) {
       $scope.users = users;
     }),
+
     groups.getAll().then(function (groups) {
       $scope.groups = groups;
     }),
-  ]).then(function () {
-    $scope.loading = false;
-  });
+
+  ]).then(
+    function () {
+      $scope.loading = false;
+    });
+
 }]);
 
+////
+
 module.exports = {
-  name: "Management Dashboard",
-  url: "/manage",
-  parent: "/",
+  name:        "Management Dashboard",
+  url:         "/manage",
+  parent:      "/",
   templateUrl: "/manage.html",
-  controller: "manageController"
+  controller:  "manageController"
 };
