@@ -1,4 +1,6 @@
 <h1>Management Dashboard</h1>
+<a class="btn btn-default" href="manage/user/create" ng-if="user.isAdmin">Create User</a>
+<a class="btn btn-default" href="/group/create" ng-if="user.isAdmin">Create Group</a>
 <uib-tabset active="active">
   <uib-tab index="1" heading="Activities">
     <table class="table table-striped">
