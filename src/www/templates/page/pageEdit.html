@@ -1,25 +1,25 @@
 <h1>
-  <a class="btn btn-link" href="/manage/page"><i class="fa fa-chevron-left" aria-hidden="true"></i></a>
-  Edit page
+    <a class="btn btn-link" href="/manage/page"><i class="fa fa-chevron-left" aria-hidden="true"></i></a>
+    Edit page
 </h1>
 
 <form ng-disabled="loading">
 
-  <div class="form-group">
-    <label for="pageEdit-url">Url</label>
-    <input type="url" ng-model="page.url" class="form-control" id="pageEdit-url" disabled></input>
-  </div>
+    <div class="form-group">
+        <label for="pageEdit-url">Url</label>
+        <input type="url" ng-model="page.url" class="form-control" id="pageEdit-url" disabled></input>
+    </div>
 
-  <div class="form-group">
-    <label for="pageEdit-title">Title</label>
-    <input type="text" ng-model="page.title" class="form-control" id="pageEdit-title"></input>
-  </div>
+    <div class="form-group">
+        <label for="pageEdit-title">Title</label>
+        <input type="text" ng-model="page.title" class="form-control" id="pageEdit-title"></input>
+    </div>
 
-  <div class="form-group">
-    <label for="pageEdit-content">Content</label>
-    <textarea ng-model="page.content" class="form-control" id="pageEdit-content"></textarea>
-  </div>
+    <div class="form-group">
+        <label for="pageEdit-content">Content</label>
+        <textarea ng-model="page.content" class="form-control" id="pageEdit-content"></textarea>
+    </div>
 
-  <button type="submit" class="btn btn-default" ng-click="submit()" ng-disabled="loading">Save</button>
+    <button type="submit" class="btn btn-default" ng-click="submit()" ng-disabled="loading">Save</button>
 
 </form>
