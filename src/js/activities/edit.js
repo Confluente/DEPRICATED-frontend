@@ -28,11 +28,13 @@ app.controller("activityEditController", ["$scope", "$routeParams", "activities"
     };
 }]);
 
+////
+
 module.exports = {
     name: "Edit Activity",
     url: "/manage/activities/:activityId",
     parent: "/manage/activities",
-    templateUrl: "/activityEdit.html",
+    templateUrl: "/www/templates/activities/activityEdit.html",
     iconUrl: "/img/home-outline.png",
     controller: "activityEditController"
 };

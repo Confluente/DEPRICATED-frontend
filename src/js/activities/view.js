@@ -7,11 +7,14 @@ app.controller("activityViewController", ["$scope", "$routeParams", "activities"
         $scope.activity = activity;
     });
 }]);
+}
+
+////
 
 module.exports = {
     name: "Activity",
     url: "/activities/:activityId",
     parent: "/activities/",
-    templateUrl: "/activityDetails.html",
+    templateUrl: "/www/templates/activities/activityDetails.html",
     controller: "activityViewController"
 };

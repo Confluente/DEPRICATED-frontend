@@ -1,5 +1,4 @@
 var app = angular.module("confluente");
-
 app.factory("activities", ["$http", "$timeout", function ($http, $timeout) {
 
     return {

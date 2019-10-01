@@ -8,11 +8,13 @@ app.controller("activitiesController", ["$scope", "activities", function ($scope
     });
 }]);
 
+////
+
 module.exports = {
     name: "Activities",
     url: "/activities",
     parent: "/",
-    templateUrl: "/activities.html",
+    templateUrl: "/www/templates/activities/activities.html",
     iconUrl: "/img/home-outline.png",
     controller: "activitiesController"
 };

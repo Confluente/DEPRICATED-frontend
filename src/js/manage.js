@@ -23,7 +23,10 @@ app.controller("manageController", ["$scope", "$q", "pages", "activities", "user
         ]).then(function () {
             $scope.loading = false;
         });
-    }]);
+    }]
+);
+
+////
 
 module.exports = {
     name: "Management Dashboard",

@@ -1,13 +1,15 @@
 var app = angular.module("confluente");
-
 app.controller("pageViewController", ["$rootScope", "$scope", "$routeParams", function ($rootScope, $scope, $routeParams) {
     $scope.loading = true;
     $scope.templateUrl = getTemplateUrl($routeParams);
-    var fallbackUrl = "/404.html";
+
+    var fallbackUrl = "/www/404.html";
+
     $scope.$on("$includeContentLoaded", function (e, src) {
         //Boo yah!
         $rootScope.title = getPageTitle(src);
     });
+
     $scope.$on("$includeContentError", function (e, src) {
         //Boo nah?
         if ($scope.templateUrl === fallbackUrl) {
@@ -17,10 +19,11 @@ app.controller("pageViewController", ["$rootScope", "$scope", "$routeParams", fu
         }
         $scope.templateUrl = fallbackUrl;
     });
+
 }]);
 
 function getTemplateUrl(routeParams) {
-    return "/pages/" + routeParams.url + ".html";
+    return "/www/pages/" + routeParams.url + ".html";
 }
 
 function getPageTitle(url) {
@@ -28,9 +31,33 @@ function getPageTitle(url) {
     return title.charAt(0).toUpperCase() + title.substr(1);
 }
 
+////
+
 module.exports = {
-    url: "/page/:url*",
-    parent: "/",
-    template: "<div class='page' ng-include='templateUrl'></div>",
-    controller: "pageViewController"
-};
+    < < < < < < < HEAD
+url: "/page/:url*",
+    parent
+:
+"/",
+    template
+:
+"<div class='page' ng-include='templateUrl'></div>",
+    controller
+:
+"pageViewController"
+=== === =
+    url
+:
+"/:url*",
+    parent
+:
+"/",
+    template
+:
+"<div class='container' ng-include='templateUrl'></div>",
+    controller
+:
+"pageViewController"
+>>> >>> > master
+}
+;

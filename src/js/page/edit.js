@@ -22,6 +22,6 @@ module.exports = {
     name: "Edit Page",
     url: "/manage/page/:pageUrl",
     parent: "/manage/page",
-    templateUrl: "/pageEdit.html",
+    templateUrl: "/www/templates/pages/pageEdit.html",
     controller: "pageEditController"
 };

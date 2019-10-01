@@ -104,5 +104,4 @@ module.exports = function (grunt) {
     grunt.registerTask('serve', ['webpack-dev-server:start']);
     grunt.registerTask('dev', ['default', 'watch']);
     grunt.registerTask('build', ['check', 'clean:build', 'copy', 'webpack:build']);
-
 };

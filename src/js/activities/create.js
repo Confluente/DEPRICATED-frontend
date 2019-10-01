@@ -1,5 +1,4 @@
 var app = angular.module("confluente");
-
 app.controller("activityCreateController", ["$scope", "activities", function ($scope, activities) {
     $scope.loading = false;
     $scope.submit = function () {
@@ -30,10 +29,12 @@ app.controller("activityCreateController", ["$scope", "activities", function ($s
     };
 }]);
 
+////
+
 module.exports = {
     name: "New Activity",
     url: "/manage/activities/create",
     parent: "/manage/activities/",
-    templateUrl: "/activityCreate.html",
+    templateUrl: "/www/templates/activities/activityCreate.html",
     controller: "activityCreateController"
 };
