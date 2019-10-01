@@ -14,22 +14,22 @@ require("./groupsService");
 require("./navbarController");
 
 app.config(["$routeProvider", "$locationProvider", function ($routeProvider, $locationProvider) {
-  for (var n = 0; n < routes.length; n++) {
-    var route = routes[n];
-    $routeProvider.when(route.url, {
-      title: route.name,
-      parent: route.parent,
-      controller: route.controller,
-      templateUrl: route.templateUrl,
-      template: route.template
+    for (var n = 0; n < routes.length; n++) {
+        var route = routes[n];
+        $routeProvider.when(route.url, {
+            title: route.name,
+            parent: route.parent,
+            controller: route.controller,
+            templateUrl: route.templateUrl,
+            template: route.template
+        });
+    }
+
+    $routeProvider.otherwise({
+        templateUrl: "/404.html"
     });
-  }
 
-  $routeProvider.otherwise({
-    templateUrl: "/404.html"
-  });
-
-  $locationProvider.html5Mode(true);
+    $locationProvider.html5Mode(true);
 }]);
 
 //return app;
