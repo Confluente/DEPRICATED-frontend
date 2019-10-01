@@ -5,6 +5,6 @@ module.exports = {
   name: "Home",
   url: "/",
   parent: null,
-  templateUrl: "/home.html",
+  templateUrl: "/www/home.html",
   iconUrl: "/img/home-outline.png"
 };

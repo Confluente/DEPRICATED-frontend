@@ -5,7 +5,7 @@ var tabs   = routes.filter(function (element, index, array) {
                                return element.id !== undefined;
                            });
 
-app.controller("navbarController", ["serviceAuth", "$rootScope", "$scope", "$location", function(auth, $rootScope, $scope, $location) {
+app.controller("controllerNavbar", ["serviceAuth", "$rootScope", "$scope", "$location", function(auth, $rootScope, $scope, $location) {
   $scope.tabs = tabs;
 
   $rootScope.$on("$routeChangeSuccess", function (event, current, previous) {

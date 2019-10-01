@@ -20,7 +20,7 @@ app.controller("pageViewController", ["$rootScope", "$scope", "$routeParams", fu
     }
     $scope.templateUrl = fallbackUrl;
   });
-  
+
 }]);
 
 function getTemplateUrl(routeParams) {
@@ -32,9 +32,11 @@ function getPageTitle(url) {
   return title.charAt(0).toUpperCase() + title.substr(1);
 }
 
+////
+
 module.exports = {
-  url: "/page/:url*",
+  url: "/:url*",
   parent: "/",
-  template: "<div class='page' ng-include='templateUrl'></div>",
+  template: "<div class='container' ng-include='templateUrl'></div>",
   controller: "pageViewController"
 };

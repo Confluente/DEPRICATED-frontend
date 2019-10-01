@@ -1,7 +1,7 @@
 var app = angular.module("confluente");
 
 var routes = [
-  require("./home"),
+  require("./home/view"),
   require("./activities/"),
   require("./activities/view"),
   require("./activities/create"),

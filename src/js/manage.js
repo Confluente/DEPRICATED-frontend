@@ -1,4 +1,5 @@
 var app = angular.module("confluente");
+
 app.controller("manageController", ["$scope", "$q", "pages", "activities", "users", "groups",
   function ($scope, $q, pages, activities, users, groups) {
 
@@ -7,6 +8,7 @@ app.controller("manageController", ["$scope", "$q", "pages", "activities", "user
   //Wait until all data is retrieved
   //This is a bad approach and I should be ashamed
   //In the future, perhaps create a new directive/scope for each tab
+
   $q.all([
     pages.getAll().then(function (pages) {
       $scope.pages = pages;
