@@ -1,21 +1,21 @@
 <div class="pages">
-  <a class="btn btn-default" href="/manage/page/create">Create page</a>
+    <a class="btn btn-default" href="/manage/page/create">Create page</a>
 
-  <table class="table table-striped">
-    <tr class="table-row" ng-repeat="page in pages">
-      <td class="table-cell">
-        {{page.id}}
-      </td>
-      <td class="table-cell">
-        <a ng-href="/page/{{page.url}}">{{page.url}}</a>
-      </td>
-      <td class="table-cell">
-        {{page.title}}
-      </td>
-      <td>
-        <a ng-href="/manage/page/{{page.url}}">Edit</a>
-      </td>
-    </tr>
-  </table>
+    <table class="table table-striped">
+        <tr class="table-row" ng-repeat="page in pages">
+            <td class="table-cell">
+                {{page.id}}
+            </td>
+            <td class="table-cell">
+                <a ng-href="/page/{{page.url}}">{{page.url}}</a>
+            </td>
+            <td class="table-cell">
+                {{page.title}}
+            </td>
+            <td>
+                <a ng-href="/manage/page/{{page.url}}">Edit</a>
+            </td>
+        </tr>
+    </table>
 
 </div>

@@ -1,23 +1,23 @@
 <h1>Events</h1>
 
 <div class="activities">
-  <a class="btn btn-default" href="/manage/activities/create" ng-if="user.canOrganize">Create activity</a>
-  <a class="btn btn-default" href="/manage/" ng-if="user.canOrganize">Manage activities</a>
-  <div class="activity row panel panel-default" ng-repeat="activity in activities">
-    <div class="activity-title panel-heading col-xs-12">
-      <h3 class="nospace">{{activity.name}}</h3><span ng-if="!activity.approved">(Unlisted)</span>
+    <a class="btn btn-default" href="/manage/activities/create" ng-if="user.canOrganize">Create activity</a>
+    <a class="btn btn-default" href="/manage/" ng-if="user.canOrganize">Manage activities</a>
+    <div class="activity row panel panel-default" ng-repeat="activity in activities">
+        <div class="activity-title panel-heading col-xs-12">
+            <h3 class="nospace">{{activity.name}}</h3><span ng-if="!activity.approved">(Unlisted)</span>
+        </div>
+        <div class="activity-content col-xs-8" ng-bind-html="activity.description_html">
+        </div>
+        <div class="activity-details col-xs-4">
+            <p ng-if="activity.startTime">When: {{activity.startTime | date:'d MMMM yyyy'}}</p>
+            <p ng-if="activity.location">Where: {{activity.location}}</p>
+        </div>
+        <div class="col-xs-12 activity-buttons" ng-if="user.loggedIn">
+            <a href="/manage/activities/1">Edit</a>
+        </div>
     </div>
-    <div class="activity-content col-xs-8" ng-bind-html="activity.description_html">
+    <div class="no-activities" ng-if="!activities.length && !loading">
+        There are no events planned currently.
     </div>
-    <div class="activity-details col-xs-4">
-      <p ng-if="activity.startTime">When: {{activity.startTime | date:'d MMMM yyyy'}}</p>
-      <p ng-if="activity.location">Where: {{activity.location}}</p>
-    </div>
-    <div class="col-xs-12 activity-buttons" ng-if="user.loggedIn">
-      <a href="/manage/activities/1">Edit</a>
-    </div>
-  </div>
-  <div class="no-activities" ng-if="!activities.length && !loading">
-    There are no events planned currently.
-  </div>
 </div>
