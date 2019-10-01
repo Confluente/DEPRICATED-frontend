@@ -64,8 +64,52 @@ a:focus {
   outline: none
 }
 
+.container-hero {
+  margin-top: -100px;
+  width: 100%;
+  height: 350px;
+  overflow: hidden
+}
+
+#navbar-background {
+  background-color: var(--color-accent);
+  height: 80px;
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  z-index: -10;
+}
+
+#hero-accent {
+  background-color: var(--color-accent);
+  height: 350px;
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  opacity: 0.75;
+  z-index: -1;
+}
+
+#hero-image {
+  background-image: URL('/img/frontpage-hero.jpg');
+  height: 350px;
+  width: 100%;
+  background-size: cover;
+  background-position: center center;
+  z-index: -10;
+  position: absolute;
+  top: 0; left:0; right: 0;
+}
+
+#hero-header {
+  height: 100%;
+  display: flex;
+  flex-direction: column-reverse;
+  justify-content: bottom;
+  align-items: flex-start;
+  padding-bottom: 16px;
+}
+
 .navbar {
-  background: var(--color-accent);
+  /*background: var(--color-accent);*/
   border: 0;
   border-radius: 0;
   min-height: 80px;

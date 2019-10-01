@@ -1,23 +1,22 @@
 var app = angular.module("confluente");
-
-app.factory("users", ["$http", "$timeout", function ($http, $timeout) {
-
+app.factory("groups", ['$http', '$timeout', function($http, $timeout) {
   return {
+
     getAll: function () {
-      return $http.get("/api/user").then(function (result) {
+      return $http.get("/api/group").then(function (result) {
         return result.data;
       });
     },
     /*
     //Untested:
     get: function (id) {
-      return $http.get("/api/user/" + id).then(function (result) {
+      return $http.get("/api/group/" + id).then(function (result) {
         return result.data;
       });
     },
-    create: function (user) {
+    create: function (group) {
       //console.log(activity);
-      return $http.post("/api/user", user).then(function (result) {
+      return $http.post("/api/group", group).then(function (result) {
         console.log(result.data);
         return result.data;
       }, function (err) {
@@ -25,8 +24,8 @@ app.factory("users", ["$http", "$timeout", function ($http, $timeout) {
         return err;
       });
     },
-    edit: function (user) {
-      return $http.put("/api/user/" + user.id, user).then(function (result) {
+    edit: function (group) {
+      return $http.put("/api/group/" + group.id, group).then(function (result) {
         console.log(result.data);
         return result.data;
       });
