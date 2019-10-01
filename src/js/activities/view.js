@@ -7,7 +7,6 @@ app.controller("activityViewController", ["$scope", "$routeParams", "activities"
         $scope.activity = activity;
     });
 }]);
-}
 
 ////
 
