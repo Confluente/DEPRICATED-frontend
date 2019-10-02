@@ -3,7 +3,7 @@ var app = angular.module("confluente");
 app.controller("manageController", ["$scope", "$q", "pages", "activities", "users", "groups",
     function ($scope, $q, pages, activities, users, groups) {
         $scope.loading = true;
-
+        console.log("manageController function called");
         //Wait until all data is retrieved
         //This is a bad approach and I should be ashamed
         //In the future, perhaps create a new directive/scope for each tab
@@ -26,12 +26,10 @@ app.controller("manageController", ["$scope", "$q", "pages", "activities", "user
     }]
 );
 
-////
-
 module.exports = {
     name: "Management Dashboard",
     url: "/manage",
     parent: "/",
-    templateUrl: "/manage.html",
+    templateUrl: "/www/pages/manage.html",
     controller: "manageController"
 };

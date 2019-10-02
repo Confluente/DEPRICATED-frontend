@@ -28,8 +28,6 @@ app.controller("activityEditController", ["$scope", "$routeParams", "activities"
     };
 }]);
 
-////
-
 module.exports = {
     name: "Edit Activity",
     url: "/manage/activities/:activityId",

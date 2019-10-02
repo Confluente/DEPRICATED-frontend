@@ -15,7 +15,6 @@ require("./services/controllerNavbar");
 
 app.config(["$routeProvider", "$locationProvider", function ($routeProvider, $locationProvider) {
     for (var n = 0; n < routes.length; n++) {
-
         var route = routes[n];
         $routeProvider.when(route.url, {
             title: route.name,
@@ -24,7 +23,6 @@ app.config(["$routeProvider", "$locationProvider", function ($routeProvider, $lo
             templateUrl: route.templateUrl,
             template: route.template
         });
-
     }
 
     $routeProvider.otherwise({
@@ -33,5 +31,3 @@ app.config(["$routeProvider", "$locationProvider", function ($routeProvider, $lo
 
     $locationProvider.html5Mode(true);
 }]);
-
-//return app;

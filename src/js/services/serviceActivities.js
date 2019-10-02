@@ -4,7 +4,7 @@ app.factory("activities", ["$http", "$timeout", function ($http, $timeout) {
     return {
         getAll: function () {
             return $http.get("/api/activities").then(function (result) {
-                //console.log(result);
+                console.log(result);
                 var activities = result.data;
                 return activities.map(function (activity) {
                     activity.startTime = !isNaN(Date.parse(activity.startTime)) ? new Date(activity.startTime) : null;

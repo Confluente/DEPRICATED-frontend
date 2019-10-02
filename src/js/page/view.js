@@ -34,30 +34,9 @@ function getPageTitle(url) {
 ////
 
 module.exports = {
-    < < < < < < < HEAD
-url: "/page/:url*",
-    parent
-:
-"/",
-    template
-:
-"<div class='page' ng-include='templateUrl'></div>",
-    controller
-:
-"pageViewController"
-=== === =
-    url
-:
-"/:url*",
-    parent
-:
-"/",
-    template
-:
-"<div class='container' ng-include='templateUrl'></div>",
-    controller
-:
-"pageViewController"
->>> >>> > master
+    url: "/:url*",
+    parent: "/",
+    template:"<div class='container' ng-include='templateUrl'></div>",
+    controller:"pageViewController"
 }
 ;
