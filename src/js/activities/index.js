@@ -8,8 +8,6 @@ app.controller("activitiesController", ["$scope", "activities", function ($scope
     });
 }]);
 
-////
-
 module.exports = {
     name: "Activities",
     url: "/activities",

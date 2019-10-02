@@ -5,6 +5,7 @@ app.factory("users", ["$http", "$timeout", function ($http, $timeout) {
     return {
         getAll: function () {
             return $http.get("/api/user").then(function (result) {
+                console.log(result.data);
                 return result.data;
             });
         },

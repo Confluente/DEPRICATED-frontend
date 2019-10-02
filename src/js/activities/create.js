@@ -29,8 +29,6 @@ app.controller("activityCreateController", ["$scope", "activities", function ($s
     };
 }]);
 
-////
-
 module.exports = {
     name: "New Activity",
     url: "/manage/activities/create",
