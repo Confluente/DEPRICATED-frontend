@@ -31,12 +31,9 @@ function getPageTitle(url) {
     return title.charAt(0).toUpperCase() + title.substr(1);
 }
 
-////
-
 module.exports = {
     url: "/:url*",
     parent: "/",
     template:"<div class='container' ng-include='templateUrl'></div>",
     controller:"pageViewController"
-}
-;
+};
