@@ -6,6 +6,7 @@ var tabs = routes.filter(function (element, index, array) {
 });
 
 app.controller("controllerNavbar", ["serviceAuth", "$rootScope", "$scope", "$location", function (auth, $rootScope, $scope, $location) {
+    console.log("controllerNavbar called");
     $scope.tabs = tabs;
     $rootScope.$on("$routeChangeSuccess", function (event, current, previous) {
         var route = current.$$route || {title: "Home"};
@@ -20,5 +21,4 @@ app.controller("controllerNavbar", ["serviceAuth", "$rootScope", "$scope", "$loc
 
     $scope.logout = auth.logout;
     $scope.report = console.log;
-
 }]);
