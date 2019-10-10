@@ -206,3 +206,14 @@ a:focus {
   font-weight: 999;
   line-height: 1.2;
 }
+
+.confluButton {
+  width: 100%;
+  background-color: var(--color-dark);
+  border-color: var(--color-dark);
+}
+
+.confluButton:hover {
+  background-color: var(--color-accent);
+  border-color: var(--color-accent);
+}
