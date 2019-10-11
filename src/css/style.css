@@ -54,6 +54,12 @@ h1, h2, h3, h4, h5, h6 {
   font-weight: 600;
 }
 
+h1 {
+  font-size: 2.4rem;
+  font-weight: 600;
+  margin-top: 28px;
+}
+
 a, button {
   cursor: pointer;
   text-decoration: none;
@@ -72,19 +78,18 @@ a:focus {
 }
 
 #navbar-background {
-  background-color: var(--color-accent);
-  height: 80px;
+  background-color: #a1ddde;
+  height: 86px;
   position: absolute;
   top: 0; left: 0; right: 0;
   z-index: -10;
 }
 
 #hero-accent {
-  background-color: var(--color-accent);
+  background: linear-gradient(to right top, rgba(123, 208, 209, .95), rgba(121, 183, 205, .75));
   height: 350px;
   position: absolute;
   top: 0; left: 0; right: 0;
-  opacity: 0.75;
   z-index: -1;
 }
 
@@ -112,10 +117,10 @@ a:focus {
   /*background: var(--color-accent);*/
   border: 0;
   border-radius: 0;
-  min-height: 80px;
+  min-height: 86px;
 }
 .navbar > .container {
-  padding-top: 26px;
+  padding-top: 31px;
 }
 
 .navbar button, .navbar a {
@@ -172,7 +177,7 @@ a:focus {
 
 /* Homepage */
 .bar {
-  background: rgba(132, 132, 132, 0.5);
+  background: rgba(203, 210, 217);
   opacity: 0.7;
   margin: 0;
   padding: 12px;
