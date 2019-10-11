@@ -217,3 +217,31 @@ a:focus {
   background-color: var(--color-accent);
   border-color: var(--color-accent);
 }
+
+
+/* board.html css */
+.board-column {
+  display: flex;
+  width: 100%;
+}
+
+@media (min-width: 768px) {
+  .board-container {
+    display: flex;
+  }
+  .board-column {
+    width: 50%;
+  }
+}
+
+.board-content {
+  display: flex;
+  align-self: center;
+  padding-left: 20px;
+  font-size: 13px;
+}
+
+.board-content ul {
+  font-size: 20px;
+  list-style-type: none;
+}
