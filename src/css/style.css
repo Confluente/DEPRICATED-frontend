@@ -1,3 +1,5 @@
+/* -- (1) Import fonts -- */
+
 @font-face {
   font-family: "Rounded Elegance";
   src: url(../fonts/Rounded_Elegance.otf);
@@ -17,128 +19,108 @@
   font-style: normal;
   font-weight: 600;
   font-display: swap;
-  src: local('Assistant SemiBold'), local('Assistant-SemiBold'), url(../fonts/Assistant-SemiBold.woff2) format('woff2');
+  src: url(../fonts/Assistant-SemiBold.woff2) format('woff2');
   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
 
 
-:root {
-  --color-accent: #54c2c3;
-  --color-dark:   #2a2a2a;
-}
 
-html, body, div, span, ol, ul, li, a, p, .nospace {
-  margin: 0;
-  padding: 0;
-}
+/* -- (2) Basic rules -- */
 
 html {
-  font-size: 10pt;
+
+  /* Set the base font size */
+  font-size: 16px;
+
+  /* Also add the scrollbar to pages that don't need it (prevents movement of the page center) */
   overflow-y: scroll
+
 }
 
 body {
-  font-family: Assistant, "Helvetica Neue", Arial, sans-serif;
-  font-size: 1.1rem;
-  line-height: 1.6;
-  font-weight: 400;
-  color: var(--color-dark);
 
-  display: flex;
-  flex-direction: column;
+  /* Force the footer to the bottom of the screen */
   min-height: 100vh;
+
+}
+#content {
+
+  /* Force the footer to the bottom of the screen */
+  flex-grow: 1;
+
 }
 
-h1, h2, h3, h4, h5, h6 {
-  font-family: Assistant, "Helvetica Neue", Arial, sans-serif;
-  font-weight: 600;
+a {
+
+  /* Make hyperlinks stronk */
+  font-weight: 600
+
 }
 
-h1 {
-  font-size: 2.4rem;
-  font-weight: 600;
-  margin-top: 28px;
+.navbar a {
+
+  /* Tone down the dominance of hyperlinks in the navigation bar */
+  font-weight: 400;
+
 }
 
-a, button {
-  cursor: pointer;
-  text-decoration: none;
-  color: var(--color-accent)
+.navbar li {
+
+  /* Make the navigation bar text smaller */
+  font-size: .9375rem;
+
 }
 
-a:focus {
-  outline: none
+.navbar-toggle {
+
+  /* Hamburger menu fix */
+  margin-top: 0;
+
 }
 
-.container-hero {
-  margin-top: -100px;
-  width: 100%;
-  height: 350px;
-  overflow: hidden
-}
 
-#navbar-background {
-  background-color: #a1ddde;
-  height: 86px;
-  position: absolute;
-  top: 0; left: 0; right: 0;
-  z-index: -10;
-}
+/* -- (3) General classes -- */
 
-#hero-accent {
-  background: linear-gradient(to right top, rgba(123, 208, 209, .95), rgba(121, 183, 205, .75));
-  height: 350px;
-  position: absolute;
-  top: 0; left: 0; right: 0;
-  z-index: -1;
-}
-
-#hero-image {
-  background-image: URL('/img/frontpage-hero.jpg');
-  height: 350px;
-  width: 100%;
-  background-size: cover;
-  background-position: center center;
-  z-index: -10;
-  position: absolute;
-  top: 0; left:0; right: 0;
-}
-
-#hero-header {
-  height: 100%;
+/* -- Flexbox */
+.flex {
   display: flex;
-  flex-direction: column-reverse;
-  justify-content: bottom;
-  align-items: flex-start;
-  padding-bottom: 16px;
+  flex-wrap: wrap
+}
+.flex-end {
+  justify-content: flex-end
+}
+.flex-column {
+  flex-direction: column;
+}
+.flex-around {
+  justify-content: space-around;
+}
+.flex-center {
+  align-items: center;
 }
 
-.navbar {
-  /*background: var(--color-accent);*/
-  border: 0;
-  border-radius: 0;
-  min-height: 86px;
-}
-.navbar > .container {
-  padding-top: 31px;
+/* -- Text: H.S.A. Confluente */
+.hsa {
+  font-family: "Rounded Elegance", sans-serif;
 }
 
-.navbar button, .navbar a {
-  color: var(--color-dark)
-}
 
+
+/* -- (4) Specific fixes -- */
+
+/* -- Navigation bar */
+.navbar-default {
+  min-height: 77px;
+}
+.navbar .container {
+  margin-top: 22px;
+}
 .navbar-nav .fa {
   margin-right: 6px
 }
-.navbar-nav > li > a {
-  padding-top: 17px;
-  padding-bottom: 17px;
-}
-
 .dropdown-menu {
   box-shadow: none;
   padding: 0;
-  border-radius: 0;
 }
 .dropdown-menu > li > a {
   padding: 10px 20px
@@ -147,78 +129,78 @@ a:focus {
   margin: 0
 }
 
-.navbar-brand {
-  height: 54px;
-  padding-top: 17px;
-  padding-bottom: 17px;
+
+/* -- Frontpage */
+
+/* - Partner bar */
+.img-logo {
+  height: 26px;
+  margin: 1rem 15px;
+}
+#tno-logo {
+  height: 36px;
+  margin-top: 0;
+  margin-bottom: 0;
 }
 
-.hsa {
-  font-family: "Rounded Elegance", sans-serif;
-  color: var(--color-dark);
+/* - Header container */
+.container-hero {
+  margin-top: -106px;
+  width: 100%;
+  height: 337px;
+  overflow: hidden
+}
+#navbar-background {
+  background-color: #a1ddde;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  top: 0; left: 0; right: 0;
+  z-index: -10;
+}
+#hero-accent {
+  background: linear-gradient(to right top, rgba(123, 208, 209, .95), rgba(121, 183, 205, .75));
+  height:   334px;
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  z-index: -1;
+}
+#hero-image {
+  background-image: URL('/img/frontpage-hero.jpg');
+  height: 334px;
+  width: 100%;
+  background-size: cover;
+  background-position: center center;
+  z-index: -10;
+  position: absolute;
+  top: 0; left:0; right: 0;
+}
+#hero-header {
+  height: 100%;
+  padding-bottom: 14px;
+  flex-direction: column-reverse;
 }
 
-#content {
-  flex-grow: 1;
-  margin-bottom: 20px;
+/* - Stats */
+.info_graphic {
+  font-size: 3.6rem;
+  font-weight: 600;
+  margin: 0;
+  line-height: 1.2;
+}
+#info_graphic .h2 {
+  margin: 0
 }
 
+
+/* -- Footer */
 #footer {
-  font-size: 0.9rem;
+  font-size: 0.85rem;
   margin-bottom: 20px;
   margin-top: 20px;
 }
-
 #footer h3 {
   margin-top: 0;
   font-size: 1rem;
   text-transform: uppercase
-}
-
-/* Homepage */
-.bar {
-  background: rgba(203, 210, 217);
-  opacity: 0.7;
-  margin: 0;
-  padding: 12px;
-  height: 50px;
-}
-
-.flexbox_container {
-  display: flex;
-  justify-content: flex-end;
-  height: 30px;
-}
-
-.flexbox_container2 {
-  display: flex;
-  justify-content: flex-end;
-  height: 30px;
-  padding: 12px;
-}
-
-.padding_top {
-  padding: 1.2vw 0;
-}
-
-.padding_right {
-  padding: 0 4vw 0 0;
-}
-
-.info_graphic {
-  font-size: 4vw;
-  color: var(--color-accent);
-  font-weight: 999;
-  line-height: 1.2;
-}
-
-.confluButton {
-  width: 100%;
-  background-color: var(--color-dark);
-  border-color: var(--color-dark);
-}
-
-.confluButton:hover {
-  background-color: var(--color-accent);
-  border-color: var(--color-accent);
 }
