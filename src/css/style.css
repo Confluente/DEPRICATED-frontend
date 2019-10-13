@@ -219,12 +219,13 @@ a:focus {
 }
 
 
-
+/* committees.html */
 #carousel {
     position: relative;
-    height: 400px;
+    height: 270px;
     top: 50%;
     overflow: hidden;
+    margin-top: 20px;
 }
 #carousel div {
     position: absolute;
@@ -239,8 +240,13 @@ a:focus {
     left: 0%;
     opacity: 0;
     transform: translateY(50%) translateX(-50%);
-    font-size: 0.5em;
+    font-size: 0.6em;
 }
+
+#carousel div.hideLeft .titletext {
+    font-size: 1em;
+}
+
 #carousel div.hideLeft img {
     width: 200px;
 }
@@ -248,8 +254,13 @@ a:focus {
     left: 100%;
     opacity: 0;
     transform: translateY(50%) translateX(-50%);
-    font-size: 0.5em;
+    font-size: 0.6em;
 }
+
+#carousel div.hideRight .titletext {
+    font-size: 1em;
+}
+
 #carousel div.hideRight img {
     width: 200px;
 }
@@ -257,8 +268,13 @@ a:focus {
     z-index: 5;
     left: 30%;
     transform: translateY(50px) translateX(-50%);
-    font-size: 0.75em;
+    font-size: 0.9em;
 }
+
+#carousel div.prev .titletext {
+    font-size: 1.5em;
+}
+
 #carousel div.prev img {
     width: 300px;
 }
@@ -267,8 +283,13 @@ a:focus {
     left: 15%;
     transform: translateY(50%) translateX(-50%);
     opacity: 0.7;
-    font-size: 0.5em;
+    font-size: 0.6em;
 }
+
+#carousel div.prevLeftSecond .titletext {
+    font-size: 1em;
+}
+
 #carousel div.prevLeftSecond img {
     width: 200px;
 }
@@ -278,12 +299,23 @@ a:focus {
     transform: translateY(0px) translateX(-50%);
     font-size: 1.2em;
 }
+
+#carousel div.selected .titletext {
+    font-size: 2em;
+}
+
+
 #carousel div.next {
     z-index: 5;
     left: 70%;
     transform: translateY(50px) translateX(-50%);
-    font-size: 0.75em;
+    font-size: 0.9em;
 }
+
+#carousel div.next .titletext {
+    font-size: 1.5em;
+}
+
 #carousel div.next img {
     width: 300px;
 }
@@ -291,9 +323,14 @@ a:focus {
     z-index: 4;
     left: 85%;
     transform: translateY(50%) translateX(-50%);
-    font-size: 0.5em;
+    font-size: 0.6em;
     opacity: 0.7;
 }
+
+#carousel div.nextRightSecond .titletext {
+    font-size: 1em;
+}
+
 #carousel div.nextRightSecond img {
     width: 200px;
 }
@@ -301,14 +338,30 @@ a:focus {
 #carousel div .text {
     position: absolute;
     z-index: 999;
-    height: auto;
     margin: 0 auto;
     left: 0;
     right: 0;
-    text-align: center;
-    top: 40%;
-    background-color: gray;
-    width: 90%;
+    top: 30%;
+    background-color: rgba(0,0,0,0.3);
+    width: 100%;
+    height: 70%;
+    color: white;
+    padding: 20px;
+    pointer-events: none;
+}
+
+#carousel div .titletext {
+    position: absolute;
+    z-index: 999;
+    margin: 0 auto;
+    left: 0;
+    right: 0;
+    top: 0;
+    background-color: rgba(0,0,0,0.3);
+    width: 100%;
+    height: 30%;
+    color: white;
+    padding: 20px;
     pointer-events: none;
 }
 
@@ -318,11 +371,10 @@ a:focus {
          -o-transition: font-size 1s;
 }
 
-.buttons {
-    position: fixed;
-    left: 50%;
-    transform: translateX(-50%);
-    bottom: 10px;
+#carousel div .titletext {
+    -webkit-transition: font-size 1s;
+    -moz-transition: font-size 1s;
+    -o-transition: font-size 1s;
 }
 
 /* board.html css */
