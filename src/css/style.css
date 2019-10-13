@@ -220,9 +220,6 @@ a:focus {
 
 
 
-
-
-
 #carousel {
     position: relative;
     height: 400px;
@@ -328,3 +325,48 @@ a:focus {
     bottom: 10px;
 }
 
+/* board.html css */
+.board-column {
+  display: flex;
+  width: 100%;
+}
+
+@media (min-width: 768px) {
+  .board-container {
+    display: flex;
+  }
+  .board-column {
+    width: 50%;
+  }
+}
+
+.board-content {
+  display: flex;
+  align-self: center;
+  padding-left: 20px;
+  font-size: 13px;
+}
+
+.board-content ul {
+  font-size: 20px;
+  list-style-type: none;
+}
+
+.mobileshow {
+  display: none;
+}
+
+@media screen and (max-width: 768px) {
+  .mobileshow {
+    display: block;
+  }
+}
+
+hr {
+  display: block;
+  height: 1px;
+  border: 0;
+  border-top: 1px solid #ccc;
+  margin: 1em 0;
+  padding: 0;
+}
