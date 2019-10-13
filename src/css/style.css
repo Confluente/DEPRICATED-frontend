@@ -217,3 +217,114 @@ a:focus {
   background-color: var(--color-accent);
   border-color: var(--color-accent);
 }
+
+
+
+
+
+
+#carousel {
+    position: relative;
+    height: 400px;
+    top: 50%;
+    overflow: hidden;
+}
+#carousel div {
+    position: absolute;
+    transition: transform 1s, left 1s, opacity 1s, z-index 0s;
+    opacity: 1;
+}
+#carousel div img {
+    width: 400px;
+    transition: width 1s;
+}
+#carousel div.hideLeft {
+    left: 0%;
+    opacity: 0;
+    transform: translateY(50%) translateX(-50%);
+    font-size: 0.5em;
+}
+#carousel div.hideLeft img {
+    width: 200px;
+}
+#carousel div.hideRight {
+    left: 100%;
+    opacity: 0;
+    transform: translateY(50%) translateX(-50%);
+    font-size: 0.5em;
+}
+#carousel div.hideRight img {
+    width: 200px;
+}
+#carousel div.prev {
+    z-index: 5;
+    left: 30%;
+    transform: translateY(50px) translateX(-50%);
+    font-size: 0.75em;
+}
+#carousel div.prev img {
+    width: 300px;
+}
+#carousel div.prevLeftSecond {
+    z-index: 4;
+    left: 15%;
+    transform: translateY(50%) translateX(-50%);
+    opacity: 0.7;
+    font-size: 0.5em;
+}
+#carousel div.prevLeftSecond img {
+    width: 200px;
+}
+#carousel div.selected {
+    z-index: 10;
+    left: 50%;
+    transform: translateY(0px) translateX(-50%);
+    font-size: 1.2em;
+}
+#carousel div.next {
+    z-index: 5;
+    left: 70%;
+    transform: translateY(50px) translateX(-50%);
+    font-size: 0.75em;
+}
+#carousel div.next img {
+    width: 300px;
+}
+#carousel div.nextRightSecond {
+    z-index: 4;
+    left: 85%;
+    transform: translateY(50%) translateX(-50%);
+    font-size: 0.5em;
+    opacity: 0.7;
+}
+#carousel div.nextRightSecond img {
+    width: 200px;
+}
+
+#carousel div .text {
+    position: absolute;
+    z-index: 999;
+    height: auto;
+    margin: 0 auto;
+    left: 0;
+    right: 0;
+    text-align: center;
+    top: 40%;
+    background-color: gray;
+    width: 90%;
+    pointer-events: none;
+}
+
+#carousel div .text {
+    -webkit-transition: font-size 1s;
+       -moz-transition: font-size 1s;
+         -o-transition: font-size 1s;
+}
+
+.buttons {
+    position: fixed;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 10px;
+}
+
