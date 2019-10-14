@@ -222,7 +222,7 @@ a:focus {
 /* committees.html */
 #carousel {
     position: relative;
-    height: 270px;
+    height: 266px;
     top: 50%;
     overflow: hidden;
     margin-top: 20px;
@@ -240,99 +240,44 @@ a:focus {
     left: 0%;
     opacity: 0;
     transform: translateY(50%) translateX(-50%);
-    font-size: 0.6em;
 }
 
-#carousel div.hideLeft .titletext {
-    font-size: 1em;
-}
-
-#carousel div.hideLeft img {
-    width: 200px;
-}
 #carousel div.hideRight {
     left: 100%;
     opacity: 0;
     transform: translateY(50%) translateX(-50%);
-    font-size: 0.6em;
 }
 
-#carousel div.hideRight .titletext {
-    font-size: 1em;
-}
-
-#carousel div.hideRight img {
-    width: 200px;
-}
 #carousel div.prev {
     z-index: 5;
     left: 30%;
     transform: translateY(50px) translateX(-50%);
-    font-size: 0.9em;
 }
 
-#carousel div.prev .titletext {
-    font-size: 1.5em;
-}
-
-#carousel div.prev img {
-    width: 300px;
-}
 #carousel div.prevLeftSecond {
     z-index: 4;
     left: 15%;
     transform: translateY(50%) translateX(-50%);
     opacity: 0.7;
-    font-size: 0.6em;
 }
 
-#carousel div.prevLeftSecond .titletext {
-    font-size: 1em;
-}
-
-#carousel div.prevLeftSecond img {
-    width: 200px;
-}
 #carousel div.selected {
     z-index: 10;
     left: 50%;
     transform: translateY(0px) translateX(-50%);
-    font-size: 1.2em;
 }
-
-#carousel div.selected .titletext {
-    font-size: 2em;
-}
-
 
 #carousel div.next {
     z-index: 5;
     left: 70%;
     transform: translateY(50px) translateX(-50%);
-    font-size: 0.9em;
 }
 
-#carousel div.next .titletext {
-    font-size: 1.5em;
-}
-
-#carousel div.next img {
-    width: 300px;
-}
 #carousel div.nextRightSecond {
     z-index: 4;
     left: 85%;
     transform: translateY(50%) translateX(-50%);
-    font-size: 0.6em;
     opacity: 0.7;
-}
-
-#carousel div.nextRightSecond .titletext {
-    font-size: 1em;
-}
-
-#carousel div.nextRightSecond img {
-    width: 200px;
 }
 
 #carousel div .text {
@@ -347,6 +292,7 @@ a:focus {
     height: 70%;
     color: white;
     padding: 20px;
+    font-size: 1.2em;
     pointer-events: none;
 }
 
@@ -362,19 +308,8 @@ a:focus {
     height: 30%;
     color: white;
     padding: 20px;
+    font-size: 2em;
     pointer-events: none;
-}
-
-#carousel div .text {
-    -webkit-transition: font-size 1s;
-       -moz-transition: font-size 1s;
-         -o-transition: font-size 1s;
-}
-
-#carousel div .titletext {
-    -webkit-transition: font-size 1s;
-    -moz-transition: font-size 1s;
-    -o-transition: font-size 1s;
 }
 
 /* board.html css */
