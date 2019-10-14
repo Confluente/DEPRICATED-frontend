@@ -27,6 +27,14 @@
 
 /* -- (2) Basic rules -- */
 
+*::selection {
+  
+  /* Set the text selection background */
+  background-color: #8ac1eb
+
+}
+
+
 html {
 
   /* Set the base font size */
@@ -54,6 +62,13 @@ a {
 
   /* Make hyperlinks stronk */
   font-weight: 600
+
+}
+
+.navbar {
+
+  /* No borders */  
+  border: none;
 
 }
 
@@ -109,12 +124,10 @@ a {
 /* -- (4) Specific fixes -- */
 
 /* -- Navigation bar */
-.navbar-default {
-  min-height: 77px;
-}
 .navbar .container {
   margin-top: 22px;
 }
+
 .navbar-nav .fa {
   margin-right: 6px
 }
@@ -122,8 +135,8 @@ a {
   box-shadow: none;
   padding: 0;
 }
-.dropdown-menu > li > a {
-  padding: 10px 20px
+.navbar-collapse {
+  box-shadow: none
 }
 .dropdown-menu .divider {
   margin: 0
@@ -142,13 +155,16 @@ a {
   margin-top: 0;
   margin-bottom: 0;
 }
+#bar-partners {
+  margin-bottom: 20px
+}
 
 /* - Header container */
 .container-hero {
-  margin-top: -106px;
   width: 100%;
-  height: 337px;
-  overflow: hidden
+  height: 334px;
+  overflow: hidden;
+  margin-top: -102px;
 }
 #navbar-background {
   background-color: #a1ddde;
@@ -160,14 +176,14 @@ a {
 }
 #hero-accent {
   background: linear-gradient(to right top, rgba(123, 208, 209, .95), rgba(121, 183, 205, .75));
-  height:   334px;
+  height:   inherit;
   position: absolute;
   top: 0; left: 0; right: 0;
   z-index: -1;
 }
 #hero-image {
   background-image: URL('/img/frontpage-hero.jpg');
-  height: 334px;
+  height: inherit;
   width: 100%;
   background-size: cover;
   background-position: center center;
