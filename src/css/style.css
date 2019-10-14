@@ -222,7 +222,7 @@ a:focus {
 /* committees.html */
 #carousel {
     position: relative;
-    height: 266px;
+    height: 400px;
     top: 50%;
     overflow: hidden;
     margin-top: 20px;
@@ -233,32 +233,33 @@ a:focus {
     opacity: 1;
 }
 #carousel div img {
-    width: 400px;
+    width: 600px;
     transition: width 1s;
 }
 #carousel div.hideLeft {
     left: 0%;
     opacity: 0;
-    transform: translateY(50%) translateX(-50%);
+    transform: translateY(75%) translateX(-50%);
 }
 
 #carousel div.hideRight {
     left: 100%;
     opacity: 0;
-    transform: translateY(50%) translateX(-50%);
+    transform: translateY(75%) translateX(-50%);
 }
 
 #carousel div.prev {
     z-index: 5;
     left: 30%;
     transform: translateY(50px) translateX(-50%);
+    opacity: 0.6;
 }
 
 #carousel div.prevLeftSecond {
     z-index: 4;
     left: 15%;
     transform: translateY(50%) translateX(-50%);
-    opacity: 0.7;
+    opacity: 0.3;
 }
 
 #carousel div.selected {
@@ -271,13 +272,14 @@ a:focus {
     z-index: 5;
     left: 70%;
     transform: translateY(50px) translateX(-50%);
+    opacity: 0.6;
 }
 
 #carousel div.nextRightSecond {
     z-index: 4;
     left: 85%;
     transform: translateY(50%) translateX(-50%);
-    opacity: 0.7;
+    opacity: 0.3;
 }
 
 #carousel div .text {
