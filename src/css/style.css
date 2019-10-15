@@ -72,7 +72,7 @@ a {
 
 }
 
-.nav a {
+.nav a, nav a {
 
   /* Tone down the dominance of hyperlinks in navigation bars */
   font-weight: 400;
