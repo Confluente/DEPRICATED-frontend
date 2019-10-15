@@ -293,23 +293,7 @@ a:focus {
     opacity: 0.3;
 }
 
-#carousel div .text {
-    position: absolute;
-    z-index: 999;
-    margin: 0 auto;
-    left: 0;
-    right: 0;
-    top: 30%;
-    background-color: rgba(0,0,0,0.3);
-    width: 100%;
-    height: 70%;
-    color: white;
-    padding: 20px;
-    font-size: 1.2em;
-    pointer-events: none;
-}
-
-#carousel div .titletext {
+#carousel div .textBox {
     position: absolute;
     z-index: 999;
     margin: 0 auto;
@@ -318,11 +302,22 @@ a:focus {
     top: 0;
     background-color: rgba(0,0,0,0.3);
     width: 100%;
-    height: 30%;
+    height: 100%;
     color: white;
     padding: 20px;
-    font-size: 2em;
     pointer-events: none;
+}
+
+#carousel div .text {
+    top: 30%;
+    height: 70%;
+    font-size: 1.2em;
+}
+
+#carousel div .titletext {
+    top: 0;
+    height: 30%;
+    font-size: 2em;
 }
 
 /* board.html css */
