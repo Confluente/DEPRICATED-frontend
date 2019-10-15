@@ -236,6 +236,17 @@ a:focus {
     width: 600px;
     transition: width 1s;
 }
+
+@media (max-width: 768px) {
+    #carousel {
+        height: 266px;
+    }
+
+    #carousel div img {
+        width: 400px;
+    }
+}
+
 #carousel div.hideLeft {
     left: 0%;
     opacity: 0;
