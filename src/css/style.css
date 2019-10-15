@@ -127,13 +127,15 @@ a {
 .navbar .container {
   margin-top: 26px;
 }
-
 .navbar-nav .fa {
-  margin-right: 6px
+  margin-right: 8px
 }
 .dropdown-menu {
   box-shadow: none;
   padding: 0;
+}
+.dropdown-menu li a {
+  padding: 8px 12px;
 }
 .navbar-collapse {
   box-shadow: none
