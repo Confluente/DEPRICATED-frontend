@@ -28,9 +28,9 @@
 /* -- (2) Basic rules -- */
 
 *::selection {
-  
+
   /* Set the text selection background */
-  background-color: #8ac1eb
+  background-color: #f8bba9;
 
 }
 
@@ -65,9 +65,9 @@ a {
 
 }
 
-.navbar {
+.navbar, .dropdown-menu {
 
-  /* No borders */  
+  /* No borders */
   border: none;
 
 }
@@ -125,7 +125,7 @@ a {
 
 /* -- Navigation bar */
 .navbar .container {
-  margin-top: 22px;
+  margin-top: 26px;
 }
 
 .navbar-nav .fa {
@@ -162,7 +162,7 @@ a {
 /* - Header container */
 .container-hero {
   width: 100%;
-  height: 334px;
+  height: 330px;
   overflow: hidden;
   margin-top: -102px;
 }
