@@ -219,6 +219,107 @@ a:focus {
 }
 
 
+/* -- committees */
+#carousel {
+    position: relative;
+    height: 400px;
+    top: 50%;
+    overflow: hidden;
+    margin-top: 20px;
+}
+#carousel div {
+    position: absolute;
+    transition: transform 1s, left 1s, opacity 1s, z-index 0s;
+    opacity: 1;
+}
+#carousel div img {
+    width: 600px;
+    transition: width 1s;
+}
+
+@media (max-width: 768px) {
+    #carousel {
+        height: 266px;
+    }
+
+    #carousel div img {
+        width: 400px;
+    }
+}
+
+#carousel div.hideLeft {
+    left: 0%;
+    opacity: 0;
+    transform: translateY(75%) translateX(-50%);
+}
+
+#carousel div.hideRight {
+    left: 100%;
+    opacity: 0;
+    transform: translateY(75%) translateX(-50%);
+}
+
+#carousel div.prev {
+    z-index: 5;
+    left: 30%;
+    transform: translateY(50px) translateX(-50%);
+    opacity: 0.6;
+}
+
+#carousel div.prevLeftSecond {
+    z-index: 4;
+    left: 15%;
+    transform: translateY(50%) translateX(-50%);
+    opacity: 0.3;
+}
+
+#carousel div.selected {
+    z-index: 10;
+    left: 50%;
+    transform: translateY(0px) translateX(-50%);
+}
+
+#carousel div.next {
+    z-index: 5;
+    left: 70%;
+    transform: translateY(50px) translateX(-50%);
+    opacity: 0.6;
+}
+
+#carousel div.nextRightSecond {
+    z-index: 4;
+    left: 85%;
+    transform: translateY(50%) translateX(-50%);
+    opacity: 0.3;
+}
+
+#carousel div .textBox {
+    position: absolute;
+    z-index: 999;
+    margin: 0 auto;
+    left: 0;
+    right: 0;
+    top: 0;
+    background-color: rgba(0,0,0,0.3);
+    width: 100%;
+    height: 100%;
+    color: white;
+    padding: 20px;
+    pointer-events: none;
+}
+
+#carousel div .text {
+    top: 30%;
+    height: 70%;
+    font-size: 1.2em;
+}
+
+#carousel div .titletext {
+    top: 0;
+    height: 30%;
+    font-size: 2em;
+}
+
 /* board.html css */
 .board-column {
   display: flex;
