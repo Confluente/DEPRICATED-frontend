@@ -7,8 +7,7 @@
     <base href="/"/>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
           integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
-          integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css"/>
     <link rel="stylesheet" href="css/style.css" type="text/css"/>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"
@@ -21,10 +20,10 @@
 
 </head>
 
-<body ng-cloak>
+<body class="flex flex-column" ng-cloak>
 
 <header id="header">
-    <nav role="navigation" class="navbar">
+    <nav role="navigation" class="navbar navbar-default">
       <div id="navbar-background"></div>
 
 		  <div class="container" ng-controller="controllerNavbar as nav">
@@ -83,7 +82,7 @@
     <div class="container">
         <div class="row">
 
-            <div class="col-sm-2">
+            <div class="col-sm-2 col-xs-12">
                 <img class="logo" src="img/HSAConfluente.svg" alt="H.S.A Confluente"/>
             </div>
 
@@ -102,15 +101,17 @@
                 <h3>Contact</h3>
                 <p>
                     Board<br>
-                    <a href="mailto:board@hsaconfluente.nl">board@hsaconfluente.nl</a><br>
+                    <a href="mailto:board@hsaconfluente.nl">board@hsaconfluente.nl</a>
+                </p>
+                <p>
                     Web Committee<br>
                     <a href="mailto:web@hsaconfluente.nl">web@hsaconfluente.nl</a>
                 </p>
             </div>
 
-            <div class="col-sm-4 col-xs-12 pull-right text-right">
-                <p>This site is maintained by the <span class="hsa">H.S.A Confluente</span> Web Committee</p>
-                <p>&copy; 2019 - All rights reserved.</p>
+            <div class="col-sm-6 col-xs-12 text-right">
+                <p>This site is maintained by the <span class="hsa">H.S.A Confluente</span> Web Committee<br>
+                &copy; 2019 - All rights reserved.</p>
             </div>
 
         </div>
