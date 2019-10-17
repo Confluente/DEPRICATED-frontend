@@ -1,95 +1,95 @@
 /* -- (1) Import fonts -- */
 
 @font-face {
-  font-family: "Rounded Elegance";
-  src: url(../fonts/Rounded_Elegance.otf);
+    font-family: "Rounded Elegance";
+    src: url(../fonts/Rounded_Elegance.otf);
 }
 
 @font-face {
-  font-family: 'Assistant';
-  font-style: normal;
-  font-weight: 400;
-  font-display: swap;
-  src: url(../fonts/Assistant-Regular.woff2) format('woff2');
-  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+    font-family: 'Assistant';
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url(../fonts/Assistant-Regular.woff2) format('woff2');
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
 
 @font-face {
-  font-family: 'Assistant';
-  font-style: normal;
-  font-weight: 600;
-  font-display: swap;
-  src: url(../fonts/Assistant-SemiBold.woff2) format('woff2');
-  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+    font-family: 'Assistant';
+    font-style: normal;
+    font-weight: 600;
+    font-display: swap;
+    src: url(../fonts/Assistant-SemiBold.woff2) format('woff2');
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
-
 
 
 /* -- (2) Basic rules -- */
 
 *::selection {
 
-  /* Set the text selection background */
-  background-color: #f8bba9;
+    /* Set the text selection background */
+    background-color: #f8bba9;
 
 }
 
 
 html {
 
-  /* Set the base font size */
-  font-size: 16px;
+    /* Set the base font size */
+    font-size: 16px;
 
-  /* Also add the scrollbar to pages that don't need it (prevents movement of the page center) */
-  overflow-y: scroll
+    /* Also add the scrollbar to pages that don't need it (prevents movement of the page center) */
+    overflow-y: scroll
 
 }
 
 body {
 
-  /* Force the footer to the bottom of the screen */
-  min-height: 100vh;
+    /* Force the footer to the bottom of the screen */
+    min-height: 100vh;
 
 }
+
 #content {
 
-  /* Force the footer to the bottom of the screen */
-  flex-grow: 1;
+    /* Force the footer to the bottom of the screen */
+    flex-grow: 1;
 
 }
 
 a {
 
-  /* Make hyperlinks stronk */
-  font-weight: 600
+    /* Make hyperlinks stronk */
+    font-weight: 600
 
 }
 
 .navbar, .dropdown-menu {
 
-  /* No borders */
-  border: none;
+    /* No borders */
+    border: none;
 
 }
 
 .nav a, nav a {
 
-  /* Tone down the dominance of hyperlinks in navigation bars */
-  font-weight: 400;
+    /* Tone down the dominance of hyperlinks in navigation bars */
+    font-weight: 400;
 
 }
 
 .navbar li {
 
-  /* Make the navigation bar text smaller */
-  font-size: .9375rem;
+    /* Make the navigation bar text smaller */
+    font-size: .9375rem;
 
 }
 
 .navbar-toggle {
 
-  /* Hamburger menu fix */
-  margin-top: 0;
+    /* Hamburger menu fix */
+    margin-top: 0;
 
 }
 
@@ -98,50 +98,58 @@ a {
 
 /* -- Flexbox */
 .flex {
-  display: flex;
-  flex-wrap: wrap
+    display: flex;
+    flex-wrap: wrap
 }
+
 .flex-end {
-  justify-content: flex-end
+    justify-content: flex-end
 }
+
 .flex-column {
-  flex-direction: column;
+    flex-direction: column;
 }
+
 .flex-around {
-  justify-content: space-around;
+    justify-content: space-around;
 }
+
 .flex-center {
-  align-items: center;
+    align-items: center;
 }
 
 /* -- Text: H.S.A. Confluente */
 .hsa {
-  font-family: "Rounded Elegance", sans-serif;
+    font-family: "Rounded Elegance", sans-serif;
 }
-
 
 
 /* -- (4) Specific fixes -- */
 
 /* -- Navigation bar */
 .navbar .container {
-  margin-top: 26px;
+    margin-top: 26px;
 }
+
 .navbar-nav .fa {
-  margin-right: 8px
+    margin-right: 8px
 }
+
 .dropdown-menu {
-  box-shadow: none;
-  padding: 0;
+    box-shadow: none;
+    padding: 0;
 }
+
 .dropdown-menu li a {
-  padding: 8px 12px;
+    padding: 8px 12px;
 }
+
 .navbar-collapse {
-  box-shadow: none
+    box-shadow: none
 }
+
 .dropdown-menu .divider {
-  margin: 0
+    margin: 0
 }
 
 
@@ -149,116 +157,241 @@ a {
 
 /* - Partner bar */
 .img-logo {
-  height: 26px;
-  margin: 1rem 15px;
+    height: 26px;
+    margin: 1rem 15px;
 }
+
 #tno-logo {
-  height: 36px;
-  margin-top: 0;
-  margin-bottom: 0;
+    height: 36px;
+    margin-top: 0;
+    margin-bottom: 0;
 }
+
 #bar-partners {
-  margin-bottom: 20px
+    margin-bottom: 20px
 }
 
 /* - Header container */
 .container-hero {
-  width: 100%;
-  height: 330px;
-  overflow: hidden;
-  margin-top: -102px;
+    width: 100%;
+    height: 330px;
+    overflow: hidden;
+    margin-top: -102px;
 }
+
 #navbar-background {
-  background-color: #a1ddde;
-  position: absolute;
-  height: 100%;
-  width: 100%;
-  top: 0; left: 0; right: 0;
-  z-index: -10;
+    background-color: #a1ddde;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: -10;
 }
+
 #hero-accent {
-  background: linear-gradient(to right top, rgba(123, 208, 209, .95), rgba(121, 183, 205, .75));
-  height:   inherit;
-  position: absolute;
-  top: 0; left: 0; right: 0;
-  z-index: -1;
+    background: linear-gradient(to right top, rgba(123, 208, 209, .95), rgba(121, 183, 205, .75));
+    height: inherit;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: -1;
 }
+
 #hero-image {
-  background-image: URL('/img/frontpage-hero.jpg');
-  height: inherit;
-  width: 100%;
-  background-size: cover;
-  background-position: center center;
-  z-index: -10;
-  position: absolute;
-  top: 0; left:0; right: 0;
+    background-image: URL('/img/frontpage-hero.jpg');
+    height: inherit;
+    width: 100%;
+    background-size: cover;
+    background-position: center center;
+    z-index: -10;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
 }
+
 #hero-header {
-  height: 100%;
-  padding-bottom: 14px;
-  flex-direction: column-reverse;
+    height: 100%;
+    padding-bottom: 14px;
+    flex-direction: column-reverse;
 }
 
 /* - Stats */
 .info_graphic {
-  font-size: 3.6rem;
-  font-weight: 600;
-  margin: 0;
-  line-height: 1.2;
+    font-size: 3.6rem;
+    font-weight: 600;
+    margin: 0;
+    line-height: 1.2;
 }
+
 #info_graphic .h2 {
-  margin: 0
+    margin: 0
 }
 
 /* -- Footer */
 #footer {
-  font-size: 0.85rem;
-  margin-bottom: 20px;
-  margin-top: 20px;
-}
-#footer h3 {
-  margin-top: 0;
-  font-size: 1rem;
-  text-transform: uppercase
+    font-size: 0.85rem;
+    margin-bottom: 20px;
+    margin-top: 20px;
 }
 
+#footer h3 {
+    margin-top: 0;
+    font-size: 1rem;
+    text-transform: uppercase
+}
+
+
+/* -- committees */
+#carousel {
+    position: relative;
+    height: 400px;
+    top: 50%;
+    overflow: hidden;
+    margin-top: 20px;
+}
+
+#carousel div {
+    position: absolute;
+    transition: transform 1s, left 1s, opacity 1s, z-index 0s;
+    opacity: 1;
+}
+
+#carousel div img {
+    width: 600px;
+    transition: width 1s;
+}
+
+@media (max-width: 768px) {
+    #carousel {
+        height: 266px;
+    }
+
+    #carousel div img {
+        width: 400px;
+    }
+}
+
+#carousel div.hideLeft {
+    left: 0%;
+    opacity: 0;
+    transform: translateY(75%) translateX(-50%);
+}
+
+#carousel div.hideRight {
+    left: 100%;
+    opacity: 0;
+    transform: translateY(75%) translateX(-50%);
+}
+
+#carousel div.prev {
+    z-index: 5;
+    left: 30%;
+    transform: translateY(50px) translateX(-50%);
+    opacity: 0.6;
+}
+
+#carousel div.prevLeftSecond {
+    z-index: 4;
+    left: 15%;
+    transform: translateY(50%) translateX(-50%);
+    opacity: 0.3;
+}
+
+#carousel div.selected {
+    z-index: 10;
+    left: 50%;
+    transform: translateY(0px) translateX(-50%);
+}
+
+#carousel div.next {
+    z-index: 5;
+    left: 70%;
+    transform: translateY(50px) translateX(-50%);
+    opacity: 0.6;
+}
+
+#carousel div.nextRightSecond {
+    z-index: 4;
+    left: 85%;
+    transform: translateY(50%) translateX(-50%);
+    opacity: 0.3;
+}
+
+#carousel div .textBox {
+    position: absolute;
+    z-index: 999;
+    margin: 0 auto;
+    left: 0;
+    right: 0;
+    top: 0;
+    background-color: rgba(0, 0, 0, 0.3);
+    width: 100%;
+    height: 100%;
+    color: white;
+    padding: 20px;
+    pointer-events: none;
+}
+
+#carousel div .text {
+    top: 30%;
+    height: 70%;
+    font-size: 1.2em;
+}
+
+#carousel div .titletext {
+    top: 0;
+    height: 30%;
+    font-size: 2em;
+}
 
 /* -- Boards */
+
 .board-column {
-  display: flex;
-  width: 100%;
-}
-@media (min-width: 768px) {
-  .board-container {
     display: flex;
-  }
-  .board-column {
-    width: 50%;
-  }
+    width: 100%;
 }
+
+@media (min-width: 768px) {
+    .board-container {
+        display: flex;
+    }
+
+    .board-column {
+        width: 50%;
+    }
+}
+
 .board-content {
-  display: flex;
-  align-self: center;
-  padding-left: 20px;
-  font-size: 13px;
+    display: flex;
+    align-self: center;
+    padding-left: 20px;
+    font-size: 13px;
 }
+
 .board-content ul {
-  font-size: 20px;
-  list-style-type: none;
+    font-size: 20px;
+    list-style-type: none;
 }
+
 .mobileshow {
-  display: none;
+    display: none;
 }
+
 @media screen and (max-width: 768px) {
-  .mobileshow {
-    display: block;
-  }
+    .mobileshow {
+        display: block;
+    }
 }
+
 hr {
-  display: block;
-  height: 1px;
-  border: 0;
-  border-top: 1px solid #ccc;
-  margin: 1em 0;
-  padding: 0;
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 1px solid #ccc;
+    margin: 1em 0;
+    padding: 0;
 }
