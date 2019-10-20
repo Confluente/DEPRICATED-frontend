@@ -121,6 +121,7 @@ a {
 /* -- Text: H.S.A. Confluente */
 .hsa {
     font-family: "Rounded Elegance", sans-serif;
+    font-weight: 400;
 }
 
 
@@ -194,7 +195,6 @@ a {
     background: linear-gradient(to right top, rgba(123, 208, 209, .95), rgba(121, 183, 205, .75));
     height: inherit;
     position: absolute;
-    top: 0;
     left: 0;
     right: 0;
     z-index: -1;
@@ -208,9 +208,6 @@ a {
     background-position: center center;
     z-index: -10;
     position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
 }
 
 #hero-header {
@@ -385,13 +382,4 @@ a {
     .mobileshow {
         display: block;
     }
-}
-
-hr {
-    display: block;
-    height: 1px;
-    border: 0;
-    border-top: 1px solid #ccc;
-    margin: 1em 0;
-    padding: 0;
 }
