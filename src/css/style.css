@@ -79,17 +79,10 @@ a {
 
 }
 
-.navbar li {
-
-    /* Make the navigation bar text smaller */
-    font-size: .9375rem;
-
-}
-
 .navbar-toggle {
 
     /* Hamburger menu fix */
-    margin-top: 0;
+    margin-top: 1rem;
 
 }
 
@@ -128,10 +121,6 @@ a {
 /* -- (4) Specific fixes -- */
 
 /* -- Navigation bar */
-.navbar .container {
-    margin-top: 26px;
-}
-
 .navbar-nav .fa {
     margin-right: 8px
 }
@@ -169,35 +158,22 @@ a {
 }
 
 #bar-partners {
-    margin-bottom: 20px
+    margin-bottom: 20px;
 }
 
 /* - Header container */
 .container-hero {
-    width: 100%;
     height: 330px;
-    overflow: hidden;
-    margin-top: -102px;
-}
-
-#navbar-background {
-    background-color: #a1ddde;
-    position: absolute;
-    height: 100%;
-    width: 100%;
-    top: 0;
-    left: 0;
-    right: 0;
-    z-index: -10;
+    margin-top: -1rem;
 }
 
 #hero-accent {
-    background: linear-gradient(to right top, rgba(123, 208, 209, .95), rgba(121, 183, 205, .75));
     height: inherit;
     position: absolute;
     left: 0;
     right: 0;
     z-index: -1;
+    background: linear-gradient(to bottom right, rgba(84, 194, 212, .95), rgba(152, 218, 229, .7));
 }
 
 #hero-image {
@@ -212,7 +188,7 @@ a {
 
 #hero-header {
     height: 100%;
-    padding-bottom: 14px;
+    padding-bottom: 1rem;
     flex-direction: column-reverse;
 }
 
