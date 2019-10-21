@@ -230,15 +230,20 @@ a {
 
 /* -- Footer */
 #footer {
-    font-size: 0.85rem;
     margin-bottom: 20px;
-    margin-top: 20px;
+    margin-top: 40px;
 }
 
-#footer h3 {
-    margin-top: 0;
-    font-size: 1rem;
-    text-transform: uppercase
+.logo-small {
+    background-image: url('../img/logo-small.svg');
+    width: 40px;
+    height: 42px;
+    background-size: contain;
+}
+.logo {
+    background-image: url('../img/HSAConfluente.svg');
+    background-size: contain;
+    background-repeat: no-repeat;
 }
 
 
