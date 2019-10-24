@@ -173,7 +173,7 @@ a {
     left: 0;
     right: 0;
     z-index: -1;
-    background: linear-gradient(to bottom right, rgba(84, 194, 212, .95), rgba(152, 218, 229, .7));
+    background: linear-gradient(to bottom, #54c2d4, rgba(152, 218, 229, .9));
 }
 
 #hero-image {
