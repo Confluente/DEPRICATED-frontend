@@ -50,7 +50,7 @@
 				</li>
 
 				<li><a href="/education/education">Honors Academy</a></li>
-				<li><a href="/activities">Events</a></li>
+				<li ng-if="user.loggedIn"><a href="/activities">Events</a></li>
 				<li ng-if="user.loggedIn"><a href="/files">Photos</a></li>
 				<li><a href="/career/partners">Career</a></li>
 				<li ng-if="!user.loggedIn"><a href="/login">Student login</a></li>
