@@ -7,7 +7,7 @@ app.factory("activities", ["$http", "$timeout", function ($http, $timeout) {
                 console.log(result);
                 var activities = result.data;
                 return activities.map(function (activity) {
-                    activity.startTime = !isNaN(Date.parse(activity.startTime)) ? new Date(activity.startTime) : null;
+                    activity.date = !isNaN(Date.parse(activity.date)) ? new Date(activity.date) : null;
                     return activity;
                 });
             });
@@ -15,7 +15,7 @@ app.factory("activities", ["$http", "$timeout", function ($http, $timeout) {
         get: function (id) {
             return $http.get("/api/activities/" + id).then(function (result) {
                 var activity = result.data;
-                activity.startTime = !isNaN(Date.parse(activity.startTime)) ? new Date(activity.startTime) : null;
+                activity.date = !isNaN(Date.parse(activity.date)) ? new Date(activity.date) : null;
                 return activity;
             });
         },
