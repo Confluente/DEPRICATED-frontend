@@ -366,13 +366,13 @@ a {
 }
 
 /* --sponsors */
-.company-box {
+.partner-box {
     height: 220px;
     border: 1px solid #ddd;
     padding: 0;
 }
 
-.company-img-container {
+.partner-img-container {
     position: relative;
     height: calc(100% - 46px);
     padding: 30px;
@@ -383,7 +383,7 @@ a {
     background-origin: content-box;
 }
 
-.company-overlay {
+.partner-overlay {
     position: absolute;
     cursor: pointer;
     top: 0;
@@ -393,13 +393,18 @@ a {
     height: 100%;
     width: 100%;
     opacity: 0;
+    -webkit-transition: opacity 0.2s ease-in-out;
+    -moz-transition: opacity 0.2s ease-in-out;
+    -ms-transition: opacity 0.2s ease-in-out;
+    -o-transition: opacity 0.2s ease-in-out;
+    transition: opacity 0.2s ease-in-out;
 }
 
-.company-overlay:hover {
+.partner-overlay:hover {
     opacity: 1;
 }
 
-.company-text {
+.partner-text {
     color: white;
     cursor: pointer;
     position: absolute;
@@ -411,13 +416,13 @@ a {
     font-weight: normal;
 }
 
-.company-footer {
+.partner-footer {
     height: 46px;
     width: 100%;
     padding: 3px 0 0 0;
 }
 
-.company-btnlist {
+.partner-btnlist {
     display: table;
     list-style-type: none;
     margin: 0px;
@@ -426,7 +431,7 @@ a {
     text-align: center;
 }
 
-.company-btn-small {
+.partner-btn-small {
     border: 0;
 }
 
