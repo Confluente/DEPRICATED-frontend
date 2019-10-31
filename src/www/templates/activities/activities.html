@@ -14,8 +14,9 @@
                 <p class="module fade">{{activity.description}}</p>
             </div>
             <div class="activity-details col-xs-4">
-                <p ng-if="activity.startTime" style="margin-bottom: 0px;">When: {{activity.startTime | date:'d MMMM yyyy'}}</p>
-                <p ng-if="activity.location">Where: {{activity.location}}</p>
+                <p ng-if="activity.date" style="margin-bottom: 0px;">When: {{activity.date | date:'d MMMM yyyy'}}</p>
+                <p ng-if="activity.location" style="margin-bottom: 0px">Where: {{activity.location}}</p>
+                <p ng-if="activity.time">Time: {{activity.time}}</p>
             </div>
             <div class="col-xs-12 activity-buttons" ng-if="user.loggedIn">
                 <a href="/manage/activities/1">Edit</a>
