@@ -216,6 +216,7 @@ a {
     height: 42px;
     background-size: contain;
 }
+
 .logo {
     background-image: url('../img/HSAConfluente.svg');
     background-size: contain;
@@ -365,6 +366,7 @@ a {
     }
 }
 
+
 /* --sponsors */
 .partner-box {
     height: 220px;
@@ -437,4 +439,32 @@ a {
 
 .fa-ellipsis-h {
     content: "\f141";
+
+/* -- Events */
+.activity-content .module {
+    margin: 0 0 1em 0;
+    overflow: hidden;
+}
+.activity-content .module p {
+    margin: 0;
+}
+
+.activity-content p {
+    line-height: 1.5em;
+}
+
+.activity-content .fade {
+    position: relative;
+    height: 6em; /* exactly 4 lines */
+    opacity: 1;
+}
+.activity-content .fade:after {
+    content: "";
+    text-align: right;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 70%;
+    height: 1.2em;
+    background: linear-gradient(to right, rgba(255, 255, 255, 0), rgba(255, 255, 255, 1) 50%);
 }

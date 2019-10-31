@@ -1,2 +1,9 @@
-<h1>{{activity.name}}</h1>
-<p>{{activity.description}}</p>
+<!--TODO Abstract from container-->
+<div class="container">
+    <h1><a class="btn btn-link" href="/activities"><i class="fa fa-chevron-left" aria-hidden="true"></i></a>
+    {{activity.name}}</h1>
+    <p>{{activity.description}}</p>
+    <p>Start time: {{activity.date | date:'d MMMM yyyy'}}</p>
+    <p>Time: {{activity.time}}</p>
+    <p>Location: {{activity.location}}</p>
+</div>

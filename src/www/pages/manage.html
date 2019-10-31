@@ -25,7 +25,7 @@
                         <th>{{activity.id}}</th>
                         <td><a ng-href="/activities/{{activity.id}}">/activities/{{activity.id}}</a></td>
                         <td>{{activity.name}}</td>
-                        <td>{{activity.startTime | date:'yyyy-MM-dd'}}</td>
+                        <td>{{activity.date | date:'yyyy-MM-dd'}}</td>
                         <td>{{activity.Organizer.displayName}}</td>
                         <td>{{activity.approved}}</td>
                         <td><a ng-href="/manage/activities/{{activity.id}}">Edit</a></td>
