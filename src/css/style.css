@@ -177,7 +177,7 @@ a {
 }
 
 #hero-image {
-    background-image: url("/src/img/frontpage-hero.JPG");
+    background-image:  URL('/img/frontpage-hero.jpg');
     height: inherit;
     width: 100%;
     background-size: cover;
