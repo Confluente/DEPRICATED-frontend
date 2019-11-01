@@ -255,7 +255,7 @@ a {
 }
 
 #carousel div.hideLeft {
-    left: 0%;
+    left: 0;
     opacity: 0;
     transform: translateY(75%) translateX(-50%);
 }
@@ -428,8 +428,8 @@ a {
 .partner-btnlist {
     display: table;
     list-style-type: none;
-    margin: 0px;
-    padding: 0px;
+    margin: 0;
+    padding: 0;
     width: 100%;
     text-align: center;
 }
@@ -480,9 +480,8 @@ a {
 
 .HA-col {
     border: none;
-    margin-bottom: 0px;
+    margin-bottom: 0;
     flex: 1;
-    height: 100%;
     position: relative;
     height: 650px;
 }
