@@ -416,6 +416,7 @@ a {
     transform: translate(0, -20%);
     line-height: 1.2em;
     font-weight: normal;
+    height: 100%;
 }
 
 .partner-footer {
