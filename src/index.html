@@ -51,10 +51,17 @@
                         </ul>
                     </li>
 
-                    <li><a href="/education/education">Honors Academy</a></li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                           aria-expanded="false">Education <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="/education/honors_academy">Honors Academy</a></li>
+                            <li><a href="/education/student_council">Student Council</a></li>
+                        </ul>
+                    </li>
                     <li><a href="/activities">Events</a></li>
                     <!--TODO MAKE ONLY FOR LOGGED IN USERS WHEN USERS ARE ABLE TO LOGIN-->
-<!--                    <li ng-if="user.loggedIn"><a href="/files">Photos</a></li>-->
+                    <!--                    <li ng-if="user.loggedIn"><a href="/files">Photos</a></li>-->
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
                            aria-expanded="false">
