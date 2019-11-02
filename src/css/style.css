@@ -210,7 +210,7 @@ a {
 }
 
 #hero-image {
-    background-image: URL('/img/frontpage-hero.jpg');
+    background-image:  URL('/img/frontpage-hero.jpg');
     height: inherit;
     width: 100%;
     background-size: cover;
@@ -288,7 +288,7 @@ a {
 }
 
 #carousel div.hideLeft {
-    left: 0%;
+    left: 0;
     opacity: 0;
     transform: translateY(75%) translateX(-50%);
 }
@@ -367,7 +367,7 @@ a {
     width: 100%;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 992px) {
     .board-container {
         display: flex;
     }
@@ -393,7 +393,7 @@ a {
     display: none;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 992px) {
     .mobileshow {
         display: block;
     }
@@ -449,6 +449,7 @@ a {
     transform: translate(0, -20%);
     line-height: 1.2em;
     font-weight: normal;
+    height: 100%;
 }
 
 .partner-footer {
@@ -460,8 +461,8 @@ a {
 .partner-btnlist {
     display: table;
     list-style-type: none;
-    margin: 0px;
-    padding: 0px;
+    margin: 0;
+    padding: 0;
     width: 100%;
     text-align: center;
 }
@@ -472,6 +473,7 @@ a {
 
 .fa-ellipsis-h {
     content: "\f141";
+}
 
 /* -- Events */
 .activity-content .module {
@@ -500,4 +502,42 @@ a {
     width: 70%;
     height: 1.2em;
     background: linear-gradient(to right, rgba(255, 255, 255, 0), rgba(255, 255, 255, 1) 50%);
+}
+
+/* --Honors Academy (Education) */
+.HA-col-container {
+    display: flex;
+    width: 100%;
+    flex-wrap: wrap;
+}
+
+.HA-col {
+    border: none;
+    margin-bottom: 0;
+    flex: 1;
+    position: relative;
+    height: 650px;
+}
+
+.button-holder {
+    position: absolute;
+    bottom: 10px;
+    width: calc(100% - 8px);
+}
+
+.HA-button {
+    width: 100%;
+}
+
+@media(max-width: 992px) {
+    .HA-col {
+        height: 750px;
+    }
+}
+
+@media(max-width: 767px) {
+    .HA-col {
+        height: 600px;
+    }
+
 }
