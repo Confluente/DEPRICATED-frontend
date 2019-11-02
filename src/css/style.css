@@ -72,6 +72,11 @@ a {
 
 }
 
+.nav {
+
+    padding-right: 0;
+
+}
 .nav a, nav a {
 
     /* Tone down the dominance of hyperlinks in navigation bars */
@@ -89,6 +94,19 @@ a {
 
 /* -- (3) General classes -- */
 
+/* -- Center */
+.center {
+    margin-left: auto;
+    margin-right: auto;
+    float: none
+}
+
+/* -- Sticky */
+.sticky {
+  position: sticky;
+  top: 8px
+}
+
 /* -- Flexbox */
 .flex {
     display: flex;
@@ -105,6 +123,9 @@ a {
 
 .flex-around {
     justify-content: space-around;
+}
+.flex-between {
+    justify-content: space-between;
 }
 
 .flex-center {
@@ -142,6 +163,18 @@ a {
     margin: 0
 }
 
+/* -- Normal navigation */
+.navbar-toggle.nav-toggle {
+    position: static;
+    float: none;
+    margin-right: initial;
+    margin-top: initial;
+    margin-bottom: initial;
+    background-color: initial;
+    background-image: initial;
+    border: initial;
+    border-radius: initial;
+}
 
 /* -- Frontpage */
 
