@@ -1,0 +1,35 @@
+<div class="row">
+    <h1 class="col-xs-12 col-md-7 center">
+      <a class="btn btn-link navbar-toggle nav-toggle collapsed" type="button" data-toggle="collapse" aria-expanded="false" data-target="#nav-sidebar">
+          <span class="fa fa-bars"></span>
+      </a>
+        {{ title }}
+    </h1>
+</div>
+
+<div class="row">
+    <div class="flex flex-between">
+
+        <!-- Sidebar navigation -->
+        <div class="col-xs-12 col-md-2 small">
+            <ol id="nav-sidebar" class="nav nav-pills nav-stacked navbar-collapse collapse"
+                ng-include="'/www/snippets/menu-tracks.html'"></ol>
+        </div>
+
+        <!-- Content -->
+        <div class="col-xs-12 col-md-7">
+
+          {{ content }}
+
+        </div>
+
+        <!-- Right sidebar -->
+        <div class="col-xs-12 col-md-2 small">
+            <div class="sticky">
+
+              {{ sidebar }}
+
+            </div>
+        </div>
+    </div>
+</div>
