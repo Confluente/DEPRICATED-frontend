@@ -1,0 +1,73 @@
+<nav role="navigation" class="navbar navbar-default">
+    <div class="container" ng-controller="controllerNavbar as nav">
+
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                    data-target="#main-navbar__content" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="fa fa-bars"></span>
+            </button>
+            <a class="navbar-brand hsa" href="/">Honors Study Association Confluente</a>
+        </div>
+        <div class="collapse navbar-collapse" id="main-navbar__content">
+            <ul class="nav navbar-nav navbar-right">
+
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                       aria-expanded="false">
+                        About <span class="caret"></span>
+                    </a>
+
+                    <ul class="dropdown-menu">
+                        <li><a href="/about/association">Association</a></li>
+                        <li><a href="/about/boards">Boards</a></li>
+                        <li><a href="/about/committees">Committees</a></li>
+                        <li><a href="/about/alumni">Alumni</a></li>
+                        <li><a href="/about/hr">Honors Room</a></li>
+                    </ul>
+                </li>
+
+
+                
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                           aria-expanded="false">Education <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="/education/honors_academy">Honors Academy</a></li>
+                        <li><a href="/education/student_council">Student Council</a></li>
+                    </ul>
+                </li>
+
+                <li><a href="/activities">Events</a></li>
+
+                <!--TODO MAKE ONLY FOR LOGGED IN USERS WHEN USERS ARE ABLE TO LOGIN-->
+                <!--                    <li ng-if="user.loggedIn"><a href="/files">Photos</a></li>-->
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                       aria-expanded="false">
+                        Partners <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="/partners/sponsors">Sponsors</a></li>
+                        <li><a href="/partners/sister_associations">Sister Associations</a></li>
+                    </ul>
+                </li>
+                <li ng-if="!user.loggedIn"><a href="/login">Student login</a></li>
+
+                <li ng-if="user.loggedIn" class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                       aria-expanded="false">
+                        {{user.displayName}} <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="/user/profile"><span class="fa fa-user-circle"></span>Profile</a></li>
+                        <li><a href="/manage"><span class="fa fa-sliders"></span>Manage</a></li>
+                        <li role="separator" class="divider"></li>
+                        <li><a href="#" ng-click="logout()"><span class="fa fa-sign-out"></span>Logout</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>

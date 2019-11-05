@@ -1,6 +1,10 @@
+<div class="pull-right">
+    <a class="btn btn-default" href="manage/user/create" ng-if="user.isAdmin">+ User</a>
+    <!--<a class="btn btn-default" href="/group/create" ng-if="user.isAdmin">+ Group</a>-->
+    <a class="btn btn-default" href="manage/activities/create" ng-if="user.canOrganize">+ Activity</a>
+</div>
+
 <h1>Management Dashboard</h1>
-<a class="btn btn-default" href="manage/user/create" ng-if="user.isAdmin">Create User</a>
-<!--<a class="btn btn-default" href="/group/create" ng-if="user.isAdmin">Create Group</a>-->
 <div ng-controller="manageController">
     <uib-tabset active="active">
 
