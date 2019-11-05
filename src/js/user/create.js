@@ -21,6 +21,6 @@ module.exports = {
     name: "New User",
     url: "/manage/user/create",
     parent: "/manage/",
-    templateUrl: "userCreate.html",
+    templateUrl: "/www/templates/user/userCreate.html",
     controller: "userCreateController"
 };

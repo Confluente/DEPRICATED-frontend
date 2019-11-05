@@ -1,12 +1,16 @@
 <!-- TODO: Abstract from container div like pages -->
 <div class="container">
+
+    <div class="pull-right">
+        <a class="btn btn-default" href="/manage" ng-if="user.canOrganize">Manage activities</a>
+    </div>
+
     <h1>Events</h1>
 
     <div class="activities">
-        <a class="btn btn-default" href="/manage/activities/create" ng-if="user.canOrganize">Create activity</a>
-        <a class="btn btn-default" href="/manage" ng-if="user.canOrganize">Manage activities</a>
-        <div class="activity row panel panel-default" ng-repeat="activity in activities">
-            <div class="activity-title panel-heading col-xs-12">
+
+        <div class="activity row" ng-repeat="activity in activities">
+            <div class="activity-title col-xs-12">
                 <a href="/activities/{{activity.id}}"><h3 class="nospace">{{activity.name}}</h3><span
                         ng-if="!activity.approved">(Unlisted)</span></a>
             </div>

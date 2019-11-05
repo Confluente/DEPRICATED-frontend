@@ -17,6 +17,15 @@
 @font-face {
     font-family: 'Assistant';
     font-style: normal;
+    font-weight: 500;
+    font-display: swap;
+    src: url(../fonts/Assistant-SemiBold.woff2) format('woff2');
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+    font-family: 'Assistant';
+    font-style: normal;
     font-weight: 600;
     font-display: swap;
     src: url(../fonts/Assistant-Bold.woff2) format('woff2');
@@ -58,13 +67,6 @@ body {
 
 }
 
-a {
-
-    /* Make hyperlinks stronk */
-    font-weight: 600
-
-}
-
 .navbar, .dropdown-menu {
 
     /* No borders */
@@ -72,10 +74,9 @@ a {
 
 }
 
-.nav a, nav a {
+.nav {
 
-    /* Tone down the dominance of hyperlinks in navigation bars */
-    font-weight: 400;
+    padding-right: 0;
 
 }
 
@@ -86,8 +87,42 @@ a {
 
 }
 
+.breadcrumb {
+
+    /* Breadcrumb margin fix */
+    margin-top: -1rem;
+    
+}
+
+h1, .h1 {
+
+    /* Make header stronk */
+    font-weight: 600
+}
+
+b, strong {
+  font-weight: 500
+}
+
+h4, .h4, h5, .h5, h6, .h6 {
+    margin-top: 0.7rem;
+    margin-bottom: 0.1rem;
+}
 
 /* -- (3) General classes -- */
+
+/* -- Center */
+.center {
+    margin-left: auto;
+    margin-right: auto;
+    float: none
+}
+
+/* -- Sticky */
+.sticky {
+  position: sticky;
+  top: 8px
+}
 
 /* -- Flexbox */
 .flex {
@@ -105,6 +140,9 @@ a {
 
 .flex-around {
     justify-content: space-around;
+}
+.flex-between {
+    justify-content: space-between;
 }
 
 .flex-center {
@@ -142,6 +180,18 @@ a {
     margin: 0
 }
 
+/* -- Normal navigation */
+.navbar-toggle.nav-toggle {
+    position: static;
+    float: none;
+    margin-right: initial;
+    margin-top: initial;
+    margin-bottom: initial;
+    background-color: initial;
+    background-image: initial;
+    border: initial;
+    border-radius: initial;
+}
 
 /* -- Frontpage */
 
@@ -506,5 +556,4 @@ a {
     .HA-col {
         height: 600px;
     }
-
 }

@@ -1,151 +1,33 @@
 <!DOCTYPE html>
 <html lang="en" ng-app="confluente">
+    <head>
+        <meta charset="UTF-8">
+        <meta content="width=device-width, initial-scale=1" name="viewport">
+        <base href="/"/>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+              integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+        <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css"/>
+        <link rel="stylesheet" href="css/style.css" type="text/css"/>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"
+                integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd"
+                crossorigin="anonymous"></script>
+        <script src="/js/bundle.js"></script>
 
-<head>
-    <meta charset="UTF-8">
-    <meta content="width=device-width, initial-scale=1" name="viewport">
-    <base href="/"/>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
-          integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
-    <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css"/>
-    <link rel="stylesheet" href="css/style.css" type="text/css"/>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"
-            integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd"
-            crossorigin="anonymous"></script>
-    <script src="/js/bundle.js"></script>
+        <link rel="icon" type="image/png" href="/img/favicon.png"/>
+        <title ng-bind="title + ' - H.S.A. Confluente'">H.S.A. Confluente</title>
 
-    <link rel="icon" type="image/png" href="/img/favicon.png"/>
-    <title ng-bind="title + ' - H.S.A. Confluente'">H.S.A. Confluente</title>
+    </head>
 
-</head>
+    <body class="flex flex-column" ng-cloak>
 
-<body class="flex flex-column" ng-cloak>
+        <header id="header" ng-include="'/www/snippets/header.html'"></header>
 
-<header id="header">
-    <nav role="navigation" class="navbar navbar-default">
-        <div class="container" ng-controller="controllerNavbar as nav">
+        <div id="content" ng-view></div>
 
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
-                        data-target="#main-navbar__content" aria-expanded="false">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="fa fa-bars"></span>
-                </button>
-                <a class="navbar-brand hsa" href="/">Honors Study Association Confluente</a>
-            </div>
-            <div class="collapse navbar-collapse" id="main-navbar__content">
-                <ul class="nav navbar-nav navbar-right">
-
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-                           aria-expanded="false">
-                            About <span class="caret"></span>
-                        </a>
-
-                        <ul class="dropdown-menu">
-                            <li><a href="/about/association">Association</a></li>
-                            <li><a href="/about/boards">Boards</a></li>
-                            <li><a href="/about/committees">Committees</a></li>
-                            <li><a href="/about/hr">Honors Room</a></li>
-                        </ul>
-                    </li>
-
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-                           aria-expanded="false">Education <span class="caret"></span></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="/education/honors_academy">Honors Academy</a></li>
-                            <li><a href="/education/student_council">Student Council</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="/activities">Events</a></li>
-                    <!--TODO MAKE ONLY FOR LOGGED IN USERS WHEN USERS ARE ABLE TO LOGIN-->
-                    <!--                    <li ng-if="user.loggedIn"><a href="/files">Photos</a></li>-->
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-                           aria-expanded="false">
-                            Partners <span class="caret"></span>
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li><a href="/partners/sponsors">Sponsors</a></li>
-                            <li><a href="/partners/sister_associations">Sister Associations</a></li>
-                        </ul>
-                    </li>
-                    <li ng-if="!user.loggedIn"><a href="/login">Student login</a></li>
-
-                    <li ng-if="user.loggedIn" class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-                           aria-expanded="false">
-                            {{user.displayName}} <span class="caret"></span>
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li><a href="/user/profile"><span class="fa fa-user-circle"></span>Profile</a></li>
-                            <li><a href="/manage"><span class="fa fa-sliders"></span>Manage</a></li>
-                            <li role="separator" class="divider"></li>
-                            <li><a ng-click="logout()"><span class="fa fa-sign-out"></span>Logout</a></li>
-                        </ul>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
-</header>
-
-<div id="content" class="content">
-    <div ng-view></div>
-</div>
-
-<footer id="footer">
-    <div class="container small">
-
-        <div class="row flex flex-center">
-
-            <div class="col-xs-4 col-sm-10">
-                <hr/>
-            </div>
-
-            <div class="col-xs-4 col-sm-1">
-                <div class="logo-small center-block" alt="H.S.A Confluente"></div>
-            </div>
-
-            <div class="col-xs-4 col-sm-1">
-                <hr/>
-            </div>
-
-        </div>
-
-        <div class="row flex">
-
-            <div class="col-xs-2 logo"></div>
-
-            <div class="col-sm-10 col-xs-12">
-                <h5 class="hsa">Honors Study Association Confluente</h5>
-
-                <div class="row">
-                    <address class="col-xs-6 col-md-3">
-                        Eindhoven University of Technology<br>
-                        Metaforum 0.094<br>
-                        De Groene Loper 5<br>
-                        5612 AZ Eindhoven
-                    </address>
-
-                    <div class="col-xs-6 col-md-3">
-                        <a href="mailto:info@hsaconfluente.nl">info@hsaconfluente.nl</a><br>
-                        <a href="https://www.facebook.com/hsaconfluentenl/">Facebook</a><br>
-                        <a href="https://www.linkedin.com/company/h.s.a.-confluente/">LinkedIn</a>
-                    </div>
-
-                    <div class="col-xs-12 col-md-6 text-right">
-                        <p>This site is maintained by the <span class="hsa">H.S.A Confluente</span> <a
-                                href="mailto:web@hsaconfluente.nl">Web Committee</a>.<br>
-                            &copy; 2019 - All rights reserved.</p>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-    </div>
-</footer>
-</body>
+        <footer id="footer">
+            <div class="container small" ng-include="'/www/snippets/footer.html'"></div>
+        </footer>
+      
+    </body>
 </html>
