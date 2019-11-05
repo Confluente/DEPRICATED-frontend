@@ -557,3 +557,20 @@ h4, .h4, h5, .h5, h6, .h6 {
         height: 600px;
     }
 }
+
+
+/* --tracks */
+.track-title {
+    padding-left: 0;
+    width: 100%;
+}
+
+.nav-pad {
+    padding-top: 100px;
+}
+
+@media(max-width: 992px) {
+    .nav-pad {
+        padding-top: 0px;
+    }
+}
