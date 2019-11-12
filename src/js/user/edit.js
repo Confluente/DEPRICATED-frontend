@@ -1,6 +1,6 @@
 var app = angular.module("confluente");
 
-app.controller("userEditController", ["$scope", "$routeParams", "activities", function ($scope, $routeParams, user) {
+app.controller("userEditController", ["$scope", "$routeParams", "users", function ($scope, $routeParams, user) {
     var userId = $routeParams.userId;
     user.get(userId).then(function (user) {
         $scope.user = user;
