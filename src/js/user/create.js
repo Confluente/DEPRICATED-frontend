@@ -9,10 +9,9 @@ app.controller("userCreateController", ["$scope", "users", function ($scope, use
             email: $scope.email,
             password: $scope.password,
             isAdmin: false
-        })
-            .then(function (result) {
+        }).then(function (result) {
                 $scope.loading = false;
-                window.location.href = "/manage/";
+                window.location.href = "/manage";
             });
     };
 }]);

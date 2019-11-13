@@ -5,6 +5,7 @@ var routes = [
     require("./user/create"),
     require("./user/view"),
     require("./user/edit"),
+    require("./user/delete"),
     require("./activities/"),
     require("./activities/view"),
     require("./activities/create"),
