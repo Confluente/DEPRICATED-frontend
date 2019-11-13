@@ -9,8 +9,7 @@ app.factory("users", ["$http", "$timeout", function ($http, $timeout) {
                 return result.data;
             });
         },
-
-        //Untested:
+        // Get single user by ID
         get: function (id) {
             return $http.get("/api/user/" + id).then(function (result) {
                 return result.data;

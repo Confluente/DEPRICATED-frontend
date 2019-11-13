@@ -1,0 +1,8 @@
+<!--TODO Abstract from container-->
+<div class="container">
+    <h1>{{user.displayName}}</h1>
+    <h4>Email address</h4>
+    <p>{{user.email}}</p>
+    <h4>Role</h4>
+    <p ng-if="user.isAdmin">Admin</p><p ng-if="!user.isAdmin">User</p>
+</div>
