@@ -26,7 +26,7 @@ module.exports = function (grunt) {
                         uglifyOptions: {
                             compress: false,
                             ecma: 6,
-                            mangle: true
+                            mangle: false
                         },
                         sourceMap: true
                     })
