@@ -5,7 +5,7 @@
   <div ng-if="!user.loggedIn">
     <div class="row">
       <div class="col-md-3 col-sm-1" />
-      <div class="col-md-6 col-sm-10 text-center">
+      <div class="col-md-6 col-sm-10 text-center login-form">
         <form>
           <h1>Login</h1>
           <div class="form-group">
@@ -28,7 +28,7 @@
   <div ng-if="user.loggedIn">
     <div class="row">
       <div class="col-md-3 col-sm-1" />
-      <div class="col-md-6 col-sm-10 text-center">
+      <div class="col-md-6 col-sm-10 text-center login-form">
         <h1>Logout</h1>
         <button type="submit" ng-click="logout()" class="btn btn-primary btn-lg login-btn">
           Logout
