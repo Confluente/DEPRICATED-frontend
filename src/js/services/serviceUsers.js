@@ -30,6 +30,9 @@ app.factory("users", ["$http", "$timeout", function ($http, $timeout) {
                 console.log(result.data);
                 return result.data;
             });
+        },
+        delete: function (user) {
+            return $http.delete("/api/user/" + user.id);
         }
     };
 }]);

@@ -1,6 +1,6 @@
 var app = angular.module("confluente");
 
-app.controller("userEditController", ["$scope", "$routeParams", "users", function ($scope, $routeParams, user) {
+app.controller("userDeleteController", ["$scope", "$routeParams", "users", function ($scope, $routeParams, user) {
     var userId = $routeParams.userId;
     user.get(userId).then(function (user) {
         $scope.user = user;
@@ -9,7 +9,7 @@ app.controller("userEditController", ["$scope", "$routeParams", "users", functio
     $scope.loading = false;
     $scope.submit = function () {
         $scope.loading = true;
-        user.edit($scope.user).then(function (result) {
+        user.delete($scope.user).then(function () {
             $scope.loading = false;
             window.location.href = "/manage";
         });
@@ -18,10 +18,10 @@ app.controller("userEditController", ["$scope", "$routeParams", "users", functio
 }]);
 
 module.exports = {
-    name: "Edit User",
-    url: "/manage/user/edit/:userId",
+    name: "Delete User",
+    url: "/manage/user/delete/:userId",
     parent: "/manage/",
-    templateUrl: "/www/templates/user/userEdit.html",
+    templateUrl: "/www/templates/user/userDelete.html",
     iconUrl: "/img/home-outline.png",
-    controller: "userEditController"
+    controller: "userDeleteController"
 };
