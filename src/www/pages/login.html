@@ -1,29 +1,40 @@
-<h1>Login</h1>
+
 
 <div ng-controller="controllerNavbar">
 
   <div ng-if="!user.loggedIn">
-    <form>
+    <div class="row">
+      <div class="col-md-3 col-sm-1" />
+      <div class="col-md-6 col-sm-10 text-center login-form">
+        <form>
+          <h1>Login</h1>
+          <div class="form-group">
+            <input type="text" ng-model="email" class="form-control login-input" placeholder="Email address">
+          </div>
 
-      <div class="form-group">
-        <input type="text" ng-model="email" class="form-control" placeholder="Email address">
+          <div class="form-group ">
+            <input type="password" ng-model="password" class="form-control login-input" placeholder="Password">
+          </div>
+
+          <button type="submit" ng-click="login(email, password)" class="btn btn-primary btn-lg login-btn">
+            Login
+          </button>
+        </form>
       </div>
-
-      <div class="form-group">
-        <input type="password" ng-model="password" class="form-control" placeholder="Password">
-      </div>
-
-      <button type="submit" ng-click="login(email, password)" class="btn btn-default">
-        Login
-      </button>
-
-    </form>
+      <div class="col-md-3 col-sm-1" />
+    </div>
   </div>
 
   <div ng-if="user.loggedIn">
-    <button type="submit" ng-click="logout()" class="btn btn-default">
-      Logout
-    </button>
+    <div class="row">
+      <div class="col-md-3 col-sm-1" />
+      <div class="col-md-6 col-sm-10 text-center login-form">
+        <h1>Logout</h1>
+        <button type="submit" ng-click="logout()" class="btn btn-primary btn-lg login-btn">
+          Logout
+        </button>
+      </div>
+      <div class="col-md-3 col-sm-1" />
   </div>
 
 </div>
