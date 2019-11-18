@@ -13,6 +13,7 @@ var routes = [
     require("./group/create"),
     require("./group/edit"),
     require("./group/view"),
+    require("./group/delete"),
     require("./page/view"),
     require("./manage"),
     require("./page/manage"),

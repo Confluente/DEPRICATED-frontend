@@ -31,6 +31,9 @@ app.factory("groups", ["$http", "$timeout", function ($http, $timeout) {
                 console.log(result.data);
                 return result.data;
             });
+        },
+        delete: function (group) {
+            return $http.delete("/api/group/" + group.id);
         }
     };
 }]);
