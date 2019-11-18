@@ -1,7 +1,7 @@
 var app = angular.module("confluente");
 
 app.controller("userViewController", ["$scope", "$routeParams", "users", function ($scope, $routeParams, user) {
-    var userId = $routeParams.userId; // TODO: WHY is activityId unresolved
+    var userId = $routeParams.userId;
     console.log(userId);
     user.get(userId).then(function (user) {
         $scope.user = user;
