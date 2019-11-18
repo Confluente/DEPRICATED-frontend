@@ -9,7 +9,6 @@ app.factory("groups", ["$http", "$timeout", function ($http, $timeout) {
                 return result.data;
             });
         },
-
         //Untested:
         get: function (id) {
             return $http.get("/api/group/" + id).then(function (result) {
@@ -18,7 +17,6 @@ app.factory("groups", ["$http", "$timeout", function ($http, $timeout) {
             });
         },
         create: function (group) {
-            //console.log(activity);
             return $http.post("/api/group", group).then(function (result) {
                 console.log(result.data);
                 return result.data;
@@ -27,11 +25,12 @@ app.factory("groups", ["$http", "$timeout", function ($http, $timeout) {
                 return err;
             });
         },
-        // edit: function (group) {
-        //   return $http.put("/api/group/" + group.id, group).then(function (result) {
-        //     console.log(result.data);
-        //     return result.data;
-        //   });
-        // }
+        edit: function (group) {
+            console.log(group);
+            return $http.put("/api/group/" + group.id, group).then(function (result) {
+                console.log(result.data);
+                return result.data;
+            });
+        }
     };
 }]);

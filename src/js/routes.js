@@ -11,7 +11,7 @@ var routes = [
     require("./activities/create"),
     require("./activities/edit"),
     require("./group/create"),
-    // require("./group/edit"),
+    require("./group/edit"),
     require("./group/view"),
     require("./page/view"),
     require("./manage"),
