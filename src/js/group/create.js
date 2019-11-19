@@ -8,7 +8,7 @@ app.controller("groupCreateController", ["$scope", "groups", function ($scope, g
             fullName: $scope.name,
             description: $scope.description,
             email: $scope.email,
-            canOrganize: true
+            canOrganize: $scope.canOrganize
         }).then(function (result) {
             $scope.loading = false;
             window.location.href = "/group/" + result.id;
