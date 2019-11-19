@@ -4,4 +4,6 @@
         {{group.displayName}}</h1>
     <p>{{group.description}}</p>
     <p>{{group.email}}</p>
+    <p>Members</p>
+    <p ng-repeat="member in group.members">{{member.displayName}}</p>
 </div>

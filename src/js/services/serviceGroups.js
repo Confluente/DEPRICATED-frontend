@@ -5,14 +5,12 @@ app.factory("groups", ["$http", "$timeout", function ($http, $timeout) {
     return {
         getAll: function () {
             return $http.get("/api/group").then(function (result) {
-                console.log(result.data);
                 return result.data;
             });
         },
         //Untested:
         get: function (id) {
             return $http.get("/api/group/" + id).then(function (result) {
-                console.log(result.data);
                 return result.data;
             });
         },
