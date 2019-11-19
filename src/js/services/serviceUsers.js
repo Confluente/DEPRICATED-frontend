@@ -5,7 +5,6 @@ app.factory("users", ["$http", "$timeout", function ($http, $timeout) {
     return {
         getAll: function () {
             return $http.get("/api/user").then(function (result) {
-                console.log(result.data);
                 return result.data;
             });
         },
@@ -27,7 +26,6 @@ app.factory("users", ["$http", "$timeout", function ($http, $timeout) {
         },
         edit: function (user) {
             return $http.put("/api/user/" + user.id, user).then(function (result) {
-                console.log(result.data);
                 return result.data;
             });
         },
