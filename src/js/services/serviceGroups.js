@@ -16,7 +16,7 @@ app.factory("groups", ["$http", "$timeout", function ($http, $timeout) {
         },
         create: function (group) {
             return $http.post("/api/group", group).then(function (result) {
-                console.log(result.data);
+                // console.log(result.data);
                 return result.data;
             }, function (err) {
                 console.error(err);
@@ -24,9 +24,9 @@ app.factory("groups", ["$http", "$timeout", function ($http, $timeout) {
             });
         },
         edit: function (group) {
-            console.log(group);
+            // console.log(group);
             return $http.put("/api/group/" + group.id, group).then(function (result) {
-                console.log(result.data);
+                // console.log(result.data);
                 return result.data;
             });
         },

@@ -10,7 +10,7 @@ app.controller("pageEditController", ["$scope", "$routeParams", "pages", functio
 
     $scope.submit = function () {
         $scope.loading = true;
-        console.log($scope);
+        // console.log($scope);
         pages.edit($scope.page).then(function (result) {
             $scope.loading = false;
             window.location.href = "/page/" + $scope.page.url;
