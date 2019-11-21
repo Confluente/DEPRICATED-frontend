@@ -24,8 +24,8 @@ app.factory("users", ["$http", "$timeout", function ($http, $timeout) {
                 return err;
             });
         },
-        edit: function (user) {
-            return $http.put("/api/user/" + user.id, user).then(function (result) {
+        edit: function (user, groupSelection) {
+            return $http.put("/api/user/" + user.id, [user, groupSelection]).then(function (result) {
                 return result.data;
             });
         },

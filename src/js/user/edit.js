@@ -34,7 +34,7 @@ app.controller("userEditController", ["$scope", "$q", "$routeParams", "users", "
         $scope.loading = false;
         $scope.submit = function () {
             $scope.loading = true;
-            user.edit($scope.user).then(function (result) {
+            user.edit($scope.user, $scope.groupSelection).then(function (result) {
                 $scope.loading = false;
                 window.location.href = "/manage";
             });
