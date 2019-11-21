@@ -11,8 +11,8 @@ app.controller("userEditController", ["$scope", "$q", "$routeParams", "users", "
             $scope.member = param[1];
         })
     ]).then(function () {
-        let member_groups = [];
-        let i;
+        var member_groups = [];
+        var i;
         for (i = 0; i < $scope.member.length; i++) {
             member_groups.push($scope.member[i].id);
         }
@@ -20,9 +20,9 @@ app.controller("userEditController", ["$scope", "$q", "$routeParams", "users", "
         $scope.groupSelection = [];
         for (i = 0; i < $scope.groups.length; i++) {
             if (member_groups.includes($scope.groups[i].id)) {
-                $scope.groupSelection.push({fullName: $scope.groups[i].fullName, selected: true})
+                $scope.groupSelection.push({fullName: $scope.groups[i].fullName, id: $scope.groups[i].id, selected: true})
             } else {
-                $scope.groupSelection.push({fullName: $scope.groups[i].fullName, selected: false})
+                $scope.groupSelection.push({fullName: $scope.groups[i].fullName, id: $scope.groups[i].id, selected: false})
             }
         }
 
