@@ -24,6 +24,15 @@
             </div>
         </div>
 
+        <div class="form-group">
+            <label>Groups</label>
+            <div class="checkbox">
+                <div ng-repeat="group in groupSelection" style="height: 50px;">
+                    <label><input type="checkbox" name="selectedGroups[]" value="{{group.fullName}}" ng-model="group.selected" class="form-control"/>{{group.fullName}}</label>
+                </div>
+            </div>
+        </div>
+
         <button type="submit" class="btn btn-default" ng-click="submit()" ng-disabled="loading">Save</button>
 
     </form>

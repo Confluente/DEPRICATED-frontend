@@ -2,9 +2,10 @@ var app = angular.module("confluente");
 
 app.controller("userViewController", ["$scope", "$routeParams", "users", function ($scope, $routeParams, user) {
     var userId = $routeParams.userId;
-    console.log(userId);
-    user.get(userId).then(function (user) {
-        $scope.user = user;
+    // console.log(userId);
+    user.get(userId).then(function (param) {
+        $scope.user = param[0];
+        $scope.groups = param[1];
     });
 }]);
 
