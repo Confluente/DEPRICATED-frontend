@@ -5,9 +5,10 @@ app.controller("userViewController", ["$rootScope", "$scope", "$routeParams", "u
     if (userId === "profile") {
         var userId = $rootScope.user.id;
     }
-    console.log(userId);
-    user.get(userId).then(function (user) {
-        $scope.user = user;
+    // console.log(userId);
+    user.get(userId).then(function (param) {
+        $scope.user = param[0];
+        $scope.groups = param[1];
     });
 }]);
 

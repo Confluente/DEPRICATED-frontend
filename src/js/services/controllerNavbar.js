@@ -19,5 +19,5 @@ app.controller("controllerNavbar", ["serviceAuth", "$rootScope", "$scope", "$loc
     };
 
     $scope.logout = auth.logout;
-    $scope.report = console.log;
+    // $scope.report = console.log;
 }]);

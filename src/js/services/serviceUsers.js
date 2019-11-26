@@ -17,17 +17,17 @@ app.factory("users", ["$http", "$timeout", function ($http, $timeout) {
             });
         },
         create: function (user) {
-            console.log(user);
+            // console.log(user);
             return $http.post("/api/user", user).then(function (result) {
-                console.log(result.data);
+                // console.log(result.data);
                 return result.data;
             }, function (err) {
                 console.error(err);
                 return err;
             });
         },
-        edit: function (user) {
-            return $http.put("/api/user/" + user.id, user).then(function (result) {
+        edit: function (user, groupSelection) {
+            return $http.put("/api/user/" + user.id, [user, groupSelection]).then(function (result) {
                 return result.data;
             });
         },

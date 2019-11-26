@@ -20,7 +20,7 @@ app.factory("pages", ["$http", "$timeout", function ($http, $timeout) {
         create: function (page) {
             //console.log(page);
             return $http.put("/api/page/" + page.url, page).then(function (result) {
-                console.log(result.data);
+                // console.log(result.data);
                 return result.data;
             }, function (err) {
                 console.error(err);
@@ -28,7 +28,7 @@ app.factory("pages", ["$http", "$timeout", function ($http, $timeout) {
         },
         edit: function (page) {
             return $http.put("/api/page/" + page.url, page).then(function (result) {
-                console.log(result.data);
+                // console.log(result.data);
                 return result.data;
             });
         }

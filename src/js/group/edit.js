@@ -7,7 +7,7 @@ app.controller("groupEditController", ["$scope", "$routeParams", "groups", funct
         $scope.group = group;
     });
 
-    console.log($scope);
+    // console.log($scope);
     $scope.loading = false;
     $scope.submit = function () {
         $scope.loading = true;

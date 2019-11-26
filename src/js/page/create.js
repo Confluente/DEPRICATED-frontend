@@ -4,7 +4,7 @@ app.controller("pageCreateController", ["$scope", "pages", function ($scope, pag
     $scope.loading = false;
     $scope.submit = function () {
         $scope.loading = true;
-        console.log($scope);
+        // console.log($scope);
         pages.create($scope.page).then(function (result) {
             $scope.loading = false;
             window.location.href = "/page/" + $scope.page.url;
