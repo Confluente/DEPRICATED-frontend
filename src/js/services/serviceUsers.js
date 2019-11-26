@@ -31,6 +31,13 @@ app.factory("users", ["$http", "$timeout", function ($http, $timeout) {
                 return result.data;
             });
         },
+        changePassword: function (user) {
+            return $http.put("/api/user/changePassword/" + user.id, user).then(function (result) {
+                return result.data;
+            }, function (err) {
+                console.error(err);
+            });
+        },
         delete: function (user) {
             return $http.delete("/api/user/" + user.id);
         }

@@ -7,4 +7,5 @@
     <p ng-if="user.isAdmin">Admin</p><p ng-if="!user.isAdmin">User</p>
     <h4>Groups</h4>
     <p ng-repeat="group in groups">{{group.fullName}}</p>
+    <p><a href="/user/changePassword/{{user.id}}">Change password</a></p>
 </div>

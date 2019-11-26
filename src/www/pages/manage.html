@@ -32,7 +32,7 @@
                         <td>{{activity.date | date:'yyyy-MM-dd'}}</td>
                         <td>{{activity.Organizer.displayName}}</td>
                         <td>{{activity.approved}}</td>
-                        <td><a ng-href="/manage/activities/{{activity.id}}">Edit</a></td>
+                        <td><a ng-href="/manage/activities/{{activity.id}}">Edit</a> <a ng-href="/manage/activities/delete/{{activity.id}}">Delete</a></td>
                     </tr>
                     </tbody>
 

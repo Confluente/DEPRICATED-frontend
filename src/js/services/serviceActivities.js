@@ -35,7 +35,7 @@ app.factory("activities", ["$http", "$timeout", function ($http, $timeout) {
             });
         },
         delete: function (id) {
-            return $http.delete("/api/activities", id);
+            return $http.delete("/api/activities/" + id, id);
         }
     };
 }]);
