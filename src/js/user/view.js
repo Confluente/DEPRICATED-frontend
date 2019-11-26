@@ -1,7 +1,10 @@
 var app = angular.module("confluente");
 
-app.controller("userViewController", ["$scope", "$routeParams", "users", function ($scope, $routeParams, user) {
+app.controller("userViewController", ["$rootScope", "$scope", "$routeParams", "users", function ($rootScope, $scope, $routeParams, user) {
     var userId = $routeParams.userId;
+    if (userId === "profile") {
+        var userId = $rootScope.user.id;
+    }
     console.log(userId);
     user.get(userId).then(function (user) {
         $scope.user = user;
