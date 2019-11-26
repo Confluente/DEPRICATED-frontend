@@ -1,8 +1,7 @@
 var app = angular.module("confluente");
 
 app.controller("activityViewController", ["$scope", "$routeParams", "activities", function ($scope, $routeParams, activities) {
-    var activityId = $routeParams.activityId; // TODO: WHY is activityId unresolved
-    // console.log(activityId);
+    var activityId = $routeParams.activityId;
     activities.get(activityId).then(function (activity) {
         $scope.activity = activity;
     });

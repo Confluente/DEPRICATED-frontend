@@ -12,6 +12,8 @@ app.factory("users", ["$http", "$timeout", function ($http, $timeout) {
         get: function (id) {
             return $http.get("/api/user/" + id).then(function (result) {
                 return result.data;
+            }, function (err) {
+                // window.location.href = "/www/" + err.status  + ".html";
             });
         },
         create: function (user) {

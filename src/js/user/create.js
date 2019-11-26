@@ -11,6 +11,7 @@ app.controller("userCreateController", ["$scope", "users", function ($scope, use
             isAdmin: false
         }).then(function (result) {
                 $scope.loading = false;
+                console.log(result);
                 window.location.href = "/manage";
             });
     };
