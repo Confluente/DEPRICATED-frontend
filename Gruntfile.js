@@ -72,10 +72,10 @@ module.exports = function (grunt) {
         jshint: {
             files: ['src/js/*.js', '!src/js/bundle.js', 'src/js/app/**.js'],
         },
-        jscs: {
-            src: ['<%= jshint.files %>'],
+        eslint: {
+            all: ['<%= jshint.files %>'],
             options: {
-                config: '.jscsrc'
+                config: '.eslintrc.json'
             }
         },
         watch: {
@@ -96,11 +96,11 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-contrib-clean');
     grunt.loadNpmTasks('grunt-contrib-jshint');
     grunt.loadNpmTasks('grunt-contrib-watch');
-    grunt.loadNpmTasks('grunt-jscs');
+    grunt.loadNpmTasks('grunt-eslint');
     grunt.loadNpmTasks('grunt-webpack');
 
     grunt.registerTask('default', ['clean:dev', 'webpack:dev']);
-    grunt.registerTask('check', ['jshint', 'jscs']);
+    grunt.registerTask('check', ['jshint', 'eslint']);
     grunt.registerTask('serve', ['webpack-dev-server:start']);
     grunt.registerTask('dev', ['default', 'watch']);
     grunt.registerTask('build', ['check', 'clean:build', 'copy', 'webpack:build']);
