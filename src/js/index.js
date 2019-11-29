@@ -12,8 +12,9 @@ require("./services/servicePages");
 require("./services/serviceUsers");
 require("./services/serviceGroups");
 require("./services/controllerNavbar");
+require("./responseObserver");
 
-app.config(["$routeProvider", "$locationProvider", function ($routeProvider, $locationProvider) {
+app.config(["$routeProvider", "$locationProvider", "$httpProvider", function ($routeProvider, $locationProvider, $httpProvider) {
     for (var n = 0; n < routes.length; n++) {
         var route = routes[n];
         $routeProvider.when(route.url, {
@@ -28,6 +29,8 @@ app.config(["$routeProvider", "$locationProvider", function ($routeProvider, $lo
     $routeProvider.otherwise({
         templateUrl: "/www/404.html"
     });
+
+    $httpProvider.interceptors.push('responseObserver');
 
     $locationProvider.html5Mode(true);
 }]);

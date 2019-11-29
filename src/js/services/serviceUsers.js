@@ -19,7 +19,6 @@ app.factory("users", ["$http", "$timeout", function ($http, $timeout) {
         create: function (user) {
             // console.log(user);
             return $http.post("/api/user", user).then(function (result) {
-                // console.log(result.data);
                 return result.data;
             }, function (err) {
                 console.error(err);
