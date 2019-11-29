@@ -6,6 +6,6 @@
     <h4>Role</h4>
     <p ng-if="user.isAdmin">Admin</p><p ng-if="!user.isAdmin">User</p>
     <h4>Groups</h4>
-    <p ng-repeat="group in groups">{{group.fullName}}</p>
+    <p ng-repeat="group in groups"><a href="/group/{{group.id}}">{{group.fullName}}</a></p>
     <p><a href="/user/changePassword/{{user.id}}">Change password</a></p>
 </div>
