@@ -85,13 +85,14 @@ body {
     /* Hamburger menu fix */
     margin-top: 1rem;
 
+    line-height: 2rem;
 }
 
 .breadcrumb {
 
     /* Breadcrumb margin fix */
     margin-top: -1rem;
-    
+
 }
 
 h1, .h1 {
@@ -110,6 +111,26 @@ h4, .h4, h5, .h5, h6, .h6 {
 }
 
 /* -- (3) General classes -- */
+
+/* -- Hover for color */
+.bw {
+    filter: grayscale(100%);
+    transition: filter 0.2s
+}
+.bw:hover, .bw:active, .bw:focus {
+    filter: grayscale(0%);
+}
+
+/* -- Block */
+.block {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    display: block
+}
+.section {
+    margin-top: 1rem;
+    margin-bottom: 1rem
+}
 
 /* -- Center */
 .center {
@@ -197,6 +218,15 @@ h4, .h4, h5, .h5, h6, .h6 {
     border-radius: initial;
 }
 
+.navbar {
+    font-size: 93%;
+}
+.navbar-brand {
+    line-height: 1.1rem;
+    font-size: 1rem;
+    letter-spacing: 0.2px;
+}
+
 /* -- Frontpage */
 
 /* - Partner bar */
@@ -211,14 +241,19 @@ h4, .h4, h5, .h5, h6, .h6 {
     margin-bottom: 0;
 }
 
-#bar-partners {
-    margin-bottom: 20px;
-}
+
 
 /* - Header container */
 .container-hero {
-    height: 330px;
-    margin-top: -1rem;
+    height: 66vh;
+    margin-top: -6rem;
+}
+.container-hero__dummy {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: inherit;
 }
 
 #hero-accent {
@@ -227,7 +262,8 @@ h4, .h4, h5, .h5, h6, .h6 {
     left: 0;
     right: 0;
     z-index: -1;
-    background: linear-gradient(to bottom, #54c2d4, rgba(152, 218, 229, .9));
+    background: radial-gradient(farthest-corner at bottom, rgba(78, 181, 211, .78) 70%, rgba(78, 181, 211, .94));
+    background-attachment: fixed;
 }
 
 #hero-image {
@@ -235,15 +271,28 @@ h4, .h4, h5, .h5, h6, .h6 {
     height: inherit;
     width: 100%;
     background-size: cover;
-    background-position: center center;
+    background-position: center bottom;
     z-index: -10;
     position: absolute;
+    background-attachment: fixed;
 }
 
 #hero-header {
     height: 100%;
-    padding-bottom: 1rem;
     flex-direction: column-reverse;
+}
+#hero-header > * {
+    height: 36px;
+}
+
+#main-logo {
+    width: 160px;
+    height: 160px;
+}
+#frontpage-slogan {
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    font-size: 68%;
 }
 
 /* - Stats */
@@ -252,10 +301,6 @@ h4, .h4, h5, .h5, h6, .h6 {
     font-weight: 600;
     margin: 0;
     line-height: 1.2;
-}
-
-#info_graphic .h2 {
-    margin: 0
 }
 
 /* -- Footer */
