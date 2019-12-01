@@ -38,7 +38,7 @@
 *::selection {
 
     /* Set the text selection background */
-    background-color: #f8bba9;
+    background-color: #b9dbe6;
 
 }
 
@@ -65,6 +65,14 @@ body {
     /* Force the footer to the bottom of the screen */
     flex-grow: 1;
 
+}
+
+#header {
+
+    /* Stick header to the top of the page */
+    position: sticky;
+    top: 0;
+    z-index: 1000
 }
 
 .navbar, .dropdown-menu {
