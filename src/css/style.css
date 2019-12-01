@@ -252,16 +252,16 @@ h4, .h4, h5, .h5, h6, .h6 {
 
 
 /* - Header container */
-.container-hero {
+#hero {
     display: block;
     height: 66vh !important;
     margin-top: -6rem;
     transition: margin-top .2s cubic-bezier(.17,.84,.44,1)
 }
-#container-hero.collapsing, #container-hero.collapse.in {
+#hero.collapsing, #hero.collapse.in {
     margin-top: -1rem
 }
-.container-hero__block, .carousel-inner, .carousel-inner > * {
+.carousel-inner, .carousel-inner > * {
     height: inherit;
 }
 

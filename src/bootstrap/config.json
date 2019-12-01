@@ -410,6 +410,7 @@
     "carousel.js",
     "dropdown.js",
     "tab.js",
+    "collapse.js",
     "transition.js"
   ]
 }
