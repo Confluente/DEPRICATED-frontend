@@ -1,52 +1,108 @@
-<div class="container-hero">
-  <div id="hero-accent"></div>
-  <div id="hero-image" class="img-responsive"></div>
-  <div id="hero-header" class="container flex">
-    <h1>Connecting Honors students.</h1>
-  </div>
-</div>
+<div id="hero" class="carousel slide" data-ride="carousel">
 
-<div id="bar-partners" class='bg-info'>
-  <div class='container'>
-    <div class="row text-right">
-      <img class="img-logo" src='/img/logo_cqm.png' alt='Logo CQM' />
-      <img class="img-logo" id="tno-logo" src='/img/logo_tno.png' alt='Logo TNO' />
-      <img class="img-logo" alt="Logo DNB" src="/img/logo_dnb.jpg"/>
+    <!-- Indicators -->
+    <ol class="carousel-indicators">
+        <li data-target="#hero" data-slide-to="0" class="active"></li>
+        <li data-target="#hero" data-slide-to="1"></li>
+    </ol>
+
+    <!-- Wrapper for slides -->
+    <div class="carousel-inner" role="listbox">
+
+        <div class="item active">
+            <div class="hero-accent"></div>
+            <div id="hero-image-1" class="img-responsive hero-image"></div>
+            <div class="container">
+                <div class="hero-caption">
+                    <p class="h1">Now with a new website!</p>
+                    <a class="btn btn-primary" href="/education/honors_bachelor">View the Honors tracks</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="item">
+            <div class="hero-accent"></div>
+            <div id="hero-image-2" class="img-responsive hero-image"></div>
+            <div class="container">
+                <div class="hero-caption">
+                    <p class="h1">Home of the Honors Room.</p>
+                    <a class="btn btn-primary" href="/about/hr">Learn more</a>
+                </div>
+            </div>
+        </div>
+
     </div>
-  </div>
+
+    <a class="left carousel-control" href="#hero" role="button" data-slide="prev">
+        <span class="sr-only">Previous</span>
+    </a>
+    <a class="right carousel-control" href="#hero" role="button" data-slide="next">
+        <span class="sr-only">Previous</span>
+    </a>
+
 </div>
 
-<div class="container">
+<section class="section">
 
-  <div class='text-right'>
-    <a href="mailto:info@hsaconfluente.nl"> > Become a Confluente partner!</a>
-  </div>
+    <div class="container">
+        <div class="flex flex-between">
+            <p id="frontpage-slogan" class="block hsa hidden-xs">Connecting Honors students</p>
+
+            <ul class="row list-inline">
+                <li class="bw"><a href="/partners/sponsors"><img class="img-logo" alt="CQM" src="/img/logo_cqm.png"></a></li>
+                <li class="bw"><a href="/partners/sponsors/tno"><img class="img-logo" alt="TNO" id="tno-logo" src="/img/logo_tno.png"></a></li>
+                <li class="bw"><a href="/partners/sponsors/dnb"><img class="img-logo" alt="De Nederlandsche Bank" src="/img/logo_dnb.jpg"></a></li>
+            </ul>
+        </div>
+
+        <p class='pull-right small hidden-xs hidden-sm'>
+          <a href="mailto:info@hsaconfluente.nl"> > Become a Confluente partner!</a>
+        </p>
 
 
-  <div id="info_graphic" class='row'>
 
-    <div class='col-md-6 text-right'>
-      <h1 class='h2'>Welcome to H.S.A. Confluente</h1>
-      <p>The study association for all Honors bachelor <br>and master students of TU Eindhoven</p>
+        <div class="block row">
+            <div class='col-xs-12 flex flex-between'>
+
+                <div class='row col-xs-12 col-sm-8 col-md-4'>
+                    <h1 class='h2'>Welcome to H.S.A. Confluente</h1>
+                    <p>The study association for all Honors bachelor <br>and master students of TU Eindhoven</p>
+                </div>
+
+                <div id="main-logo" class="logo hidden-xs"></div>
+
+                <div class='row col-md-4 hidden-sm'>
+                </div>
+                <!--
+                <div class='col-md-4 flex flex-around flex-center text-center'>
+
+                <div>
+                    <span class='text-primary info_graphic'>...</span>
+                    <p>Honors students</p>
+                </div>
+                <div>
+                    <span class='text-primary info_graphic'>...</span>
+                    <p>Projects</p>
+                </div>
+                <div>
+                    <span class='text-primary info_graphic'>8</span>
+                    <p>Disciplines</p>
+                </div>
+                -->
+            </div>
+        </div>
+
     </div>
 
+</section>
+<section class="section container">
+    <div class="block row small">
 
-    <div class='col-md-4 flex flex-around flex-center text-center'>
-
-      <div>
-        <span class='text-primary info_graphic'>150</span>
-        <p>Honors students</p>
-      </div>
-
-      <div>
-        <span class='text-primary info_graphic'>50</span>
-        <p>Projects</p>
-      </div>
-
-      <div>
-        <span class='text-primary info_graphic'>15</span>
-        <p>Disciplines</p>
-      </div>
-  </div>
-
-</div>
+        <div class="col-xs-12 col-md-6 center text-center">
+            <p class="h3">Connect</p>
+            <p><i>H.S.A. Confluente aims to increase both the professional and social network of honors students.</i></p>
+            <p> Members are welcome to attend our various activities such as lunch lectures, workshops, drinks, study trips and more. In addition, the association builds upon a strong <a href="/about/alumni">Alumni network</a> and has close ties with business and entrepreneurial things.
+            </p>
+        </div>
+    </div>
+</section>
