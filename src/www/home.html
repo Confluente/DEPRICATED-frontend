@@ -1,8 +1,47 @@
-<div id="container-hero" class="container-hero">
-  <div class="container-hero__block">
-      <div id="hero-accent"></div>
-      <div id="hero-image" class="img-responsive"></div>
-  </div>
+<div id="hero" class="container-hero carousel slide" data-ride="carousel">
+
+    <!-- Indicators -->
+    <div class="container">
+        <ol class="carousel-indicators">
+            <li data-target="#hero" data-slide-to="0" class="active"></li>
+            <li data-target="#hero" data-slide-to="1"></li>
+        </ol>
+    </div>
+
+    <!-- Wrapper for slides -->
+    <div class="carousel-inner" role="listbox">
+
+        <div class="item active">
+            <div class="hero-accent"></div>
+            <div id="hero-image-1" class="img-responsive hero-image"></div>
+            <div class="container">
+              <div class="hero-caption">
+                  <p class="h1">Now with a new website!</p>
+                  <a class="btn btn-primary" href="/education/honors_bachelor">View the Honors tracks</a>
+              </div>
+            </div>
+        </div>
+
+        <div class="item">
+            <div class="hero-accent"></div>
+            <div id="hero-image-2" class="img-responsive hero-image"></div>
+            <div class="container">
+                <div class="hero-caption">
+                    <p class="h1">Home of the Honors Room.</p>
+                    <a class="btn btn-primary" href="/about/hr">Learn more</a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <a class="left carousel-control" href="#hero" role="button" data-slide="prev">
+        <span class="sr-only">Previous</span>
+    </a>
+    <a class="right carousel-control" href="#hero" role="button" data-slide="next">
+        <span class="sr-only">Previous</span>
+    </a>
+
 </div>
 
 <section class="section">
@@ -69,38 +108,3 @@
         </div>
     </div>
 </section>
-
-
-
-<!--
-<div class="container">
-
-
-
-  <div id="info_graphic" class='row'>
-
-    <div class='col-md-6 text-right'>
-      <h1 class='h2'>Welcome to H.S.A. Confluente</h1>
-      <p>The study association for all Honors bachelor <br>and master students of TU Eindhoven</p>
-    </div>
-
-
-    <div class='col-md-4 flex flex-around flex-center text-center'>
-
-      <div>
-        <span class='text-primary info_graphic'>150</span>
-        <p>Honors students</p>
-      </div>
-
-      <div>
-        <span class='text-primary info_graphic'>50</span>
-        <p>Projects</p>
-      </div>
-
-      <div>
-        <span class='text-primary info_graphic'>15</span>
-        <p>Disciplines</p>
-      </div>
-  </div>
-
-</div>

@@ -261,11 +261,11 @@ h4, .h4, h5, .h5, h6, .h6 {
 #container-hero.collapsing, #container-hero.collapse.in {
     margin-top: -1rem
 }
-.container-hero__block {
+.container-hero__block, .carousel-inner, .carousel-inner > * {
     height: inherit;
 }
 
-#hero-accent {
+.hero-accent {
     height: inherit;
     position: absolute;
     left: 0;
@@ -275,16 +275,22 @@ h4, .h4, h5, .h5, h6, .h6 {
     background-attachment: fixed;
 }
 
-#hero-image {
-    background-image:  URL('/img/frontpage-hero.jpg');
+.hero-image {
     height: inherit;
     width: 100%;
     background-size: cover;
-    background-position: center bottom;
+    background-position: center center;
     z-index: -10;
     position: absolute;
     background-attachment: fixed;
 }
+#hero-image-1 {
+  background-image:  URL('/img/frontpage-hero.jpg');
+}
+#hero-image-2 {
+  background-image:  URL('/img/frontpage-hero2.jpg');
+}
+
 
 #hero-header {
     height: 100%;
@@ -292,6 +298,45 @@ h4, .h4, h5, .h5, h6, .h6 {
 }
 #hero-header > * {
     height: 36px;
+}
+
+.hero-caption {
+    height: inherit;
+    color: #fff;
+    padding-bottom: 4rem;
+    position: absolute;
+    bottom: 0;
+}
+
+.hero-caption .h1 {
+    font-weight: 500;
+}
+
+.carousel-indicators {
+    bottom: 1.5rem;
+    left: 0;
+    right: 0;
+    text-align: center;
+    margin: 0;
+    width: initial
+}
+.carousel-indicators li {
+    display: inline-block;
+    border-radius: 0;
+    cursor: pointer;
+    border: 1px solid #fff;
+    background-color: transparent;
+}
+.carousel-indicators li, .carousel-indicators .active {
+    width: 28px;
+    height: 7px;
+    margin: 1px
+}
+.carousel-indicators .active {
+    background: #fff;
+}
+.carousel-control.right, .carousel-control.left {
+    background: none
 }
 
 #main-logo {

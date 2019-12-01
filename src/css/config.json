@@ -402,7 +402,8 @@
     "panels.less",
     "responsive-embed.less",
     "component-animations.less",
-    "dropdowns.less"
+    "dropdowns.less",
+    "carousel.less"
   ],
   "js": [
     "alert.js",
