@@ -4,12 +4,12 @@ app.controller("userChangePasswordController", ["$rootScope", "$scope", "$routeP
     var userId = $routeParams.userId;
     user.get(userId).then(function (user) {
         $scope.user = user[0];
-        console.log($scope);
+        // console.log($scope);
     });
 
     $scope.submit = function () {
         $scope.loading = true;
-        console.log($scope);
+        // console.log($scope);
         user.changePassword($scope.user).then(function (result) {
             $scope.loading = false;
             // window.location.href = "/manage";
