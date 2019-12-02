@@ -21,7 +21,8 @@
             <div class="activity-details col-xs-4">
                 <p ng-if="activity.date" style="margin-bottom: 0px;">When: {{activity.date | date:'d MMMM yyyy'}}</p>
                 <p ng-if="activity.location" style="margin-bottom: 0px">Where: {{activity.location}}</p>
-                <p ng-if="activity.time">Time: {{activity.time}}</p>
+                <p ng-if="activity.startTime && activity.endTime">Time: {{activity.startTime}} - {{activity.endTime}}</p>
+                <p ng-if="activity.startTime && !activity.endTime">Time: {{activity.startTime}}</p>
             </div>
         </div>
         <div class="no-activities" ng-if="!activities.length && !loading">

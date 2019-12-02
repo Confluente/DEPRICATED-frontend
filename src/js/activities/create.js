@@ -8,7 +8,8 @@ app.controller("activityCreateController", ["$scope", "activities", function ($s
             description: $scope.description,
             organizer: $scope.organizer,
             date: $scope.date,
-            time: $scope.time,
+            startTime: $scope.startTime,
+            endTime: $scope.endTime,
             location: $scope.location,
             approved: true
         }).then(function (result) {
