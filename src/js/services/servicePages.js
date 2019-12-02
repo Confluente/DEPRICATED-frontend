@@ -23,7 +23,7 @@ app.factory("pages", ["$http", "$timeout", function ($http, $timeout) {
                 // console.log(result.data);
                 return result.data;
             }, function (err) {
-                console.error(err);
+                // console.error(err);
             });
         },
         edit: function (page) {
