@@ -21,7 +21,7 @@ app.factory("users", ["$http", "$timeout", function ($http, $timeout) {
             return $http.post("/api/user", user).then(function (result) {
                 return result.data;
             }, function (err) {
-                console.error(err);
+                // console.error(err);
                 return err;
             });
         },
@@ -34,7 +34,7 @@ app.factory("users", ["$http", "$timeout", function ($http, $timeout) {
             return $http.put("/api/user/changePassword/" + user.id, user).then(function (result) {
                 return result.data;
             }, function (err) {
-                console.error(err);
+                // console.error(err);
             });
         },
         delete: function (user) {

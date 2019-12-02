@@ -19,7 +19,7 @@ app.factory("groups", ["$http", "$timeout", function ($http, $timeout) {
                 // console.log(result.data);
                 return result.data;
             }, function (err) {
-                console.error(err);
+                // console.error(err);
                 return err;
             });
         },
