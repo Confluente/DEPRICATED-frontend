@@ -187,6 +187,11 @@ h4, .h4, h5, .h5, h6, .h6 {
 
 /* -- (4) Specific fixes -- */
 
+.form-control {
+    /* Fix date input */
+    line-height: 1.6rem !important;
+}
+
 /* -- Navigation bar */
 .navbar-nav .fa {
     margin-right: 8px
