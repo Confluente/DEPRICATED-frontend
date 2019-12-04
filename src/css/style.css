@@ -111,9 +111,19 @@ b, strong, th {
   font-weight: 500
 }
 
+/* Header margin */
+h1, .h1, h2, .h2, h3, .h3 {
+    margin-top: 1.5rem;
+    margin-bottom: .25rem;
+}
+
 h4, .h4, h5, .h5, h6, .h6 {
     margin-top: 0.7rem;
     margin-bottom: 0.1rem;
+}
+
+label {
+  font-weight: 500
 }
 
 /* -- (3) General classes -- */
@@ -184,13 +194,6 @@ h4, .h4, h5, .h5, h6, .h6 {
 
 
 /* -- (4) Specific fixes -- */
-
-/* Header margin */
-
-h1, .h1, h2, .h2, h3, .h3 {
-    margin-top: 1.5rem;
-    margin-bottom: .25rem;
-}
 
 .form-control {
     /* Fix date input */
