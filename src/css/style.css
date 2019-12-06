@@ -118,6 +118,10 @@ h4, .h4, h5, .h5, h6, .h6 {
     margin-bottom: 0.1rem;
 }
 
+.row:before, .row:after {
+    display: inline-block;
+}
+
 /* -- (3) General classes -- */
 
 /* -- Hover for color */
