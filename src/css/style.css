@@ -491,6 +491,12 @@ h4, .h4, h5, .h5, h6, .h6 {
 .board-column {
     display: flex;
     width: 100%;
+    height: auto;
+}
+
+.board-column img {
+    height: 100%;
+    width: 100%;
 }
 
 @media (min-width: 992px) {
@@ -500,6 +506,7 @@ h4, .h4, h5, .h5, h6, .h6 {
 
     .board-column {
         width: 50%;
+        height: auto;
     }
 }
 
