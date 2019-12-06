@@ -126,6 +126,10 @@ label {
   font-weight: 500
 }
 
+.row:before, .row:after {
+    display: inline-block;
+}
+
 /* -- (3) General classes -- */
 
 /* -- Hover for color */
@@ -421,6 +425,17 @@ label {
     }
 }
 
+@media (max-width: 500px) {
+    #carousel {
+        height: 200px;
+    }
+
+    #carousel div img {
+        width: 300px;
+    }
+}
+
+
 #carousel div.hideLeft {
     left: 0;
     opacity: 0;
@@ -499,6 +514,12 @@ label {
 .board-column {
     display: flex;
     width: 100%;
+    height: auto;
+}
+
+.board-column img {
+    height: 100%;
+    width: 100%;
 }
 
 @media (min-width: 992px) {
@@ -508,6 +529,7 @@ label {
 
     .board-column {
         width: 50%;
+        height: auto;
     }
 }
 
@@ -698,6 +720,17 @@ label {
     }
 }
 
+@media(max-width: 560px) {
+    .HA-col {
+        height: 700px;
+    }
+}
+
+@media(max-width: 400px) {
+    .HA-col {
+        height: 800px;
+    }
+}
 
 /* --tracks */
 .track-title {

@@ -30,11 +30,11 @@
                     <tbody>
                         <tr ng-repeat="activity in activities">
                             <td>{{activity.id}}</td>
-                            <th><a ng-href="/activities/{{activity.id}}">{{activity.name}}</a></th>
+                            <td><a ng-href="/activities/{{activity.id}}">{{activity.name}}</a></td>
                             <td>{{activity.date | date:'yyyy-MM-dd'}}</td>
                             <td>{{activity.Organizer.displayName}}</td>
-                            <td>{{activity.approved}}</td>
-                            <td class="text-right"><a ng-href="/manage/activities/{{activity.id}}">Edit</a> <a ng-href="/manage/activities/delete/{{activity.id}}">Delete</a></td>
+                            <td ng-if="activity.approved"><i class="fa fa-check"></i></td><td ng-if="!activity.approved"></td>
+                            <td><a ng-href="/manage/activities/{{activity.id}}">Edit</a> <a ng-href="/manage/activities/delete/{{activity.id}}">Delete</a></td>
                         </tr>
                     </tbody>
 
@@ -48,7 +48,7 @@
 
                     <thead>
                     <tr>
-                        <th class="col-xs-1">#</th>
+
                         <th class="col-xs-5">Name</th>
                         <th class="col-xs-3">Email</th>
                         <th class="col-xs-2">Admin</th>
@@ -58,11 +58,10 @@
 
                     <tbody>
                     <tr ng-repeat="user in users">
-                        <td>{{user.id}}</td>
-                        <th><a ng-href="/user/{{user.id}}">{{user.displayName}}</a></th>
+                        <td><a ng-href="/user/{{user.id}}">{{user.displayName}}</a></td>
                         <td>{{user.email}}</td>
-                        <td>{{user.isAdmin}}</td>
-                        <td class="text-right"><a ng-href="/manage/user/edit/{{user.id}}">Edit</a>  <a ng-href="/manage/user/delete/{{user.id}}">Delete</a></td>
+                        <td ng-if="user.isAdmin"><i class="fa fa-check"></i></td><td ng-if="!user.isAdmin"></td>
+                        <td><a ng-href="/manage/user/edit/{{user.id}}">Edit</a>  <a ng-href="/manage/user/delete/{{user.id}}">Delete</a></td>
                     </tr>
                     </tbody>
 
@@ -76,7 +75,7 @@
 
                     <thead>
                     <tr>
-                        <th class="col-xs-1">#</th>
+
                         <th class="col-xs-5">Name</th>
                         <th class="col-xs-3">Email</th>
                         <th class="col-xs-2">Can organize</th>
@@ -89,8 +88,8 @@
                         <td>{{group.id}}</td>
                         <th><a ng-href="/group/{{group.id}}">{{group.fullName}} ({{group.displayName}})</a></th>
                         <td>{{group.email}}</td>
-                        <td>{{group.canOrganize}}</td>
-                        <td class="text-right"><a ng-href="/manage/group/edit/{{group.id}}">Edit</a> <a ng-href="/manage/group/delete/{{group.id}}">Delete</a></td>
+                        <td ng-if="group.canOrganize"><i class="fa fa-check"></i></td><td ng-if="!group.canOrganize"></td>
+                        <td><a ng-href="/manage/group/edit/{{group.id}}">Edit</a> <a ng-href="/manage/group/delete/{{group.id}}">Delete</a></td>
                     </tr>
                     </tbody>
 
