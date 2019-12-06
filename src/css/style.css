@@ -417,6 +417,17 @@ h4, .h4, h5, .h5, h6, .h6 {
     }
 }
 
+@media (max-width: 500px) {
+    #carousel {
+        height: 200px;
+    }
+
+    #carousel div img {
+        width: 300px;
+    }
+}
+
+
 #carousel div.hideLeft {
     left: 0;
     opacity: 0;
