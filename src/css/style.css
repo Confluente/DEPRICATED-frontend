@@ -701,6 +701,12 @@ h4, .h4, h5, .h5, h6, .h6 {
     }
 }
 
+@media(max-width: 560px) {
+    .HA-col {
+        height: 700px;
+    }
+}
+
 
 /* --tracks */
 .track-title {
