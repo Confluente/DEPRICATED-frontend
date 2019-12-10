@@ -79,7 +79,6 @@
 
                     <tbody>
                     <tr ng-repeat="group in groups">
-                        <th>{{group.id}}</th>
                         <td><a ng-href="/group/{{group.id}}">{{group.fullName}} ({{group.displayName}})</a></td>
                         <td>{{group.email}}</td>
                         <td ng-if="group.canOrganize"><i class="fa fa-check"></i></td><td ng-if="!group.canOrganize"></td>
