@@ -18,7 +18,6 @@
 
                     <thead>
                         <tr>
-                            <th class="col-xs-1">#</th>
                             <th class="col-xs-5">Title</th>
                             <th class="col-xs-2">Date</th>
                             <th class="col-xs-2">Organizer</th>
@@ -29,7 +28,6 @@
 
                     <tbody>
                         <tr ng-repeat="activity in activities">
-                            <td>{{activity.id}}</td>
                             <td><a ng-href="/activities/{{activity.id}}">{{activity.name}}</a></td>
                             <td>{{activity.date | date:'yyyy-MM-dd'}}</td>
                             <td>{{activity.Organizer.displayName}}</td>
@@ -84,7 +82,7 @@
 
                     <tbody>
                     <tr ng-repeat="group in groups">
-                        <th><a ng-href="/group/{{group.id}}">{{group.fullName}} ({{group.displayName}})</a></th>
+                        <td><a ng-href="/group/{{group.id}}">{{group.fullName}} ({{group.displayName}})</a></td>
                         <td>{{group.email}}</td>
                         <td ng-if="group.canOrganize"><i class="fa fa-check"></i></td><td ng-if="!group.canOrganize"></td>
                         <td class="text-right"><a ng-href="/manage/group/edit/{{group.id}}">Edit</a> <a ng-href="/manage/group/delete/{{group.id}}">Delete</a></td>
