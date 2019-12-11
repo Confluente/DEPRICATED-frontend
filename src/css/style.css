@@ -2,7 +2,7 @@
 
 @font-face {
     font-family: "Rounded Elegance";
-    src: url(../fonts/Rounded_Elegance.otf);
+    src: url('../fonts/Rounded_Elegance.otf');
 }
 
 @font-face {
@@ -10,7 +10,7 @@
     font-style: normal;
     font-weight: 400;
     font-display: swap;
-    src: url(../fonts/Assistant-Regular.woff2) format('woff2');
+    src: url('../fonts/Assistant-Regular.woff2') format('woff2');
     unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
 
@@ -19,17 +19,15 @@
     font-style: normal;
     font-weight: 500;
     font-display: swap;
-    src: url(../fonts/Assistant-SemiBold.woff2) format('woff2');
+    src: url('../fonts/Assistant-SemiBold.woff2') format('woff2');
     unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
 
 @font-face {
-    font-family: 'Assistant';
+    font-family: 'League Spartan';
+    src: url('../fonts/leaguespartan-bold.woff2') format('woff2');
+    font-weight: bold;
     font-style: normal;
-    font-weight: 600;
-    font-display: swap;
-    src: url(../fonts/Assistant-Bold.woff2) format('woff2');
-    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
 
 
@@ -109,13 +107,23 @@ h1, .h1 {
     font-weight: 600
 }
 
-b, strong {
+b, strong, th {
   font-weight: 500
+}
+
+/* Header margin */
+h1, .h1, h2, .h2, h3, .h3 {
+    margin-top: 1.5rem;
+    margin-bottom: .25rem;
 }
 
 h4, .h4, h5, .h5, h6, .h6 {
     margin-top: 0.7rem;
     margin-bottom: 0.1rem;
+}
+
+label {
+  font-weight: 500
 }
 
 .row:before, .row:after {
@@ -236,8 +244,8 @@ h4, .h4, h5, .h5, h6, .h6 {
     border-radius: initial;
 }
 
-.navbar {
-    font-size: 93%;
+.navbar, .dropdown-menu {
+    font-size: 0.93rem;
 }
 .navbar-brand {
     line-height: 1.1rem;
