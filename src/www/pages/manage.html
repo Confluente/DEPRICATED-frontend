@@ -9,25 +9,25 @@
 <h1>Management Dashboard</h1>
 
 <div ng-controller="manageController">
-
     <uib-tabset active="active" class="section">
 
         <uib-tab index="1" heading="Activities">
+            <input type="text" class="form-control" placeholder="Search" ng-model="searchQueryActivities">
             <div class="table-responsive">
                 <table class="table table-hover">
 
                     <thead>
                         <tr>
-                            <th class="col-xs-5">Title</th>
-                            <th class="col-xs-2">Date</th>
-                            <th class="col-xs-2">Organizer</th>
-                            <th class="col-xs-1">Approved</th>
+                            <th class="col-xs-5" ng-click="sortActivities('name')">Title</th>
+                            <th class="col-xs-2" ng-click="sortActivities('date')">Date</th>
+                            <th class="col-xs-2" ng-click="sortActivities('Organizer.displayName')">Organizer</th>
+                            <th class="col-xs-1" ng-click="sortActivities('approved')">Approved</th>
                             <th class="col-xs-1"></th>
                         </tr>
                     </thead>
 
                     <tbody>
-                        <tr ng-repeat="activity in activities">
+                        <tr ng-repeat="activity in activities | orderBy:sortTypeActivities:sortReverseActivities | filter:searchQueryActivities">
                             <td><a ng-href="/activities/{{activity.id}}">{{activity.name}}</a></td>
                             <td>{{activity.date | date:'yyyy-MM-dd'}}</td>
                             <td>{{activity.Organizer.displayName}}</td>
@@ -41,20 +41,21 @@
         </uib-tab>
 
         <uib-tab index="2" heading="Users">
+            <input type="text" class="form-control" placeholder="Search" ng-model="searchQueryUsers">
             <div class="table-responsive">
                 <table class="table table-hover">
 
                     <thead>
                     <tr>
-                        <th class="col-xs-5">Name</th>
-                        <th class="col-xs-4">Email</th>
-                        <th class="col-xs-2">Admin</th>
+                        <th class="col-xs-5" ng-click="sortUsers('displayName')">Name</th>
+                        <th class="col-xs-4" ng-click="sortUsers('email')">Email</th>
+                        <th class="col-xs-2" ng-click="sortUsers('isAdmin')">Admin</th>
                         <th class="col-xs-1"></th>
                     </tr>
                     </thead>
 
                     <tbody>
-                    <tr ng-repeat="user in users">
+                    <tr ng-repeat="user in users | orderBy:sortTypeUsers:sortReverseUsers | filter:searchQueryUsers">
                         <td><a ng-href="/user/{{user.id}}">{{user.displayName}}</a></td>
                         <td>{{user.email}}</td>
                         <td ng-if="user.isAdmin"><i class="fa fa-check"></i></td><td ng-if="!user.isAdmin"></td>
@@ -67,21 +68,22 @@
         </uib-tab>
 
         <uib-tab index="3" heading="Groups">
+            <input type="text" class="form-control" placeholder="Search" ng-model="searchQueryGroups">
             <div class="table-responsive">
                 <table class="table table-hover">
 
                     <thead>
                     <tr>
 
-                        <th class="col-xs-5">Name</th>
-                        <th class="col-xs-4">Email</th>
-                        <th class="col-xs-2">Can organize</th>
+                        <th class="col-xs-5" ng-click="sortGroups('fullName')">Name</th>
+                        <th class="col-xs-4" ng-click="sortGroups('email')">Email</th>
+                        <th class="col-xs-2" ng-click="sortGroups('canOrganize')">Can organize</th>
                         <th class="col-xs-1"></th>
                     </tr>
                     </thead>
 
                     <tbody>
-                    <tr ng-repeat="group in groups">
+                    <tr ng-repeat="group in groups | orderBy:sortTypeGroups:sortReverseGroups | filter:searchQueryGroups">
                         <td><a ng-href="/group/{{group.id}}">{{group.fullName}} ({{group.displayName}})</a></td>
                         <td>{{group.email}}</td>
                         <td ng-if="group.canOrganize"><i class="fa fa-check"></i></td><td ng-if="!group.canOrganize"></td>
