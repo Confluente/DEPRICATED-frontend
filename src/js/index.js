@@ -15,6 +15,7 @@ require("./services/controllerNavbar");
 require("./responseObserver");
 
 app.config(["$routeProvider", "$locationProvider", "$httpProvider", function ($routeProvider, $locationProvider, $httpProvider) {
+    // declare all routes in $routeProvider
     for (var n = 0; n < routes.length; n++) {
         var route = routes[n];
         $routeProvider.when(route.url, {
@@ -26,6 +27,7 @@ app.config(["$routeProvider", "$locationProvider", "$httpProvider", function ($r
         });
     }
 
+    // declare default route if no proper route found
     $routeProvider.otherwise({
         templateUrl: "/www/404.html"
     });

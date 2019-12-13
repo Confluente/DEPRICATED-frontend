@@ -1,13 +1,13 @@
 var app = angular.module("confluente");
 
 app.controller("groupEditController", ["$scope", "$routeParams", "groups", function ($scope, $routeParams, groups) {
-    // routeparams stores the groupId (but as 'userId')
+    // get groupId from URL
     var groupId = $routeParams.groupId;
+    // get group from backend by groupId and set on $scope
     groups.get(groupId).then(function (group) {
         $scope.group = group;
     });
 
-    // console.log($scope);
     $scope.loading = false;
     $scope.submit = function () {
         $scope.loading = true;

@@ -1,5 +1,6 @@
 var app = angular.module("confluente");
 
+// storing of all routes in list
 var routes = [
     require("./home/view"),
     require("./user/create"),

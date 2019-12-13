@@ -1,11 +1,16 @@
 var app = angular.module("confluente");
 
+/**
+ * Controller for the management table
+ */
 app.controller("manageController", ["$scope", "$q", "pages", "activities", "users", "groups",
     function ($scope, $q, pages, activities, users, groups) {
         $scope.loading = true;
         //Wait until all data is retrieved
         //This is a bad approach and I should be ashamed
         //In the future, perhaps create a new directive/scope for each tab
+
+        // retrieve all data
         $q.all([
             pages.getAll().then(function (pages) {
                 $scope.pages = pages;
@@ -24,6 +29,7 @@ app.controller("manageController", ["$scope", "$q", "pages", "activities", "user
         });
 
         // Ugly repeated code
+        // $scope variables for tracking search & sorting in activities tab
         $scope.sortTypeActivities = 'id';
         $scope.sortReverseActivities = false;
         $scope.searchQueryActivities = '';
@@ -36,6 +42,7 @@ app.controller("manageController", ["$scope", "$q", "pages", "activities", "user
             $scope.sortTypeActivities = type;
         };
 
+        // $scope variables for tracking search & sorting in users tab
         $scope.sortTypeUsers = 'id';
         $scope.sortReverseUsers = false;
         $scope.searchQueryUsers = '';
@@ -48,6 +55,7 @@ app.controller("manageController", ["$scope", "$q", "pages", "activities", "user
             $scope.sortTypeUsers = type;
         };
 
+        // $scope variables for tracking search & sorting in groups tab
         $scope.sortTypeGroups = 'id';
         $scope.sortReverseGroups = false;
         $scope.searchQueryGroups = '';
