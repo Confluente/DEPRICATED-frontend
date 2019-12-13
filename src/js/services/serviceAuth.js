@@ -11,6 +11,7 @@ app.factory("serviceAuth", ["$rootScope", "$http", "$cookies", "$location", func
         $http.post("/api/auth/login", {email: email, password: password}).then(function (result) {
             auth.user.loggedIn = true;
             getProfile();
+            $location.path("/activities");
         });
     };
 

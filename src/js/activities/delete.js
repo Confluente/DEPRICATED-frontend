@@ -4,7 +4,7 @@ app.controller("activityDeleteController", ["$scope", "$routeParams", "activitie
     var activityId = $routeParams.activityId;
     activity.get(activityId).then(function (activity) {
         $scope.activity = activity;
-        console.log($scope);
+        // console.log($scope);
     });
 
     $scope.loading = false;

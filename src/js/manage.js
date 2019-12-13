@@ -22,6 +22,43 @@ app.controller("manageController", ["$scope", "$q", "pages", "activities", "user
         ]).then(function () {
             $scope.loading = false;
         });
+
+        // Ugly repeated code
+        $scope.sortTypeActivities = 'id';
+        $scope.sortReverseActivities = false;
+        $scope.searchQueryActivities = '';
+        $scope.sortActivities = function (type) {
+            if ($scope.sortTypeActivities === type) {
+                $scope.sortReverseActivities = !$scope.sortReverseActivities;
+            } else {
+                $scope.sortReverseActivities = false;
+            }
+            $scope.sortTypeActivities = type;
+        };
+
+        $scope.sortTypeUsers = 'id';
+        $scope.sortReverseUsers = false;
+        $scope.searchQueryUsers = '';
+        $scope.sortUsers = function (type) {
+            if ($scope.sortTypeUsers === type) {
+                $scope.sortReverseUsers = !$scope.sortReverseUsers;
+            } else {
+                $scope.sortReverseUsers = false;
+            }
+            $scope.sortTypeUsers = type;
+        };
+
+        $scope.sortTypeGroups = 'id';
+        $scope.sortReverseGroups = false;
+        $scope.searchQueryGroups = '';
+        $scope.sortGroups = function (type) {
+            if ($scope.sortTypeGroups === type) {
+                $scope.sortReverseGroups = !$scope.sortReverseGroups;
+            } else {
+                $scope.sortReverseGroups = false;
+            }
+            $scope.sortTypeGroups = type;
+        };
     }]
 );
 

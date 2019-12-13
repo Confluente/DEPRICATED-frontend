@@ -3,7 +3,7 @@ app.controller("pageViewController", ["$rootScope", "$scope", "$routeParams", fu
     $scope.loading = true;
     $scope.templateUrl = getTemplateUrl($routeParams);
 
-    var fallbackUrl = "/www/404.html";
+    var fallbackUrl = "/www/pages/404.html";
 
     $scope.$on("$includeContentLoaded", function (e, src) {
         //Boo yah!

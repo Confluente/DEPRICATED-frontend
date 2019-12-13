@@ -4,7 +4,7 @@ app.controller("groupViewController", ["$scope", "$routeParams", "groups", funct
     var groupId = $routeParams.groupId;
     group.get(groupId).then(function (group) {
         $scope.group = group;
-        console.log($scope);
+        // console.log($scope);
     });
 }]);
 

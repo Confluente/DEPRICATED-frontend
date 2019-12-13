@@ -7,27 +7,28 @@
     <form>
         <div class="form-group">
             <label for="groupEdit-name">Group name</label>
-            <input type="text" ng-model="group.displayName" class="form-control" id="groupEdit-name"/>
+            <input type="text" ng-model="group.displayName" class="form-control" id="groupEdit-name">
         </div>
 
         <div class="form-group">
             <label for="groupEdit-fullName">Full name</label>
-            <input type="text" ng-model="group.fullName" class="form-control" id="groupEdit-fullName"/>
+            <input type="text" ng-model="group.fullName" class="form-control" id="groupEdit-fullName">
         </div>
 
         <div class="form-group">
             <label for="groupEdit-desc">Description (Markdown supported)</label>
-            <input type="text" ng-model="group.description" class="form-control" id="groupEdit-desc"/>
+            <input type="text" ng-model="group.description" class="form-control" id="groupEdit-desc">
         </div>
 
         <div class="form-group">
             <label for="groupEdit-email">Email</label>
-            <input type="text" ng-model="group.email" class="form-control" id="groupEdit-email"/>
+            <input type="text" ng-model="group.email" class="form-control" id="groupEdit-email">
         </div>
 
-        <div class="form-group">
-            <label for="groupCreate-canOrganize">Can this group organize events?</label>
-            <input type="checkbox" ng-model="group.canOrganize" class="form-control" id="groupCreate-canOrganize"/>
+        <div class="checkbox">
+            <label for="groupCreate-canOrganize">
+                <input type="checkbox" ng-model="group.canOrganize" id="groupCreate-canOrganize"> Can this group organize events?
+            </label>
         </div>
 
         <button type="submit" class="btn btn-default" ng-click="submit()" ng-disabled="loading">Save</button>
