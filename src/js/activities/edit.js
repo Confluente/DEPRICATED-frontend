@@ -31,8 +31,8 @@ app.controller("activityEditController", ["$scope", "$routeParams", "activities"
 
     $scope.dateOptions = {
         formatYear: 'yy',
-        maxDate: new Date(2020, 5, 22), // maximum date for datepicker
-        minDate: new Date(2000, 1, 1), // minimum date for datepicker
+        maxDate: new Date(2029, 5, 22), // maximum date for datepicker
+        minDate: new Date(2019, 1, 1), // minimum date for datepicker
         startingDay: 1
     };
 }]);
