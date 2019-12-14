@@ -1,35 +1,55 @@
 var app = angular.module("confluente");
 
+/**
+ * Factory for groups
+ */
 app.factory("groups", ["$http", "$timeout", function ($http, $timeout) {
-
     return {
+        /**
+         * Function for retrieving all groups from backend
+         * @returns groups
+         */
         getAll: function () {
             return $http.get("/api/group").then(function (result) {
                 return result.data;
             });
         },
-        //Untested:
+        /**
+         * Function for retrieving group based on id
+         * @param id
+         * @returns group
+         */
         get: function (id) {
             return $http.get("/api/group/" + id).then(function (result) {
                 return result.data;
             });
         },
+        /**
+         * Function for submitting created group to backend
+         * @param group
+         * @returns submitted group
+         */
         create: function (group) {
             return $http.post("/api/group", group).then(function (result) {
-                // console.log(result.data);
                 return result.data;
             }, function (err) {
-                // console.error(err);
                 return err;
             });
         },
+        /**
+         * Function for submitting edited group to backend
+         * @param group
+         * @returns submitted edited group
+         */
         edit: function (group) {
-            // console.log(group);
             return $http.put("/api/group/" + group.id, group).then(function (result) {
-                // console.log(result.data);
                 return result.data;
             });
         },
+        /**
+         * Function for deleting group in backend
+         * @param group
+         */
         delete: function (group) {
             return $http.delete("/api/group/" + group.id);
         }
