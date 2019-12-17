@@ -3,30 +3,28 @@ var app = angular.module("confluente");
 /**
  * Controller for the management table
  */
-app.controller("manageController", ["$scope", "$q", "pages", "activities", "users", "groups",
-    function ($scope, $q, pages, activities, users, groups) {
+app.controller("manageController", ["$rootScope", "$scope", "$q", "pages", "activities", "users", "groups",
+    function ($rootScope, $scope, $q, pages, activities, users, groups) {
         $scope.loading = true;
         //Wait until all data is retrieved
         //This is a bad approach and I should be ashamed
         //In the future, perhaps create a new directive/scope for each tab
 
         // retrieve all data
-        $q.all([
-            pages.getAll().then(function (pages) {
-                $scope.pages = pages;
-            }),
-            activities.getAll().then(function (activities) {
-                $scope.activities = activities;
-            }),
+        activities.getAllManage().then(function (activities) {
+            $scope.activities = activities;
+        });
+        if ($rootScope.user.isAdmin) {
             users.getAll().then(function (users) {
                 $scope.users = users;
-            }),
+            });
+            pages.getAll().then(function (pages) {
+                $scope.pages = pages;
+            });
             groups.getAll().then(function (groups) {
                 $scope.groups = groups;
-            }),
-        ]).then(function () {
-            $scope.loading = false;
-        });
+            });
+        }
 
         // Ugly repeated code
         // $scope variables for tracking search & sorting in activities tab
