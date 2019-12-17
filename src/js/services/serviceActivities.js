@@ -20,6 +20,22 @@ app.factory("activities", ["$http", "$timeout", function ($http, $timeout) {
                 });
             });
         },
+
+        /**
+         * Function for retrieving all activities from the backend
+         * @returns activities
+         */
+        getAllManage: function () {
+            return $http.get("/api/activities/" + "manage").then(function (result) {
+                // console.log(result);
+                var activities = result.data;
+                return activities.map(function (activity) {
+                    // set correct date format (or null if not defined)
+                    activity.date = !isNaN(Date.parse(activity.date)) ? new Date(activity.date) : null;
+                    return activity;
+                });
+            });
+        },
         /**
          * Function for retrieving a single activity from the backend based on id
          * @param id
