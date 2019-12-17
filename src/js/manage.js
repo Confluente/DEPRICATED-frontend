@@ -25,7 +25,6 @@ app.controller("manageController", ["$rootScope", "$scope", "$q", "pages", "acti
                 $scope.groups = groups;
             });
         }
-        console.log($rootScope);
 
         // Ugly repeated code
         // $scope variables for tracking search & sorting in activities tab
