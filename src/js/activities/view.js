@@ -28,6 +28,10 @@ app.controller("activityViewController", ["$scope", "$routeParams", "activities"
         }
     });
 
+    $scope.login = function() {
+        window.location.href = "/login";
+    };
+
     $scope.submit = function () {
         $scope.loading = true;
         // Check if all required field are filled in

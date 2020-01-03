@@ -71,4 +71,8 @@ checkbox
             </tr>
         </table>
     </div>
+    <div ng-if="activity.canSubscribe && !user.loggedIn">
+        <h4>You can only subscribe to events like these if you are logged in!</h4>
+        <button class="btn btn-primary" ng-click="login()">Login</button>
+    </div>
 </div>
