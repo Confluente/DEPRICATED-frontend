@@ -747,3 +747,10 @@ label {
         padding-top: 0px;
     }
 }
+
+/* --Subscription forms */
+.subscriptionForm {
+    width: 50%;
+    background-color: lightgray;
+    padding: 10px;
+}

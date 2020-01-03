@@ -45,6 +45,7 @@ app.factory("activities", ["$http", "$timeout", function ($http, $timeout) {
                 var activity = result.data;
                 // set correct date format (or null if not defined)
                 activity.date = !isNaN(Date.parse(activity.date)) ? new Date(activity.date) : null;
+                console.log(activity);
                 return activity;
             });
         },
@@ -54,6 +55,7 @@ app.factory("activities", ["$http", "$timeout", function ($http, $timeout) {
          * @returns submitted activity
          */
         create: function (activity) {
+            console.log(activity);
             return $http.post("/api/activities", activity).then(function (result) {
                 return result.data;
             }, function (err) {
@@ -70,6 +72,18 @@ app.factory("activities", ["$http", "$timeout", function ($http, $timeout) {
                 return result.data;
             });
         },
+
+        /**
+         * Function for submitting subscription to backend
+         * @param subscription
+         * @param activityId
+         */
+        subscribe: function (subscription, activityId) {
+            return $http.post("/api/activities/subscriptions/" + activityId, subscription).then(function (result) {
+                return result.data;
+            });
+        },
+
         /**
          * Function for deleting activity in backend based on id
          * @param id

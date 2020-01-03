@@ -10,6 +10,14 @@ app.controller("activityCreateController", ["$scope", "activities", function ($s
     $scope.submit = function () {
         $scope.loading = true;
 
+        var allTitles = [];
+        var allDescriptions = [];
+        var allTypes = [];
+
+        allTitles.push($scope.question1title);
+        allDescriptions.push($scope.question1fullQuestion);
+        allTypes.push($scope.question1Type);
+
         // create new activity from variables as put on the $scope by the form
         activities.create({
             name: $scope.name,
@@ -19,7 +27,13 @@ app.controller("activityCreateController", ["$scope", "activities", function ($s
             startTime: $scope.startTime,
             endTime: $scope.endTime,
             location: $scope.location,
-            approved: true
+            approved: true,
+            canSubscribe: $scope.canSubscribe,
+            numberOfQuestions: allTitles.length,
+            titlesOfQuestions: allTitles,
+            typeOfQuestion: allTypes,
+            questionDescriptions: allDescriptions,
+            options: ""
         }).then(function (result) {
             $scope.loading = false;
 
@@ -37,7 +51,7 @@ app.controller("activityCreateController", ["$scope", "activities", function ($s
     $scope.dateOptions = {
         formatYear: 'yy',
         maxDate: new Date(2029, 5, 22), // maximum date for datepicker
-        minDate: new Date(2019, 1, 1), // minimum date for datepicker
+        minDate: new Date(), // minimum date for datepicker
         startingDay: 1
     };
 }]);

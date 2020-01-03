@@ -8,7 +8,7 @@
 
         <div class="form-group">
             <label for="activityCreate-name">Name</label>
-            <input type="text" ng-model="name" class="form-control" id="activityCreate-name"></input>
+            <input type="text" ng-model="name" class="form-control" id="activityCreate-name">
         </div>
 
         <div class="form-group">
@@ -41,6 +41,46 @@
         <div class="form-group">
             <label for="activityCreate-location">Location (optional)</label>
             <input type="text" ng-model="location" class="form-control" id="activityCreate-location"/>
+        </div>
+
+        <div class="checkbox">
+            <label for="activityCreate-canSubscribe">
+                <input type="checkbox" ng-model="canSubscribe" id="activityCreate-canSubscribe"> Can members subscribe?
+            </label>
+        </div>
+
+        Name and email are automatically asked for
+        <div class="form-group">
+            <label for="activityCreate-formName">Question 1 title (<b>keep it short</b>)</label>
+            <input type="text" ng-model="question1title" class="form-control" id="activityCreate-formName"/>
+        </div>
+
+        <div class="form-group">
+            <label for="subscriptionform-fullQuestion">Question 1 full question)</label>
+            <input type="text" ng-model="question1fullQuestion" class="form-control"
+                   id="subscriptionform-fullQuestion"/>
+        </div>
+
+        What is the answer type of your question?
+        <div class="radio">
+            <label>
+                <input type="radio" ng-model="question1Type" value="radio" id="question1-radio"/> Radio
+            </label>
+        </div>
+        <div class="radio">
+            <label>
+                <input type="radio" ng-model="question1Type" value="checkbox" id="question1-checkbox"/> Checkbox
+            </label>
+        </div>
+        <div class="radio">
+            <label>
+                <input type="radio" ng-model="question1Type" value="text" id="question1-text"/> text
+            </label>
+        </div>
+        <div class="radio">
+            <label>
+                <input type="radio" ng-model="question1Type" value="consent" id="question1-consent"/> consent
+            </label>
         </div>
 
         <button type="submit" class="btn btn-default" ng-click="submit()" ng-disabled="loading">Save</button>
