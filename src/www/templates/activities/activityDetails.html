@@ -17,10 +17,16 @@ checkbox
         <div id="signup" class="collapse subscriptionForm">
             <form>
                 <div ng-repeat="question in activity.titlesOfQuestions">
+                    <div class="form-group" ng-if="activity.typeOfQuestion[$index] == 'name'">
+                        <label for="activityName{{$index}}">{{activity.questionDescriptions[$index]}}</label>
+                        <input type="text" ng-model="answers[$index]" class="form-control" id="activityName{{$index}}" value="user.fullName"/>
+                    </div>
+
                     <div class="form-group" ng-if="activity.typeOfQuestion[$index] == 'text'">
                         <label for="activityView{{$index}}">{{activity.questionDescriptions[$index]}}</label>
                         <input type="text" ng-model="answers[$index]" class="form-control" id="activityView{{$index}}"/>
                     </div>
+
                     <div class="form-group" ng-if="activity.typeOfQuestion[$index] == 'radio'">
                         <label>{{activity.questionDescriptions[$index]}}</label>
                         <div ng-repeat="option in activity.formOptions[$index]">

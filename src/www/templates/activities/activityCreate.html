@@ -49,17 +49,19 @@
             </label>
         </div>
 
-        <h3>Name and email are automatically asked for in every form!</h3>
+        <h3 ng-if="canSubscribe">Name and email are automatically asked for in every form!</h3>
 
         <div ng-repeat="input in inputs">
             <div class="form-group">
-                <label for="activityCreate-formName{{$index}}">Question {{$index + 1}} title (<b>keep it short</b>)</label>
+                <label for="activityCreate-formName{{$index}}">Question {{$index + 1}} title (<b>keep it
+                    short</b>)</label>
                 <input type="text" ng-model="input.title" class="form-control" id="activityCreate-formName{{$index}}"/>
             </div>
 
             <div class="form-group">
                 <label for="activityCreate-fullQuestion{{$index}}">Question {{$index + 1}} full question)</label>
-                <input type="text" ng-model="input.fullQuestion" class="form-control" id="activityCreate-fullQuestion{{$index}}"/>
+                <input type="text" ng-model="input.fullQuestion" class="form-control"
+                       id="activityCreate-fullQuestion{{$index}}"/>
             </div>
 
 
@@ -71,7 +73,8 @@
             </div>
             <div class="radio">
                 <label>
-                    <input type="radio" ng-model="input.type" value="checkbox" id="question{{$index}}-checkbox"/> Checkbox
+                    <input type="radio" ng-model="input.type" value="checkbox" id="question{{$index}}-checkbox"/>
+                    Checkbox
                 </label>
             </div>
             <div class="radio">
@@ -92,9 +95,14 @@
                 </label>
             </div>
         </div>
-        <button ng-click="add()">Add question</button>
 
-        <button type="submit" class="btn btn-default" ng-click="submit()" ng-disabled="loading">Save</button>
+        <div ng-if="canSubscribe" style="padding-bottom: 10px">
+            <button ng-click="add()" class="btn btn-default">Add question</button>
+            <button ng-click="remove()" class="btn btn-default">Remove last question</button>
+            <br>
+        </div>
+
+        <button type="submit" class="btn btn-primary" ng-click="submit()" ng-disabled="loading">Save</button>
 
     </form>
 </div>

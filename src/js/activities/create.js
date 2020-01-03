@@ -10,7 +10,10 @@ app.controller("activityCreateController", ["$scope", "activities", function ($s
     $scope.add = function () {
         var dataObj = {title: '', fullQuestion: '', type: '', options: '', required: ''};
         $scope.inputs.push(dataObj);
-        console.log($scope);
+    };
+
+    $scope.remove = function () {
+        $scope.inputs.pop();
     };
 
     // function called when new activity is submitted
