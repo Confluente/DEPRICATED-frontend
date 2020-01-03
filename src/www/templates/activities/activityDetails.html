@@ -28,12 +28,12 @@ checkbox
                     </div>
 
                     <div class="form-group" ng-if="activity.typeOfQuestion[$index] == 'text'">
-                        <label for="activityView{{$index}}">{{activity.questionDescriptions[$index]}}</label>
+                        <label for="activityView{{$index}}">{{activity.questionDescriptions[$index]}} <b ng-if="activity.required[$index] === 'true'">(required)</b> </label>
                         <input type="text" ng-model="answers[$index]" class="form-control" id="activityView{{$index}}"/>
                     </div>
 
                     <div class="form-group" ng-if="activity.typeOfQuestion[$index] == 'radio'">
-                        <label>{{activity.questionDescriptions[$index]}}</label>
+                        <label>{{activity.questionDescriptions[$index]}} <b ng-if="activity.required[$index] === 'true'">(required)</b></label>
                         <div ng-repeat="option in activity.formOptions[$index]">
                             <div class="radio">
                                 <label>
@@ -43,7 +43,7 @@ checkbox
                         </div>
                     </div>
                     <div class="form-group" ng-if="activity.typeOfQuestion[$index] == 'checkbox'">
-                        <label>{{activity.questionDescriptions[$index]}}</label>
+                        <label>{{activity.questionDescriptions[$index]}} <b ng-if="activity.required[$index] === 'true'">(required to pick at least 1)</b></label>
                         <div ng-repeat="option in activity.formOptions[$index]">
                             <div class="checkbox">
                                 <label>
