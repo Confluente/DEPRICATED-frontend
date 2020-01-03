@@ -12,6 +12,7 @@ checkbox
     <p ng-if="activity.startTime">Starting time: {{activity.startTime}}</p>
     <p ng-if="activity.endTime">Ending time: {{activity.endTime}}</p>
     <p ng-if="activity.location">Location: {{activity.location}}</p>
+    <p ng-if="activity.participationFee">Participation fee: &euro;{{activity.participationFee}}</p>
     <div ng-if="activity.canSubscribe && user.loggedIn">
         <a href="#signup" class="btn btn-primary" data-toggle="collapse">Sign up here!</a>
         <div id="signup" class="collapse subscriptionForm">

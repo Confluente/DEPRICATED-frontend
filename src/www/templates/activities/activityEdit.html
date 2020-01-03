@@ -37,6 +37,11 @@
             <input type="text" ng-model="activity.location" class="form-control" id="activityEdit-location"/>
         </div>
 
+        <div class="form-group">
+            <label for="activityCreate-participationFee">Participation fee (in euros)</label>
+            <input type="text" ng-model="activity.participationFee" class="form-control" id="activityCreate-participationFee"/>
+        </div>
+
         <div class="checkbox">
             <label for="activityEdit-canSubscribe">
                 <input type="checkbox" ng-model="activity.canSubscribe" id="activityEdit-canSubscribe"> Can members subscribe?
@@ -57,7 +62,6 @@
                 <input type="text" ng-model="input.fullQuestion" class="form-control"
                        id="activityCreate-fullQuestion{{$index}}"/>
             </div>
-
 
             <b>What is the answer type of your question?</b>
             <div class="radio">
