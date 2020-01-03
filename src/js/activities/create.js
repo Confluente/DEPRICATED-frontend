@@ -14,11 +14,13 @@ app.controller("activityCreateController", ["$scope", "activities", function ($s
         var allDescriptions = [];
         var allTypes = [];
         var allOptions = [];
+        var allRequired = [];
 
         allTitles.push($scope.question1title);
         allDescriptions.push($scope.question1fullQuestion);
         allTypes.push($scope.question1Type);
         allOptions.push($scope.question1Options);
+        allRequired.push($scope.question1Required);
 
         // create new activity from variables as put on the $scope by the form
         activities.create({
@@ -35,7 +37,8 @@ app.controller("activityCreateController", ["$scope", "activities", function ($s
             titlesOfQuestions: allTitles,
             typeOfQuestion: allTypes,
             questionDescriptions: allDescriptions,
-            options: allOptions
+            options: allOptions,
+            required: allRequired
         }).then(function (result) {
             $scope.loading = false;
 

@@ -31,6 +31,24 @@ app.controller("activityViewController", ["$scope", "$routeParams", "activities"
 
     $scope.submit = function () {
         $scope.loading = true;
+        // Check if all required field are filled in
+        var filledIn = true;
+        for (var i = 0; i < $scope.activity.numberOfQuestions; i++) {
+            if ($scope.activity.required[i] === 'true') {
+                if ($scope.activity.typeOfQuestion[i] === 'text' && $scope.answers[i] === "") {
+                    filledIn = false;
+                } else if ($scope.activity.typeOfQuestion[i] === 'radio' && $scope.answers[i] === "") {
+                    filledIn = false;
+                } else if ($scope.activity.typeOfQuestion[i] === 'checkbox' && !$scope.answers[i].includes(true)) {
+                    filledIn = false
+                }
+            }
+        }
+        if (!filledIn) {
+            $scope.loading = false;
+            return alert("not all required fields were filled in.");
+        }
+
         // Format answer correctly
         for (var i = 0; i < $scope.activity.numberOfQuestions; i++) {
             var answer = "";
