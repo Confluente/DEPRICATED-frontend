@@ -1,8 +1,8 @@
 <div class="pull-right">
     <a class="btn btn-default" href="manage/activities/create" ng-if="user.canOrganize">+ Activity</a>
     <div class="btn-group" role="group">
-      <a class="btn btn-default" href="manage/user/create" ng-if="user.isAdmin">+ User</a>
-      <a class="btn btn-default" href="manage/group/create" ng-if="user.isAdmin">+ Group</a>
+        <a class="btn btn-default" href="manage/user/create" ng-if="user.isAdmin">+ User</a>
+        <a class="btn btn-default" href="manage/group/create" ng-if="user.isAdmin">+ Group</a>
     </div>
 </div>
 
@@ -17,23 +17,25 @@
                 <table class="table table-hover">
 
                     <thead>
-                        <tr>
-                            <th class="col-xs-5" ng-click="sortActivities('name')">Title</th>
-                            <th class="col-xs-2" ng-click="sortActivities('date')">Date</th>
-                            <th class="col-xs-2" ng-click="sortActivities('Organizer.displayName')">Organizer</th>
-                            <th class="col-xs-1" ng-click="sortActivities('approved')">Approved</th>
-                            <th class="col-xs-1"></th>
-                        </tr>
+                    <tr>
+                        <th class="col-xs-5" ng-click="sortActivities('name')">Title</th>
+                        <th class="col-xs-2" ng-click="sortActivities('date')">Date</th>
+                        <th class="col-xs-2" ng-click="sortActivities('Organizer.displayName')">Organizer</th>
+                        <th class="col-xs-1" ng-click="sortActivities('approved')">Approved</th>
+                        <th class="col-xs-1"></th>
+                    </tr>
                     </thead>
 
                     <tbody>
-                        <tr ng-repeat="activity in activities | orderBy:sortTypeActivities:sortReverseActivities | filter:searchQueryActivities">
-                            <td><a ng-href="/activities/{{activity.id}}">{{activity.name}}</a></td>
-                            <td>{{activity.date | date:'yyyy-MM-dd'}}</td>
-                            <td>{{activity.Organizer.displayName}}</td>
-                            <td ng-if="activity.approved"><i class="fa fa-check"></i></td><td ng-if="!activity.approved"></td>
-                            <td class="text-right"><a ng-href="/manage/activities/{{activity.id}}">Edit</a> <a ng-href="/manage/activities/delete/{{activity.id}}">Delete</a></td>
-                        </tr>
+                    <tr ng-repeat="activity in activities | orderBy:sortTypeActivities:sortReverseActivities | filter:searchQueryActivities">
+                        <td><a ng-href="/activities/{{activity.id}}">{{activity.name}}</a></td>
+                        <td>{{activity.date | date:'yyyy-MM-dd'}}</td>
+                        <td>{{activity.Organizer.displayName}}</td>
+                        <td ng-if="activity.approved"><i class="fa fa-check"></i></td>
+                        <td ng-if="!activity.approved"></td>
+                        <td class="text-right"><a ng-href="/manage/activities/{{activity.id}}">Edit</a> <a
+                                ng-href="/manage/activities/delete/{{activity.id}}">Delete</a></td>
+                    </tr>
                     </tbody>
 
                 </table>
@@ -58,8 +60,10 @@
                     <tr ng-repeat="user in users | orderBy:sortTypeUsers:sortReverseUsers | filter:searchQueryUsers">
                         <td><a ng-href="/user/{{user.id}}">{{user.displayName}}</a></td>
                         <td>{{user.email}}</td>
-                        <td ng-if="user.isAdmin"><i class="fa fa-check"></i></td><td ng-if="!user.isAdmin"></td>
-                        <td class="text-right"><a ng-href="/manage/user/edit/{{user.id}}">Edit</a>  <a ng-href="/manage/user/delete/{{user.id}}">Delete</a></td>
+                        <td ng-if="user.isAdmin"><i class="fa fa-check"></i></td>
+                        <td ng-if="!user.isAdmin"></td>
+                        <td class="text-right"><a ng-href="/manage/user/edit/{{user.id}}">Edit</a> <a
+                                ng-href="/manage/user/delete/{{user.id}}">Delete</a></td>
                     </tr>
                     </tbody>
 
@@ -86,8 +90,10 @@
                     <tr ng-repeat="group in groups | orderBy:sortTypeGroups:sortReverseGroups | filter:searchQueryGroups">
                         <td><a ng-href="/group/{{group.id}}">{{group.fullName}} ({{group.displayName}})</a></td>
                         <td>{{group.email}}</td>
-                        <td ng-if="group.canOrganize"><i class="fa fa-check"></i></td><td ng-if="!group.canOrganize"></td>
-                        <td class="text-right"><a ng-href="/manage/group/edit/{{group.id}}">Edit</a> <a ng-href="/manage/group/delete/{{group.id}}">Delete</a></td>
+                        <td ng-if="group.canOrganize"><i class="fa fa-check"></i></td>
+                        <td ng-if="!group.canOrganize"></td>
+                        <td class="text-right"><a ng-href="/manage/group/edit/{{group.id}}">Edit</a> <a
+                                ng-href="/manage/group/delete/{{group.id}}">Delete</a></td>
                     </tr>
                     </tbody>
 

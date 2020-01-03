@@ -43,6 +43,59 @@
             </label>
         </div>
 
+        <h3 ng-if="activity.canSubscribe">Name and email are automatically asked for in every form!</h3>
+
+        <div ng-repeat="input in inputs">
+            <div class="form-group">
+                <label for="activityCreate-formName{{$index}}">Question {{$index + 1}} title (<b>keep it
+                    short</b>)</label>
+                <input type="text" ng-model="input.title" class="form-control" id="activityCreate-formName{{$index}}"/>
+            </div>
+
+            <div class="form-group">
+                <label for="activityCreate-fullQuestion{{$index}}">Question {{$index + 1}} full question)</label>
+                <input type="text" ng-model="input.fullQuestion" class="form-control"
+                       id="activityCreate-fullQuestion{{$index}}"/>
+            </div>
+
+
+            <b>What is the answer type of your question?</b>
+            <div class="radio">
+                <label>
+                    <input type="radio" ng-model="input.type" value="radio" id="question{{$index}}-radio"/> Radio
+                </label>
+            </div>
+            <div class="radio">
+                <label>
+                    <input type="radio" ng-model="input.type" value="checkbox" id="question{{$index}}-checkbox"/>
+                    Checkbox
+                </label>
+            </div>
+            <div class="radio">
+                <label>
+                    <input type="radio" ng-model="input.type" value="text" id="question{{$index}}-text"/> text
+                </label>
+            </div>
+
+            <div class="form-group">
+                <label for="activityCreate-options{{$index}}">Options</label>
+                <input type="text" ng-model="input.options" class="form-control" id="activityCreate-options{{$index}}"/>
+            </div>
+
+            <div class="checkbox">
+                <label for="activityCreate-required{{$index}}">
+                    <input type="checkbox" ng-model="input.required" id="activityCreate-required{{$index}}"> Is this
+                    question mandatory
+                </label>
+            </div>
+        </div>
+
+        <div ng-if="activity.canSubscribe" style="padding-bottom: 10px">
+            <button ng-click="add()" class="btn btn-default">Add question</button>
+            <button ng-click="remove()" class="btn btn-default">Remove last question</button>
+            <br>
+        </div>
+
         <button type="submit" class="btn btn-default" ng-click="submit()" ng-disabled="loading">Save</button>
     </form>
 </div>
