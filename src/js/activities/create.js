@@ -34,7 +34,6 @@ app.controller("activityCreateController", ["$scope", "activities", function ($s
             allRequired.push(dataObj.required);
         });
 
-        console.log($scope);
         // create new activity from variables as put on the $scope by the form
         activities.create({
             name: $scope.name,

@@ -26,7 +26,6 @@ app.controller("activityViewController", ["$scope", "$routeParams", "activities"
                 $scope.answers.push("");
             }
         }
-        console.log($scope);
     });
 
     $scope.submit = function () {
@@ -50,7 +49,9 @@ app.controller("activityViewController", ["$scope", "$routeParams", "activities"
         }
 
         // Format answer correctly
-        for (var i = 0; i < $scope.activity.numberOfQuestions; i++) {
+        $scope.answers[0] = $scope.user.displayName;
+        $scope.answers[1] = $scope.user.email;
+        for (var i = 2; i < $scope.activity.numberOfQuestions; i++) {
             var answer = "";
             if ($scope.activity.typeOfQuestion[i] === 'checkbox') {
                 for (var j = 0; j < $scope.activity.formOptions[i].length; j++) {
@@ -59,7 +60,6 @@ app.controller("activityViewController", ["$scope", "$routeParams", "activities"
                         answer += $scope.activity.formOptions[i][j].toString();
                     }
                 }
-                console.log(answer);
                 $scope.answers[i] = answer;
             }
         }

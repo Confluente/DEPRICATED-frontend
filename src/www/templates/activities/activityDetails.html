@@ -18,8 +18,13 @@ checkbox
             <form>
                 <div ng-repeat="question in activity.titlesOfQuestions">
                     <div class="form-group" ng-if="activity.typeOfQuestion[$index] == 'name'">
-                        <label for="activityName{{$index}}">{{activity.questionDescriptions[$index]}}</label>
-                        <input type="text" ng-model="answers[$index]" class="form-control" id="activityName{{$index}}" value="user.fullName"/>
+                        <label for="activityName">{{activity.questionDescriptions[$index]}}</label>
+                        <input type="text" ng-model="user.displayName" class="form-control" id="activityName" disabled/>
+                    </div>
+
+                    <div class="form-group" ng-if="activity.typeOfQuestion[$index] == 'TU/e email'">
+                        <label for="activityEmail">{{activity.questionDescriptions[$index]}}</label>
+                        <input type="text" ng-model="user.email" class="form-control" id="activityEmail" disabled/>
                     </div>
 
                     <div class="form-group" ng-if="activity.typeOfQuestion[$index] == 'text'">
