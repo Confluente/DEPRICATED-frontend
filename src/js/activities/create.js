@@ -5,6 +5,13 @@ var app = angular.module("confluente");
  */
 app.controller("activityCreateController", ["$scope", "activities", function ($scope, activities) {
     $scope.loading = false;
+    $scope.inputs = [];
+
+    $scope.add = function () {
+        var dataObj = {title: '', fullQuestion: '', type: '', options: '', required: ''};
+        $scope.inputs.push(dataObj);
+        console.log($scope);
+    };
 
     // function called when new activity is submitted
     $scope.submit = function () {
@@ -16,12 +23,15 @@ app.controller("activityCreateController", ["$scope", "activities", function ($s
         var allOptions = [];
         var allRequired = [];
 
-        allTitles.push($scope.question1title);
-        allDescriptions.push($scope.question1fullQuestion);
-        allTypes.push($scope.question1Type);
-        allOptions.push($scope.question1Options);
-        allRequired.push($scope.question1Required);
+        $scope.inputs.forEach(function (dataObj) {
+            allTitles.push(dataObj.title);
+            allDescriptions.push(dataObj.fullQuestion);
+            allTypes.push(dataObj.type);
+            allOptions.push(dataObj.options);
+            allRequired.push(dataObj.required);
+        });
 
+        console.log($scope);
         // create new activity from variables as put on the $scope by the form
         activities.create({
             name: $scope.name,
@@ -43,7 +53,7 @@ app.controller("activityCreateController", ["$scope", "activities", function ($s
             $scope.loading = false;
 
             // redirect to new activity
-            // window.location.href = "/activities/" + result.id;
+            window.location.href = "/activities/" + result.id;
         });
     };
 

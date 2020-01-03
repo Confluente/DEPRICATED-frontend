@@ -49,44 +49,50 @@
             </label>
         </div>
 
-        Name and email are automatically asked for
-        <div class="form-group">
-            <label for="activityCreate-formName">Question 1 title (<b>keep it short</b>)</label>
-            <input type="text" ng-model="question1title" class="form-control" id="activityCreate-formName"/>
-        </div>
+        <h3>Name and email are automatically asked for in every form!</h3>
 
-        <div class="form-group">
-            <label for="subscriptionform-fullQuestion">Question 1 full question)</label>
-            <input type="text" ng-model="question1fullQuestion" class="form-control"
-                   id="subscriptionform-fullQuestion"/>
-        </div>
+        <div ng-repeat="input in inputs">
+            <div class="form-group">
+                <label for="activityCreate-formName{{$index}}">Question {{$index + 1}} title (<b>keep it short</b>)</label>
+                <input type="text" ng-model="input.title" class="form-control" id="activityCreate-formName{{$index}}"/>
+            </div>
 
-        What is the answer type of your question?
-        <div class="radio">
-            <label>
-                <input type="radio" ng-model="question1Type" value="radio" id="question1-radio"/> Radio
-            </label>
-        </div>
-        <div class="radio">
-            <label>
-                <input type="radio" ng-model="question1Type" value="checkbox" id="question1-checkbox"/> Checkbox
-            </label>
-        </div>
-        <div class="radio">
-            <label>
-                <input type="radio" ng-model="question1Type" value="text" id="question1-text"/> text
-            </label>
-        </div>
-        <div class="form-group">
-            <label for="activityCreate-formQ1Options">Options</label>
-            <input type="text" ng-model="question1Options" class="form-control" id="activityCreate-formQ1Options"/>
-        </div>
+            <div class="form-group">
+                <label for="activityCreate-fullQuestion{{$index}}">Question {{$index + 1}} full question)</label>
+                <input type="text" ng-model="input.fullQuestion" class="form-control" id="activityCreate-fullQuestion{{$index}}"/>
+            </div>
 
-        <div class="checkbox">
-            <label for="activityCreate-formQ1Required">
-                <input type="checkbox" ng-model="question1Required" id="activityCreate-formQ1Required"> Is this question mandatory
-            </label>
+
+            <b>What is the answer type of your question?</b>
+            <div class="radio">
+                <label>
+                    <input type="radio" ng-model="input.type" value="radio" id="question{{$index}}-radio"/> Radio
+                </label>
+            </div>
+            <div class="radio">
+                <label>
+                    <input type="radio" ng-model="input.type" value="checkbox" id="question{{$index}}-checkbox"/> Checkbox
+                </label>
+            </div>
+            <div class="radio">
+                <label>
+                    <input type="radio" ng-model="input.type" value="text" id="question{{$index}}-text"/> text
+                </label>
+            </div>
+
+            <div class="form-group">
+                <label for="activityCreate-options{{$index}}">Options</label>
+                <input type="text" ng-model="input.options" class="form-control" id="activityCreate-options{{$index}}"/>
+            </div>
+
+            <div class="checkbox">
+                <label for="activityCreate-required{{$index}}">
+                    <input type="checkbox" ng-model="input.required" id="activityCreate-required{{$index}}"> Is this
+                    question mandatory
+                </label>
+            </div>
         </div>
+        <button ng-click="add()">Add question</button>
 
         <button type="submit" class="btn btn-default" ng-click="submit()" ng-disabled="loading">Save</button>
 
