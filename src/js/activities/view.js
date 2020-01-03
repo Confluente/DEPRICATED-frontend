@@ -15,13 +15,37 @@ app.controller("activityViewController", ["$scope", "$routeParams", "activities"
         }
         $scope.answers = [];
         for (var i = 0; i < activity.numberOfQuestions; i++) {
-            $scope.answers.push("");
+            if (activity.typeOfQuestion[i] === 'checkbox') {
+                var list = [];
+                for (var j = 0; j < activity.formOptions[i].length; j++) {
+                    list.push("");
+                }
+                $scope.answers.push(list);
+
+            } else {
+                $scope.answers.push("");
+            }
         }
         console.log($scope);
     });
 
     $scope.submit = function () {
         $scope.loading = true;
+        // Format answer correctly
+        for (var i = 0; i < $scope.activity.numberOfQuestions; i++) {
+            var answer = "";
+            if ($scope.activity.typeOfQuestion[i] === 'checkbox') {
+                for (var j = 0; j < $scope.activity.formOptions[i].length; j++) {
+                    if ($scope.answers[i][j] === true) {
+                        if (answer !== "") answer += " - ";
+                        answer += $scope.activity.formOptions[i][j].toString();
+                    }
+                }
+                console.log(answer);
+                $scope.answers[i] = answer;
+            }
+        }
+
         // create new activity from variables as put on the $scope by the form
         activities.subscribe($scope.answers, activityId).then(function (result) {
             $scope.loading = false;

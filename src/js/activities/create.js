@@ -13,10 +13,12 @@ app.controller("activityCreateController", ["$scope", "activities", function ($s
         var allTitles = [];
         var allDescriptions = [];
         var allTypes = [];
+        var allOptions = [];
 
         allTitles.push($scope.question1title);
         allDescriptions.push($scope.question1fullQuestion);
         allTypes.push($scope.question1Type);
+        allOptions.push($scope.question1Options);
 
         // create new activity from variables as put on the $scope by the form
         activities.create({
@@ -33,12 +35,12 @@ app.controller("activityCreateController", ["$scope", "activities", function ($s
             titlesOfQuestions: allTitles,
             typeOfQuestion: allTypes,
             questionDescriptions: allDescriptions,
-            options: ""
+            options: allOptions
         }).then(function (result) {
             $scope.loading = false;
 
             // redirect to new activity
-            window.location.href = "/activities/" + result.id;
+            // window.location.href = "/activities/" + result.id;
         });
     };
 
