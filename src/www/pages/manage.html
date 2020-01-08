@@ -40,7 +40,7 @@
             </div>
         </uib-tab>
 
-        <uib-tab index="2" heading="Users">
+        <uib-tab index="2" heading="Users" ng-if="user.isAdmin">
             <input type="text" class="form-control" placeholder="Search" ng-model="searchQueryUsers">
             <div class="table-responsive">
                 <table class="table table-hover">
@@ -67,7 +67,7 @@
             </div>
         </uib-tab>
 
-        <uib-tab index="3" heading="Groups">
+        <uib-tab index="3" heading="Groups" ng-if="user.isAdmin">
             <input type="text" class="form-control" placeholder="Search" ng-model="searchQueryGroups">
             <div class="table-responsive">
                 <table class="table table-hover">
