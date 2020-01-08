@@ -27,8 +27,13 @@ function getTemplateUrl(routeParams) {
 }
 
 function getPageTitle(url) {
-    var title = url.split("/").slice(-1)[0].split(".")[0];
-    return title.charAt(0).toUpperCase() + title.substr(1);
+    var name = url.split("/").slice(-1)[0].split(".")[0];
+    var words = name.split('_');
+    var title = '';
+    for (var i = 0; i < words.length; i++) {
+        title += ' ' + words[i].charAt(0).toUpperCase() + words[i].substr(1);
+    }
+    return title.substr(1);
 }
 
 module.exports = {
