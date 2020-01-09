@@ -7,12 +7,12 @@ app.controller("activityEditController", ["$scope", "$routeParams", "activities"
     // get activityId from URL
     var activityId = $routeParams.activityId;
     $scope.inputs = [];
+    $scope.types = ["text", "radio", "checkbox"];
     // get activity from backend by activityId and put it on the $scope
     activities.get(activityId).then(function (activity) {
         $scope.activity = activity;
         for (var i = 2; i < activity.numberOfQuestions; i++) {
             $scope.inputs.push({
-                title: activity.titlesOfQuestions[i],
                 fullQuestion: activity.questionDescriptions[i],
                 type: activity.typeOfQuestion[i],
                 options: activity.formOptions[i],
@@ -36,14 +36,12 @@ app.controller("activityEditController", ["$scope", "$routeParams", "activities"
     $scope.submit = function () {
         $scope.loading = true;
 
-        var allTitles = [];
         var allDescriptions = [];
         var allTypes = [];
         var allOptions = [];
         var allRequired = [];
 
         $scope.inputs.forEach(function (dataObj) {
-            allTitles.push(dataObj.title);
             allDescriptions.push(dataObj.fullQuestion);
             allTypes.push(dataObj.type);
             var optionString = "";
@@ -55,7 +53,6 @@ app.controller("activityEditController", ["$scope", "$routeParams", "activities"
             allRequired.push(dataObj.required);
         });
 
-        $scope.activity.titlesOfQuestions = allTitles;
         $scope.activity.typeOfQuestion = allTypes;
         $scope.activity.questionDescriptions = allDescriptions;
         $scope.activity.formOptions = allOptions;

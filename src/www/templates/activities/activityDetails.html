@@ -17,7 +17,7 @@ checkbox
         <a href="#signup" class="btn btn-primary" data-toggle="collapse">Sign up here!</a>
         <div id="signup" class="collapse subscriptionForm">
             <form>
-                <div ng-repeat="question in activity.titlesOfQuestions">
+                <div ng-repeat="question in activity.questionDescriptions">
                     <div class="form-group" ng-if="activity.typeOfQuestion[$index] == 'name'">
                         <label for="activityName">{{activity.questionDescriptions[$index]}}</label>
                         <input type="text" ng-model="user.displayName" class="form-control" id="activityName" disabled/>
@@ -63,7 +63,7 @@ checkbox
         <table style="width: 100%">
             <tr>
                 <th>#<hr /></th>
-                <th ng-repeat="question in activity.titlesOfQuestions">{{question}}<hr /></th>
+                <th ng-repeat="question in activity.questionDescriptions">{{question}}<hr /></th>
             </tr>
             <tr ng-repeat="participant in activity.participants">
                 <td>{{$index}}</td>

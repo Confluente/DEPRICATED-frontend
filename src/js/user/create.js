@@ -9,7 +9,7 @@ app.controller("userCreateController", ["$scope", "users", function ($scope, use
         "Empowerement for Healthcare and Wellbeing", "Energy Transition", "High Tech Systems", "SensUs Organization",
         "Smart Cities", "Smart Mobility"];
 
-    $scope.generations = ["2018", "2019"]
+    $scope.generations = ["2018", "2019"];
     // function called when newly created user is submitted
     $scope.submit = function () {
         $scope.loading = true;

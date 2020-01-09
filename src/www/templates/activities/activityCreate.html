@@ -6,108 +6,91 @@
 
     <form>
 
-        <div class="form-group">
-            <label for="activityCreate-name">Name</label>
+        <div class="form-group col-md-6 col-xs-12">
+            <label for="activityCreate-name">Name of activity</label>
             <input type="text" ng-model="name" class="form-control" id="activityCreate-name">
         </div>
 
-        <div class="form-group">
-            <label for="activityCreate-desc">Description (Markdown supported)</label>
+        <div class="form-group col-md-12 col-xs-12">
+            <label for="activityCreate-desc">Description of activity</label>
             <textarea ng-model="description" class="form-control" id="activityCreate-desc"></textarea>
         </div>
 
-        <div class="form-group">
-            <label for="activityCreate-organize">Organizer</label>
+        <div class="form-group col-md-6 col-xs-12">
+            <label for="activityCreate-organize">Organizing committee</label>
             <select ng-model="organizer" class="form-control" id="activityCreate-organize">
                 <option ng-repeat="group in user.groups" ng-value="group.id">{{group.displayName}}</option>
             </select>
         </div>
 
-        <div class="form-group">
-            <label for="activityCreate-date">Date</label>
+        <div class="form-group col-md-6 col-xs-12">
+            <label for="activityCreate-date">Date of activity</label>
             <input type="date" ng-model="date" class="form-control" id="activityCreate-date"/>
         </div>
 
-        <div class="form-group">
-            <label for="activityCreate-startTime">Starting time</label>
+        <div class="form-group col-md-6 col-xs-12">
+            <label for="activityCreate-startTime">Starting time of activity (xx:xx)</label>
             <input type="text" ng-model="startTime" class="form-control" id="activityCreate-startTime"/>
         </div>
 
-        <div class="form-group">
-            <label for="activityCreate-endTime">Ending time (optional)</label>
+        <div class="form-group col-md-6 col-xs-12">
+            <label for="activityCreate-endTime">Ending time (xx:xx) (optional)</label>
             <input type="text" ng-model="endTime" class="form-control" id="activityCreate-endTime"/>
         </div>
 
-        <div class="form-group">
-            <label for="activityCreate-location">Location (optional)</label>
+        <div class="form-group col-md-6 col-xs-12">
+            <label for="activityCreate-location">Location of activity</label>
             <input type="text" ng-model="location" class="form-control" id="activityCreate-location"/>
         </div>
 
-        <div class="form-group">
-            <label for="activityCreate-participationFee">Participation fee (in euros)</label>
+        <div class="form-group col-md-6 col-xs-12">
+            <label for="activityCreate-participationFee">Participation fee (in euros) (optional)</label>
             <input type="text" ng-model="participationFee" class="form-control" id="activityCreate-participationFee"/>
         </div>
 
-        <div class="checkbox">
+        <div class="checkbox col-md-12 col-xs-12">
             <label for="activityCreate-canSubscribe">
                 <input type="checkbox" ng-model="canSubscribe" id="activityCreate-canSubscribe"> Can members subscribe?
             </label>
         </div>
 
-        <h3 ng-if="canSubscribe">Name and email are automatically asked for in every form!</h3>
+        <h3 class="col-md-12 col-xs-12" ng-if="canSubscribe" style="margin-top: 0">Name and email are automatically asked for in every form!</h3>
 
-        <div ng-repeat="input in inputs">
-            <div class="form-group">
-                <label for="activityCreate-formName{{$index}}">Question {{$index + 1}} title (<b>keep it
-                    short</b>)</label>
-                <input type="text" ng-model="input.title" class="form-control" id="activityCreate-formName{{$index}}"/>
-            </div>
-
-            <div class="form-group">
+        <div ng-repeat="input in inputs" ng-if="canSubscribe">
+            <div class="form-group col-md-8 col-xs-12">
                 <label for="activityCreate-fullQuestion{{$index}}">Question {{$index + 1}} full question)</label>
                 <input type="text" ng-model="input.fullQuestion" class="form-control"
                        id="activityCreate-fullQuestion{{$index}}"/>
             </div>
 
-
-            <b>What is the answer type of your question?</b>
-            <div class="radio">
-                <label>
-                    <input type="radio" ng-model="input.type" value="radio" id="question{{$index}}-radio"/> Radio
-                </label>
-            </div>
-            <div class="radio">
-                <label>
-                    <input type="radio" ng-model="input.type" value="checkbox" id="question{{$index}}-checkbox"/>
-                    Checkbox
-                </label>
-            </div>
-            <div class="radio">
-                <label>
-                    <input type="radio" ng-model="input.type" value="text" id="question{{$index}}-text"/> text
+            <div class="checkbox col-md-4 col-xs-12">
+                <label for="activityCreate-required{{$index}}" style="margin-top: 30px">
+                    <input type="checkbox" ng-model="input.required" id="activityCreate-required{{$index}}"> <b>mandatory</b>
                 </label>
             </div>
 
-            <div class="form-group">
-                <label for="activityCreate-options{{$index}}">Options</label>
+            <div class="col-md-6 col-xs-12">
+                <b>What is the answer type of your question?</b><br/>
+                <select ng-model="input.type" ng-options="x for x in types" style="margin-top: 10px"></select><br>
+            </div>
+
+            <div class="form-group col-md-6 col-xs-12" ng-if="input.type == 'radio' || input.type == 'checkbox'">
+                <label for="activityCreate-options{{$index}}">Options ; seperated (For options yes and no type yes;no)</label>
                 <input type="text" ng-model="input.options" class="form-control" id="activityCreate-options{{$index}}"/>
             </div>
 
-            <div class="checkbox">
-                <label for="activityCreate-required{{$index}}">
-                    <input type="checkbox" ng-model="input.required" id="activityCreate-required{{$index}}"> Is this
-                    question mandatory
-                </label>
+            <div class="col-md-12 col-xs-12">
+                <hr>
             </div>
         </div>
 
-        <div ng-if="canSubscribe" style="padding-bottom: 10px">
+        <div class="col-md-12 col-xs-12" ng-if="canSubscribe" style="padding-bottom: 10px">
             <button ng-click="add()" class="btn btn-default">Add question</button>
             <button ng-click="remove()" class="btn btn-default">Remove last question</button>
             <br>
         </div>
 
-        <button type="submit" class="btn btn-primary" ng-click="submit()" ng-disabled="loading">Save</button>
+        <button type="submit" class="btn btn-primary col-md-12 col-xs-12" ng-click="submit()" ng-disabled="loading">Save</button>
 
     </form>
 </div>

@@ -7,8 +7,10 @@ app.controller("activityCreateController", ["$scope", "activities", function ($s
     $scope.loading = false;
     $scope.inputs = [];
 
+    $scope.types = ["text", "radio", "checkbox"];
+
     $scope.add = function () {
-        var dataObj = {title: '', fullQuestion: '', type: '', options: '', required: ''};
+        var dataObj = {fullQuestion: '', type: "text", options: '', required: ''};
         $scope.inputs.push(dataObj);
     };
 
@@ -20,14 +22,12 @@ app.controller("activityCreateController", ["$scope", "activities", function ($s
     $scope.submit = function () {
         $scope.loading = true;
 
-        var allTitles = [];
         var allDescriptions = [];
         var allTypes = [];
         var allOptions = [];
         var allRequired = [];
 
         $scope.inputs.forEach(function (dataObj) {
-            allTitles.push(dataObj.title);
             allDescriptions.push(dataObj.fullQuestion);
             allTypes.push(dataObj.type);
             allOptions.push(dataObj.options);
@@ -46,8 +46,7 @@ app.controller("activityCreateController", ["$scope", "activities", function ($s
             participationFee: $scope.participationFee,
             approved: true,
             canSubscribe: $scope.canSubscribe,
-            numberOfQuestions: allTitles.length,
-            titlesOfQuestions: allTitles,
+            numberOfQuestions: allDescriptions.length,
             typeOfQuestion: allTypes,
             questionDescriptions: allDescriptions,
             options: allOptions,
