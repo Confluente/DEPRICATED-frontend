@@ -56,6 +56,14 @@ app.controller("activityEditController", ["$scope", "$routeParams", "activities"
             }
             allOptions.push(optionString);
             allRequired.push(dataObj.required);
+            if (dataObj.fullQuestion === "") {
+                $scope.loading = false;
+                return alert("One of your questions is empty!");
+            }
+            if (dataObj.type !== "text" && dataObj.options === "") {
+                $scope.loading = false;
+                return alert("One of your multiple choice questions does not have any options!")
+            }
         });
 
         $scope.activity.typeOfQuestion = allTypes;

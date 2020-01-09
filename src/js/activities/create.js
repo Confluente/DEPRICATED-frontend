@@ -36,6 +36,15 @@ app.controller("activityCreateController", ["$scope", "activities", function ($s
             allTypes.push(dataObj.type);
             allOptions.push(dataObj.options);
             allRequired.push(dataObj.required);
+            if (dataObj.fullQuestion === "") {
+                $scope.loading = false;
+                return alert("One of your questions is empty!");
+            }
+
+            if (dataObj.type !== "text" && dataObj.options === "") {
+                $scope.loading = false;
+                return alert("One of your multiple choice questions does not have any options!")
+            }
         });
 
         // create new activity from variables as put on the $scope by the form
