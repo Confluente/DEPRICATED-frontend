@@ -7,13 +7,16 @@ app.controller("activityCreateController", ["$scope", "activities", function ($s
     $scope.loading = false;
     $scope.inputs = [];
 
+    // options for question types
     $scope.types = ["text", "radio", "checkbox"];
 
+    // Each time a question is added, this creates a new empty object in the inputs variable
     $scope.add = function () {
         var dataObj = {fullQuestion: '', type: "text", options: '', required: ''};
         $scope.inputs.push(dataObj);
     };
 
+    // Removes last element (last question) from inputs variable
     $scope.remove = function () {
         $scope.inputs.pop();
     };
@@ -22,6 +25,7 @@ app.controller("activityCreateController", ["$scope", "activities", function ($s
     $scope.submit = function () {
         $scope.loading = true;
 
+        // Format output correctly
         var allDescriptions = [];
         var allTypes = [];
         var allOptions = [];
