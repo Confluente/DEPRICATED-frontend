@@ -40,37 +40,39 @@ app.controller("activityEditController", ["$scope", "$routeParams", "activities"
     $scope.submit = function () {
         $scope.loading = true;
 
-        // format form correctly
-        var allDescriptions = [];
-        var allTypes = [];
-        var allOptions = [];
-        var allRequired = [];
+        if ($scope.activity.canSubscribe) {
+            // format form correctly
+            var allDescriptions = [];
+            var allTypes = [];
+            var allOptions = [];
+            var allRequired = [];
 
-        $scope.inputs.forEach(function (dataObj) {
-            allDescriptions.push(dataObj.fullQuestion);
-            allTypes.push(dataObj.type);
-            var optionString = "";
-            for (var i = 0; i < dataObj.options.length; i++) {
-                if (optionString !== "") optionString += ";"
-                optionString += dataObj.options[i];
-            }
-            allOptions.push(optionString);
-            allRequired.push(dataObj.required);
-            if (dataObj.fullQuestion === "") {
-                $scope.loading = false;
-                return alert("One of your questions is empty!");
-            }
-            if (dataObj.type !== "text" && dataObj.options === "") {
-                $scope.loading = false;
-                return alert("One of your multiple choice questions does not have any options!")
-            }
-        });
+            $scope.inputs.forEach(function (dataObj) {
+                allDescriptions.push(dataObj.fullQuestion);
+                allTypes.push(dataObj.type);
+                var optionString = "";
+                for (var i = 0; i < dataObj.options.length; i++) {
+                    if (optionString !== "") optionString += ";";
+                    optionString += dataObj.options[i];
+                }
+                allOptions.push(optionString);
+                allRequired.push(dataObj.required);
+                if (dataObj.fullQuestion === "") {
+                    $scope.loading = false;
+                    return alert("One of your questions is empty!");
+                }
+                if (dataObj.type !== "text" && dataObj.options === "") {
+                    $scope.loading = false;
+                    return alert("One of your multiple choice questions does not have any options!")
+                }
+            });
 
-        $scope.activity.typeOfQuestion = allTypes;
-        $scope.activity.questionDescriptions = allDescriptions;
-        $scope.activity.formOptions = allOptions;
-        $scope.activity.required = allRequired;
-        $scope.activity.numberOfQuestions = allTitles.length;
+            $scope.activity.typeOfQuestion = allTypes;
+            $scope.activity.questionDescriptions = allDescriptions;
+            $scope.activity.formOptions = allOptions;
+            $scope.activity.required = allRequired;
+            $scope.activity.numberOfQuestions = allTitles.length;
+        }
         // submit edit of activity to backend
         console.log($scope);
         activities.edit($scope.activity).then(function (result) {

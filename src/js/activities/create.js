@@ -24,31 +24,7 @@ app.controller("activityCreateController", ["$scope", "activities", function ($s
     // function called when new activity is submitted
     $scope.submit = function () {
         $scope.loading = true;
-
-        // Format output correctly
-        var allDescriptions = [];
-        var allTypes = [];
-        var allOptions = [];
-        var allRequired = [];
-
-        $scope.inputs.forEach(function (dataObj) {
-            allDescriptions.push(dataObj.fullQuestion);
-            allTypes.push(dataObj.type);
-            allOptions.push(dataObj.options);
-            allRequired.push(dataObj.required);
-            if (dataObj.fullQuestion === "") {
-                $scope.loading = false;
-                return alert("One of your questions is empty!");
-            }
-
-            if (dataObj.type !== "text" && dataObj.options === "") {
-                $scope.loading = false;
-                return alert("One of your multiple choice questions does not have any options!")
-            }
-        });
-
-        // create new activity from variables as put on the $scope by the form
-        activities.create({
+        var act = {
             name: $scope.name,
             description: $scope.description,
             organizer: $scope.organizer,
@@ -59,12 +35,40 @@ app.controller("activityCreateController", ["$scope", "activities", function ($s
             participationFee: $scope.participationFee,
             approved: true,
             canSubscribe: $scope.canSubscribe,
-            numberOfQuestions: allDescriptions.length,
-            typeOfQuestion: allTypes,
-            questionDescriptions: allDescriptions,
-            options: allOptions,
-            required: allRequired
-        }).then(function (result) {
+        };
+
+        if ($scope.canSubscribe) {
+            // Format output correctly
+            var allDescriptions = [];
+            var allTypes = [];
+            var allOptions = [];
+            var allRequired = [];
+
+            $scope.inputs.forEach(function (dataObj) {
+                allDescriptions.push(dataObj.fullQuestion);
+                allTypes.push(dataObj.type);
+                allOptions.push(dataObj.options);
+                allRequired.push(dataObj.required);
+                if (dataObj.fullQuestion === "") {
+                    $scope.loading = false;
+                    return alert("One of your questions is empty!");
+                }
+
+                if (dataObj.type !== "text" && dataObj.options === "") {
+                    $scope.loading = false;
+                    return alert("One of your multiple choice questions does not have any options!")
+                }
+            });
+
+            act.numberOfQuestions = allDescriptions.length;
+            act.typeOfQuestion = allTypes;
+            act.questionDescriptions = allDescriptions;
+            act.options = allOptions;
+            act.required = allRequired;
+        }
+
+        // create new activity from variables as put on the $scope by the form
+        activities.create(act).then(function (result) {
             $scope.loading = false;
 
             // redirect to new activity

@@ -5,14 +5,12 @@
         <a class="btn btn-default" href="manage/group/create" ng-if="user.isAdmin">+ Group</a>
     </div>
 </div>
-
 <h1>Management Dashboard</h1>
-
 <div ng-controller="manageController">
     <uib-tabset active="active" class="section">
-
         <uib-tab index="1" heading="Activities">
             <input type="text" class="form-control" placeholder="Search" ng-model="searchQueryActivities">
+            <label>Filter on date! <input type="date" class="form-control col-md-8" ng-model="f.date"></label>
             <div class="table-responsive">
                 <table class="table table-hover">
 

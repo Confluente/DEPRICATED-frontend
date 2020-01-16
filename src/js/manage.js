@@ -6,13 +6,18 @@ var app = angular.module("confluente");
 app.controller("manageController", ["$rootScope", "$scope", "$q", "pages", "activities", "users", "groups",
     function ($rootScope, $scope, $q, pages, activities, users, groups) {
         $scope.loading = true;
+        $scope.f = {
+            date: new Date()
+        };
+
         //Wait until all data is retrieved
         //This is a bad approach and I should be ashamed
         //In the future, perhaps create a new directive/scope for each tab
 
         // retrieve all data
         activities.getAllManage().then(function (activities) {
-            $scope.activities = activities;
+            $scope.archive = activities;
+            $scope.filter();
         });
         if ($rootScope.user.isAdmin) {
             users.getAll().then(function (users) {
@@ -25,6 +30,20 @@ app.controller("manageController", ["$rootScope", "$scope", "$q", "pages", "acti
                 $scope.groups = groups;
             });
         }
+
+        $scope.$watch("f.date", function (newDate) {
+            $scope.filter();
+        });
+
+        $scope.filter = function() {
+            var date = $scope.f.date;
+            $scope.activities = [];
+            for (var i = 0; i < $scope.archive.length; i++) {
+                if ($scope.archive[i].date >= date) {
+                    $scope.activities.push($scope.archive[i]);
+                }
+            }
+        };
 
         // Ugly repeated code
         // $scope variables for tracking search & sorting in activities tab
@@ -64,6 +83,19 @@ app.controller("manageController", ["$rootScope", "$scope", "$q", "pages", "acti
                 $scope.sortReverseGroups = false;
             }
             $scope.sortTypeGroups = type;
+        };
+
+        // function for using datepicker in form for creating activities
+        $scope.datepicker = {open: false};
+        $scope.openDatePicker = function () {
+            $scope.datepicker.open = true;
+        };
+
+        $scope.dateOptions = {
+            formatYear: 'yy',
+            maxDate: new Date(2029, 5, 22), // maximum date for datepicker
+            minDate: new Date(), // minimum date for datepicker
+            startingDay: 1
         };
     }]
 );
