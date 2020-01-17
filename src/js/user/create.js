@@ -36,7 +36,7 @@ app.controller("userCreateController", ["$scope", "users", function ($scope, use
             campusCardNumber: $scope.cardNumber,
             mobilePhoneNumber: $scope.phone,
             password: $scope.password,
-            consentWithPrivacyPolicy: $scope.consent
+            consentWithPortraitRight: $scope.portraitRight
         }).then(function (result) {
             $scope.loading = false;
             // redirect to '/manage'

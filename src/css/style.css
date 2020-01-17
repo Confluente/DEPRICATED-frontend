@@ -773,6 +773,12 @@ label {
     padding: 10px;
 }
 
+@media (max-width: 560px) {
+    .subscriptionForm {
+        width: 100%;
+    }
+}
+
 /* --Profile */
 .profileTable table {
     border: 1px solid black;

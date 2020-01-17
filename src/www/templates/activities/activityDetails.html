@@ -1,19 +1,20 @@
 <!--TODO Abstract from container-->
-<!--
-text
-radio
-checkbox
--->
 <div class="container">
     <h1><a class="btn btn-link" href="/activities"><i class="fa fa-chevron-left" aria-hidden="true"></i></a>
         {{activity.name}}</h1>
-    <p ng-if="activity.description">{{activity.description}}</p>
-    <p ng-if="activity.date">Date: {{activity.date | date:'d MMMM yyyy'}}</p>
-    <p ng-if="activity.startTime">Starting time: {{activity.startTime}}</p>
-    <p ng-if="activity.endTime">Ending time: {{activity.endTime}}</p>
-    <p ng-if="activity.location">Location: {{activity.location}}</p>
-    <p ng-if="activity.participationFee">Participation fee: &euro;{{activity.participationFee}}</p>
-    <div ng-if="activity.canSubscribe && user.loggedIn">
+    <div class="col-md-8">
+        <p ng-if="activity.description">{{activity.description}}</p>
+    </div>
+    <div class="mobileshow"><hr/></div>
+    <div class="col-md-4">
+        <p ng-if="activity.date"><b>Date</b>: {{activity.date | date:'d MMMM yyyy'}}</p>
+        <p ng-if="activity.startTime"><b>Starting time</b>: {{activity.startTime}}</p>
+        <p ng-if="activity.endTime"><b>Ending time</b>: {{activity.endTime}}</p>
+        <p ng-if="activity.location"><b>Location</b>: {{activity.location}}</p>
+        <p ng-if="activity.participationFee"><b>Participation fee</b>: &euro;{{activity.participationFee}}</p>
+        <p ng-if="!activity.participationFee"><b>Participation fee</b>: free!</p>
+    </div>
+    <div ng-if="activity.canSubscribe && user.loggedIn" class="col-md-12">
         <a href="#signup" class="btn btn-primary" data-toggle="collapse">Sign up here!</a>
         <div id="signup" class="collapse subscriptionForm">
             <form>
@@ -29,12 +30,14 @@ checkbox
                     </div>
 
                     <div class="form-group" ng-if="activity.typeOfQuestion[$index] == 'text'">
-                        <label for="activityView{{$index}}">{{activity.questionDescriptions[$index]}} <b ng-if="activity.required[$index] === 'true'">(required)</b> </label>
+                        <label for="activityView{{$index}}">{{activity.questionDescriptions[$index]}} <b
+                                ng-if="activity.required[$index] === 'true'">(required)</b> </label>
                         <input type="text" ng-model="answers[$index]" class="form-control" id="activityView{{$index}}"/>
                     </div>
 
                     <div class="form-group" ng-if="activity.typeOfQuestion[$index] == 'radio'">
-                        <label>{{activity.questionDescriptions[$index]}} <b ng-if="activity.required[$index] === 'true'">(required)</b></label>
+                        <label>{{activity.questionDescriptions[$index]}} <b
+                                ng-if="activity.required[$index] === 'true'">(required)</b></label>
                         <div ng-repeat="option in activity.formOptions[$index]">
                             <div class="radio">
                                 <label>
@@ -44,11 +47,13 @@ checkbox
                         </div>
                     </div>
                     <div class="form-group" ng-if="activity.typeOfQuestion[$index] == 'checkbox'">
-                        <label>{{activity.questionDescriptions[$index]}} <b ng-if="activity.required[$index] === 'true'">(required to pick at least 1)</b></label>
+                        <label>{{activity.questionDescriptions[$index]}} <b
+                                ng-if="activity.required[$index] === 'true'">(required to pick at least 1)</b></label>
                         <div ng-repeat="option in activity.formOptions[$index]">
                             <div class="checkbox">
                                 <label>
-                                    <input type="checkbox" value="{{option}}" ng-model="answers[$parent.$index][$index]">{{option}}
+                                    <input type="checkbox" value="{{option}}"
+                                           ng-model="answers[$parent.$index][$index]">{{option}}
                                 </label>
                             </div>
                         </div>
@@ -62,8 +67,12 @@ checkbox
         <h2>Current Subscriptions</h2>
         <table style="width: 100%">
             <tr>
-                <th>#<hr /></th>
-                <th ng-repeat="question in activity.questionDescriptions">{{question}}<hr /></th>
+                <th>#
+                    <hr/>
+                </th>
+                <th ng-repeat="question in activity.questionDescriptions">{{question}}
+                    <hr/>
+                </th>
             </tr>
             <tr ng-repeat="participant in activity.participants">
                 <td>{{$index}}</td>

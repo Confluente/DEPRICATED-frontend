@@ -71,7 +71,7 @@ app.controller("activityEditController", ["$scope", "$routeParams", "activities"
             $scope.activity.questionDescriptions = allDescriptions;
             $scope.activity.formOptions = allOptions;
             $scope.activity.required = allRequired;
-            $scope.activity.numberOfQuestions = allTitles.length;
+            $scope.activity.numberOfQuestions = allDescriptions.length;
         }
         // submit edit of activity to backend
         console.log($scope);
