@@ -13,7 +13,7 @@ app.controller("userCreateController", ["$scope", "users", function ($scope, use
     // function called when newly created user is submitted
     $scope.submit = function () {
         $scope.loading = true;
-        if (!$scope.firstName || !$scope.lastName || !$scope.password || !$scope.email || !$scope.consent) {
+        if (!$scope.firstName || !$scope.lastName || !$scope.password || !$scope.email || !$scope.portraitRight) {
             $scope.loading = false;
             return alert("Not all required fields were filled in!");
         }
@@ -40,7 +40,7 @@ app.controller("userCreateController", ["$scope", "users", function ($scope, use
         }).then(function (result) {
             $scope.loading = false;
             // redirect to '/manage'
-            window.location.href = "/login";
+            window.location.href = "/submitted_registration";
         });
     };
 }]);

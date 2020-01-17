@@ -62,7 +62,7 @@
                     </a>
                     <ul class="dropdown-menu">
                         <li><a href="/user/profile"><span class="fa fa-user-circle"></span>Profile</a></li>
-                        <li><a href="/manage"><span class="fa fa-sliders"></span>Manage</a></li>
+                        <li ng-if="user.isAdmin"><a href="/manage"><span class="fa fa-sliders"></span>Manage</a></li>
                         <li role="separator" class="divider"></li>
                         <li><a href="#" ng-click="logout()"><span class="fa fa-sign-out"></span>Logout</a></li>
                     </ul>
