@@ -8,8 +8,9 @@
     <div class="mobileshow"><hr/></div>
     <div class="col-md-4">
         <p ng-if="activity.date"><b>Date</b>: {{activity.date | date:'d MMMM yyyy'}}</p>
-        <p ng-if="activity.startTime"><b>Starting time</b>: {{activity.startTime}}</p>
-        <p ng-if="activity.endTime"><b>Ending time</b>: {{activity.endTime}}</p>
+        <p ng-if="activity.startTime && activity.endTime"><b>Time</b>: {{activity.startTime}} - {{activity.endTime}}</p>
+        <p ng-if="activity.startTime && !activity.endTime"><b>Starting time</b>: {{activity.startTime}}</p>
+        <p ng-if="activity.endTime && !activity.startTime"><b>Ending time</b>: {{activity.endTime}}</p>
         <p ng-if="activity.location"><b>Location</b>: {{activity.location}}</p>
         <p ng-if="activity.participationFee"><b>Participation fee</b>: &euro;{{activity.participationFee}}</p>
         <p ng-if="!activity.participationFee"><b>Participation fee</b>: free!</p>
@@ -75,7 +76,7 @@
                 </th>
             </tr>
             <tr ng-repeat="participant in activity.participants">
-                <td>{{$index}}</td>
+                <td>{{$index + 1}}</td>
                 <td ng-repeat="answer in participant.subscription.answers">{{answer}}</td>
             </tr>
         </table>
