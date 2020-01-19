@@ -14,8 +14,9 @@ app.controller("activityViewController", ["$scope", "$routeParams", "activities"
             window.location.href = "/activities/" + activityId + "#signup";
         }
         $scope.answers = [];
+        console.log(activity);
         for (var i = 0; i < activity.numberOfQuestions; i++) {
-            if (activity.typeOfQuestion[i] === 'checkbox') {
+            if (activity.typeOfQuestion[i] === '☑ checkboxes') {
                 var list = [];
                 for (var j = 0; j < activity.formOptions[i].length; j++) {
                     list.push("");
@@ -38,11 +39,11 @@ app.controller("activityViewController", ["$scope", "$routeParams", "activities"
         var filledIn = true;
         for (var i = 0; i < $scope.activity.numberOfQuestions; i++) {
             if ($scope.activity.required[i] === 'true') {
-                if ($scope.activity.typeOfQuestion[i] === 'text' && $scope.answers[i] === "") {
+                if ($scope.activity.typeOfQuestion[i] === '☰ text' && $scope.answers[i] === "") {
                     filledIn = false;
-                } else if ($scope.activity.typeOfQuestion[i] === 'radio' && $scope.answers[i] === "") {
+                } else if ($scope.activity.typeOfQuestion[i] === '◉ multiple choice' && $scope.answers[i] === "") {
                     filledIn = false;
-                } else if ($scope.activity.typeOfQuestion[i] === 'checkbox' && !$scope.answers[i].includes(true)) {
+                } else if ($scope.activity.typeOfQuestion[i] === '☑ checkboxes' && !$scope.answers[i].includes(true)) {
                     filledIn = false
                 }
             }
@@ -57,7 +58,7 @@ app.controller("activityViewController", ["$scope", "$routeParams", "activities"
         $scope.answers[1] = $scope.user.email;
         for (var i = 2; i < $scope.activity.numberOfQuestions; i++) {
             var answer = "";
-            if ($scope.activity.typeOfQuestion[i] === 'checkbox') {
+            if ($scope.activity.typeOfQuestion[i] === '☑ checkboxes') {
                 for (var j = 0; j < $scope.activity.formOptions[i].length; j++) {
                     if ($scope.answers[i][j] === true) {
                         if (answer !== "") answer += " - ";
