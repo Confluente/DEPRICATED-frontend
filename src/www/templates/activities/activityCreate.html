@@ -74,9 +74,12 @@
                 <select ng-model="input.type" ng-options="x for x in types" style="margin-top: 10px"></select><br>
             </div>
 
-            <div class="form-group col-md-6 col-xs-12" ng-if="input.type == 'radio' || input.type == 'checkbox'">
-                <label for="activityCreate-options{{$index}}">Options ; seperated (For options yes and no type yes;no)</label>
-                <input type="text" ng-model="input.options" class="form-control" id="activityCreate-options{{$index}}"/>
+            <div class="col-md-6 col-xs-12" ng-if="input.type == '◉ multiple choice' || input.type == '☑ checkboxes'">
+                <div class="form-group" ng-repeat="option in input.options track by $index">
+                    <input type="text" ng-model="input.options[$index]" class="form-control">
+                </div>
+                <button ng-click="addOption(input)" class="btn btn-default">Add option</button>
+                <button ng-click="removeOption(input)" class="btn btn-default">Remove last option</button>
             </div>
 
             <div class="col-md-12 col-xs-12">

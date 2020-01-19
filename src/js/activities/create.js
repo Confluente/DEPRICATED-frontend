@@ -8,17 +8,27 @@ app.controller("activityCreateController", ["$scope", "activities", function ($s
     $scope.inputs = [];
 
     // options for question types
-    $scope.types = ["text", "radio", "checkbox"];
+    $scope.types = ["☰ text", "◉ multiple choice", "☑ checkboxes"];
 
     // Each time a question is added, this creates a new empty object in the inputs variable
     $scope.add = function () {
-        var dataObj = {fullQuestion: '', type: "text", options: '', required: ''};
+        var dataObj = {fullQuestion: '', type: "☰ text", options: ['option 1'], required: ''};
         $scope.inputs.push(dataObj);
     };
 
     // Removes last element (last question) from inputs variable
     $scope.remove = function () {
         $scope.inputs.pop();
+    };
+
+    $scope.addOption = function (input) {
+        var option = 'option ' + (input.options.length + 1).toString();
+        console.log(input);
+        input.options.push(option);
+    };
+
+    $scope.removeOption = function (input) {
+        input.options.pop();
     };
 
     // function called when new activity is submitted
@@ -47,14 +57,18 @@ app.controller("activityCreateController", ["$scope", "activities", function ($s
             $scope.inputs.forEach(function (dataObj) {
                 allDescriptions.push(dataObj.fullQuestion);
                 allTypes.push(dataObj.type);
-                allOptions.push(dataObj.options);
+                var optionString = dataObj.options[0];
+                for (var i = 1; i < dataObj.options.length; i++) {
+                    optionString += ";" + dataObj.options[i];
+                }
+                allOptions.push(optionString);
                 allRequired.push(dataObj.required);
                 if (dataObj.fullQuestion === "") {
                     $scope.loading = false;
-                    return alert("One of your questions is empty!");
+                    return alert("One of your fields is empty!");
                 }
 
-                if (dataObj.type !== "text" && dataObj.options === "") {
+                if (dataObj.type !== "☰ text" && dataObj.options === "") {
                     $scope.loading = false;
                     return alert("One of your multiple choice questions does not have any options!")
                 }

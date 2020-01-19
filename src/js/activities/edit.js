@@ -9,30 +9,45 @@ app.controller("activityEditController", ["$scope", "$routeParams", "activities"
     $scope.inputs = [];
 
     //options for question types
-    $scope.types = ["text", "radio", "checkbox"];
+    $scope.types = ["☰ text", "◉ multiple choice", "☑ checkboxes"];
     // get activity from backend by activityId and put it on the $scope
     activities.get(activityId).then(function (activity) {
         $scope.activity = activity;
+        console.log(activity);
         for (var i = 2; i < activity.numberOfQuestions; i++) {
+            var options = [];
+            for (var j = 0; j < activity.formOptions[i].length; j++) {
+                options.push(activity.formOptions[i][j]);
+            }
             $scope.inputs.push({
                 fullQuestion: activity.questionDescriptions[i],
                 type: activity.typeOfQuestion[i],
-                options: activity.formOptions[i],
+                options: options,
                 required: activity.required[i]
-            })
+            });
         }
         console.log($scope);
     });
 
     // adds an element to the inputs variable
     $scope.add = function () {
-        var dataObj = {fullQuestion: '', type: "text", options: '', required: ''};
+        var dataObj = {fullQuestion: '', type: "☰ text", options: ['option 1'], required: ''};
         $scope.inputs.push(dataObj);
     };
 
     // removes last element from inputs variable
     $scope.remove = function () {
         $scope.inputs.pop();
+    };
+
+    $scope.addOption = function (input) {
+        var option = 'option ' + (input.options.length + 1).toString();
+        console.log(input);
+        input.options.push(option);
+    };
+
+    $scope.removeOption = function (input) {
+        input.options.pop();
     };
 
     $scope.loading = false;
@@ -52,7 +67,7 @@ app.controller("activityEditController", ["$scope", "$routeParams", "activities"
                 allTypes.push(dataObj.type);
                 var optionString = "";
                 for (var i = 0; i < dataObj.options.length; i++) {
-                    if (optionString !== "") optionString += ";";
+                    if (i !== 0) optionString += ";";
                     optionString += dataObj.options[i];
                 }
                 allOptions.push(optionString);
@@ -61,7 +76,7 @@ app.controller("activityEditController", ["$scope", "$routeParams", "activities"
                     $scope.loading = false;
                     return alert("One of your questions is empty!");
                 }
-                if (dataObj.type !== "text" && dataObj.options === "") {
+                if (dataObj.type !== "☰ text" && dataObj.options === "") {
                     $scope.loading = false;
                     return alert("One of your multiple choice questions does not have any options!")
                 }
