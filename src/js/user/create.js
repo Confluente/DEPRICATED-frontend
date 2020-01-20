@@ -24,7 +24,6 @@ app.controller("userCreateController", ["$scope", "users", function ($scope, use
         }
 
         // create new user in backend based on $scope variables as set in form
-        console.log($scope);
         user.create({
             displayName: $scope.firstName + " " + $scope.lastName,
             email: $scope.email,

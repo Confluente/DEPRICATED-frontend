@@ -60,6 +60,8 @@ app.controller("activityCreateController", ["$scope", "activities", function ($s
             approved: true,
             canSubscribe: $scope.canSubscribe,
         };
+        
+        $scope.empty = !$scope.name || !$scope.description || !$scope.organizer;
 
         if ($scope.canSubscribe) {
             // Format output correctly
@@ -77,14 +79,12 @@ app.controller("activityCreateController", ["$scope", "activities", function ($s
                 }
                 allOptions.push(optionString);
                 allRequired.push(dataObj.required);
-                if (dataObj.fullQuestion === "") {
-                    $scope.loading = false;
-                    return alert("One of your fields is empty!");
+                if (!dataObj.fullQuestion) {
+                    $scope.emtpy = true;
                 }
 
-                if (dataObj.type !== "☰ text" && dataObj.options === "") {
-                    $scope.loading = false;
-                    return alert("One of your multiple choice questions does not have any options!")
+                if (dataObj.type !== "☰ text" && (dataObj.options === "" || !dataObj.options)) {
+                    $scope.empty = true;
                 }
             });
 
@@ -93,6 +93,11 @@ app.controller("activityCreateController", ["$scope", "activities", function ($s
             act.questionDescriptions = allDescriptions;
             act.options = allOptions;
             act.required = allRequired;
+        }
+
+        if ($scope.empty) {
+            $scope.loading = false;
+            return alert("One of your field is empty!");
         }
 
         // create new activity from variables as put on the $scope by the form

@@ -19,6 +19,7 @@ app.controller("manageController", ["$rootScope", "$scope", "$q", "pages", "acti
             $scope.archive = activities;
             $scope.filter();
         });
+
         if ($rootScope.user.isAdmin) {
             users.getAll().then(function (users) {
                 $scope.users = users;
