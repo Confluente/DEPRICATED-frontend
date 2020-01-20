@@ -6,6 +6,13 @@ var app = angular.module("confluente");
 app.controller("userEditController", ["$scope", "$q", "$routeParams", "users", "groups", function ($scope, $q, $routeParams, user, groups) {
     // get userId from URL
     var userId = $routeParams.userId;
+
+    $scope.tracks = ["Artificial intelligence", "Competitive Programming and Problem Solving",
+        "Empowerement for Healthcare and Wellbeing", "Energy Transition", "High Tech Systems", "SensUs Organization",
+        "Smart Cities", "Smart Mobility"];
+
+    $scope.generations = [2018, 2019];
+
     $q.all([
         // retrieve all groups from backend
         groups.getAll().then(function (groups) {
@@ -15,6 +22,7 @@ app.controller("userEditController", ["$scope", "$q", "$routeParams", "users", "
         user.get(userId).then(function (param) {
             $scope.user = param[0];
             $scope.member = param[1];
+            console.log($scope);
         })
     ]).then(function () {
         var member_groups = [];
@@ -42,6 +50,7 @@ app.controller("userEditController", ["$scope", "$q", "$routeParams", "users", "
         $scope.loading = false;
         // function called when edit of user is submitted
         $scope.submit = function () {
+            $scope.user.displayName = $scope.user.firstName + " " + $scope.user.lastName;
             $scope.loading = true;
             user.edit($scope.user, $scope.groupSelection).then(function (result) {
                 $scope.loading = false;
