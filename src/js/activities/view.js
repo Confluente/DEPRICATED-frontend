@@ -1,4 +1,5 @@
 var app = angular.module("confluente");
+var TableExport = require("tableexport");
 
 /**
  * Controller for viewing activity
@@ -6,6 +7,10 @@ var app = angular.module("confluente");
 app.controller("activityViewController", ["$scope", "$routeParams", "activities", "users", function ($scope, $routeParams, activities, user) {
     // get activityId from URL
     var activityId = $routeParams.activityId;
+
+    $scope.isUserOrganizing = false;
+    $scope.clickedExport = false;
+
     // get activity from backend based on activityId and set on $scope
     activities.get(activityId).then(function (activity) {
         $scope.activity = activity;
@@ -14,7 +19,6 @@ app.controller("activityViewController", ["$scope", "$routeParams", "activities"
             window.location.href = "/activities/" + activityId + "#signup";
         }
         $scope.answers = [];
-        console.log(activity);
         for (var i = 0; i < activity.numberOfQuestions; i++) {
             if (activity.typeOfQuestion[i] === '☑ checkboxes') {
                 var list = [];
@@ -27,10 +31,21 @@ app.controller("activityViewController", ["$scope", "$routeParams", "activities"
                 $scope.answers.push("");
             }
         }
+
+        for (var i = 0; i < $scope.user.groups.length; i++) {
+            if ($scope.user.groups[i].id === $scope.activity.OrganizerId) {
+                $scope.isUserOrganizing = true;
+            }
+        }
     });
 
     $scope.login = function() {
         window.location.href = "/login";
+    };
+
+    $scope.exportTable = function() {
+        $scope.clickedExport = true;
+        TableExport(document.getElementsByTagName("table"));
     };
 
     $scope.submit = function () {

@@ -5,7 +5,9 @@
     <div class="col-md-8">
         <p ng-if="activity.description">{{activity.description}}</p>
     </div>
-    <div class="mobileshow"><hr/></div>
+    <div class="mobileshow">
+        <hr/>
+    </div>
     <div class="col-md-4">
         <p ng-if="activity.date"><b>Date</b>: {{activity.date | date:'d MMMM yyyy'}}</p>
         <p ng-if="activity.startTime && activity.endTime"><b>Time</b>: {{activity.startTime}} - {{activity.endTime}}</p>
@@ -66,7 +68,7 @@
             </form>
         </div>
         <h2>Current Subscriptions</h2>
-        <table style="width: 100%">
+        <table style="width: 100%" id="answerTable">
             <tr>
                 <th>#
                     <hr/>
@@ -80,9 +82,15 @@
                 <td ng-repeat="answer in participant.subscription.answers">{{answer}}</td>
             </tr>
         </table>
+        <div class="form-group" style="margin-top: 1rem">
+            <button class="btn btn-primary" ng-click="exportTable()"
+                    ng-if="isUserOrganizing && !clickedExport">Export answers!
+            </button>
+        </div>
     </div>
     <div ng-if="activity.canSubscribe && !user.loggedIn">
         <h4>You can only subscribe to events like these if you are logged in!</h4>
         <button class="btn btn-primary" ng-click="login()">Login</button>
     </div>
+
 </div>
