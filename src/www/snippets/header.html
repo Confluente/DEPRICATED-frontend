@@ -1,6 +1,9 @@
 <nav role="navigation" class="navbar navbar-default">
+    <div class="alert alert-info" style="margin-bottom: 0; text-align: center"
+         ng-if="user.loggedIn && !user.consentWithPortraitRight">You have not yet given consent to H.S.A. Confluente to
+        use your pictures! You can do so <a href="/consentPortraitRight">here</a>!
+    </div>
     <div class="container" ng-controller="controllerNavbar as nav">
-
         <div class="navbar-header">
             <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
                     data-target="#main-navbar__content, #hero" aria-expanded="false">
@@ -28,10 +31,9 @@
                 </li>
 
 
-
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-                           aria-expanded="false">Education <span class="caret"></span>
+                       aria-expanded="false">Education <span class="caret"></span>
                     </a>
                     <ul class="dropdown-menu">
                         <li><a href="/education/honors_academy">Honors Academy</a></li>
@@ -70,4 +72,5 @@
             </ul>
         </div>
     </div>
+
 </nav>
