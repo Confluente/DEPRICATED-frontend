@@ -5,7 +5,11 @@ var app = angular.module("confluente");
  */
 app.controller("activityCreateController", ["$scope", "activities", function ($scope, activities) {
     $scope.loading = false;
-    $scope.inputs = [];
+    $scope.inputs = [
+        {fullQuestion: 'Name', type: "name", options: [''], required: 'true'},
+        {fullQuestion: 'TU/e email', type: "TU/e email", options: [''], required: 'true'}
+        ];
+    $scope.canSubscribe = false;
 
     // options for question types
     $scope.types = ["☰ text", "◉ multiple choice", "☑ checkboxes"];
@@ -18,7 +22,9 @@ app.controller("activityCreateController", ["$scope", "activities", function ($s
 
     // Removes last element (last question) from inputs variable
     $scope.remove = function () {
-        $scope.inputs.pop();
+        if ($scope.inputs.length > 2) {
+            $scope.inputs.pop();
+        }
     };
 
     $scope.addOption = function (input) {
@@ -29,6 +35,14 @@ app.controller("activityCreateController", ["$scope", "activities", function ($s
 
     $scope.removeOption = function (input) {
         input.options.pop();
+    };
+
+    $scope.toggleSubscribe = function() {
+        if ($scope.canSubscribe) {
+            $scope.canSubscribe = false;
+        } else {
+            $scope.canSubscribe = true;
+        }
     };
 
     // function called when new activity is submitted

@@ -13,8 +13,7 @@ app.controller("activityEditController", ["$scope", "$routeParams", "activities"
     // get activity from backend by activityId and put it on the $scope
     activities.get(activityId).then(function (activity) {
         $scope.activity = activity;
-        console.log(activity);
-        for (var i = 2; i < activity.numberOfQuestions; i++) {
+        for (var i = 0; i < activity.numberOfQuestions; i++) {
             var options = [];
             for (var j = 0; j < activity.formOptions[i].length; j++) {
                 options.push(activity.formOptions[i][j]);
@@ -37,7 +36,9 @@ app.controller("activityEditController", ["$scope", "$routeParams", "activities"
 
     // removes last element from inputs variable
     $scope.remove = function () {
-        $scope.inputs.pop();
+        if ($scope.inputs.length > 2) {
+            $scope.inputs.pop();
+        }
     };
 
     $scope.addOption = function (input) {
@@ -48,6 +49,14 @@ app.controller("activityEditController", ["$scope", "$routeParams", "activities"
 
     $scope.removeOption = function (input) {
         input.options.pop();
+    };
+
+    $scope.toggleSubscribe = function() {
+        if ($scope.activity.canSubscribe) {
+            $scope.activity.canSubscribe = false;
+        } else {
+            $scope.activity.canSubscribe = true;
+        }
     };
 
     $scope.loading = false;
