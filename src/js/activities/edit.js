@@ -64,6 +64,8 @@ app.controller("activityEditController", ["$scope", "$routeParams", "activities"
     $scope.submit = function () {
         $scope.loading = true;
 
+        $scope.empty = !$scope.activity.name || !$scope.activity.description || !$scope.activity.organizer;
+
         if ($scope.activity.canSubscribe) {
             // format form correctly
             var allDescriptions = [];
@@ -81,13 +83,11 @@ app.controller("activityEditController", ["$scope", "$routeParams", "activities"
                 }
                 allOptions.push(optionString);
                 allRequired.push(dataObj.required);
-                if (dataObj.fullQuestion === "") {
-                    $scope.loading = false;
-                    return alert("One of your questions is empty!");
+                if (!dataObj.fullQuestion) {
+                    $scope.empty = true;
                 }
-                if (dataObj.type !== "☰ text" && dataObj.options === "") {
-                    $scope.loading = false;
-                    return alert("One of your multiple choice questions does not have any options!")
+                if (dataObj.type !== "☰ text" && (dataObj.options === "" || !dataObj.options)) {
+                    $scope.empty = true;
                 }
             });
 
@@ -97,8 +97,13 @@ app.controller("activityEditController", ["$scope", "$routeParams", "activities"
             $scope.activity.required = allRequired;
             $scope.activity.numberOfQuestions = allDescriptions.length;
         }
+
+        if ($scope.empty) {
+            $scope.loading = false;
+            return alert("One of your fields is still empty!");
+        }
+
         // submit edit of activity to backend
-        console.log($scope);
         activities.edit($scope.activity).then(function (result) {
             $scope.loading = false;
             // redirect to edited activity
