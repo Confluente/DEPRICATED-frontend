@@ -3,7 +3,7 @@ var app = angular.module("confluente");
 /**
  * Controller for viewing page
  */
-app.controller("pageViewController", ["$rootScope", "$scope", "$routeParams", function ($rootScope, $scope, $routeParams) {
+app.controller("pageViewController", ["$rootScope", "$scope", "$routeParams", "$location", function ($rootScope, $scope, $routeParams, $location) {
     $scope.loading = true;
     // set URL to page in frontend directory on $scope
     $scope.templateUrl = getTemplateUrl($routeParams);
@@ -11,10 +11,11 @@ app.controller("pageViewController", ["$rootScope", "$scope", "$routeParams", fu
     // assign 404-url to variable
     var fallbackUrl = "/www/pages/404.html";
 
-    // function called if page loaded
+    /**
+     * Sets the page title (used in browser-tab label)
+     */
     $scope.$on("$includeContentLoaded", function (e, src) {
-        // set title of page
-        $rootScope.title = getPageTitle(src);
+        $rootScope.title = getPageTitle($location);
     });
 
     // function called if page failed to load
@@ -40,13 +41,16 @@ function getTemplateUrl(routeParams) {
 }
 
 /**
- * Get page title from URL
- * @param url
- * @returns {string}
+ * Gets the current URL and deduced the page title from it
  */
-function getPageTitle(url) {
-    var title = url.split("/").slice(-1)[0].split(".")[0];
-    return title.charAt(0).toUpperCase() + title.substr(1);
+function getPageTitle($location) {
+    var name = $location.path().split("/").slice(-1)[0].split(".")[0];
+    var words = name.split('_');
+    var title = '';
+    for (var i = 0; i < words.length; i++) {
+        title += ' ' + words[i].charAt(0).toUpperCase() + words[i].substr(1);
+    }
+    return title.substr(1);
 }
 
 module.exports = {
