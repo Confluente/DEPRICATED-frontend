@@ -87,8 +87,10 @@ app.controller("activityCreateController", ["$scope", "activities", function ($s
                     $scope.empty = true;
                 }
 
-                if (dataObj.type !== "☰ text" && (dataObj.options === "" || !dataObj.options)) {
-                    $scope.empty = true;
+                if (dataObj.type !== "☰ text") {
+                    for (var i = 0; i < dataObj.options.length; i++) {
+                        if (dataObj.options[i] === "" || !dataObj.options) $scope.empty = true;
+                    }
                 }
             });
 

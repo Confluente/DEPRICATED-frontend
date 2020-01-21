@@ -100,8 +100,11 @@ app.controller("activityEditController", ["$scope", "$routeParams", "activities"
                 if (!dataObj.fullQuestion || dataObj.fullQuestion === "") {
                     $scope.empty = true;
                 }
-                if (dataObj.type !== "☰ text" && (dataObj.options === "" || !dataObj.options)) {
-                    $scope.empty = true;
+                
+                if (dataObj.type !== "☰ text") {
+                    for (var i = 0; i < dataObj.options.length; i++) {
+                        if (dataObj.options[i] === "" || !dataObj.options) $scope.empty = true;
+                    }
                 }
             });
 
