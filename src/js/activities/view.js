@@ -10,6 +10,7 @@ app.controller("activityViewController", ["$scope", "$routeParams", "activities"
 
     $scope.isUserOrganizing = false;
     $scope.clickedExport = false;
+    $scope.subscribed = false;
 
     // get activity from backend based on activityId and set on $scope
     activities.get(activityId).then(function (activity) {
@@ -37,6 +38,12 @@ app.controller("activityViewController", ["$scope", "$routeParams", "activities"
                 $scope.isUserOrganizing = true;
             }
         }
+
+        for (var i = 0; i < $scope.activity.participants.length; i++) {
+            if ($scope.activity.participants[i].id === $scope.user.id) {
+                $scope.subscribed = true;
+            }
+        }
     });
 
     $scope.login = function() {
@@ -46,6 +53,14 @@ app.controller("activityViewController", ["$scope", "$routeParams", "activities"
     $scope.exportTable = function() {
         $scope.clickedExport = true;
         TableExport(document.getElementsByTagName("table"));
+    };
+
+    $scope.remove = function () {
+        $scope.loading = true;
+        activities.deleteSubscription(activityId).then(function (result) {
+            $scope.loading = false;
+            window.location.href = "/activities/" + activityId;
+        })
     };
 
     $scope.submit = function () {

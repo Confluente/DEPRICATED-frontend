@@ -18,7 +18,11 @@
         <p ng-if="!activity.participationFee"><b>Participation fee</b>: free!</p>
     </div>
     <div ng-if="activity.canSubscribe && user.loggedIn" class="col-md-12">
-        <a href="#signup" class="btn btn-primary" data-toggle="collapse">Sign up here!</a>
+        <a href="#signup" class="btn btn-primary" data-toggle="collapse">
+            <div ng-if="!subscribed">Sign up here!</div>
+            <div ng-if="subscribed">Resubmit form!</div>
+        </a>
+        <button class="btn btn-danger" ng-if="subscribed" ng-click="remove()">Remove subscription!</button>
         <div id="signup" class="collapse subscriptionForm">
             <form>
                 <div ng-repeat="question in activity.questionDescriptions">
