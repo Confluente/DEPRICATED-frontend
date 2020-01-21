@@ -19,11 +19,12 @@
         <p ng-if="activity.subscriptionDeadline"><b>Subscription deadline</b>: {{activity.subscriptionDeadline | date:'d MMMM yyyy'}}</p>
         <p><b>Organizing committee</b>: {{activity.Organizer.fullName}}</p>
     </div>
-    <div ng-if="activity.canSubscribe && user.loggedIn && !deadlinePassed" class="col-md-12">
-        <a href="#signup" class="btn btn-primary" data-toggle="collapse">
+    <div ng-if="activity.canSubscribe && user.loggedIn" class="col-md-12">
+        <a href="#signup" class="btn btn-primary" data-toggle="collapse" ng-if="!deadlinePassed">
             <div ng-if="!subscribed">Sign up here!</div>
             <div ng-if="subscribed">Resubmit form!</div>
         </a>
+        <p ng-if="deadlinePassed">Deadline for subscribing to this event has passed!</p>
         <button class="btn btn-danger" ng-if="subscribed" ng-click="remove()">Remove subscription!</button>
         <div id="signup" class="collapse subscriptionForm">
             <form>
