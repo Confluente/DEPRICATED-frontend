@@ -9,7 +9,7 @@ app.controller("portraitRightController", ["$rootScope", "$scope", "notification
         $scope.loading = true;
         notifications.portraitRight($rootScope.user.id, true).then(function (result) {
             $scope.loading = false;
-            window.location.href = "/user/profile";
+            window.location.href = "/activities";
         })
     }
 }]);

@@ -5,6 +5,11 @@ var app = angular.module("confluente");
  */
 app.controller("activityCreateController", ["$scope", "activities", function ($scope, activities) {
     $scope.loading = false;
+
+    $scope.deadline = {
+        subscriptionDeadline: new Date()
+    };
+
     $scope.inputs = [
         {fullQuestion: 'Name', type: "name", options: [''], required: 'true'},
         {fullQuestion: 'TU/e email', type: "TU/e email", options: [''], required: 'true'}
@@ -93,6 +98,7 @@ app.controller("activityCreateController", ["$scope", "activities", function ($s
             act.questionDescriptions = allDescriptions;
             act.options = allOptions;
             act.required = allRequired;
+            act.subscriptionDeadline = $scope.deadline.subscriptionDeadline;
         }
 
         if ($scope.empty) {

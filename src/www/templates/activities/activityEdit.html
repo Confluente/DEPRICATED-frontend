@@ -51,6 +51,11 @@
             </button>
         </div>
 
+        <div class="form-group col-md-6 col-xs-12" ng-if="activity.canSubscribe">
+            <label for="subscriptionDeadline-date">Subscription deadline date</label>
+            <input type="date" ng-model="deadline.subscriptionDeadline" class="form-control" id="subscriptionDeadline-date"/>
+        </div>
+
         <div ng-repeat="input in inputs" ng-if="activity.canSubscribe">
             <div class="form-group col-md-8 col-xs-12">
                 <label for="activityCreate-fullQuestion{{$index}}">Question {{$index + 1}}</label>

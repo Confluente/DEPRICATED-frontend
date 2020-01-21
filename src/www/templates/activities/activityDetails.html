@@ -16,8 +16,10 @@
         <p ng-if="activity.location"><b>Location</b>: {{activity.location}}</p>
         <p ng-if="activity.participationFee"><b>Participation fee</b>: &euro;{{activity.participationFee}}</p>
         <p ng-if="!activity.participationFee"><b>Participation fee</b>: free!</p>
+        <p ng-if="activity.subscriptionDeadline"><b>Subscription deadline</b>: {{activity.subscriptionDeadline | date:'d MMMM yyyy'}}</p>
+        <p><b>Organizing committee</b>: {{activity.Organizer.fullName}}</p>
     </div>
-    <div ng-if="activity.canSubscribe && user.loggedIn" class="col-md-12">
+    <div ng-if="activity.canSubscribe && user.loggedIn && !deadlinePassed" class="col-md-12">
         <a href="#signup" class="btn btn-primary" data-toggle="collapse">
             <div ng-if="!subscribed">Sign up here!</div>
             <div ng-if="subscribed">Resubmit form!</div>

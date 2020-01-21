@@ -16,6 +16,7 @@ app.factory("activities", ["$http", "$timeout", function ($http, $timeout) {
                 return activities.map(function (activity) {
                     // set correct date format (or null if not defined)
                     activity.date = !isNaN(Date.parse(activity.date)) ? new Date(activity.date) : null;
+                    activity.subscriptionDeadline = !isNaN(Date.parse(activity.subscriptionDeadline)) ? new Date(activity.subscriptionDeadline) : null;
                     return activity;
                 });
             });
@@ -31,6 +32,7 @@ app.factory("activities", ["$http", "$timeout", function ($http, $timeout) {
                 return activities.map(function (activity) {
                     // set correct date format (or null if not defined)
                     activity.date = !isNaN(Date.parse(activity.date)) ? new Date(activity.date) : null;
+                    activity.subscriptionDeadline = !isNaN(Date.parse(activity.subscriptionDeadline)) ? new Date(activity.subscriptionDeadline) : null;
                     return activity;
                 });
             });
@@ -45,6 +47,7 @@ app.factory("activities", ["$http", "$timeout", function ($http, $timeout) {
                 var activity = result.data;
                 // set correct date format (or null if not defined)
                 activity.date = !isNaN(Date.parse(activity.date)) ? new Date(activity.date) : null;
+                activity.subscriptionDeadline = !isNaN(Date.parse(activity.subscriptionDeadline)) ? new Date(activity.subscriptionDeadline) : null;
                 return activity;
             });
         },

@@ -7,23 +7,29 @@ app.controller("activityEditController", ["$scope", "$routeParams", "activities"
     // get activityId from URL
     var activityId = $routeParams.activityId;
     $scope.inputs = [];
+    $scope.deadline = {
+        subscriptionDeadline: new Date()
+    };
 
     //options for question types
     $scope.types = ["☰ text", "◉ multiple choice", "☑ checkboxes"];
     // get activity from backend by activityId and put it on the $scope
     activities.get(activityId).then(function (activity) {
         $scope.activity = activity;
-        for (var i = 0; i < activity.numberOfQuestions; i++) {
-            var options = [];
-            for (var j = 0; j < activity.formOptions[i].length; j++) {
-                options.push(activity.formOptions[i][j]);
+        if (activity.canSubscribe) {
+            for (var i = 0; i < activity.numberOfQuestions; i++) {
+                var options = [];
+                for (var j = 0; j < activity.formOptions[i].length; j++) {
+                    options.push(activity.formOptions[i][j]);
+                }
+                $scope.inputs.push({
+                    fullQuestion: activity.questionDescriptions[i],
+                    type: activity.typeOfQuestion[i],
+                    options: options,
+                    required: activity.required[i]
+                });
             }
-            $scope.inputs.push({
-                fullQuestion: activity.questionDescriptions[i],
-                type: activity.typeOfQuestion[i],
-                options: options,
-                required: activity.required[i]
-            });
+            $scope.deadline.subscriptionDeadline = activity.subscriptionDeadline;
         }
         console.log($scope);
     });
@@ -64,7 +70,7 @@ app.controller("activityEditController", ["$scope", "$routeParams", "activities"
     $scope.submit = function () {
         $scope.loading = true;
 
-        $scope.empty = !$scope.activity.name || !$scope.activity.description || !$scope.activity.organizer;
+        $scope.empty = !$scope.activity.name || !$scope.activity.description || !$scope.activity.Organizer;
 
         if ($scope.activity.canSubscribe) {
             // format form correctly
@@ -96,6 +102,7 @@ app.controller("activityEditController", ["$scope", "$routeParams", "activities"
             $scope.activity.formOptions = allOptions;
             $scope.activity.required = allRequired;
             $scope.activity.numberOfQuestions = allDescriptions.length;
+            $scope.activity.subscriptionDeadline = $scope.deadline.subscriptionDeadline;
         }
 
         if ($scope.empty) {

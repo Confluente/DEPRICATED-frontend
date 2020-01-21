@@ -11,6 +11,7 @@ app.controller("activityViewController", ["$scope", "$routeParams", "activities"
     $scope.isUserOrganizing = false;
     $scope.clickedExport = false;
     $scope.subscribed = false;
+    $scope.deadlinePassed = false;
 
     // get activity from backend based on activityId and set on $scope
     activities.get(activityId).then(function (activity) {
@@ -44,6 +45,11 @@ app.controller("activityViewController", ["$scope", "$routeParams", "activities"
                 $scope.subscribed = true;
             }
         }
+
+        if ($scope.activity.subscriptionDeadline <= new Date()) {
+            $scope.deadlinePassed = true;
+        }
+
     });
 
     $scope.login = function() {
