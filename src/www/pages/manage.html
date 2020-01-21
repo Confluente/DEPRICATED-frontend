@@ -26,7 +26,7 @@
 
                     <tbody>
                     <tr ng-repeat="activity in activities | orderBy:sortTypeActivities:sortReverseActivities | filter:searchQueryActivities">
-                        <td><a ng-href="/activities/{{activity.id}}">{{activity.name}}</a></td>
+                        <td><a ng-href="/activities/{{activity.id}}#signup">{{activity.name}}</a></td>
                         <td>{{activity.date | date:'yyyy-MM-dd'}}</td>
                         <td>{{activity.Organizer.displayName}}</td>
                         <td ng-if="activity.approved"><i class="fa fa-check"></i></td>

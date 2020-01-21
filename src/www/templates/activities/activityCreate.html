@@ -74,6 +74,7 @@
                 <label for="activityCreate-required{{$index}}" style="margin-top: 30px">
                     <input type="checkbox" ng-model="input.required" id="activityCreate-required{{$index}}"> <b>mandatory</b>
                 </label>
+                <button class="btn btn-danger" ng-click="removeInput($index)">Remove question</button>
             </div>
 
             <div class="col-md-6 col-xs-12" ng-if="input.type !== 'name' && input.type !== 'TU/e email'">
@@ -84,6 +85,7 @@
             <div class="col-md-6 col-xs-12" ng-if="input.type == '◉ multiple choice' || input.type == '☑ checkboxes'">
                 <div class="form-group" ng-repeat="option in input.options track by $index">
                     <input type="text" ng-model="input.options[$index]" class="form-control">
+<!--                    <button class="btn btn-danger">X</button>-->
                 </div>
                 <button ng-click="addOption(input)" class="btn btn-default">Add option</button>
                 <button ng-click="removeOption(input)" class="btn btn-danger" ng-if="input.options.length > 1">Remove last option</button>
@@ -96,7 +98,6 @@
 
         <div class="col-md-12 col-xs-12" ng-if="canSubscribe" style="padding-bottom: 10px">
             <button ng-click="add()" class="btn btn-default">Add question</button>
-            <button ng-click="remove()" class="btn btn-danger" ng-if="inputs.length > 2">Remove last question</button>
             <br>
         </div>
 

@@ -25,13 +25,12 @@ app.controller("activityCreateController", ["$scope", "activities", function ($s
         $scope.inputs.push(dataObj);
     };
 
-    // Removes last element (last question) from inputs variable
-    $scope.remove = function () {
-        if ($scope.inputs.length > 2) {
-            $scope.inputs.pop();
-        }
+    // Removes specific question
+    $scope.removeInput = function(index) {
+        $scope.inputs.splice(index, 1);
     };
 
+    // Adds option for multiple choice questions
     $scope.addOption = function (input) {
         var option = 'option ' + (input.options.length + 1).toString();
         console.log(input);
@@ -111,7 +110,7 @@ app.controller("activityCreateController", ["$scope", "activities", function ($s
             $scope.loading = false;
 
             // redirect to new activity
-            window.location.href = "/activities/" + result.id;
+            window.location.href = "/activities/" + result.id + "#signup";
         });
     };
 

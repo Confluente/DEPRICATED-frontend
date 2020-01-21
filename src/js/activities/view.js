@@ -28,7 +28,6 @@ app.controller("activityViewController", ["$scope", "$routeParams", "activities"
                     list.push("");
                 }
                 $scope.answers.push(list);
-
             } else {
                 $scope.answers.push("");
             }
@@ -48,7 +47,7 @@ app.controller("activityViewController", ["$scope", "$routeParams", "activities"
 
         var now = new Date(new Date().getFullYear(), new Date().getMonth(), new Date().getDate());
         if (now > $scope.activity.subscriptionDeadline) $scope.deadlinePassed = true;
-
+        console.log($scope)
     });
 
     $scope.login = function() {
@@ -58,13 +57,14 @@ app.controller("activityViewController", ["$scope", "$routeParams", "activities"
     $scope.exportTable = function() {
         $scope.clickedExport = true;
         TableExport(document.getElementsByTagName("table"));
+        TableExport.prototype.typeConfig.date.assert = function(value) { return false; };
     };
 
     $scope.remove = function () {
         $scope.loading = true;
         activities.deleteSubscription(activityId).then(function (result) {
             $scope.loading = false;
-            window.location.href = "/activities/" + activityId;
+            window.history.go();
         })
     };
 
@@ -109,7 +109,7 @@ app.controller("activityViewController", ["$scope", "$routeParams", "activities"
             $scope.loading = false;
 
             // redirect to new activity
-            window.location.href = "/activities/" + activityId;
+            window.history.go();
         });
     }
 }]);
