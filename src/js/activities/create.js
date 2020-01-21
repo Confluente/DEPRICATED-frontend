@@ -83,8 +83,8 @@ app.controller("activityCreateController", ["$scope", "activities", function ($s
                 }
                 allOptions.push(optionString);
                 allRequired.push(dataObj.required);
-                if (!dataObj.fullQuestion) {
-                    $scope.emtpy = true;
+                if (!dataObj.fullQuestion || dataObj.fullQuestion === "") {
+                    $scope.empty = true;
                 }
 
                 if (dataObj.type !== "☰ text" && (dataObj.options === "" || !dataObj.options)) {

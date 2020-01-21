@@ -97,7 +97,7 @@ app.controller("activityEditController", ["$scope", "$routeParams", "activities"
                 }
                 allOptions.push(optionString);
                 allRequired.push(dataObj.required);
-                if (!dataObj.fullQuestion) {
+                if (!dataObj.fullQuestion || dataObj.fullQuestion === "") {
                     $scope.empty = true;
                 }
                 if (dataObj.type !== "☰ text" && (dataObj.options === "" || !dataObj.options)) {
