@@ -46,9 +46,8 @@ app.controller("activityViewController", ["$scope", "$routeParams", "activities"
             }
         }
 
-        if ($scope.activity.subscriptionDeadline <= new Date()) {
-            $scope.deadlinePassed = true;
-        }
+        var now = new Date(new Date().getFullYear(), new Date().getMonth(), new Date().getDate());
+        if (now > $scope.activity.subscriptionDeadline) $scope.deadlinePassed = true;
 
     });
 

@@ -31,7 +31,15 @@ app.controller("activityEditController", ["$scope", "$routeParams", "activities"
             }
             $scope.deadline.subscriptionDeadline = activity.subscriptionDeadline;
         }
-        console.log($scope);
+
+        if ($scope.inputs.length === 0) {
+            $scope.inputs = [
+                {fullQuestion: 'Name', type: "name", options: [''], required: 'true'},
+                {fullQuestion: 'TU/e email', type: "TU/e email", options: [''], required: 'true'}
+            ];
+        }
+
+        console.log($scope)
     });
 
     // adds an element to the inputs variable
