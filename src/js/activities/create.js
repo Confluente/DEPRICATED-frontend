@@ -33,12 +33,11 @@ app.controller("activityCreateController", ["$scope", "activities", function ($s
     // Adds option for multiple choice questions
     $scope.addOption = function (input) {
         var option = 'option ' + (input.options.length + 1).toString();
-        console.log(input);
         input.options.push(option);
     };
 
-    $scope.removeOption = function (input) {
-        input.options.pop();
+    $scope.removeOption = function(inputIndex, optionIndex) {
+        $scope.inputs[inputIndex].options.splice(optionIndex, 1);
     };
 
     $scope.toggleSubscribe = function() {

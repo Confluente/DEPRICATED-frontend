@@ -60,8 +60,8 @@ app.controller("activityEditController", ["$scope", "$routeParams", "activities"
         input.options.push(option);
     };
 
-    $scope.removeOption = function (input) {
-        input.options.pop();
+    $scope.removeOption = function(inputIndex, optionIndex) {
+        $scope.inputs[inputIndex].options.splice(optionIndex, 1);
     };
 
     $scope.toggleSubscribe = function() {

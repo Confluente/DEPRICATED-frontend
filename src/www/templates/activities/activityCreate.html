@@ -59,7 +59,8 @@
 
         <div class="form-group col-md-6 col-xs-12" ng-if="canSubscribe">
             <label for="subscriptionDeadline-date">Subscription deadline date</label>
-            <input type="date" ng-model="deadline.subscriptionDeadline" class="form-control" id="subscriptionDeadline-date"/>
+            <input type="date" ng-model="deadline.subscriptionDeadline" class="form-control"
+                   id="subscriptionDeadline-date"/>
         </div>
 
         <div ng-repeat="input in inputs" ng-if="canSubscribe">
@@ -84,11 +85,15 @@
 
             <div class="col-md-6 col-xs-12" ng-if="input.type == '◉ multiple choice' || input.type == '☑ checkboxes'">
                 <div class="form-group" ng-repeat="option in input.options track by $index">
-                    <input type="text" ng-model="input.options[$index]" class="form-control">
-<!--                    <button class="btn btn-danger">X</button>-->
+                    <input type="text" ng-model="input.options[$index]" class="form-control"
+                           style="display: inline-block; width: 88%">
+                    <button class="btn btn-danger" style="display: inline-block; width: 10%; vertical-align: top"
+                            ng-click="removeOption($parent.$index, $index)">X
+                    </button>
                 </div>
-                <button ng-click="addOption(input)" class="btn btn-default" ng-if="input.options.length < 50">Add option</button>
-                <button ng-click="removeOption(input)" class="btn btn-danger" ng-if="input.options.length > 1">Remove last option</button>
+                <button ng-click="addOption(input)" class="btn btn-default" ng-if="input.options.length < 50">Add
+                    option
+                </button>
             </div>
 
             <div class="col-md-12 col-xs-12">
