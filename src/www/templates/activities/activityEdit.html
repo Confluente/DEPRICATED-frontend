@@ -78,7 +78,7 @@
                 <div class="form-group" ng-repeat="option in input.options track by $index">
                     <input type="text" ng-model="input.options[$index]" class="form-control">
                 </div>
-                <button ng-click="addOption(input)" class="btn btn-default">Add option</button>
+                <button ng-click="addOption(input)" class="btn btn-default" ng-if="input.options.length < 50">Add option</button>
                 <button ng-click="removeOption(input)" class="btn btn-danger" ng-if="input.options.length > 1">Remove last option</button>
             </div>
 

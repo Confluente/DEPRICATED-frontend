@@ -57,7 +57,6 @@ app.controller("activityEditController", ["$scope", "$routeParams", "activities"
 
     $scope.addOption = function (input) {
         var option = 'option ' + (input.options.length + 1).toString();
-        console.log(input);
         input.options.push(option);
     };
 
@@ -100,7 +99,7 @@ app.controller("activityEditController", ["$scope", "$routeParams", "activities"
                 if (!dataObj.fullQuestion || dataObj.fullQuestion === "") {
                     $scope.empty = true;
                 }
-                
+
                 if (dataObj.type !== "☰ text") {
                     for (var i = 0; i < dataObj.options.length; i++) {
                         if (dataObj.options[i] === "" || !dataObj.options) $scope.empty = true;
