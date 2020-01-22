@@ -22,7 +22,6 @@ app.controller("userEditController", ["$scope", "$q", "$routeParams", "users", "
         user.get(userId).then(function (param) {
             $scope.user = param[0];
             $scope.member = param[1];
-            console.log($scope);
         })
     ]).then(function () {
         var member_groups = [];

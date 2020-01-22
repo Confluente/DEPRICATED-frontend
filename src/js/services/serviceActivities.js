@@ -11,7 +11,6 @@ app.factory("activities", ["$http", "$timeout", function ($http, $timeout) {
          */
         getAll: function () {
             return $http.get("/api/activities").then(function (result) {
-                // console.log(result);
                 var activities = result.data;
                 return activities.map(function (activity) {
                     // set correct date format (or null if not defined)
