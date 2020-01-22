@@ -15,10 +15,10 @@
                 <a href="/activities/{{activity.id}}#signup"><h3 class="nospace">{{activity.name}} ({{activity.Organizer.fullName}})</h3><span
                         ng-if="!activity.approved">(Unlisted)</span></a>
             </div>
-            <div class="activity-content col-xs-8">
+            <div class="activity-content col-md-8 col-xs-12">
                 <p class="module fade">{{activity.description}}</p>
             </div>
-            <div class="activity-details col-xs-4">
+            <div class="activity-details col-md-4 col-xs-12">
                 <p ng-if="activity.date" style="margin-bottom: 0px;">When: {{activity.date | date:'d MMMM yyyy'}}</p>
                 <p ng-if="activity.location" style="margin-bottom: 0px">Where: {{activity.location}}</p>
                 <p ng-if="activity.startTime && activity.endTime">Time: {{activity.startTime}} - {{activity.endTime}}</p>
