@@ -86,7 +86,7 @@ app.controller("activityCreateController", ["$scope", "activities", function ($s
                     $scope.empty = true;
                 }
 
-                if (dataObj.type !== "☰ text") {
+                if (dataObj.type !== "☰ text" && dataObj.type !== "name" && dataObj.type !== "TU/e email") {
                     for (var i = 0; i < dataObj.options.length; i++) {
                         if (dataObj.options[i] === "" || !dataObj.options) $scope.empty = true;
                     }

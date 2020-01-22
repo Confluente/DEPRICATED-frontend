@@ -22,10 +22,10 @@
     <div ng-if="activity.canSubscribe && user.loggedIn" class="col-md-12">
         <a href="#signup" class="btn btn-primary" data-toggle="collapse" ng-if="!deadlinePassed">
             <div ng-if="!subscribed">Sign up here!</div>
-            <div ng-if="subscribed">Resubmit form!</div>
+            <div ng-if="subscribed">Change submission!</div>
         </a>
         <p ng-if="deadlinePassed">Deadline for subscribing to this event has passed!</p>
-        <button class="btn btn-danger" ng-if="subscribed" ng-click="remove()">Remove subscription!</button>
+        <button class="btn btn-danger" ng-if="subscribed" ng-click="remove()">Unsubscribe</button>
         <div id="signup" class="collapse subscriptionForm">
             <form>
                 <div ng-repeat="question in activity.questionDescriptions">

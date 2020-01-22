@@ -26,7 +26,7 @@ app.controller("activityEditController", ["$scope", "$routeParams", "activities"
                     fullQuestion: activity.questionDescriptions[i],
                     type: activity.typeOfQuestion[i],
                     options: options,
-                    required: activity.required[i]
+                    required: (activity.required[i] === 'true')
                 });
             }
             $scope.deadline.subscriptionDeadline = activity.subscriptionDeadline;
@@ -100,7 +100,7 @@ app.controller("activityEditController", ["$scope", "$routeParams", "activities"
                     $scope.empty = true;
                 }
 
-                if (dataObj.type !== "☰ text") {
+                if (dataObj.type !== "☰ text" && dataObj.type !== "name" && dataObj.type !== "TU/e email") {
                     for (var i = 0; i < dataObj.options.length; i++) {
                         if (dataObj.options[i] === "" || !dataObj.options) $scope.empty = true;
                     }
