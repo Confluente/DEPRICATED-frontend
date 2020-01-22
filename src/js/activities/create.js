@@ -6,14 +6,18 @@ var app = angular.module("confluente");
 app.controller("activityCreateController", ["$scope", "activities", function ($scope, activities) {
     $scope.loading = false;
 
+    // setting standard deadline for subscription deadline field
     $scope.deadline = {
         subscriptionDeadline: new Date()
     };
 
+    // setting standard inputs for subscription form (first two questions are mandatory)
     $scope.inputs = [
         {fullQuestion: 'Name', type: "name", options: [''], required: 'true'},
         {fullQuestion: 'TU/e email', type: "TU/e email", options: [''], required: 'true'}
-        ];
+    ];
+
+    // boolean for whether memebers can subscribe to the event and therefore whether to show the subscription form possibilities
     $scope.canSubscribe = false;
 
     // options for question types
@@ -26,7 +30,7 @@ app.controller("activityCreateController", ["$scope", "activities", function ($s
     };
 
     // Removes specific question
-    $scope.removeInput = function(index) {
+    $scope.removeInput = function (index) {
         $scope.inputs.splice(index, 1);
     };
 
@@ -36,21 +40,20 @@ app.controller("activityCreateController", ["$scope", "activities", function ($s
         input.options.push(option);
     };
 
-    $scope.removeOption = function(inputIndex, optionIndex) {
+    // Remove specific option from a multiple choice question
+    $scope.removeOption = function (inputIndex, optionIndex) {
         $scope.inputs[inputIndex].options.splice(optionIndex, 1);
     };
 
-    $scope.toggleSubscribe = function() {
-        if ($scope.canSubscribe) {
-            $scope.canSubscribe = false;
-        } else {
-            $scope.canSubscribe = true;
-        }
+    // Function to toggle the canSubscribe variable
+    $scope.toggleSubscribe = function () {
+        $scope.canSubscribe = !$scope.canSubscribe;
     };
 
     // function called when new activity is submitted
     $scope.submit = function () {
         $scope.loading = true;
+        // constructing standard activity object
         var act = {
             name: $scope.name,
             description: $scope.description,
@@ -63,9 +66,11 @@ app.controller("activityCreateController", ["$scope", "activities", function ($s
             approved: true,
             canSubscribe: $scope.canSubscribe,
         };
-        
+
+        // Checking required fields
         $scope.empty = !$scope.name || !$scope.description || !$scope.organizer;
 
+        // Adding form to activity object if members can subscribe
         if ($scope.canSubscribe) {
             // Format output correctly
             var allDescriptions = [];
@@ -76,16 +81,21 @@ app.controller("activityCreateController", ["$scope", "activities", function ($s
             $scope.inputs.forEach(function (dataObj) {
                 allDescriptions.push(dataObj.fullQuestion);
                 allTypes.push(dataObj.type);
+
+                // SQlite database can't handle strings therefore lists are stored as , seperated lists and ; seperated lists
                 var optionString = dataObj.options[0];
                 for (var i = 1; i < dataObj.options.length; i++) {
                     optionString += ";" + dataObj.options[i];
                 }
                 allOptions.push(optionString);
+
+                // check whether the question actually has a question
                 allRequired.push(dataObj.required);
                 if (!dataObj.fullQuestion || dataObj.fullQuestion === "") {
                     $scope.empty = true;
                 }
 
+                // Check whether choices of multiple choice questions are empty
                 if (dataObj.type !== "☰ text" && dataObj.type !== "name" && dataObj.type !== "TU/e email") {
                     for (var i = 0; i < dataObj.options.length; i++) {
                         if (dataObj.options[i] === "" || !dataObj.options) $scope.empty = true;
@@ -101,6 +111,7 @@ app.controller("activityCreateController", ["$scope", "activities", function ($s
             act.subscriptionDeadline = $scope.deadline.subscriptionDeadline;
         }
 
+        // If any required field is empty than do not accept the activity
         if ($scope.empty) {
             $scope.loading = false;
             return alert("One of your field is empty!");

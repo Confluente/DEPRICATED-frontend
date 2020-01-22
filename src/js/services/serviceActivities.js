@@ -87,6 +87,7 @@ app.factory("activities", ["$http", "$timeout", function ($http, $timeout) {
 
         /**
          * Function for submitting a deletion of subscription request to backend
+         * @param activityId
          */
         deleteSubscription: function (activityId) {
             return $http.delete("/api/activities/subscriptions/" + activityId).then(function (result) {

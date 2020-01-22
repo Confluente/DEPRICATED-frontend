@@ -8,18 +8,25 @@ app.controller("activityViewController", ["$scope", "$routeParams", "activities"
     // get activityId from URL
     var activityId = $routeParams.activityId;
 
+    // true if user is part of committee that is organizing the activity
     $scope.isUserOrganizing = false;
+
+    // true if the user has clicked the export button
     $scope.clickedExport = false;
+
+    // true if user is already subscribed to the activity
     $scope.subscribed = false;
+
+    // true if the subscription deadline has passed
     $scope.deadlinePassed = false;
 
     // get activity from backend based on activityId and set on $scope
     activities.get(activityId).then(function (activity) {
         $scope.activity = activity;
         $scope.user = $scope.$parent.user;
-        if (activity.canSubscribe) {
-            window.location.href = "/activities/" + activityId + "#signup";
-        }
+        if (activity.canSubscribe) window.location.href = "/activities/" + activityId + "#signup";
+
+        // format the subscriptions
         $scope.answers = [];
         for (var i = 0; i < activity.numberOfQuestions; i++) {
             if (activity.typeOfQuestion[i] === '☑ checkboxes') {
@@ -33,41 +40,50 @@ app.controller("activityViewController", ["$scope", "$routeParams", "activities"
             }
         }
 
+        // check whether the logged in user is part of the group that is organizing the event
         for (var i = 0; i < $scope.user.groups.length; i++) {
             if ($scope.user.groups[i].id === $scope.activity.OrganizerId) {
                 $scope.isUserOrganizing = true;
             }
         }
 
+        // check whether the user that is logged in is already subscribed to the activity
         for (var i = 0; i < $scope.activity.participants.length; i++) {
             if ($scope.activity.participants[i].id === $scope.user.id) {
                 $scope.subscribed = true;
             }
         }
 
+        // check if the current date is passed the subscription deadline
         var now = new Date(new Date().getFullYear(), new Date().getMonth(), new Date().getDate());
         if (now > $scope.activity.subscriptionDeadline) $scope.deadlinePassed = true;
         console.log($scope)
     });
 
+    // redirects user to login page
     $scope.login = function() {
         window.location.href = "/login";
     };
 
+    // generates three buttons with which you can export the table
     $scope.exportTable = function() {
         $scope.clickedExport = true;
         TableExport(document.getElementsByTagName("table"));
         TableExport.prototype.typeConfig.date.assert = function(value) { return false; };
     };
 
+    // unsubscribes the user from the activity
     $scope.remove = function () {
         $scope.loading = true;
         activities.deleteSubscription(activityId).then(function (result) {
             $scope.loading = false;
+
+            // reloads page to show deletion
             window.history.go();
         })
     };
 
+    // submits the form
     $scope.submit = function () {
         $scope.loading = true;
         // Check if all required field are filled in
@@ -83,6 +99,8 @@ app.controller("activityViewController", ["$scope", "$routeParams", "activities"
                 }
             }
         }
+
+        // rejects submission if form is not completely filled in
         if (!filledIn) {
             $scope.loading = false;
             return alert("not all required fields were filled in.");
@@ -108,7 +126,7 @@ app.controller("activityViewController", ["$scope", "$routeParams", "activities"
         activities.subscribe($scope.answers, activityId).then(function (result) {
             $scope.loading = false;
 
-            // redirect to new activity
+            // reload page to show submission
             window.history.go();
         });
     }

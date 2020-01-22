@@ -7,15 +7,20 @@ app.controller("activityEditController", ["$scope", "$routeParams", "activities"
     // get activityId from URL
     var activityId = $routeParams.activityId;
     $scope.inputs = [];
+
+    // setting standard deadline for subscription deadline field
     $scope.deadline = {
         subscriptionDeadline: new Date()
     };
 
     //options for question types
     $scope.types = ["☰ text", "◉ multiple choice", "☑ checkboxes"];
+
     // get activity from backend by activityId and put it on the $scope
     activities.get(activityId).then(function (activity) {
         $scope.activity = activity;
+
+        // formatting the form to inputs such that it can be interactive with angular
         if (activity.canSubscribe) {
             for (var i = 0; i < activity.numberOfQuestions; i++) {
                 var options = [];
@@ -32,14 +37,13 @@ app.controller("activityEditController", ["$scope", "$routeParams", "activities"
             $scope.deadline.subscriptionDeadline = activity.subscriptionDeadline;
         }
 
+        // If not subscription form was submitted initially than add the standard two questions to input
         if ($scope.inputs.length === 0) {
             $scope.inputs = [
                 {fullQuestion: 'Name', type: "name", options: [''], required: 'true'},
                 {fullQuestion: 'TU/e email', type: "TU/e email", options: [''], required: 'true'}
             ];
         }
-
-        console.log($scope)
     });
 
     // adds an element to the inputs variable
@@ -55,28 +59,29 @@ app.controller("activityEditController", ["$scope", "$routeParams", "activities"
         }
     };
 
+    // Adds an option to a multiple choice question
     $scope.addOption = function (input) {
         var option = 'option ' + (input.options.length + 1).toString();
         input.options.push(option);
     };
 
+    // Remove specific option from a multiple choice question
     $scope.removeOption = function(inputIndex, optionIndex) {
         $scope.inputs[inputIndex].options.splice(optionIndex, 1);
     };
 
+    // Toggles the canSubscribe variable
     $scope.toggleSubscribe = function() {
-        if ($scope.activity.canSubscribe) {
-            $scope.activity.canSubscribe = false;
-        } else {
-            $scope.activity.canSubscribe = true;
-        }
+        $scope.activity.canSubscribe = !$scope.activity.canSubscribe;
     };
 
     $scope.loading = false;
+
     // function called when edit of activity is submitted
     $scope.submit = function () {
         $scope.loading = true;
 
+        // Checks whether required fields are empty
         $scope.empty = !$scope.activity.name || !$scope.activity.description || !$scope.activity.Organizer;
 
         if ($scope.activity.canSubscribe) {
@@ -96,10 +101,13 @@ app.controller("activityEditController", ["$scope", "$routeParams", "activities"
                 }
                 allOptions.push(optionString);
                 allRequired.push(dataObj.required);
+
+                // Checks whether questions are empty
                 if (!dataObj.fullQuestion || dataObj.fullQuestion === "") {
                     $scope.empty = true;
                 }
 
+                // Checks whether options of multiple choice questions are empty
                 if (dataObj.type !== "☰ text" && dataObj.type !== "name" && dataObj.type !== "TU/e email") {
                     for (var i = 0; i < dataObj.options.length; i++) {
                         if (dataObj.options[i] === "" || !dataObj.options) $scope.empty = true;
@@ -115,6 +123,7 @@ app.controller("activityEditController", ["$scope", "$routeParams", "activities"
             $scope.activity.subscriptionDeadline = $scope.deadline.subscriptionDeadline;
         }
 
+        // If required field are empty, do not accept activity
         if ($scope.empty) {
             $scope.loading = false;
             return alert("One of your fields is still empty!");
