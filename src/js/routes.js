@@ -21,7 +21,8 @@ var routes = [
     require("./manage"),
     require("./page/manage"),
     require("./page/create"),
-    require("./page/edit")
+    require("./page/edit"),
+    require("./notifications/portraitRight")
 ];
 
 module.exports = routes;
