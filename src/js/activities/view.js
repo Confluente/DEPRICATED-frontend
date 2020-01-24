@@ -102,7 +102,7 @@ app.controller("activityViewController", ["$scope", "$routeParams", "activities"
         // rejects submission if form is not completely filled in
         if (!filledIn) {
             $scope.loading = false;
-            return alert("not all required fields were filled in.");
+            return alert("Not all required fields were filled in.");
         }
 
         // Format answer correctly

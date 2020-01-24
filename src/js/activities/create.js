@@ -17,7 +17,7 @@ app.controller("activityCreateController", ["$scope", "activities", function ($s
         {fullQuestion: 'TU/e email', type: "TU/e email", options: [''], required: 'true'}
     ];
 
-    // boolean for whether memebers can subscribe to the event and therefore whether to show the subscription form possibilities
+    // boolean for whether members can subscribe to the event and therefore whether to show the subscription form possibilities
     $scope.canSubscribe = false;
 
     // options for question types
@@ -114,7 +114,7 @@ app.controller("activityCreateController", ["$scope", "activities", function ($s
         // If any required field is empty than do not accept the activity
         if ($scope.empty) {
             $scope.loading = false;
-            return alert("One of your field is empty!");
+            return alert("Not all required fields have been filled in.");
         }
 
         // create new activity from variables as put on the $scope by the form

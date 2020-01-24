@@ -28,12 +28,12 @@
         </div>
 
         <div class="form-group col-md-6 col-xs-12">
-            <label for="activityEdit-startTime">Starting time (xx:xx)</label>
+            <label for="activityEdit-startTime">Starting time (HH:mm)</label>
             <input type="text" ng-model="activity.startTime" class="form-control" id="activityEdit-startTime"/>
         </div>
 
         <div class="form-group col-md-6 col-xs-12">
-            <label for="activityEdit-time">Ending time (xx:xx) (optional)</label>
+            <label for="activityEdit-time">Ending time (HH:mm) (optional)</label>
             <input type="text" ng-model="activity.endTime" class="form-control" id="activityEdit-time"/>
         </div>
 
@@ -92,7 +92,7 @@
 
         <div ng-if="activity.canSubscribe" style="padding-bottom: 10px" class="col-md-12 col-xs-12">
             <button ng-click="add()" class="btn btn-default">Add question</button>
-            <button ng-click="remove()" class="btn btn-danger" ng-if="inputs.length > 2">Remove last question</button>
+            <button ng-click="removeLast()" class="btn btn-danger" ng-if="inputs.length > 2">Remove last question</button>
             <br>
         </div>
 

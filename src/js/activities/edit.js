@@ -37,7 +37,7 @@ app.controller("activityEditController", ["$scope", "$routeParams", "activities"
             $scope.deadline.subscriptionDeadline = activity.subscriptionDeadline;
         }
 
-        // If not subscription form was submitted initially than add the standard two questions to input
+        // If not subscription form was submitted initially then add the standard two questions to input
         if ($scope.inputs.length === 0) {
             $scope.inputs = [
                 {fullQuestion: 'Name', type: "name", options: [''], required: 'true'},
@@ -53,7 +53,7 @@ app.controller("activityEditController", ["$scope", "$routeParams", "activities"
     };
 
     // removes last element from inputs variable
-    $scope.remove = function () {
+    $scope.removeLast = function () {
         if ($scope.inputs.length > 2) {
             $scope.inputs.pop();
         }
