@@ -1,0 +1,18 @@
+<!-- TODO: Abstract from container div like pages -->
+<div class="container">
+
+    <h1>Committees</h1>
+
+    <div class="committees">
+        <div class="committee" ng-repeat="committee in committees">
+
+            <div class="clearfix" ng-if="$even"></div>
+            <div class="col-md-2">{{committee.displayName}}</div>
+
+        </div>
+        <div class="no-committees" ng-if="!committees.length && !loading">
+            There are no committees loaded.
+        </div>
+
+    </div>
+</div>
