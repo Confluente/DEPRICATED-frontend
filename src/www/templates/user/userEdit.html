@@ -8,14 +8,42 @@
     <form>
 
         <div class="form-group">
-            <label for="userEdit-name">Name</label>
-            <input type="text" ng-model="user.displayName" class="form-control" id="userEdit-name"/>
+            <label for="userCreate-firstName">First name (required)</label>
+            <input type="text" ng-model="user.firstName" class="form-control" id="userCreate-firstName">
         </div>
 
         <div class="form-group">
-          <label>Email address</label>
-          <input type="text" ng-model="user.email" class="form-control" id="userCreate-name" disabled>
+            <label for="userCreate-lastName">Family name (required)</label>
+            <input type="text" ng-model="user.lastName" class="form-control" id="userCreate-lastName">
         </div>
+
+        <div class="form-group">
+            <label for="userCreate-email">TU/e Email address (required)</label>
+            <input type="text" ng-model="user.email" class="form-control" id="userCreate-email">
+        </div>
+
+        <div class="form-group">
+            <label for="userCreate-major">Major</label>
+            <input type="text" ng-model="user.major" class="form-control" id="userCreate-major">
+        </div>
+
+        <b>Which honors track are you in:</b>
+        <select ng-model="user.track" ng-options="x for x in tracks"></select><br>
+
+        <b>In which year did you start at the honors academy</b>
+        <select ng-model="user.honorsGeneration" ng-options="x for x in generations"></select><br>
+
+        <div class="form-group">
+            <label for="userCreate-cardNumber">What is your campuscard number? (needed to give you access to the honors
+                room door)</label>
+            <input type="text" ng-model="user.campusCardNumber" class="form-control" id="userCreate-cardNumber">
+        </div>
+
+        <div class="form-group">
+            <label for="userCreate-phone">Mobile phone number</label>
+            <input type="text" ng-model="user.mobilePhoneNumber" class="form-control" id="userCreate-phone">
+        </div>
+
 
         <label>Role</label>
         <div class="radio">

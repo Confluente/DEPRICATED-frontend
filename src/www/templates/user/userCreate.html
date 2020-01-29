@@ -1,24 +1,62 @@
 <div class="container">
-    <h1>
-        <a class="btn btn-link" href="/manage"><i class="fa fa-chevron-left" aria-hidden="true"></i></a>
-        New user
-    </h1>
-
+    <h1>Register</h1>
     <form>
 
         <div class="form-group">
-            <label for="userCreate-name">Name</label>
-            <input type="text" ng-model="name" class="form-control" id="userCreate-name">
+            <label for="userCreate-firstName">First name (required)</label>
+            <input type="text" ng-model="firstName" class="form-control" id="userCreate-firstName">
         </div>
 
         <div class="form-group">
-            <label for="userCreate-email">Email address</label>
+            <label for="userCreate-lastName">Family name (required)</label>
+            <input type="text" ng-model="lastName" class="form-control" id="userCreate-lastName">
+        </div>
+
+        <div class="form-group">
+            <label for="userCreate-email">TU/e Email address (required)</label>
             <input type="text" ng-model="email" class="form-control" id="userCreate-email">
         </div>
 
         <div class="form-group">
-            <label for="userCreate-password">Password</label>
+            <label for="userCreate-major">Major</label>
+            <input type="text" ng-model="major" class="form-control" id="userCreate-major">
+        </div>
+
+        <b>Which honors track are you in:</b>
+        <select ng-model="honorsTrack" ng-options="x for x in tracks"></select><br>
+
+        <b>In which year did you start at the honors academy</b>
+        <select ng-model="generation" ng-options="x for x in generations"></select><br>
+
+        <div class="form-group">
+            <label for="userCreate-cardNumber">What is your campuscard number? (needed to give you access to the honors
+                room door)</label>
+            <input type="text" ng-model="cardNumber" class="form-control" id="userCreate-cardNumber">
+        </div>
+
+        <div class="form-group">
+            <label for="userCreate-phone">Mobile phone number</label>
+            <input type="text" ng-model="phone" class="form-control" id="userCreate-phone">
+        </div>
+
+        <div class="form-group">
+            <label for="userCreate-password">Password (required)</label>
             <input type="password" ng-model="password" class="form-control" id="userCreate-password">
+        </div>
+
+        <div class="form-group">
+            <label>By making an account you agree with our<a href="/privacy" privacy policy>privacy policy</a></label>
+        </div>
+
+        <div class="form-group">
+            <label>Do you give consent to H.S.A. Confluente to hang pictures of you taken by H.S.A. Confluente on the
+                walls of the honors room and post them on the website (only accessible to members). At any point in time
+                you can access your right to remove them as stated in the privacy policy. (required)</label>
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox" ng-model="portraitRight">yes
+                </label>
+            </div>
         </div>
 
         <button type="submit" class="btn btn-default" ng-click="submit()" ng-disabled="loading">Save</button>
