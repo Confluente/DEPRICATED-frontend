@@ -1,17 +1,27 @@
+<style>
+#committees img {
+    width: 600px;
+}
+</style>
+
 <!-- TODO: Abstract from container div like pages -->
 <div class="container">
 
     <h1>Committees</h1>
 
-    <div class="committees">
-        <div class="committee" ng-repeat="committee in committees">
+    <div id="committees">
+        <div ng-repeat="committee in committees">
 
             <div class="clearfix" ng-if="$even"></div>
-            <div class="col-md-2">{{committee.displayName}}</div>
+            <div class="col-sm-12 col-xs-12 col-md-4 col-lg-4" style="padding: 15px">
+                <h2>{{committee.displayName}}</h2>
+                <img src={{committee.image}}></img>
+                <p>{{committee.description}}</p>
+            </div>
 
         </div>
         <div class="no-committees" ng-if="!committees.length && !loading">
-            There are no committees loaded.
+            Committees are gone 🦀🦀🦀.
         </div>
 
     </div>
