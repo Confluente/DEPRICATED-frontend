@@ -11,6 +11,7 @@ app.controller("activityCreateController", ["$scope", "activities", function ($s
             startTime: $scope.startTime,
             endTime: $scope.endTime,
             location: $scope.location,
+            pathToPicture: $scope.path,
             approved: true
         }).then(function (result) {
             $scope.loading = false;
