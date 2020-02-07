@@ -5,40 +5,109 @@
     </h1>
 
     <form>
-
-        <div class="form-group">
-            <label for="activityCreate-name">Name</label>
-            <input type="text" ng-model="name" class="form-control" id="activityCreate-name"></input>
+        <div class="form-group col-md-6 col-xs-12">
+            <label for="activityCreate-name">Name of activity</label>
+            <input type="text" ng-model="name" class="form-control" id="activityCreate-name">
         </div>
 
-        <div class="form-group">
-            <label for="activityCreate-desc">Description (Markdown supported)</label>
+        <div class="form-group col-md-12 col-xs-12">
+            <label for="activityCreate-desc">Description of activity</label>
             <textarea ng-model="description" class="form-control" id="activityCreate-desc"></textarea>
         </div>
 
-        <div class="form-group">
-            <label for="activityCreate-organize">Organizer</label>
+        <div class="form-group col-md-6 col-xs-12">
+            <label for="activityCreate-organize">Organizing committee</label>
             <select ng-model="organizer" class="form-control" id="activityCreate-organize">
                 <option ng-repeat="group in user.groups" ng-value="group.id">{{group.displayName}}</option>
             </select>
         </div>
 
-        <div class="form-group">
-            <label for="activityCreate-date">Date</label>
+        <div class="form-group col-md-6 col-xs-12">
+            <label for="activityCreate-date">Date of activity</label>
             <input type="date" ng-model="date" class="form-control" id="activityCreate-date"/>
         </div>
 
-        <div class="form-group">
-            <label for="activityCreate-time">Time (from - until)</label>
-            <input type="text" ng-model="time" class="form-control" id="activityCreate-time"/>
+        <div class="form-group col-md-6 col-xs-12">
+            <label for="activityCreate-startTime">Starting time of activity (HH:mm)</label>
+            <input type="text" ng-model="startTime" class="form-control" id="activityCreate-startTime"/>
         </div>
 
-        <div class="form-group">
-            <label for="activityCreate-location">Location (optional)</label>
-            <input type="text" ng-model="location" class="form-control" id="activityCreate-location"></input>
+        <div class="form-group col-md-6 col-xs-12">
+            <label for="activityCreate-endTime">Ending time (HH:mm) (optional)</label>
+            <input type="text" ng-model="endTime" class="form-control" id="activityCreate-endTime"/>
         </div>
 
-        <button type="submit" class="btn btn-default" ng-click="submit()" ng-disabled="loading">Save</button>
+        <div class="form-group col-md-6 col-xs-12">
+            <label for="activityCreate-location">Location of activity</label>
+            <input type="text" ng-model="location" class="form-control" id="activityCreate-location"/>
+        </div>
+
+        <div class="form-group col-md-6 col-xs-12">
+            <label for="activityCreate-participationFee">Participation fee (in euros) (optional)</label>
+            <input type="text" ng-model="participationFee" class="form-control" id="activityCreate-participationFee"/>
+        </div>
+
+        <div class="col-md-12 col-xs-12 form-group">
+            <button class="btn btn-primary" ng-click="toggleSubscribe()" ng-if="!canSubscribe">
+                Create subscription form!
+            </button>
+            <button class="btn btn-danger" ng-click="toggleSubscribe()" ng-if="canSubscribe">Remove
+                Subscription form!
+            </button>
+        </div>
+
+        <div class="form-group col-md-6 col-xs-12" ng-if="canSubscribe">
+            <label for="subscriptionDeadline-date">Subscription deadline date</label>
+            <input type="date" ng-model="deadline.subscriptionDeadline" class="form-control"
+                   id="subscriptionDeadline-date"/>
+        </div>
+
+        <div ng-repeat="input in inputs" ng-if="canSubscribe">
+            <div class="form-group col-md-8 col-xs-12">
+                <label for="activityCreate-fullQuestion{{$index}}">Question {{$index + 1}}</label>
+                <input type="text" ng-model="input.fullQuestion" class="form-control"
+                       id="activityCreate-fullQuestion{{$index}}"
+                       ng-disabled="input.type === 'name' || input.type === 'TU/e email'"/>
+            </div>
+
+            <div class="checkbox col-md-4 col-xs-12" ng-if="input.type !== 'name' && input.type !== 'TU/e email'">
+                <label for="activityCreate-required{{$index}}" style="margin-top: 30px">
+                    <input type="checkbox" ng-model="input.required" id="activityCreate-required{{$index}}"> <b>mandatory</b>
+                </label>
+                <button class="btn btn-danger" ng-click="removeInput($index)">Remove question</button>
+            </div>
+
+            <div class="col-md-6 col-xs-12" ng-if="input.type !== 'name' && input.type !== 'TU/e email'">
+                <b>What is the answer type of your question?</b><br/>
+                <select ng-model="input.type" ng-options="x for x in types" style="margin-top: 10px"></select><br>
+            </div>
+
+            <div class="col-md-6 col-xs-12" ng-if="input.type == '◉ multiple choice' || input.type == '☑ checkboxes'">
+                <div class="form-group" ng-repeat="option in input.options track by $index">
+                    <input type="text" ng-model="input.options[$index]" class="form-control"
+                           style="display: inline-block; width: 88%">
+                    <button class="btn btn-danger" style="display: inline-block; width: 10%; vertical-align: top"
+                            ng-click="removeOption($parent.$index, $index)">X
+                    </button>
+                </div>
+                <button ng-click="addOption(input)" class="btn btn-default" ng-if="input.options.length < 50">Add
+                    option
+                </button>
+            </div>
+
+            <div class="col-md-12 col-xs-12">
+                <hr>
+            </div>
+        </div>
+
+        <div class="col-md-12 col-xs-12" ng-if="canSubscribe" style="padding-bottom: 10px">
+            <button ng-click="add()" class="btn btn-default">Add question</button>
+            <br>
+        </div>
+
+        <button type="submit" class="btn btn-primary col-md-12 col-xs-12" ng-click="submit()" ng-disabled="loading">
+            Save
+        </button>
 
     </form>
 </div>

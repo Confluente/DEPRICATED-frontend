@@ -1,10 +1,21 @@
 var app = angular.module("confluente");
 
-app.controller("userViewController", ["$scope", "$routeParams", "users", function ($scope, $routeParams, user) {
-    var userId = $routeParams.userId; // TODO: WHY is activityId unresolved
-    console.log(userId);
-    user.get(userId).then(function (user) {
-        $scope.user = user;
+/**
+ * Controller for viewing users
+ */
+app.controller("userViewController", ["$rootScope", "$scope", "$routeParams", "users", function ($rootScope, $scope, $routeParams, user) {
+    // get userId from URL
+    var userId = $routeParams.userId;
+    // if requested user equals profile, get userId of logged in user
+    if (userId === "profile") {
+        userId = $rootScope.user.id;
+    }
+
+    // retrieve user from backend based on userId
+    user.get(userId).then(function (param) {
+        $scope.user = param[0];
+        $scope.groups = param[1];
+        delete $scope.user.isAdmin;
     });
 }]);
 

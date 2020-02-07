@@ -1,0 +1,10 @@
+<!--TODO Abstract from container-->
+<div class="container">
+    <h1>{{group.displayName}}</h1>
+    <h4>Group description</h4>
+    <p>{{group.description}}</p>
+    <h4>Contact details</h4>
+    <p>{{group.email}}</p>
+    <h4>Members</h4>
+    <p ng-repeat="member in group.members">{{member.displayName}}</p>
+</div>

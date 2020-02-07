@@ -1,9 +1,12 @@
 <nav role="navigation" class="navbar navbar-default">
+    <div class="alert alert-info" style="margin-bottom: 0; text-align: center"
+         ng-if="user.loggedIn && !user.consentWithPortraitRight">You have not yet given consent to H.S.A. Confluente to
+        use your pictures! You can do so <a href="/consentPortraitRight">here</a>!
+    </div>
     <div class="container" ng-controller="controllerNavbar as nav">
-
         <div class="navbar-header">
             <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
-                    data-target="#main-navbar__content" aria-expanded="false">
+                    data-target="#main-navbar__content, #hero" aria-expanded="false">
                 <span class="sr-only">Toggle navigation</span>
                 <span class="fa fa-bars"></span>
             </button>
@@ -23,15 +26,14 @@
                         <li><a href="/about/boards">Boards</a></li>
                         <li><a href="/about/committees">Committees</a></li>
                         <li><a href="/about/alumni">Alumni</a></li>
-                        <li><a href="/about/hr">Honors Room</a></li>
+                        <li><a href="/about/HR">Honors Room</a></li>
                     </ul>
                 </li>
 
 
-                
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-                           aria-expanded="false">Education <span class="caret"></span>
+                       aria-expanded="false">Education <span class="caret"></span>
                     </a>
                     <ul class="dropdown-menu">
                         <li><a href="/education/honors_academy">Honors Academy</a></li>
@@ -62,7 +64,7 @@
                     </a>
                     <ul class="dropdown-menu">
                         <li><a href="/user/profile"><span class="fa fa-user-circle"></span>Profile</a></li>
-                        <li><a href="/manage"><span class="fa fa-sliders"></span>Manage</a></li>
+                        <li ng-if="user.isAdmin"><a href="/manage"><span class="fa fa-sliders"></span>Manage</a></li>
                         <li role="separator" class="divider"></li>
                         <li><a href="#" ng-click="logout()"><span class="fa fa-sign-out"></span>Logout</a></li>
                     </ul>
@@ -70,4 +72,5 @@
             </ul>
         </div>
     </div>
+
 </nav>

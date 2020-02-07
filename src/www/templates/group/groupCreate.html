@@ -1,0 +1,38 @@
+<div class="container">
+    <h1>
+        <a class="btn btn-link" href="/manage"><i class="fa fa-chevron-left" aria-hidden="true"></i></a>
+        New Group
+    </h1>
+
+    <form>
+
+        <div class="form-group">
+            <label for="groupCreate-name">Group name</label>
+            <input type="text" ng-model="name" class="form-control" id="groupCreate-name"></input>
+        </div>
+
+        <div class="form-group">
+            <label for="groupEdit-fullName">Full name</label>
+            <input type="text" ng-model="fullName" class="form-control" id="groupEdit-fullName">
+        </div>
+
+        <div class="form-group">
+            <label for="groupCreate-desc">Description</label>
+            <textarea ng-model="description" class="form-control" id="groupCreate-desc"></textarea>
+        </div>
+
+        <div class="form-group">
+            <label for="groupCreate-email">Email</label>
+            <input type="text" ng-model="email" class="form-control" id="groupCreate-email">
+        </div>
+
+        <div class="checkbox">
+            <label for="groupCreate-canOrganize">
+                <input type="checkbox" ng-model="canOrganize" id="groupCreate-canOrganize"> Can this group organize events?
+            </label>
+        </div>
+
+        <button type="submit" class="btn btn-default" ng-click="submit()" ng-disabled="loading">Save</button>
+
+    </form>
+</div>

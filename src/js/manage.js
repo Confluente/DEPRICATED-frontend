@@ -1,27 +1,103 @@
 var app = angular.module("confluente");
 
-app.controller("manageController", ["$scope", "$q", "pages", "activities", "users", "groups",
-    function ($scope, $q, pages, activities, users, groups) {
+/**
+ * Controller for the management table
+ */
+app.controller("manageController", ["$rootScope", "$scope", "$q", "pages", "activities", "users", "groups",
+    function ($rootScope, $scope, $q, pages, activities, users, groups) {
         $scope.loading = true;
+        $scope.f = {
+            date: new Date()
+        };
+
         //Wait until all data is retrieved
         //This is a bad approach and I should be ashamed
         //In the future, perhaps create a new directive/scope for each tab
-        $q.all([
-            pages.getAll().then(function (pages) {
-                $scope.pages = pages;
-            }),
-            activities.getAll().then(function (activities) {
-                $scope.activities = activities;
-            }),
+
+        // retrieve all data
+        activities.getAllManage().then(function (activities) {
+            $scope.archive = activities;
+            $scope.filter();
+        });
+
+        if ($rootScope.user.isAdmin) {
             users.getAll().then(function (users) {
                 $scope.users = users;
-            }),
+            });
+            pages.getAll().then(function (pages) {
+                $scope.pages = pages;
+            });
             groups.getAll().then(function (groups) {
                 $scope.groups = groups;
-            }),
-        ]).then(function () {
-            $scope.loading = false;
+            });
+        }
+
+        $scope.$watch("f.date", function (newDate) {
+            $scope.filter();
         });
+
+        $scope.filter = function() {
+            var date = $scope.f.date;
+            $scope.activities = [];
+            for (var i = 0; i < $scope.archive.length; i++) {
+                if ($scope.archive[i].date >= date) {
+                    $scope.activities.push($scope.archive[i]);
+                }
+            }
+        };
+
+        // Ugly repeated code
+        // $scope variables for tracking search & sorting in activities tab
+        $scope.sortTypeActivities = 'id';
+        $scope.sortReverseActivities = false;
+        $scope.searchQueryActivities = '';
+        $scope.sortActivities = function (type) {
+            if ($scope.sortTypeActivities === type) {
+                $scope.sortReverseActivities = !$scope.sortReverseActivities;
+            } else {
+                $scope.sortReverseActivities = false;
+            }
+            $scope.sortTypeActivities = type;
+        };
+
+        // $scope variables for tracking search & sorting in users tab
+        $scope.sortTypeUsers = 'id';
+        $scope.sortReverseUsers = false;
+        $scope.searchQueryUsers = '';
+        $scope.sortUsers = function (type) {
+            if ($scope.sortTypeUsers === type) {
+                $scope.sortReverseUsers = !$scope.sortReverseUsers;
+            } else {
+                $scope.sortReverseUsers = false;
+            }
+            $scope.sortTypeUsers = type;
+        };
+
+        // $scope variables for tracking search & sorting in groups tab
+        $scope.sortTypeGroups = 'id';
+        $scope.sortReverseGroups = false;
+        $scope.searchQueryGroups = '';
+        $scope.sortGroups = function (type) {
+            if ($scope.sortTypeGroups === type) {
+                $scope.sortReverseGroups = !$scope.sortReverseGroups;
+            } else {
+                $scope.sortReverseGroups = false;
+            }
+            $scope.sortTypeGroups = type;
+        };
+
+        // function for using datepicker in form for creating activities
+        $scope.datepicker = {open: false};
+        $scope.openDatePicker = function () {
+            $scope.datepicker.open = true;
+        };
+
+        $scope.dateOptions = {
+            formatYear: 'yy',
+            maxDate: new Date(2029, 5, 22), // maximum date for datepicker
+            minDate: new Date(), // minimum date for datepicker
+            startingDay: 1
+        };
     }]
 );
 

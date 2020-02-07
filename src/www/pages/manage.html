@@ -1,38 +1,38 @@
 <div class="pull-right">
-    <a class="btn btn-default" href="manage/user/create" ng-if="user.isAdmin">+ User</a>
-    <!--<a class="btn btn-default" href="/group/create" ng-if="user.isAdmin">+ Group</a>-->
     <a class="btn btn-default" href="manage/activities/create" ng-if="user.canOrganize">+ Activity</a>
+    <div class="btn-group" role="group">
+        <a class="btn btn-default" href="registerForTheNewAwesomeWebsite" ng-if="user.isAdmin">+ User</a>
+        <a class="btn btn-default" href="manage/group/create" ng-if="user.isAdmin">+ Group</a>
+    </div>
 </div>
-
 <h1>Management Dashboard</h1>
 <div ng-controller="manageController">
-    <uib-tabset active="active">
-
+    <uib-tabset active="active" class="section">
         <uib-tab index="1" heading="Activities">
+            <input type="text" class="form-control" placeholder="Search" ng-model="searchQueryActivities">
+            <label>Filter on date! <input type="date" class="form-control col-md-8" ng-model="f.date"></label>
             <div class="table-responsive">
-                <table class="table table-striped">
+                <table class="table table-hover">
 
                     <thead>
                     <tr>
-                        <th>#</th>
-                        <th>Url</th>
-                        <th>Title</th>
-                        <th>Date</th>
-                        <th>Organizer</th>
-                        <th>Approved</th>
-                        <th>Actions</th>
+                        <th class="col-xs-5" ng-click="sortActivities('name')">Title</th>
+                        <th class="col-xs-2" ng-click="sortActivities('date')">Date</th>
+                        <th class="col-xs-2" ng-click="sortActivities('Organizer.displayName')">Organizer</th>
+                        <th class="col-xs-1" ng-click="sortActivities('approved')">Approved</th>
+                        <th class="col-xs-1"></th>
                     </tr>
                     </thead>
 
                     <tbody>
-                    <tr ng-repeat="activity in activities">
-                        <th>{{activity.id}}</th>
-                        <td><a ng-href="/activities/{{activity.id}}">/activities/{{activity.id}}</a></td>
-                        <td>{{activity.name}}</td>
+                    <tr ng-repeat="activity in activities | orderBy:sortTypeActivities:sortReverseActivities | filter:searchQueryActivities">
+                        <td><a ng-href="/activities/{{activity.id}}#signup">{{activity.name}}</a></td>
                         <td>{{activity.date | date:'yyyy-MM-dd'}}</td>
                         <td>{{activity.Organizer.displayName}}</td>
-                        <td>{{activity.approved}}</td>
-                        <td><a ng-href="/manage/activities/{{activity.id}}">Edit</a></td>
+                        <td ng-if="activity.approved"><i class="fa fa-check"></i></td>
+                        <td ng-if="!activity.approved"></td>
+                        <td class="text-right"><a ng-href="/manage/activities/{{activity.id}}">Edit</a> <a
+                                ng-href="/manage/activities/delete/{{activity.id}}">Delete</a></td>
                     </tr>
                     </tbody>
 
@@ -40,27 +40,28 @@
             </div>
         </uib-tab>
 
-        <uib-tab index="2" heading="Users">
+        <uib-tab index="2" heading="Users" ng-if="user.isAdmin">
+            <input type="text" class="form-control" placeholder="Search" ng-model="searchQueryUsers">
             <div class="table-responsive">
-                <table class="table table-striped">
+                <table class="table table-hover">
 
                     <thead>
                     <tr>
-                        <th>#</th>
-                        <th>Name</th>
-                        <th>Email</th>
-                        <th>Admin</th>
-                        <th>Actions</th>
+                        <th class="col-xs-5" ng-click="sortUsers('displayName')">Name</th>
+                        <th class="col-xs-4" ng-click="sortUsers('email')">Email</th>
+                        <th class="col-xs-2" ng-click="sortUsers('isAdmin')">Admin</th>
+                        <th class="col-xs-1"></th>
                     </tr>
                     </thead>
 
                     <tbody>
-                    <tr ng-repeat="user in users">
-                        <th>{{user.id}}</th>
+                    <tr ng-repeat="user in users | orderBy:sortTypeUsers:sortReverseUsers | filter:searchQueryUsers">
                         <td><a ng-href="/user/{{user.id}}">{{user.displayName}}</a></td>
                         <td>{{user.email}}</td>
-                        <td>{{user.isAdmin}}</td>
-                        <td><a ng-href="/manage/user/{{user.id}}">Edit</a></td>
+                        <td ng-if="user.isAdmin"><i class="fa fa-check"></i></td>
+                        <td ng-if="!user.isAdmin"></td>
+                        <td class="text-right"><a ng-href="/manage/user/edit/{{user.id}}">Edit</a> <a
+                                ng-href="/manage/user/delete/{{user.id}}">Delete</a></td>
                     </tr>
                     </tbody>
 
@@ -68,27 +69,29 @@
             </div>
         </uib-tab>
 
-        <uib-tab index="3" heading="Groups">
+        <uib-tab index="3" heading="Groups" ng-if="user.isAdmin">
+            <input type="text" class="form-control" placeholder="Search" ng-model="searchQueryGroups">
             <div class="table-responsive">
-                <table class="table table-striped">
+                <table class="table table-hover">
 
                     <thead>
                     <tr>
-                        <th>#</th>
-                        <th>Name</th>
-                        <th>Email</th>
-                        <th>Can organize</th>
-                        <th>Actions</th>
+
+                        <th class="col-xs-5" ng-click="sortGroups('fullName')">Name</th>
+                        <th class="col-xs-4" ng-click="sortGroups('email')">Email</th>
+                        <th class="col-xs-2" ng-click="sortGroups('canOrganize')">Can organize</th>
+                        <th class="col-xs-1"></th>
                     </tr>
                     </thead>
 
                     <tbody>
-                    <tr ng-repeat="group in groups">
-                        <th>{{group.id}}</th>
+                    <tr ng-repeat="group in groups | orderBy:sortTypeGroups:sortReverseGroups | filter:searchQueryGroups">
                         <td><a ng-href="/group/{{group.id}}">{{group.fullName}} ({{group.displayName}})</a></td>
                         <td>{{group.email}}</td>
-                        <td>{{group.canOrganize}}</td>
-                        <td><a ng-href="/manage/group/{{group.id}}">Edit</a></td>
+                        <td ng-if="group.canOrganize"><i class="fa fa-check"></i></td>
+                        <td ng-if="!group.canOrganize"></td>
+                        <td class="text-right"><a ng-href="/manage/group/edit/{{group.id}}">Edit</a> <a
+                                ng-href="/manage/group/delete/{{group.id}}">Delete</a></td>
                     </tr>
                     </tbody>
 
