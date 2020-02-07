@@ -69,6 +69,7 @@ app.controller("activityCreateController", ["$scope", "activities", function ($s
 
         // Checking required fields
         $scope.empty = !$scope.name || !$scope.description || !$scope.organizer;
+        $scope.wrongCharacters = false;
 
         // Adding form to activity object if members can subscribe
         if ($scope.canSubscribe) {
@@ -85,7 +86,9 @@ app.controller("activityCreateController", ["$scope", "activities", function ($s
                 // SQlite database can't handle strings therefore lists are stored as , seperated lists and ; seperated lists
                 var optionString = dataObj.options[0];
                 for (var i = 1; i < dataObj.options.length; i++) {
-                    optionString += ";" + dataObj.options[i];
+                    optionString += "#;#" + dataObj.options[i];
+                    if (dataObj.options[i].includes("#;#")) $scope.wrongCharacters = true;
+                    if (dataObj.options[i].includes("#,#")) $scope.wrongCharacters = true;
                 }
                 allOptions.push(optionString);
 
@@ -94,6 +97,8 @@ app.controller("activityCreateController", ["$scope", "activities", function ($s
                 if (!dataObj.fullQuestion || dataObj.fullQuestion === "") {
                     $scope.empty = true;
                 }
+                if (dataObj.fullQuestion.includes("#,#")) $scope.wrongCharacters = true;
+                if (dataObj.fullQuestion.includes("#;#")) $scope.wrongCharacters = true;
 
                 // Check whether choices of multiple choice questions are empty
                 if (dataObj.type !== "☰ text" && dataObj.type !== "name" && dataObj.type !== "TU/e email") {
@@ -115,6 +120,11 @@ app.controller("activityCreateController", ["$scope", "activities", function ($s
         if ($scope.empty) {
             $scope.loading = false;
             return alert("Not all required fields have been filled in.");
+        }
+
+        if ($scope.wrongCharacters) {
+            $scope.loading = false;
+            return alert("Character combinations #,# and #;# are not allowed.")
         }
 
         // create new activity from variables as put on the $scope by the form

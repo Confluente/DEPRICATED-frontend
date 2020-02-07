@@ -84,6 +84,8 @@ app.controller("activityEditController", ["$scope", "$routeParams", "activities"
         // Checks whether required fields are empty
         $scope.empty = !$scope.activity.name || !$scope.activity.description || !$scope.activity.Organizer;
 
+        $scope.wrongCharacters = false;
+
         if ($scope.activity.canSubscribe) {
             // format form correctly
             var allDescriptions = [];
@@ -96,8 +98,10 @@ app.controller("activityEditController", ["$scope", "$routeParams", "activities"
                 allTypes.push(dataObj.type);
                 var optionString = "";
                 for (var i = 0; i < dataObj.options.length; i++) {
-                    if (i !== 0) optionString += ";";
+                    if (i !== 0) optionString += "#;#";
                     optionString += dataObj.options[i];
+                    if (dataObj.options[i].includes("#;#")) $scope.wrongCharacters = true;
+                    if (dataObj.options[i].includes("#,#")) $scope.wrongCharacters = true;
                 }
                 allOptions.push(optionString);
                 allRequired.push(dataObj.required);
@@ -106,6 +110,8 @@ app.controller("activityEditController", ["$scope", "$routeParams", "activities"
                 if (!dataObj.fullQuestion || dataObj.fullQuestion === "") {
                     $scope.empty = true;
                 }
+                if (dataObj.fullQuestion.includes("#,#")) $scope.wrongCharacters = true;
+                if (dataObj.fullQuestion.includes("#;#")) $scope.wrongCharacters = true;
 
                 // Checks whether options of multiple choice questions are empty
                 if (dataObj.type !== "☰ text" && dataObj.type !== "name" && dataObj.type !== "TU/e email") {
@@ -127,6 +133,12 @@ app.controller("activityEditController", ["$scope", "$routeParams", "activities"
         if ($scope.empty) {
             $scope.loading = false;
             return alert("One of your fields is still empty!");
+        }
+
+        // If problematic fields contain #,# or #;# reject form
+        if ($scope.wrongCharacters) {
+            $scope.loading = false;
+            return alert("Character combinations #,# and #;# are not allowed.")
         }
 
         // submit edit of activity to backend
