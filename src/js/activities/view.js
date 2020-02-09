@@ -84,7 +84,7 @@ app.controller("activityViewController", ["$scope", "$routeParams", "activities"
             $scope.loading = false;
 
             // reloads page to show deletion
-            window.history.go();
+            window.location.reload();
         })
     };
 
@@ -132,7 +132,7 @@ app.controller("activityViewController", ["$scope", "$routeParams", "activities"
             $scope.loading = false;
 
             // reload page to show submission
-            window.history.go();
+            window.location.reload();
         });
     }
 }]);

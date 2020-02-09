@@ -4,13 +4,13 @@
                                                                                  aria-hidden="true"></i></a>
         {{activity.name}}</h1>
     <a class="btn btn-default col-md-4 col-xs-12" ng-href="/manage/activities/{{activity.id}}" ng-if="isUserOrganizing">Edit</a>
-    <div class="col-md-8">
+    <div class="col-md-8 col-xs-12">
         <p ng-repeat="text in activityDescription">{{text}}</p>
     </div>
-    <div class="mobileshow">
+    <div class="mobileshow col-xs-12">
         <hr/>
     </div>
-    <div class="col-md-4">
+    <div class="col-md-4 col-xs-12">
         <p ng-if="activity.date"><b>Date</b>: {{activity.date | date:'d MMMM yyyy'}}</p>
         <p ng-if="activity.startTime && activity.endTime"><b>Time</b>: {{activity.startTime}} - {{activity.endTime}}</p>
         <p ng-if="activity.startTime && !activity.endTime"><b>Starting time</b>: {{activity.startTime}}</p>
@@ -22,7 +22,7 @@
             {{activity.subscriptionDeadline | date:'d MMMM yyyy'}}</p>
         <p><b>Organizing committee</b>: {{activity.Organizer.fullName}}</p>
     </div>
-    <div ng-if="activity.canSubscribe && user.loggedIn" class="col-md-12">
+    <div ng-if="activity.canSubscribe && user.loggedIn" class="col-md-12 col-xs-12">
         <a href="#signup" class="btn btn-primary" data-toggle="collapse" ng-if="!deadlinePassed">
             <div ng-if="!subscribed">Sign up here!</div>
             <div ng-if="subscribed">Change submission!</div>
@@ -83,13 +83,14 @@
                 <th>#
                     <hr/>
                 </th>
-                <th ng-repeat="question in activity.questionDescriptions">{{question}}
+                <th ng-repeat="question in activity.questionDescriptions" class="overflowTableCell">{{question}}
                     <hr/>
                 </th>
             </tr>
             <tr ng-repeat="participant in activity.participants">
                 <td>{{$index + 1}}</td>
-                <td ng-repeat="answer in participant.subscription.answers">{{answer}}</td>
+                <td ng-repeat="answer in participant.subscription.answers" class="overflowTableCell">{{answer}}
+                </td>
             </tr>
         </table>
         <div class="form-group" style="margin-top: 1rem">
