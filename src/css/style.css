@@ -779,6 +779,20 @@ label {
     }
 }
 
+.overflowTableCell {
+    max-width: 100px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+#answerTable {
+    table-layout: fixed;
+    max-width: 100%;
+    width: 100%;
+    min-width: 100%;
+}
+
 /* --Profile */
 .profileTable table {
     border: 1px solid black;
