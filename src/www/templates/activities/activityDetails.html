@@ -28,7 +28,7 @@
             <div ng-if="subscribed">Change submission!</div>
         </a>
         <p ng-if="deadlinePassed">Deadline for subscribing to this event has passed!</p>
-        <button class="btn btn-danger" ng-if="subscribed" ng-click="remove()">Unsubscribe</button>
+        <button class="btn btn-danger" ng-if="subscribed && !deadlinePassed" ng-click="remove()">Unsubscribe</button>
         <div id="signup" class="collapse subscriptionForm">
             <form>
                 <div ng-repeat="question in activity.questionDescriptions">
