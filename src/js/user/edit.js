@@ -15,11 +15,9 @@ app.controller("userEditController", ["$scope", "$q", "$routeParams", "users", "
 
     $scope.role = {
         roles: [{
-            id: "User",
-            title: "User"
+            id: "User"
         }, {
-            id: "Admin",
-            title: "Admin"
+            id: "Admin"
         }]
     };
 
