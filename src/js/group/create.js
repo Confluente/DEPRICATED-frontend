@@ -14,7 +14,8 @@ app.controller("groupCreateController", ["$scope", "groups", function ($scope, g
             fullName: $scope.name,
             description: $scope.description,
             email: $scope.email,
-            canOrganize: $scope.canOrganize
+            canOrganize: $scope.canOrganize,
+            type: $scope.type
         }).then(function (result) {
             $scope.loading = false;
             // redirect to created group
