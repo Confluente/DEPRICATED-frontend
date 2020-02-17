@@ -13,6 +13,20 @@ app.controller("userEditController", ["$scope", "$q", "$routeParams", "users", "
 
     $scope.generations = [2018, 2019];
 
+    $scope.role = {
+        roles: [{
+            id: "User",
+            title: "User"
+        }, {
+            id: "Admin",
+            title: "Admin"
+        }]
+    };
+
+    $scope.selectedRole = {
+        id: "User"
+    };
+
     $q.all([
         // retrieve all groups from backend
         groups.getAll().then(function (groups) {
@@ -21,6 +35,7 @@ app.controller("userEditController", ["$scope", "$q", "$routeParams", "users", "
         // retrieve user from backend by userId
         user.get(userId).then(function (param) {
             $scope.user = param[0];
+            if ($scope.user.isAdmin) $scope.selectedRole.id = "Admin";
             $scope.member = param[1];
         })
     ]).then(function () {
@@ -49,6 +64,12 @@ app.controller("userEditController", ["$scope", "$q", "$routeParams", "users", "
         $scope.loading = false;
         // function called when edit of user is submitted
         $scope.submit = function () {
+            if (!$scope.user.firstName || !$scope.user.lastName || !$scope.user.email) {
+                $scope.loading = false;
+                return alert("Not all required fields were filled in!");
+            }
+
+            $scope.user.isAdmin = $scope.selectedRole.id === "Admin";
             $scope.user.displayName = $scope.user.firstName + " " + $scope.user.lastName;
             $scope.loading = true;
             user.edit($scope.user, $scope.groupSelection).then(function (result) {
