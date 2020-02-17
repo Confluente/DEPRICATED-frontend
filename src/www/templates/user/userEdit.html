@@ -46,15 +46,11 @@
 
 
         <label>Role</label>
-        <div class="radio">
-            <label>
-                <input type="radio" ng-model="user.isAdmin" value="false" id="userEdit-role1"/> User
-            </label>
-        </div>
-        <div class="radio">
-            <label>
-                <input type="radio" ng-model="user.isAdmin" value="true" id="userEdit-role2"/> Administrator
-            </label>
+        <div>
+            <div ng-repeat="r in role.roles">
+                <input type="radio" ng-model="selectedRole.id" value="{{r.id}}"/>
+                <span>{{r.id}}</span>
+            </div>
         </div>
 
         <label>Groups</label>
