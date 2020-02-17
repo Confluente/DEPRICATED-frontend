@@ -108,7 +108,7 @@ h1, .h1 {
 }
 
 b, strong, th {
-  font-weight: 500
+    font-weight: 500
 }
 
 /* Header margin */
@@ -123,7 +123,7 @@ h4, .h4, h5, .h5, h6, .h6 {
 }
 
 label {
-  font-weight: 500
+    font-weight: 500
 }
 
 .row:before, .row:after {
@@ -137,6 +137,7 @@ label {
     filter: grayscale(100%);
     transition: filter 0.2s
 }
+
 .bw:hover, .bw:active, .bw:focus {
     filter: grayscale(0%);
 }
@@ -147,6 +148,7 @@ label {
     padding-bottom: 1rem;
     display: block
 }
+
 .section {
     margin-top: 1rem;
     margin-bottom: 1rem
@@ -161,8 +163,8 @@ label {
 
 /* -- Sticky */
 .sticky {
-  position: sticky;
-  top: 8px
+    position: sticky;
+    top: 8px
 }
 
 /* -- Flexbox */
@@ -182,6 +184,7 @@ label {
 .flex-around {
     justify-content: space-around;
 }
+
 .flex-between {
     justify-content: space-between;
 }
@@ -213,6 +216,7 @@ label {
     box-shadow: none;
     padding: 0;
 }
+
 @media (min-width: 992px) {
     .dropdown:hover .dropdown-menu {
         display: block;
@@ -247,6 +251,7 @@ label {
 .navbar, .dropdown-menu {
     font-size: 0.93rem;
 }
+
 .navbar-brand {
     line-height: 1.1rem;
     font-size: 1rem;
@@ -268,17 +273,18 @@ label {
 }
 
 
-
 /* - Header container */
 #hero {
     display: block;
     height: 66vh !important;
     margin-top: -6rem;
-    transition: margin-top .2s cubic-bezier(.17,.84,.44,1)
+    transition: margin-top .2s cubic-bezier(.17, .84, .44, 1)
 }
+
 #hero.collapsing, #hero.collapse.in {
     margin-top: -1rem
 }
+
 .carousel-inner, .carousel-inner > * {
     height: inherit;
 }
@@ -302,11 +308,13 @@ label {
     position: absolute;
     background-attachment: fixed;
 }
+
 #hero-image-1 {
-  background-image:  URL('/img/frontpage-hero.jpg');
+    background-image: URL('/img/frontpage-hero.jpg');
 }
+
 #hero-image-2 {
-  background-image:  URL('/img/frontpage-hero2.JPG');
+    background-image: URL('/img/frontpage-hero2.JPG');
 }
 
 
@@ -314,6 +322,7 @@ label {
     height: 100%;
     flex-direction: column-reverse;
 }
+
 #hero-header > * {
     height: 36px;
 }
@@ -338,6 +347,7 @@ label {
     margin: 0;
     width: initial
 }
+
 .carousel-indicators li {
     display: inline-block;
     border-radius: 0;
@@ -345,14 +355,17 @@ label {
     border: 1px solid #fff;
     background-color: transparent;
 }
+
 .carousel-indicators li, .carousel-indicators .active {
     width: 28px;
     height: 7px;
     margin: 1px
 }
+
 .carousel-indicators .active {
     background: #fff;
 }
+
 .carousel-control.right, .carousel-control.left {
     background: none
 }
@@ -361,6 +374,7 @@ label {
     width: 160px;
     height: 160px;
 }
+
 #frontpage-slogan {
     letter-spacing: 3px;
     text-transform: uppercase;
@@ -636,6 +650,7 @@ label {
     margin: 0 0 1em 0;
     overflow: hidden;
 }
+
 .activity-content .module p {
     margin: 0;
 }
@@ -649,6 +664,7 @@ label {
     height: 6em; /* exactly 4 lines */
     opacity: 1;
 }
+
 .activity-content .fade:after {
     content: "";
     text-align: right;
@@ -685,7 +701,7 @@ label {
     width: 100%;
 }
 
-.login-input{
+.login-input {
     font-family: Montserrat-Bold;
     font-size: 15px;
     line-height: 1.2;
@@ -697,36 +713,38 @@ label {
     border-radius: 25px;
     padding: 0 30px 0 30px;
 }
-.login-btn{
+
+.login-btn {
     width: 100% !important;
     border-radius: 25px !important;
 }
-.login-form{
+
+.login-form {
     border: 1px solid #ccc !important;
     padding: 10px 10px 40px 10px;
-    border-radius:20px;
+    border-radius: 20px;
     margin: 10px 20px 10px 20px;
 }
 
-@media(max-width: 992px) {
+@media (max-width: 992px) {
     .HA-col {
         height: 750px;
     }
 }
 
-@media(max-width: 767px) {
+@media (max-width: 767px) {
     .HA-col {
         height: 600px;
     }
 }
 
-@media(max-width: 560px) {
+@media (max-width: 560px) {
     .HA-col {
         height: 700px;
     }
 }
 
-@media(max-width: 400px) {
+@media (max-width: 400px) {
     .HA-col {
         height: 800px;
     }
@@ -742,8 +760,40 @@ label {
     padding-top: 100px;
 }
 
-@media(max-width: 992px) {
+@media (max-width: 992px) {
     .nav-pad {
         padding-top: 0px;
     }
+}
+
+/* --Subscription forms */
+.subscriptionForm {
+    width: 50%;
+    background-color: lightgray;
+    padding: 10px;
+}
+
+@media (max-width: 560px) {
+    .subscriptionForm {
+        width: 100%;
+    }
+}
+
+/* --Profile */
+.profileTable table {
+    border: 1px solid black;
+    border-collapse: collapse;
+    padding: 3px;
+}
+
+.profileTable td {
+    border: 1px solid black;
+    border-collapse: collapse;
+    padding: 3px;
+}
+
+.profileTable tr {
+    border: 1px solid black;
+    border-collapse: collapse;
+    padding: 3px;
 }

@@ -11,7 +11,7 @@ app.controller("groupCreateController", ["$scope", "groups", function ($scope, g
         // create group in backend using the variables as set on the $scope
         groups.create({
             displayName: $scope.name,
-            fullName: $scope.name,
+            fullName: $scope.fullName,
             description: $scope.description,
             email: $scope.email,
             canOrganize: $scope.canOrganize,

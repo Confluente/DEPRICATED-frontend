@@ -15,6 +15,7 @@ app.controller("userViewController", ["$rootScope", "$scope", "$routeParams", "u
     user.get(userId).then(function (param) {
         $scope.user = param[0];
         $scope.groups = param[1];
+        delete $scope.user.isAdmin;
     });
 }]);
 

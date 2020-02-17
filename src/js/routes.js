@@ -13,6 +13,7 @@ var routes = [
     require("./activities/create"),
     require("./activities/edit"),
     require("./activities/delete"),
+    require("./committees/"),
     require("./group/create"),
     require("./group/edit"),
     require("./group/view"),
@@ -21,7 +22,8 @@ var routes = [
     require("./manage"),
     require("./page/manage"),
     require("./page/create"),
-    require("./page/edit")
+    require("./page/edit"),
+    require("./notifications/portraitRight")
 ];
 
 module.exports = routes;

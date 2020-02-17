@@ -11,11 +11,11 @@ app.factory("activities", ["$http", "$timeout", function ($http, $timeout) {
          */
         getAll: function () {
             return $http.get("/api/activities").then(function (result) {
-                // console.log(result);
                 var activities = result.data;
                 return activities.map(function (activity) {
                     // set correct date format (or null if not defined)
                     activity.date = !isNaN(Date.parse(activity.date)) ? new Date(activity.date) : null;
+                    activity.subscriptionDeadline = !isNaN(Date.parse(activity.subscriptionDeadline)) ? new Date(activity.subscriptionDeadline) : null;
                     return activity;
                 });
             });
@@ -31,6 +31,7 @@ app.factory("activities", ["$http", "$timeout", function ($http, $timeout) {
                 return activities.map(function (activity) {
                     // set correct date format (or null if not defined)
                     activity.date = !isNaN(Date.parse(activity.date)) ? new Date(activity.date) : null;
+                    activity.subscriptionDeadline = !isNaN(Date.parse(activity.subscriptionDeadline)) ? new Date(activity.subscriptionDeadline) : null;
                     return activity;
                 });
             });
@@ -45,6 +46,7 @@ app.factory("activities", ["$http", "$timeout", function ($http, $timeout) {
                 var activity = result.data;
                 // set correct date format (or null if not defined)
                 activity.date = !isNaN(Date.parse(activity.date)) ? new Date(activity.date) : null;
+                activity.subscriptionDeadline = !isNaN(Date.parse(activity.subscriptionDeadline)) ? new Date(activity.subscriptionDeadline) : null;
                 return activity;
             });
         },
@@ -70,6 +72,28 @@ app.factory("activities", ["$http", "$timeout", function ($http, $timeout) {
                 return result.data;
             });
         },
+
+        /**
+         * Function for submitting subscription to backend
+         * @param subscription
+         * @param activityId
+         */
+        subscribe: function (subscription, activityId) {
+            return $http.post("/api/activities/subscriptions/" + activityId, subscription).then(function (result) {
+                return result.data;
+            });
+        },
+
+        /**
+         * Function for submitting a deletion of subscription request to backend
+         * @param activityId
+         */
+        deleteSubscription: function (activityId) {
+            return $http.delete("/api/activities/subscriptions/" + activityId).then(function (result) {
+                return result.data;
+            })
+        },
+
         /**
          * Function for deleting activity in backend based on id
          * @param id
