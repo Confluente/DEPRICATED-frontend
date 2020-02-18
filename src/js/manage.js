@@ -3,8 +3,8 @@ var app = angular.module("confluente");
 /**
  * Controller for the management table
  */
-app.controller("manageController", ["$rootScope", "$scope", "$q", "pages", "activities", "users", "groups",
-    function ($rootScope, $scope, $q, pages, activities, users, groups) {
+app.controller("manageController", ["$rootScope", "$scope", "$q", "$timeout", "$http", "pages", "activities", "users", "groups",
+    function ($rootScope, $scope, $q, $timeout, $http, pages, activities, users, groups) {
         $scope.loading = true;
         $scope.f = {
             date: new Date()
@@ -20,17 +20,27 @@ app.controller("manageController", ["$rootScope", "$scope", "$q", "pages", "acti
             $scope.filter();
         });
 
-        if ($rootScope.user.isAdmin) {
-            users.getAll().then(function (users) {
-                $scope.users = users;
-            });
-            pages.getAll().then(function (pages) {
-                $scope.pages = pages;
-            });
-            groups.getAll().then(function (groups) {
-                $scope.groups = groups;
-            });
-        }
+
+        // Have to wait for $rootScope to finish $digest() to read the $rootScope.user.isAdmin succesfully
+        var waitForRenderAndDoSomething = function() {
+            if ($http.pendingRequests.length > 0) {
+                $timeout(waitForRenderAndDoSomething); // Wait for all templates to be loaded
+            } else {
+                //the code which needs to run after dom rendering
+                if ($rootScope.user.isAdmin) {
+                    users.getAll().then(function (users) {
+                        $scope.users = users;
+                    });
+                    pages.getAll().then(function (pages) {
+                        $scope.pages = pages;
+                    });
+                    groups.getAll().then(function (groups) {
+                        $scope.groups = groups;
+                    });
+                }
+            }
+        };
+        $timeout(waitForRenderAndDoSomething); // Waits for first digest cycle
 
         $scope.$watch("f.date", function (newDate) {
             $scope.filter();
