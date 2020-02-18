@@ -48,6 +48,7 @@ app.controller("manageController", ["$rootScope", "$scope", "$q", "$timeout", "$
 
         $scope.filter = function() {
             var date = $scope.f.date;
+            date.setDate(date.getDate() - 1);
             $scope.activities = [];
             for (var i = 0; i < $scope.archive.length; i++) {
                 if ($scope.archive[i].date >= date) {
