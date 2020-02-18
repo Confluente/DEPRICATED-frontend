@@ -874,8 +874,8 @@ label {
   .list-group-item.active {
     z-index: 2;
     color: #fff;
-    background-color: #007bff;
-    border-color: #007bff;
+    background-color: rgba(22,138,173,0.78);
+    border-color: rgba(22,138,173,0.78);
   }
   
   .list-group-flush .list-group-item {
@@ -904,8 +904,8 @@ label {
   
   .list-group-item-primary.list-group-item-action.active {
     color: #fff;
-    background-color: #004085;
-    border-color: #004085;
+    background-color: rgba(22,138,173,0.78);
+    border-color: rgba(22,138,173,0.78);
   }
   
   .list-group-item-secondary {
