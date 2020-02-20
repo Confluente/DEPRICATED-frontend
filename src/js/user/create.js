@@ -38,6 +38,9 @@ app.controller("userCreateController", ["$scope", "users", function ($scope, use
             consentWithPortraitRight: $scope.portraitRight
         }).then(function (result) {
             $scope.loading = false;
+
+            if (result.error === 406) return alert(result.data);
+
             // redirect to '/manage'
             window.location.href = "/submitted_registration";
         });
