@@ -9,7 +9,7 @@ app.controller("userEditController", ["$scope", "$q", "$routeParams", "users", "
 
     $scope.tracks = ["Artificial intelligence", "Competitive Programming and Problem Solving",
         "Empowerement for Healthcare and Wellbeing", "Energy Transition", "High Tech Systems", "SensUs Organization",
-        "Smart Cities", "Smart Mobility"];
+        "Smart Cities", "Smart Mobility", "Master Honors"];
 
     $scope.generations = [2018, 2019];
 
