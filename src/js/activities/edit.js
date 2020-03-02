@@ -8,6 +8,8 @@ app.controller("activityEditController", ["$scope", "$routeParams", "activities"
     var activityId = $routeParams.activityId;
     $scope.inputs = [];
 
+    $scope.userGroups = [];
+
     // setting standard deadline for subscription deadline field
     $scope.deadline = {
         subscriptionDeadline: new Date()
@@ -19,6 +21,11 @@ app.controller("activityEditController", ["$scope", "$routeParams", "activities"
     // get activity from backend by activityId and put it on the $scope
     activities.get(activityId).then(function (activity) {
         $scope.activity = activity;
+        $scope.activity.organizer = activity.Organizer.displayName;
+
+        for (var i = 0; i < $scope.$parent.user.groups.length; i++) {
+            $scope.userGroups.push($scope.$parent.user.groups[i].displayName);
+        }
 
         // formatting the form to inputs such that it can be interactive with angular
         if (activity.canSubscribe) {
