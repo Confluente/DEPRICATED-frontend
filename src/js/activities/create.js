@@ -16,7 +16,18 @@ app.controller("activityCreateController", ["$scope", "activities", function ($s
         }).then(function (result) {
             $scope.loading = false;
             window.location.href = "/activities/" + result.id;
+            console.log("This is a test"+ $scope.path);
         });
+    };
+
+    $scope.SelectFile = function (e) {
+        var reader = new FileReader();
+        reader.onload = function (e) {
+            $scope.PreviewImage = e.target.result;
+            $scope.$apply();
+        };
+
+        reader.readAsDataURL(e.target.files[0]);
     };
 
     $scope.datepicker = {open: false};
