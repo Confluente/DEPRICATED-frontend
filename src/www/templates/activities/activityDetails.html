@@ -83,13 +83,13 @@
                 <th>#
                     <hr/>
                 </th>
-                <th ng-repeat="question in activity.questionDescriptions" class="overflowTableCell">{{question}}
+                <th ng-repeat="question in activity.questionDescriptions track by $index" class="overflowTableCell">{{question}}
                     <hr/>
                 </th>
             </tr>
             <tr ng-repeat="participant in activity.participants">
                 <td>{{$index + 1}}</td>
-                <td ng-repeat="answer in participant.subscription.answers" class="overflowTableCell">{{answer}}
+                <td ng-repeat="answer in participant.subscription.answers track by $index" class="overflowTableCell">{{answer}}
                 </td>
             </tr>
         </table>
