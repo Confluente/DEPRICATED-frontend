@@ -81,10 +81,13 @@ app.controller("activityEditController", ["$scope", "$routeParams", "activities"
         $scope.activity.canSubscribe = !$scope.activity.canSubscribe;
     };
 
+    // Given an array, it moves the element from fromIndex to toIndex
     $scope.arrayMove = function(arr, fromIndex, toIndex) {
-        var element = arr[fromIndex];
-        arr.splice(fromIndex, 1);
-        arr.splice(toIndex, 0, element);
+        if (Math.abs(fromIndex - toIndex) <= 1 && fromIndex > 1 && toIndex < arr.length) {
+            var element = arr[fromIndex];
+            arr.splice(fromIndex, 1);
+            arr.splice(toIndex, 0, element);
+        }
     };
 
     $scope.loading = false;
