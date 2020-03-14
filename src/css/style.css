@@ -281,7 +281,7 @@ label {
 /* - Header container */
 #hero {
     display: block;
-    height: 340px;
+    height: 46vh;
     margin-top: -1rem;
 }
 
