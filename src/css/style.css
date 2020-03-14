@@ -207,6 +207,11 @@ label {
     line-height: 1.6rem !important;
 }
 
+/* -- Manage */
+#managePage .fa {
+    margin-left: 6px
+}
+
 /* -- Navigation bar */
 .navbar-nav .fa {
     margin-right: 8px

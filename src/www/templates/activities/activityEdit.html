@@ -18,13 +18,13 @@
         </div>
 
         <div class="form-group col-md-6 col-xs-12">
-            <label for="activityEdit-date">Date of activity</label>
-            <input type="date" ng-model="activity.date" class="form-control" id="activityEdit-date"/>
+            <label>Organizing committee</label>
+            <select class="form-control" ng-model="activity.organizer" ng-options="group for group in userGroups"></select>
         </div>
 
         <div class="form-group col-md-6 col-xs-12">
-            <label for="activityEdit-location">Location of activity</label>
-            <input type="text" ng-model="activity.location" class="form-control" id="activityEdit-location"/>
+            <label for="activityEdit-date">Date of activity</label>
+            <input type="date" ng-model="activity.date" class="form-control" id="activityEdit-date"/>
         </div>
 
         <div class="form-group col-md-6 col-xs-12">
@@ -35,6 +35,11 @@
         <div class="form-group col-md-6 col-xs-12">
             <label for="activityEdit-time">Ending time (HH:mm) (optional)</label>
             <input type="text" ng-model="activity.endTime" class="form-control" id="activityEdit-time"/>
+        </div>
+
+        <div class="form-group col-md-6 col-xs-12">
+            <label for="activityEdit-location">Location of activity</label>
+            <input type="text" ng-model="activity.location" class="form-control" id="activityEdit-location"/>
         </div>
 
         <div class="form-group col-md-6 col-xs-12">
