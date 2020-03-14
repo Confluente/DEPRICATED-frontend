@@ -2,22 +2,54 @@
 #committees img {
     width: 600px;
 }
+
+.committee-img-container {
+    position: relative;
+    height: calc(100% - 46px);
+    width: 100%;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: contain;
+    background-origin: content-box;
+}
 </style>
 
-<!-- TODO: Abstract from container div like pages -->
 <div class="container">
+
+<!-- TODO: Abstract from container div like pages -->
 
     <h1>Committees</h1>
 
-    <div id="committees">
+    <div class="row" id="committees">
         <div ng-repeat="committee in committees">
 
-            <div class="clearfix" ng-if="$even"></div>
-            <div class="col-sm-12 col-xs-12 col-md-4 col-lg-4" style="padding: 15px">
+            <div class="col-sm-12 col-xs-12 col-md-6 col-lg-6" style="padding: 15px">
+                <div class="partner-box">
+                    <div class="committee-img-container" ng-style="{'background-image': 'url(' + committee.image + ')'}">
+                        <div class="partner-overlay" style="background: rgba(0, 0, 0, 0.3)">
+                            <div class="partner-text">
+                                <p>{{committee.description}}</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="partner-footer">
+                        <ul class="partner-btnlist">
+                            <li>
+                                <div class="btn btn-default partner-btn-small">
+                                    {{committee.displayName}}
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- <div class="clearfix" ng-if="$even"></div> -->
+            <!-- <div class="col-lg-4" style="padding: 15px">
                 <h2>{{committee.displayName}}</h2>
                 <img src={{committee.image}}></img>
                 <p>{{committee.description}}</p>
-            </div>
+            </div> -->
 
         </div>
         <div class="no-committees" ng-if="!committees.length && !loading">
