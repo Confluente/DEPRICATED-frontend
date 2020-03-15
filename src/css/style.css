@@ -212,6 +212,15 @@ label {
     margin-left: 6px
 }
 
+@media (min-width:992px) {
+    #managePage ul.nav {
+        display: inline-block;
+    }
+    .manage-actions {
+        margin-top: -47px
+    }
+}
+
 /* -- Navigation bar */
 .navbar-nav .fa {
     margin-right: 8px
