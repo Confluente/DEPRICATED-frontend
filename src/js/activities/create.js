@@ -11,12 +11,12 @@ app.controller("activityCreateController", ["$scope", "activities", function ($s
             startTime: $scope.startTime,
             endTime: $scope.endTime,
             location: $scope.location,
-            pathToPicture: $scope.path,
+            previewImage: $scope.PreviewImage,
             approved: true
         }).then(function (result) {
             $scope.loading = false;
-            window.location.href = "/activities/" + result.id;
-            console.log("This is a test"+ $scope.path);
+            //window.location.href = "/activities/" + result.id;
+            console.log("This is a test"+ $scope.PreviewImage);
         });
     };
 
