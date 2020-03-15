@@ -208,8 +208,16 @@ label {
 }
 
 /* -- Manage */
-#managePage .fa {
+#managePage th .fa {
     margin-left: 6px
+}
+
+.manage-table-action {
+    user-select: none;
+}
+.manage-table-action .btn {
+    padding-top: 0;
+    padding-bottom: 0;
 }
 
 @media (min-width:992px) {
