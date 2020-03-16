@@ -8,7 +8,7 @@ app.controller("committeesController", ["$scope", "groups", function ($scope, gr
     groups.getAllOfType("committee").then(function(committees) {
 
         committees.forEach(function(comm) {
-            // comm.link = "/groups/" + comm.id.toString();
+            comm.link = "/groups/" + comm.id.toString();
             comm.image = "/img/CommitteePictures/" + comm.displayName.replace(/ /g, "_").toLowerCase() + ".jpg";
         });
 

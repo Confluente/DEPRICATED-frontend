@@ -9,8 +9,25 @@
     width: 100%;
     background-repeat: no-repeat;
     background-position: center center;
-    background-size: contain;
+    background-size: cover;
     background-origin: content-box;
+}
+
+.committee-box {
+    height: 320px;
+    border: 1px solid #ddd;
+    padding: 0;
+}
+
+.committee-text {
+    color: white;
+    cursor: pointer;
+    position: absolute;
+    padding: 12px;
+    width: 100%;
+    line-height: 1.2em;
+    font-weight: normal;
+    height: 100%;
 }
 </style>
 
@@ -24,10 +41,10 @@
         <div ng-repeat="committee in committees">
 
             <div class="col-sm-12 col-xs-12 col-md-6 col-lg-6" style="padding: 15px">
-                <div class="partner-box">
+                <div class="committee-box">
                     <div class="committee-img-container" ng-style="{'background-image': 'url(' + committee.image + ')'}">
-                        <div class="partner-overlay" style="background: rgba(0, 0, 0, 0.3)">
-                            <div class="partner-text">
+                        <div class="partner-overlay" style="background: rgba(0, 0, 0, 0.5)">
+                            <div class="committee-text">
                                 <p>{{committee.description}}</p>
                             </div>
                         </div>
@@ -35,22 +52,14 @@
                     <div class="partner-footer">
                         <ul class="partner-btnlist">
                             <li>
-                                <div class="btn btn-default partner-btn-small">
-                                    {{committee.displayName}}
+                                <a href={{committee.link}} class="btn btn-default partner-btn-small">
+                                    <b>{{committee.displayName}}</b>
                                 </a>
                             </li>
                         </ul>
                     </div>
                 </div>
             </div>
-
-            <!-- <div class="clearfix" ng-if="$even"></div> -->
-            <!-- <div class="col-lg-4" style="padding: 15px">
-                <h2>{{committee.displayName}}</h2>
-                <img src={{committee.image}}></img>
-                <p>{{committee.description}}</p>
-            </div> -->
-
         </div>
         <div class="no-committees" ng-if="!committees.length && !loading">
             Committees are gone 🦀🦀🦀.
