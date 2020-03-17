@@ -1024,3 +1024,28 @@ label {
     text-align: justify;
     width: 100%;
   }
+
+  .home-section{
+    /* background-color:rgba(22,138,173,0.78); */
+    padding: 2px 10px 10px 10px;
+    border-radius: 20px;
+    opacity: 0;
+    -moz-transition: all 700ms linear;
+    -webkit-transition: all 700ms linear;
+    -o-transition: all 700ms linear;
+    transition: all 700ms linear;
+    -moz-transform: translate3d(-100px, 0px, 0px);
+    -webkit-transform: translate3d(-100px, 0px, 0px);
+    -o-transform: translate(-100px, 0px);
+    -ms-transform: translate(-100px, 0px);
+    transform: translate3d(-100px, 0px, 0px);
+  }
+
+  .home-section.in-view{
+    opacity: 1;
+    -moz-transform: translate3d(0px, 0px, 0px);
+    -webkit-transform: translate3d(0px, 0px, 0px);
+    -o-transform: translate(0px, 0px);
+    -ms-transform: translate(0px, 0px);
+    transform: translate3d(0px, 0px, 0px);
+  }
