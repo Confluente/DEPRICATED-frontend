@@ -7,14 +7,18 @@ app.controller("userEditController", ["$scope", "$q", "$routeParams", "users", "
     // get userId from URL
     var userId = $routeParams.userId;
 
+    // Different tracks within the honors academy
     $scope.tracks = ["Artificial intelligence", "Competitive Programming and Problem Solving",
         "Empowerement for Healthcare and Wellbeing", "Energy Transition", "High Tech Systems", "SensUs Organization",
         "Smart Cities", "Smart Mobility", "Master Honors"];
 
-    $scope.groupRoles = ["Member", "Chair", "Secretary", "Treasurer"];
+    // Different roles in a committee
+    $scope.groupRoles = ["Member", "Chair", "Secretary", "Treasurer", "Board representative"];
 
-    $scope.generations = [2018, 2019];
+    // Different generations in which students can say that started at honors academy
+    $scope.generations = [2016, 2017, 2018, 2019, 2020];
 
+    // Different roles for users
     $scope.role = {
         roles: [{
             id: "User"
@@ -46,6 +50,7 @@ app.controller("userEditController", ["$scope", "$q", "$routeParams", "users", "
             member_groups.push($scope.member[i].id);
         }
 
+        // Function to find the user_group of one of the groups that the user is a member of
         var findMemberGroup = function (id) {
             for (var j = 0; j < $scope.member.length; j++) {
                 if ($scope.member[j].id === id) {
