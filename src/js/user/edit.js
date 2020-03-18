@@ -91,11 +91,10 @@ app.controller("userEditController", ["$scope", "$q", "$routeParams", "users", "
             $scope.user.isAdmin = $scope.selectedRole.id === "Admin";
             $scope.user.displayName = $scope.user.firstName + " " + $scope.user.lastName;
             $scope.loading = true;
-            console.log($scope);
             user.edit($scope.user, $scope.groupSelection).then(function (result) {
                 $scope.loading = false;
                 // redirect to '/manage'
-                // window.location.href = "/manage";
+                window.location.href = "/manage";
             });
         };
 
