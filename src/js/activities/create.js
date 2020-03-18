@@ -31,7 +31,8 @@ app.controller("activityCreateController", ["$scope", "activities", function ($s
 
     // Removes specific question
     $scope.removeInput = function (index) {
-        $scope.inputs.splice(index, 1);
+        if (index > 1 && index < $scope.inputs.length)
+            $scope.inputs.splice(index, 1);
     };
 
     // Adds option for multiple choice questions
@@ -48,6 +49,15 @@ app.controller("activityCreateController", ["$scope", "activities", function ($s
     // Function to toggle the canSubscribe variable
     $scope.toggleSubscribe = function () {
         $scope.canSubscribe = !$scope.canSubscribe;
+    };
+
+    // Given an array, it moves the element from fromIndex to toIndex
+    $scope.arrayMove = function(arr, fromIndex, toIndex) {
+        if (Math.abs(fromIndex - toIndex) <= 1 && fromIndex > 1 && toIndex < arr.length) {
+            var element = arr[fromIndex];
+            arr.splice(fromIndex, 1);
+            arr.splice(toIndex, 0, element);
+        }
     };
 
     // function called when new activity is submitted
