@@ -59,11 +59,10 @@ app.controller("activityEditController", ["$scope", "$routeParams", "activities"
         $scope.inputs.push(dataObj);
     };
 
-    // removes last element from inputs variable
-    $scope.removeLast = function () {
-        if ($scope.inputs.length > 2) {
-            $scope.inputs.pop();
-        }
+    // Removes specific question
+    $scope.removeInput = function (index) {
+        if (index > 1 && index < $scope.inputs.length)
+            $scope.inputs.splice(index, 1);
     };
 
     // Adds an option to a multiple choice question
@@ -80,6 +79,15 @@ app.controller("activityEditController", ["$scope", "$routeParams", "activities"
     // Toggles the canSubscribe variable
     $scope.toggleSubscribe = function() {
         $scope.activity.canSubscribe = !$scope.activity.canSubscribe;
+    };
+
+    // Given an array, it moves the element from fromIndex to toIndex
+    $scope.arrayMove = function(arr, fromIndex, toIndex) {
+        if (Math.abs(fromIndex - toIndex) <= 1 && fromIndex > 1 && toIndex < arr.length) {
+            var element = arr[fromIndex];
+            arr.splice(fromIndex, 1);
+            arr.splice(toIndex, 0, element);
+        }
     };
 
     $scope.loading = false;
