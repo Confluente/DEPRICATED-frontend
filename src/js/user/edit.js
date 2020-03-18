@@ -11,6 +11,8 @@ app.controller("userEditController", ["$scope", "$q", "$routeParams", "users", "
         "Empowerement for Healthcare and Wellbeing", "Energy Transition", "High Tech Systems", "SensUs Organization",
         "Smart Cities", "Smart Mobility", "Master Honors"];
 
+    $scope.groupRoles = ["Member", "Chair", "Secretary", "Treasurer"];
+
     $scope.generations = [2018, 2019];
 
     $scope.role = {
@@ -44,13 +46,32 @@ app.controller("userEditController", ["$scope", "$q", "$routeParams", "users", "
             member_groups.push($scope.member[i].id);
         }
 
+        var findMemberGroup = function (id) {
+            for (var j = 0; j < $scope.member.length; j++) {
+                if ($scope.member[j].id === id) {
+                    return $scope.member[j];
+                }
+            }
+            assert(false) // this can't/shouldn't happen happen
+        };
+
         // get attributes of groups of which user is member
         $scope.groupSelection = [];
         for (i = 0; i < $scope.groups.length; i++) {
             if (member_groups.includes($scope.groups[i].id)) {
-                $scope.groupSelection.push({fullName: $scope.groups[i].fullName, id: $scope.groups[i].id, selected: true})
+                $scope.groupSelection.push({
+                    fullName: $scope.groups[i].fullName,
+                    id: $scope.groups[i].id,
+                    selected: true,
+                    role: findMemberGroup($scope.groups[i].id).members[0].user_group.func
+                })
             } else {
-                $scope.groupSelection.push({fullName: $scope.groups[i].fullName, id: $scope.groups[i].id, selected: false})
+                $scope.groupSelection.push({
+                    fullName: $scope.groups[i].fullName,
+                    id: $scope.groups[i].id,
+                    selected: false,
+                    role: "Member"
+                })
             }
         }
 
@@ -70,10 +91,11 @@ app.controller("userEditController", ["$scope", "$q", "$routeParams", "users", "
             $scope.user.isAdmin = $scope.selectedRole.id === "Admin";
             $scope.user.displayName = $scope.user.firstName + " " + $scope.user.lastName;
             $scope.loading = true;
+            console.log($scope);
             user.edit($scope.user, $scope.groupSelection).then(function (result) {
                 $scope.loading = false;
                 // redirect to '/manage'
-                window.location.href = "/manage";
+                // window.location.href = "/manage";
             });
         };
 
