@@ -208,8 +208,25 @@ label {
 }
 
 /* -- Manage */
-#managePage .fa {
+#managePage th .fa {
     margin-left: 6px
+}
+
+.manage-table-action {
+    user-select: none;
+}
+.manage-table-action .btn {
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+@media (min-width:992px) {
+    #managePage ul.nav {
+        display: inline-block;
+    }
+    .manage-actions {
+        margin-top: -47px
+    }
 }
 
 /* -- Navigation bar */
