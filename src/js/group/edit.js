@@ -31,7 +31,7 @@ app.controller("groupEditController", ["$scope", "$routeParams", "groups", "user
     });
 
     function compare(user_object_1, user_object_2) {
-        if (user_object_1.id < user_object_2.id) {
+        if (user_object_1.name < user_object_2.name) {
             return -1
         } else {
             return 1
