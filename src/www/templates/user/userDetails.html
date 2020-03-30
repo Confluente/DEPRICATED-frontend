@@ -42,7 +42,7 @@
         </table>
     </div>
     <h4 ng-if="groups.length > 0">Groups</h4>
-    <p ng-repeat="group in groups"><a href="/group/{{group.id}}">{{group.fullName}}</a></p>
+    <p ng-repeat="group in groups"><a href="/group/{{group.id}}">{{group.fullName}}</a> <b>({{group.members[0].user_group.func}})</b></p>
     <h4>Personal settings</h4>
     <p><a href="/user/changePassword/{{user.id}}">Change password</a></p>
 </div>
