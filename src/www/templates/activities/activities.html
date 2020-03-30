@@ -23,6 +23,7 @@
                 <p ng-if="activity.location" style="margin-bottom: 0px">Where: {{activity.location}}</p>
                 <p ng-if="activity.startTime && activity.endTime">Time: {{activity.startTime}} - {{activity.endTime}}</p>
                 <p ng-if="activity.startTime && !activity.endTime">Time: {{activity.startTime}}</p>
+                <p ng-if="activity.canSubscribe && activity.subscribed">Subscribed <i class="fa fa-check"></i></p>
             </div>
         </div>
         <div class="no-activities" ng-if="!activities.length && !loading">
