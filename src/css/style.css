@@ -309,7 +309,7 @@ label {
     background: linear-gradient(to top, rgba(0,0,0,.3), 30%, rgba(0,0,0,0));
 }
 #hero-image-1 {
-    background-image: URL('/img/frontpage-hero/slide1.jpg');
+    background-image: URL('/img/frontpage-hero/slide1.jpeg');
 }
 #hero-image-2 {
     background-image: URL('/img/frontpage-hero/slide2.jpg');
