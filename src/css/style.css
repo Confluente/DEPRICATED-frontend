@@ -205,7 +205,16 @@ label {
 .form-control {
     /* Fix date input */
     line-height: 1.6rem !important;
+
+    box-shadow: none;
 }
+
+.form-control:focus {
+    border-width: 2px;
+    padding: 5px 11px;
+    box-shadow: none;
+}
+
 
 /* -- Manage */
 #managePage th .fa {
