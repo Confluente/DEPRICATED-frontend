@@ -354,6 +354,9 @@ label {
 .hero-caption .h1 {
     text-shadow: 0 1px 2px rgba(0,0,0,.6)
 }
+.hero-caption a:hover {
+    text-decoration: none;
+}
 .hero-caption .fa {
     margin-right: 8px
 }
