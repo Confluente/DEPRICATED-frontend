@@ -202,6 +202,18 @@ label {
 
 /* -- (4) Specific fixes -- */
 
+.form-horizontal .checkbox {
+    min-height: 0;
+}
+
+input[type="checkbox"] {
+    margin-top: 7px
+}
+
+.btn.disabled, .btn[disabled], fieldset[disabled] .btn {
+    opacity: 0.3
+}
+
 .form-control {
     /* Fix date input */
     line-height: 1.6rem !important;
