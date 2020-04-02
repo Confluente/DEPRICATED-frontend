@@ -41,8 +41,8 @@ app.factory("groups", ["$http", "$timeout", function ($http, $timeout) {
          * @param group
          * @returns submitted edited group
          */
-        edit: function (group) {
-            return $http.put("/api/group/" + group.id, group).then(function (result) {
+        edit: function (group, user_group) {
+            return $http.put("/api/group/" + group.id, [group, user_group]).then(function (result) {
                 return result.data;
             });
         },

@@ -58,6 +58,7 @@
             <div class="checkbox">
                 <label>
                     <input type="checkbox" name="selectedGroups[]" value="{{group.fullName}}" ng-model="group.selected"> {{group.fullName}}
+                    <select ng-model="group.role" ng-options="x for x in groupRoles"></select><br>
                 </label>
             </div>
         </div>

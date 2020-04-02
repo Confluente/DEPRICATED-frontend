@@ -12,7 +12,7 @@
 
         <div class="form-group col-md-12 col-xs-12">
             <label for="activityCreate-desc">Description of activity</label>
-            <textarea ng-model="description" class="form-control" id="activityCreate-desc"></textarea>
+            <textarea ng-model="description" class="form-control" id="activityCreate-desc" style="min-height: 200px"></textarea>
         </div>
 
         <div class="form-group col-md-6 col-xs-12">
@@ -71,15 +71,24 @@
             </div>
 
             <div class="checkbox col-md-4 col-xs-12" ng-if="input.type !== 'name' && input.type !== 'TU/e email'">
-                <label for="activityCreate-required{{$index}}" style="margin-top: 30px">
-                    <input type="checkbox" ng-model="input.required" id="activityCreate-required{{$index}}"> <b>mandatory</b>
+                <div class="btn-group" ng-if="input.type !== 'name' && input.type !== 'TU/e email'" style="margin-top: 20px">
+                    <button class="btn btn-default" ng-click="arrayMove(inputs, $index, $index - 1)" ng-if="$index > 2">▲</button>
+                    <button class="btn btn-default" ng-if="$index == 2" disabled style="opacity: 0.2">▲</button>
+                    <button class="btn btn-default" ng-click="arrayMove(inputs, $index, $index + 1)" ng-if="$index < inputs.length - 1">▼</button>
+                    <button class="btn btn-default" ng-if="$index == inputs.length - 1" disabled style="opacity: 0.2">▼</button>
+                    <button class="btn btn-danger" ng-click="removeInput($index)">Remove question</button>
+                </div>
+            </div>
+
+            <div class="col-md-12 col-xs-12" ng-if="input.type !== 'name' && input.type !== 'TU/e email'" style="margin-bottom: 20px">
+                <label for="activityCreate-required{{$index}}">
+                    <input type="checkbox" ng-model="input.required" id="activityCreate-required{{$index}}"> <b>Make this question mandatory to answer</b>
                 </label>
-                <button class="btn btn-danger" ng-click="removeInput($index)">Remove question</button>
             </div>
 
             <div class="col-md-6 col-xs-12" ng-if="input.type !== 'name' && input.type !== 'TU/e email'">
                 <b>What is the answer type of your question?</b><br/>
-                <select ng-model="input.type" ng-options="x for x in types" style="margin-top: 10px"></select><br>
+                <select ng-model="input.type" ng-options="x for x in types"></select><br>
             </div>
 
             <div class="col-md-6 col-xs-12" ng-if="input.type == '◉ multiple choice' || input.type == '☑ checkboxes'">

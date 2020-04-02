@@ -35,7 +35,9 @@ app.factory("users", ["$http", "$timeout", function ($http, $timeout) {
             return $http.post("/api/user", user).then(function (result) {
                 return result.data;
             }, function (err) {
-                return err;
+                if (err.status === 406) {
+                    return {error: err.status, data: err.data}
+                }
             });
         },
         /**

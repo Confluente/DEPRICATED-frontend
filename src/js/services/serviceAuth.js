@@ -22,6 +22,8 @@ app.factory("serviceAuth", ["$rootScope", "$http", "$cookies", "$location", func
             getProfile();
             // redirect to activities
             $location.path("/activities");
+        }, function (err) {
+            alert(err.data.data);
         });
     };
 
