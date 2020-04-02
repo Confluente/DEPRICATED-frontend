@@ -828,16 +828,7 @@ label {
 }
 
 /* -- Frontpage */
-.text-p {
-  font-size:16px;
-  text-align: justify;
-  width: 100%;
-}
-
 .home-section{
-  /* background-color:rgba(22,138,173,0.78); */
-  padding: 2px 10px 10px 10px;
-  border-radius: 20px;
   opacity: 0;
   -moz-transition: all 700ms linear;
   -webkit-transition: all 700ms linear;

@@ -39,8 +39,8 @@
 </section>
 
 <section class="section">
-
     <div class="container">
+
         <div class="flex flex-between">
             <p id="frontpage-slogan" class="block hsa hidden-xs">Connecting Honors students</p>
 
@@ -54,115 +54,83 @@
             </ul>
         </div>
 
-        <p class='pull-right small hidden-xs hidden-sm'>
-            <a href="mailto:info@hsaconfluente.nl"> > Become a Confluente partner!</a>
-        </p>
-
-
         <div class="block row">
-            <div class='col-xs-12 flex flex-between col-md-8 text-center'>
-                <h1 class='h2'>Welcome to H.S.A. Confluente</h1> <br>
-                <p class="text-p">The study association for all Honors bachelor and master students of TU Eindhoven</p>
 
-            </div>
-            <div class='row col-md-4'>
-                <div class="col-xs-12 col-md-12">
-                    <p class="h3">Upcoming activities</p>
-                    <div class="list-group">
-                        <a href="#" class="list-group-item list-group-item-action flex-column align-items-start active">
-                            <div class="d-flex w-100 justify-content-between">
-                            <h5 class="mb-1">Activity 1</h5>
-                            <small>3 days ago</small>
-                            </div>
-                        </a>
-                        <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
-                            <div class="d-flex w-100 justify-content-between">
-                            <h5 class="mb-1">Activity 2</h5>
-                            <small class="text-muted">3 days ago</small>
-                            </div>
-                        </a>
-                        <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
-                            <div class="d-flex w-100 justify-content-between">
-                            <h5 class="mb-1">Activity 3</h5>
-                            <small class="text-muted">3 days ago</small>
-                            </div>
-                        </a>
-                        </div>
-                </div>
+            <div class='col-xs-12 col-sm-6 col-md-7 col-lg-8'>
+                <h1 class='h2'>Welcome to H.S.A. Confluente</h1>
+                <p> The study association for all Honors bachelor and master students
+                    of Eindhoven University of Technology</p>
             </div>
 
-
-        </div>
-        <div class="block row">
-            <div class='col-md-12 flex flex-around text-center' >
-
-                <div class="col-md-3 col-sm-6">
-                    <span class='text-primary info_graphic'>130</span>
-                    <p>Honors students</p>
-                </div>
-                <div class="col-md-3 col-sm-6">
-                    <span class='text-primary info_graphic'>190</span>
-                    <p>Alumni</p>
-                </div>
-                <div class="col-md-3 col-sm-6">
-                    <span class='text-primary info_graphic'>8</span>
-                    <p>Committees</p>
-                </div>
-                <div class="col-md-3 col-sm-6">
-                    <span class='text-primary info_graphic'>8</span>
-                    <p>Tracks</p>
+            <!--
+            <div class='col-xs-12 col-sm-6 col-md-5 col-lg-4'>
+                <h4>Upcoming activities</h4>
+                <div class="list-group">
+                    <a href="/activities" class="list-group-item">
+                        <p class="h5">Activity 1</p>
+                        <p class="small">3 days ago</p>
+                    </a>
+                    <a href="#" class="list-group-item">
+                        <p class="h5">Activity 2</p>
+                        <p class="small">3 days ago</p>
+                    </a>
+                    <a href="#" class="list-group-item">
+                        <p class="h5">Activity 3</p>
+                        <p class="small">3 days ago</p>
+                    </a>
                 </div>
             </div>
-        </div>
-    </div>
+            -->
 
-</section>
-<section class="section container home-section animation-element">
-    <div class="block row small">
+        </div>
 
-        <div class="col-xs-12 col-md-6">
-            <p class="h3">Connect</p>
-            <p><i>H.S.A. Confluente aims to increase both the professional and social network of honors students.</i>
-            </p>
-            <p class="text-p"> Members are welcome to attend our various activities such as lunch lectures, workshops, drinks, study
-                trips and more. In addition, the association builds upon a strong <a href="/about/alumni">Alumni
-                    network</a> and has close ties with business and entrepreneurial things.
-            </p>
-        </div>
-        <div class="col-xs-12 col-md-6">
-            <iframe width="100%" height="315px" src="https://www.youtube-nocookie.com/embed/fWZSonu0Z8Q" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-        </div>
     </div>
 </section>
 
+<section class="block container">
+    <div class="row">
 
-<script>
-    //JQUERY code to enable the scroll animation triggering
-    //must embed to angularjs later
-    var $animation_elements = $('.animation-element');
-    var $window = $(window);
+        <div class='col-sm-12 text-center' >
 
-    function check_if_in_view() {
-    var window_height = $window.height();
-    var window_top_position = $window.scrollTop();
-    var window_bottom_position = (window_top_position + window_height);
+            <div class="block col-xs-6 col-md-3">
+                <span class='text-primary info_graphic'>130</span>
+                <p>Honors students</p>
+            </div>
+            <div class="block col-xs-6 col-md-3">
+                <span class='text-primary info_graphic'>190</span>
+                <p>Alumni</p>
+            </div>
+            <div class="block col-xs-6 col-md-3">
+                <span class='text-primary info_graphic'>8</span>
+                <p>Committees</p>
+            </div>
+            <div class="block col-xs-6 col-md-3">
+                <span class='text-primary info_graphic'>8</span>
+                <p>Tracks</p>
+            </div>
 
-    $.each($animation_elements, function() {
-        var $element = $(this);
-        var element_height = $element.outerHeight();
-        var element_top_position = $element.offset().top;
-        var element_bottom_position = (element_top_position + element_height);
+        </div>
 
-        //check to see if this current container is within viewport
-        if ((element_bottom_position >= window_top_position) &&
-            (element_top_position <= window_bottom_position)) {
-        $element.addClass('in-view');
-        } else {
-        $element.removeClass('in-view');
-        }
-    });
-    }
+    </div>
+</section>
 
-    $window.on('scroll resize', check_if_in_view);
-    $window.trigger('scroll');
-</script>
+<section class="block bg-info">
+    <div class="container home-section animation-element">
+        <div class="row">
+
+            <div class="col-xs-12 col-md-6">
+                <p class="h3">Connect</p>
+                <p><i>H.S.A. Confluente aims to increase both the professional and social network of honors students.</i></p>
+                <p> Members are welcome to attend our various activities such as lunch lectures, workshops, drinks, study
+                    trips and more. In addition, the association builds upon a strong <a href="/about/alumni">Alumni
+                        network</a> and has close ties with business and entrepreneurial things.
+                </p>
+            </div>
+
+            <div class="col-xs-12 col-md-6">
+                <iframe width="100%" height="315px" src="https://www.youtube-nocookie.com/embed/fWZSonu0Z8Q" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+
+        </div>
+    </div>
+</section>
