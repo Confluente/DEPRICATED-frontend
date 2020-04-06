@@ -1,12 +1,48 @@
 <!--TODO Abstract from container-->
 <div class="container">
-    <h1>{{user.displayName}}</h1>
-    <h4>Email address</h4>
-    <p>{{user.email}}</p>
-    <h4>Role</h4>
-    <p ng-if="user.isAdmin">Admin</p><p ng-if="!user.isAdmin">User</p>
-    <h4>Groups</h4>
-    <p ng-repeat="group in groups"><a href="/group/{{group.id}}">{{group.fullName}}</a></p>
+    <h2>Profile</h2>
+    <div class="profileTable">
+        <table>
+            <tr>
+                <td><b>First name</b></td>
+                <td>{{user.firstName}}</td>
+            </tr>
+            <tr>
+                <td><b>Last name</b></td>
+                <td>{{user.lastName}}</td>
+            </tr>
+            <tr>
+                <td><b>TU/e email</b></td>
+                <td>{{user.email}}</td>
+            </tr>
+            <tr>
+                <td><b>Major</b></td>
+                <td>{{user.major}}</td>
+            </tr>
+            <tr>
+                <td><b>Honors track</b></td>
+                <td>{{user.track}}</td>
+            </tr>
+            <tr>
+                <td><b>Honors generation</b></td>
+                <td>{{user.honorsGeneration}}</td>
+            </tr>
+            <tr>
+                <td><b>Campus card number</b></td>
+                <td>{{user.campusCardNumber}}</td>
+            </tr>
+            <tr>
+                <td><b>Mobile phone number</b></td>
+                <td>{{user.mobilePhoneNumber}}</td>
+            </tr>
+            <tr>
+                <td><b>Consent to portrait right</b></td>
+                <td>{{user.consentWithPortraitRight}}</td>
+            </tr>
+        </table>
+    </div>
+    <h4 ng-if="groups.length > 0">Groups</h4>
+    <p ng-repeat="group in groups"><a href="/group/{{group.id}}">{{group.fullName}}</a> <b>({{group.members[0].user_group.func}})</b></p>
     <h4>Personal settings</h4>
     <p><a href="/user/changePassword/{{user.id}}">Change password</a></p>
 </div>

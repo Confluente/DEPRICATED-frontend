@@ -6,5 +6,5 @@
     <h4>Contact details</h4>
     <p>{{group.email}}</p>
     <h4>Members</h4>
-    <p ng-repeat="member in group.members">{{member.displayName}}</p>
+    <p ng-repeat="member in group.members">{{member.displayName}} ({{member.user_group.func}})</p>
 </div>

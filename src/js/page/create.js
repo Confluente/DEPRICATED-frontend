@@ -1,12 +1,17 @@
 var app = angular.module("confluente");
 
+/**
+ * Controller for creating pages
+ */
 app.controller("pageCreateController", ["$scope", "pages", function ($scope, pages) {
     $scope.loading = false;
+    // function called when new page is submitted
     $scope.submit = function () {
         $scope.loading = true;
-        // console.log($scope);
+        // create page in backend
         pages.create($scope.page).then(function (result) {
             $scope.loading = false;
+            // redirect to newly created page
             window.location.href = "/page/" + $scope.page.url;
         });
     };
