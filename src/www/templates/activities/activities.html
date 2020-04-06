@@ -13,7 +13,7 @@
         <div class="activity row" ng-repeat="activity in activities">
             <div class="activity-title col-xs-12">
                 <a href="/activities/{{activity.id}}#signup"><h3 class="nospace">{{activity.name}} ({{activity.Organizer.fullName}})</h3><span
-                        ng-if="!activity.approved">(Unlisted)</span></a>
+                        ng-if="!activity.published">(Unlisted)</span></a>
             </div>
             <div class="activity-content col-md-8 col-xs-12">
                 <p class="module fade">{{activity.description}}</p>
