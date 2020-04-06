@@ -72,27 +72,6 @@ app.controller("activityCreateController", ["$scope", "activities", function ($s
             startTime: $scope.startTime,
             endTime: $scope.endTime,
             location: $scope.location,
-<<<<<<< HEAD
-            previewImage: $scope.PreviewImage,
-            approved: true
-        }).then(function (result) {
-            $scope.loading = false;
-            //window.location.href = "/activities/" + result.id;
-            console.log("This is a test"+ $scope.PreviewImage);
-        });
-    };
-
-    $scope.SelectFile = function (e) {
-        var reader = new FileReader();
-        reader.onload = function (e) {
-            $scope.PreviewImage = e.target.result;
-            $scope.$apply();
-        };
-
-        reader.readAsDataURL(e.target.files[0]);
-    };
-
-=======
             participationFee: $scope.participationFee,
             approved: true,
             canSubscribe: $scope.canSubscribe,
@@ -168,7 +147,6 @@ app.controller("activityCreateController", ["$scope", "activities", function ($s
     };
 
     // function for using datepicker in form for creating activities
->>>>>>> d97df0f1d0605e7ef6806149e9bbb64995dbd21d
     $scope.datepicker = {open: false};
     $scope.openDatePicker = function () {
         $scope.datepicker.open = true;
