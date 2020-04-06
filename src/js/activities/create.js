@@ -74,6 +74,7 @@ app.controller("activityCreateController", ["$scope", "activities", function ($s
             location: $scope.location,
             participationFee: $scope.participationFee,
             approved: true,
+            previewImage: $scope.PreviewImage,
             canSubscribe: $scope.canSubscribe,
         };
 
@@ -142,8 +143,19 @@ app.controller("activityCreateController", ["$scope", "activities", function ($s
             $scope.loading = false;
 
             // redirect to new activity
-            window.location.href = "/activities/" + result.id + "#signup";
+            // window.location.href = "/activities/" + result.id + "#signup";
+            console.log("This is a test"+ $scope.PreviewImage);
         });
+    };
+
+    $scope.SelectFile = function (e) {
+        var reader = new FileReader();
+        reader.onload = function (e) {
+            $scope.PreviewImage = e.target.result;
+            $scope.$apply();
+        };
+
+        reader.readAsDataURL(e.target.files[0]);
     };
 
     // function for using datepicker in form for creating activities
