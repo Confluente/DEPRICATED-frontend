@@ -65,14 +65,6 @@ body {
 
 }
 
-#header {
-
-    /* Stick header to the top of the page */
-    position: sticky;
-    top: 0;
-    z-index: 1000
-}
-
 .navbar, .dropdown-menu {
 
     /* No borders */
@@ -108,7 +100,7 @@ h1, .h1 {
 }
 
 b, strong, th {
-  font-weight: 500
+    font-weight: 500
 }
 
 /* Header margin */
@@ -123,7 +115,7 @@ h4, .h4, h5, .h5, h6, .h6 {
 }
 
 label {
-  font-weight: 500
+    font-weight: 500
 }
 
 .row:before, .row:after {
@@ -137,6 +129,7 @@ label {
     filter: grayscale(100%);
     transition: filter 0.2s
 }
+
 .bw:hover, .bw:active, .bw:focus {
     filter: grayscale(0%);
 }
@@ -147,6 +140,7 @@ label {
     padding-bottom: 1rem;
     display: block
 }
+
 .section {
     margin-top: 1rem;
     margin-bottom: 1rem
@@ -161,8 +155,8 @@ label {
 
 /* -- Sticky */
 .sticky {
-  position: sticky;
-  top: 8px
+    position: sticky;
+    top: 8px
 }
 
 /* -- Flexbox */
@@ -182,6 +176,7 @@ label {
 .flex-around {
     justify-content: space-around;
 }
+
 .flex-between {
     justify-content: space-between;
 }
@@ -196,12 +191,42 @@ label {
     font-weight: 400;
 }
 
+/* -- Parallax scrolling effect -- */
+.parallax {
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
 
 /* -- (4) Specific fixes -- */
 
 .form-control {
     /* Fix date input */
     line-height: 1.6rem !important;
+}
+
+/* -- Manage */
+#managePage th .fa {
+    margin-left: 6px
+}
+
+.manage-table-action {
+    user-select: none;
+}
+.manage-table-action .btn {
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+@media (min-width:992px) {
+    #managePage ul.nav {
+        display: inline-block;
+    }
+    .manage-actions {
+        margin-top: -47px
+    }
 }
 
 /* -- Navigation bar */
@@ -213,6 +238,7 @@ label {
     box-shadow: none;
     padding: 0;
 }
+
 @media (min-width: 992px) {
     .dropdown:hover .dropdown-menu {
         display: block;
@@ -247,6 +273,7 @@ label {
 .navbar, .dropdown-menu {
     font-size: 0.93rem;
 }
+
 .navbar-brand {
     line-height: 1.1rem;
     font-size: 1rem;
@@ -268,19 +295,27 @@ label {
 }
 
 
-
 /* - Header container */
 #hero {
     display: block;
-    height: 66vh !important;
-    margin-top: -6rem;
-    transition: margin-top .2s cubic-bezier(.17,.84,.44,1)
+    height: 46vh;
+    margin-top: -1rem;
 }
-#hero.collapsing, #hero.collapse.in {
-    margin-top: -1rem
+
+#hero .carousel-image {
+    height: 100%;
+    width: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
+
 .carousel-inner, .carousel-inner > * {
-    height: inherit;
+    height: 100%;
+}
+
+.carousel-inner > .item {
+    transition: transform 0.6s cubic-bezier(.86,0,.07,1);
 }
 
 .hero-accent {
@@ -288,34 +323,16 @@ label {
     position: absolute;
     left: 0;
     right: 0;
-    z-index: -1;
-    background: radial-gradient(farthest-corner at bottom, rgba(78, 181, 211, .78) 70%, rgba(78, 181, 211, .94));
-    background-attachment: fixed;
-}
-
-.hero-image {
-    height: inherit;
-    width: 100%;
-    background-size: cover;
-    background-position: center center;
-    z-index: -10;
-    position: absolute;
-    background-attachment: fixed;
+    background: linear-gradient(to top, rgba(0,0,0,.3), 30%, rgba(0,0,0,0));
 }
 #hero-image-1 {
-  background-image:  URL('/img/frontpage-hero.jpg');
+    background-image: URL('/img/frontpage-hero/slide1.jpeg');
 }
 #hero-image-2 {
-  background-image:  URL('/img/frontpage-hero2.JPG');
+    background-image: URL('/img/frontpage-hero/slide2.jpg');
 }
-
-
-#hero-header {
-    height: 100%;
-    flex-direction: column-reverse;
-}
-#hero-header > * {
-    height: 36px;
+#hero-image-3 {
+    background-image: URL('/img/frontpage-hero/slide3.jpg');
 }
 
 .hero-caption {
@@ -325,42 +342,42 @@ label {
     position: absolute;
     bottom: 0;
 }
-
 .hero-caption .h1 {
-    font-weight: 500;
+    text-shadow: 0 1px 2px rgba(0,0,0,.6)
+}
+.hero-caption .fa {
+    margin-right: 8px
 }
 
 .carousel-indicators {
-    bottom: 1.5rem;
-    left: 0;
-    right: 0;
-    text-align: center;
-    margin: 0;
-    width: initial
+    user-select: none;
 }
+
 .carousel-indicators li {
     display: inline-block;
     border-radius: 0;
     cursor: pointer;
     border: 1px solid #fff;
     background-color: transparent;
+    transition: background-color 0.6s cubic-bezier(.19,1,.22,1);
 }
+
 .carousel-indicators li, .carousel-indicators .active {
-    width: 28px;
-    height: 7px;
+    width: 38px;
+    height: 8px;
     margin: 1px
 }
+
 .carousel-indicators .active {
     background: #fff;
 }
-.carousel-control.right, .carousel-control.left {
-    background: none
-}
+
 
 #main-logo {
     width: 160px;
     height: 160px;
 }
+
 #frontpage-slogan {
     letter-spacing: 3px;
     text-transform: uppercase;
@@ -636,6 +653,7 @@ label {
     margin: 0 0 1em 0;
     overflow: hidden;
 }
+
 .activity-content .module p {
     margin: 0;
 }
@@ -649,6 +667,7 @@ label {
     height: 6em; /* exactly 4 lines */
     opacity: 1;
 }
+
 .activity-content .fade:after {
     content: "";
     text-align: right;
@@ -685,7 +704,7 @@ label {
     width: 100%;
 }
 
-.login-input{
+.login-input {
     font-family: Montserrat-Bold;
     font-size: 15px;
     line-height: 1.2;
@@ -697,36 +716,38 @@ label {
     border-radius: 25px;
     padding: 0 30px 0 30px;
 }
-.login-btn{
+
+.login-btn {
     width: 100% !important;
     border-radius: 25px !important;
 }
-.login-form{
+
+.login-form {
     border: 1px solid #ccc !important;
     padding: 10px 10px 40px 10px;
-    border-radius:20px;
+    border-radius: 20px;
     margin: 10px 20px 10px 20px;
 }
 
-@media(max-width: 992px) {
+@media (max-width: 992px) {
     .HA-col {
         height: 750px;
     }
 }
 
-@media(max-width: 767px) {
+@media (max-width: 767px) {
     .HA-col {
         height: 600px;
     }
 }
 
-@media(max-width: 560px) {
+@media (max-width: 560px) {
     .HA-col {
         height: 700px;
     }
 }
 
-@media(max-width: 400px) {
+@media (max-width: 400px) {
     .HA-col {
         height: 800px;
     }
@@ -742,8 +763,54 @@ label {
     padding-top: 100px;
 }
 
-@media(max-width: 992px) {
+@media (max-width: 992px) {
     .nav-pad {
         padding-top: 0px;
     }
+}
+
+/* --Subscription forms */
+.subscriptionForm {
+    width: 50%;
+    background-color: lightgray;
+    padding: 10px;
+}
+
+@media (max-width: 560px) {
+    .subscriptionForm {
+        width: 100%;
+    }
+}
+
+.overflowTableCell {
+    max-width: 100px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+#answerTable {
+    table-layout: fixed;
+    max-width: 100%;
+    width: 100%;
+    min-width: 100%;
+}
+
+/* --Profile */
+.profileTable table {
+    border: 1px solid black;
+    border-collapse: collapse;
+    padding: 3px;
+}
+
+.profileTable td {
+    border: 1px solid black;
+    border-collapse: collapse;
+    padding: 3px;
+}
+
+.profileTable tr {
+    border: 1px solid black;
+    border-collapse: collapse;
+    padding: 3px;
 }

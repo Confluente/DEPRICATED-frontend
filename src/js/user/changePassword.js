@@ -1,18 +1,21 @@
 var app = angular.module("confluente");
 
+/**
+ * Controller for changing password of user
+ */
 app.controller("userChangePasswordController", ["$rootScope", "$scope", "$routeParams", "users", function ($rootScope, $scope, $routeParams, user) {
+    // get userId from URL
     var userId = $routeParams.userId;
+    // retrieve user from backend by userId and set on $scope
     user.get(userId).then(function (user) {
         $scope.user = user[0];
-        // console.log($scope);
     });
 
+    // function called when password change is submitted
     $scope.submit = function () {
         $scope.loading = true;
-        // console.log($scope);
         user.changePassword($scope.user).then(function (result) {
             $scope.loading = false;
-            // window.location.href = "/manage";
         });
     };
 }]);
