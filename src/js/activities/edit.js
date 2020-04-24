@@ -8,6 +8,8 @@ app.controller("activityEditController", ["$scope", "$routeParams", "activities"
     var activityId = $routeParams.activityId;
     $scope.inputs = [];
 
+    $scope.userGroups = [];
+
     // setting standard deadline for subscription deadline field
     $scope.deadline = {
         subscriptionDeadline: new Date()
@@ -19,6 +21,11 @@ app.controller("activityEditController", ["$scope", "$routeParams", "activities"
     // get activity from backend by activityId and put it on the $scope
     activities.get(activityId).then(function (activity) {
         $scope.activity = activity;
+        $scope.activity.organizer = activity.Organizer.displayName;
+
+        for (var i = 0; i < $scope.$parent.user.groups.length; i++) {
+            $scope.userGroups.push($scope.$parent.user.groups[i].displayName);
+        }
 
         // formatting the form to inputs such that it can be interactive with angular
         if (activity.canSubscribe) {
@@ -52,11 +59,10 @@ app.controller("activityEditController", ["$scope", "$routeParams", "activities"
         $scope.inputs.push(dataObj);
     };
 
-    // removes last element from inputs variable
-    $scope.removeLast = function () {
-        if ($scope.inputs.length > 2) {
-            $scope.inputs.pop();
-        }
+    // Removes specific question
+    $scope.removeInput = function (index) {
+        if (index > 1 && index < $scope.inputs.length)
+            $scope.inputs.splice(index, 1);
     };
 
     // Adds an option to a multiple choice question
@@ -75,6 +81,15 @@ app.controller("activityEditController", ["$scope", "$routeParams", "activities"
         $scope.activity.canSubscribe = !$scope.activity.canSubscribe;
     };
 
+    // Given an array, it moves the element from fromIndex to toIndex
+    $scope.arrayMove = function(arr, fromIndex, toIndex) {
+        if (Math.abs(fromIndex - toIndex) <= 1 && fromIndex > 1 && toIndex < arr.length) {
+            var element = arr[fromIndex];
+            arr.splice(fromIndex, 1);
+            arr.splice(toIndex, 0, element);
+        }
+    };
+
     $scope.loading = false;
 
     // function called when edit of activity is submitted
@@ -83,6 +98,8 @@ app.controller("activityEditController", ["$scope", "$routeParams", "activities"
 
         // Checks whether required fields are empty
         $scope.empty = !$scope.activity.name || !$scope.activity.description || !$scope.activity.Organizer;
+
+        $scope.wrongCharacters = false;
 
         if ($scope.activity.canSubscribe) {
             // format form correctly
@@ -96,8 +113,10 @@ app.controller("activityEditController", ["$scope", "$routeParams", "activities"
                 allTypes.push(dataObj.type);
                 var optionString = "";
                 for (var i = 0; i < dataObj.options.length; i++) {
-                    if (i !== 0) optionString += ";";
+                    if (i !== 0) optionString += "#;#";
                     optionString += dataObj.options[i];
+                    if (dataObj.options[i].includes("#;#")) $scope.wrongCharacters = true;
+                    if (dataObj.options[i].includes("#,#")) $scope.wrongCharacters = true;
                 }
                 allOptions.push(optionString);
                 allRequired.push(dataObj.required);
@@ -106,6 +125,8 @@ app.controller("activityEditController", ["$scope", "$routeParams", "activities"
                 if (!dataObj.fullQuestion || dataObj.fullQuestion === "") {
                     $scope.empty = true;
                 }
+                if (dataObj.fullQuestion.includes("#,#")) $scope.wrongCharacters = true;
+                if (dataObj.fullQuestion.includes("#;#")) $scope.wrongCharacters = true;
 
                 // Checks whether options of multiple choice questions are empty
                 if (dataObj.type !== "☰ text" && dataObj.type !== "name" && dataObj.type !== "TU/e email") {
@@ -127,6 +148,12 @@ app.controller("activityEditController", ["$scope", "$routeParams", "activities"
         if ($scope.empty) {
             $scope.loading = false;
             return alert("One of your fields is still empty!");
+        }
+
+        // If problematic fields contain #,# or #;# reject form
+        if ($scope.wrongCharacters) {
+            $scope.loading = false;
+            return alert("Character combinations #,# and #;# are not allowed.")
         }
 
         // submit edit of activity to backend

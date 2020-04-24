@@ -8,6 +8,9 @@ app.controller("activityViewController", ["$scope", "$routeParams", "activities"
     // get activityId from URL
     var activityId = $routeParams.activityId;
 
+    // to store the different paragraphs of the activity
+    $scope.activityDescription = [];
+
     // true if user is part of committee that is organizing the activity
     $scope.isUserOrganizing = false;
 
@@ -25,6 +28,9 @@ app.controller("activityViewController", ["$scope", "$routeParams", "activities"
         $scope.activity = activity;
         $scope.user = $scope.$parent.user;
         if (activity.canSubscribe) window.location.href = "/activities/" + activityId + "#signup";
+
+        // To split the description up into paragraphs
+        $scope.activityDescription = activity.description.replace(/\r/g, "").split(/\n/);
 
         // format the subscriptions
         $scope.answers = [];
@@ -78,7 +84,7 @@ app.controller("activityViewController", ["$scope", "$routeParams", "activities"
             $scope.loading = false;
 
             // reloads page to show deletion
-            window.history.go();
+            window.location.reload();
         })
     };
 
@@ -126,7 +132,7 @@ app.controller("activityViewController", ["$scope", "$routeParams", "activities"
             $scope.loading = false;
 
             // reload page to show submission
-            window.history.go();
+            window.location.reload();
         });
     }
 }]);

@@ -13,7 +13,7 @@
         <div class="activity row" ng-repeat="activity in activities">
             <div class="activity-title col-xs-12">
                 <a href="/activities/{{activity.id}}#signup"><h3 class="nospace">{{activity.name}} ({{activity.Organizer.fullName}})</h3><span
-                        ng-if="!activity.approved">(Unlisted)</span></a>
+                        ng-if="!activity.published">(Unlisted)</span></a>
             </div>
             <div class="activity-content col-md-8 col-xs-12">
                 <p class="module fade">{{activity.description}}</p>
@@ -23,6 +23,7 @@
                 <p ng-if="activity.location" style="margin-bottom: 0px">Where: {{activity.location}}</p>
                 <p ng-if="activity.startTime && activity.endTime">Time: {{activity.startTime}} - {{activity.endTime}}</p>
                 <p ng-if="activity.startTime && !activity.endTime">Time: {{activity.startTime}}</p>
+                <p ng-if="activity.canSubscribe && activity.subscribed">Subscribed <i class="fa fa-check"></i></p>
             </div>
         </div>
         <div class="no-activities" ng-if="!activities.length && !loading">
