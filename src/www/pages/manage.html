@@ -37,7 +37,7 @@
                                 <th class="col-xs-5" ng-click="sortActivities('name')">Title<i ng-if="(sortTypeActivities == 'name') && sortReverseActivities" class="fa fa-angle-down"></i><i ng-if="(sortTypeActivities == 'name') && !sortReverseActivities" class="fa fa-angle-up"></i></th>
                                 <th class="col-xs-2" ng-click="sortActivities('date')">Date<i ng-if="(sortTypeActivities == 'date') && sortReverseActivities" class="fa fa-angle-down"></i><i ng-if="(sortTypeActivities == 'date') && !sortReverseActivities" class="fa fa-angle-up"></i></th>
                                 <th class="col-xs-2" ng-click="sortActivities('Organizer.displayName')">Organizer<i ng-if="(sortTypeActivities == 'Organizer.displayName') && sortReverseActivities" class="fa fa-angle-down"></i><i ng-if="(sortTypeActivities == 'Organizer.displayName') && !sortReverseActivities" class="fa fa-angle-up"></i></th>
-                                <th class="col-xs-1" ng-click="sortActivities('approved')">Approved<i ng-if="(sortTypeActivities == 'approved') && sortReverseActivities" class="fa fa-angle-down"></i><i ng-if="(sortTypeActivities == 'approved') && !sortReverseActivities" class="fa fa-angle-up"></i></th>
+                                <th class="col-xs-1" ng-click="sortActivities('published')">Published<i ng-if="(sortTypeActivities == 'published') && sortReverseActivities" class="fa fa-angle-down"></i><i ng-if="(sortTypeActivities == 'published') && !sortReverseActivities" class="fa fa-angle-up"></i></th>
                                 <th class="col-xs-2"></th>
                             </tr>
                         </thead>
@@ -47,8 +47,8 @@
                                 <td><a ng-href="/activities/{{activity.id}}#signup">{{activity.name}}</a></td>
                                 <td>{{activity.date | date:'yyyy-MM-dd'}}</td>
                                 <td>{{activity.Organizer.displayName}}</td>
-                                <td ng-if="activity.approved"><i class="fa fa-check"></i></td>
-                                <td ng-if="!activity.approved"></td>
+                                <td ng-if="activity.published"><i class="fa fa-check"></i></td>
+                                <td ng-if="!activity.published"></td>
                                 <td class="manage-table-action text-right">
                                     <a class="btn btn-link" ng-href="/manage/activities/{{activity.id}}">
                                         <i class="fa fa-cog"></i>

@@ -73,8 +73,8 @@ app.controller("activityCreateController", ["$scope", "activities", function ($s
             endTime: $scope.endTime,
             location: $scope.location,
             participationFee: $scope.participationFee,
-            approved: true,
             previewImage: $scope.PreviewImage,
+            published: true,
             canSubscribe: $scope.canSubscribe,
         };
 
