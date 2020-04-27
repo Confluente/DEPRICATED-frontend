@@ -202,6 +202,18 @@ label {
 
 /* -- (4) Specific fixes -- */
 
+.fa.fa-toggle-on, .fa.fa-toggle-off {
+  font-size: 20px
+}
+
+/* TEMPORARY color fix */
+.text-success {
+  color: #2bcf6d
+}
+.text-warning {
+  color: #fc5628
+}
+
 .form-horizontal .checkbox {
     min-height: 0;
 }
