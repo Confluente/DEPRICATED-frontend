@@ -1,63 +1,22 @@
-<style>
-#committees img {
-    width: 600px;
-}
-
-.committee-img-container {
-    position: relative;
-    height: calc(100% - 46px);
-    width: 100%;
-    background-repeat: no-repeat;
-    background-position: center center;
-    background-size: cover;
-    background-origin: content-box;
-}
-
-.committee-box {
-    height: 320px;
-    border: 1px solid #ddd;
-    padding: 0;
-}
-
-.committee-text {
-    color: white;
-    cursor: pointer;
-    position: absolute;
-    padding: 12px;
-    width: 100%;
-    line-height: 1.2em;
-    font-weight: normal;
-    height: 100%;
-}
-</style>
-
 <div class="container">
 
 <!-- TODO: Abstract from container div like pages -->
 
     <h1>Committees</h1>
-
+    <p>
+        The association has several committees that focus on organizing activities, workshops, events and trips.
+        In addition, several committees help the association in acquisition and promotion.
+        In total, H.S.A. Confluente currently consists of {{committees.length}} committees.
+    </p>
     <div class="row" id="committees">
         <div ng-repeat="committee in committees">
-
             <div class="col-sm-12 col-xs-12 col-md-6 col-lg-6" style="padding: 15px">
-                <div class="committee-box">
-                    <div class="committee-img-container" ng-style="{'background-image': 'url(' + committee.image + ')'}">
-                        <div class="partner-overlay" style="background: rgba(0, 0, 0, 0.5)">
-                            <div class="committee-text">
-                                <p>{{committee.description}}</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="partner-footer">
-                        <ul class="partner-btnlist">
-                            <li>
-                                <a href={{committee.link}} class="btn btn-default partner-btn-small">
-                                    <b>{{committee.displayName}}</b>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
+                <div class="committee-box bg-primary">
+                    <div class="committee-img-container" ng-style="{'background-image': 'url(' + committee.image + ')'}"></div>
+                    <a href={{committee.link}} class="committee-text">
+                        <b>{{committee.displayName}}</b>
+<!--                        <p>{{committee.description}}</p>-->
+                    </a>
                 </div>
             </div>
         </div>
