@@ -55,8 +55,8 @@ app.factory("activities", ["$http", "$timeout", function ($http, $timeout) {
          * @param activity
          * @returns submitted activity
          */
-        create: function (activity) {
-            return $http.post("/api/activities", activity).then(function (result) {
+        create: function (fd, hd, activity) {
+            return $http.post("/api/activities", [fd, activity]).then(function (result) {
                 return result.data;
             }, function (err) {
                 // currently error not handled

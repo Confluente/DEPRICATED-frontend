@@ -52,13 +52,29 @@ app.controller("activityCreateController", ["$scope", "activities", function ($s
     };
 
     // Given an array, it moves the element from fromIndex to toIndex
-    $scope.arrayMove = function(arr, fromIndex, toIndex) {
+    $scope.arrayMove = function (arr, fromIndex, toIndex) {
         if (Math.abs(fromIndex - toIndex) <= 1 && fromIndex > 1 && toIndex < arr.length) {
             var element = arr[fromIndex];
             arr.splice(fromIndex, 1);
             arr.splice(toIndex, 0, element);
         }
     };
+
+    $("#activityCreate-cover").change(function () {
+        readURL(this);
+    });
+
+    function readURL(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+                $('#picturePreview').attr('src', e.target.result);
+            };
+
+            reader.readAsDataURL(input.files[0]); // convert to base64 string
+        }
+    }
 
     // function called when new activity is submitted
     $scope.submit = function () {
@@ -137,12 +153,20 @@ app.controller("activityCreateController", ["$scope", "activities", function ($s
             return alert("Character combinations #,# and #;# are not allowed.")
         }
 
+
+        var file = $scope.myFile;
+        var fd = new FormData();
+        fd.append('file', file);
+
         // create new activity from variables as put on the $scope by the form
-        activities.create(act).then(function (result) {
+        activities.create(fd, {
+            transformRequest: angular.identity,
+            headers: {'Content-Type': undefined}
+        }, act).then(function (result) {
             $scope.loading = false;
 
             // redirect to new activity
-            window.location.href = "/activities/" + result.id + "#signup";
+            // window.location.href = "/activities/" + result.id + "#signup";
         });
     };
 
@@ -158,7 +182,22 @@ app.controller("activityCreateController", ["$scope", "activities", function ($s
         minDate: new Date(), // minimum date for datepicker
         startingDay: 1
     };
-}]);
+}])
+    .directive('fileModel', ['$parse', function ($parse) {
+        return {
+            restrict: 'A',
+            link: function (scope, element, attrs) {
+                var model = $parse(attrs.fileModel);
+                var modelSetter = model.assign;
+
+                element.bind('change', function () {
+                    scope.$apply(function () {
+                        modelSetter(scope, element[0].files[0]);
+                    });
+                });
+            }
+        };
+    }]);
 
 module.exports = {
     name: "New Activity",
