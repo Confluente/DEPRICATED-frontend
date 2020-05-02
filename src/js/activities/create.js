@@ -6,6 +6,8 @@ var app = angular.module("confluente");
 app.controller("activityCreateController", ["$scope", "activities", function ($scope, activities) {
     $scope.loading = false;
 
+    $scope.uploadme;
+
     // setting standard deadline for subscription deadline field
     $scope.deadline = {
         subscriptionDeadline: new Date()
@@ -60,20 +62,17 @@ app.controller("activityCreateController", ["$scope", "activities", function ($s
         }
     };
 
-    $("#activityCreate-cover").change(function () {
-        readURL(this);
-    });
-
-    function readURL(input) {
-        if (input.files && input.files[0]) {
-            var reader = new FileReader();
-
-            reader.onload = function (e) {
-                $('#picturePreview').attr('src', e.target.result);
-            };
-
-            reader.readAsDataURL(input.files[0]); // convert to base64 string
+    //you need this function to convert the dataURI
+    function dataURItoBlob(dataURI) {
+        var binary = atob(dataURI.split(',')[1]);
+        var mimeString = dataURI.split(',')[0].split(':')[1].split(';')[0];
+        var array = [];
+        for (var i = 0; i < binary.length; i++) {
+            array.push(binary.charCodeAt(i));
         }
+        return new Blob([new Uint8Array(array)], {
+            type: mimeString
+        });
     }
 
     // function called when new activity is submitted
@@ -153,16 +152,17 @@ app.controller("activityCreateController", ["$scope", "activities", function ($s
             return alert("Character combinations #,# and #;# are not allowed.")
         }
 
-
-        var file = $scope.myFile;
         var fd = new FormData();
-        fd.append('file', file);
+        var imgBlob = dataURItoBlob($scope.uploadme);
+        fd.append('image', imgBlob);
 
         // create new activity from variables as put on the $scope by the form
-        activities.create(fd, {
+        activities.create(fd, act, {
             transformRequest: angular.identity,
-            headers: {'Content-Type': undefined}
-        }, act).then(function (result) {
+            headers: {
+                'Content-Type': undefined
+            }
+        }).then(function (result) {
             $scope.loading = false;
 
             // redirect to new activity
@@ -182,22 +182,28 @@ app.controller("activityCreateController", ["$scope", "activities", function ($s
         minDate: new Date(), // minimum date for datepicker
         startingDay: 1
     };
-}])
-    .directive('fileModel', ['$parse', function ($parse) {
+}]);
+app.directive("fileread", [
+    function() {
         return {
-            restrict: 'A',
-            link: function (scope, element, attrs) {
-                var model = $parse(attrs.fileModel);
-                var modelSetter = model.assign;
-
-                element.bind('change', function () {
-                    scope.$apply(function () {
-                        modelSetter(scope, element[0].files[0]);
-                    });
+            scope: {
+                fileread: "="
+            },
+            link: function(scope, element, attributes) {
+                element.bind("change", function(changeEvent) {
+                    var reader = new FileReader();
+                    reader.onload = function(loadEvent) {
+                        scope.$apply(function() {
+                            scope.fileread = loadEvent.target.result;
+                        });
+                    }
+                    reader.readAsDataURL(changeEvent.target.files[0]);
                 });
             }
-        };
-    }]);
+        }
+    }
+]);
+
 
 module.exports = {
     name: "New Activity",
