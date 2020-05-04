@@ -1,6 +1,6 @@
 <div class="container">
 
-<!-- TODO: Abstract from container div like pages -->
+    <!-- TODO: Abstract from container div like pages -->
 
     <h1>Committees</h1>
     <p>
@@ -11,13 +11,17 @@
     <div class="row" id="committees">
         <div ng-repeat="committee in committees">
             <div class="col-sm-12 col-xs-12 col-md-6 col-lg-6" style="padding: 15px">
-                <div class="committee-box bg-primary">
-                    <div class="committee-img-container" ng-style="{'background-image': 'url(' + committee.image + ')'}"></div>
-                    <a href={{committee.link}} class="committee-text">
-                        <b>{{committee.displayName}}</b>
-<!--                        <p>{{committee.description}}</p>-->
-                    </a>
-                </div>
+                <a href={{committee.link}} class="committee-link">
+                    <div class="committee-box bg-primary">
+                        <div class="committee-img-container"
+                             ng-style="{'background-image': 'url(' + committee.image + ')'}"></div>
+                        <div class="committee-text">
+                            {{committee.displayName}}
+                            <i class="committee-text fa fa-chevron-right" aria-hidden="true"></i>
+                        </div>
+                        <!--                        <p>{{committee.description}}</p>-->
+                    </div>
+                </a>
             </div>
         </div>
         <div class="no-committees" ng-if="!committees.length && !loading">

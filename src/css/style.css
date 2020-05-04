@@ -437,6 +437,8 @@ input[type="checkbox"] {
 
 
 /* -- committees */
+
+/* TODO Remove old Committee Page Styling*/
 #carousel {
     position: relative;
     height: 400px;
@@ -570,17 +572,24 @@ input[type="checkbox"] {
     padding: 0;
 }
 
-.committee-text {
-    color: white!important;
-    font-size: 35px;
+.committee-link {
     text-decoration: none!important;
     cursor: pointer;
-    position: absolute;
-    padding: 7px;
-    width: 100%;
-    line-height: 1.2em;
+}
+
+.committee-text {
+    padding-left: 10px;
+    color: white!important;
+    vertical-align: middle;
+    line-height: 40px;
+    font-size: 30px;
     font-weight: normal;
-    height: 100%;
+}
+
+i.committee-text {
+    font-size: 15px!important;
+    margin-right: 10px;
+    float: right;
 }
 
 /* -- Boards */
