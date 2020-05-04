@@ -6,7 +6,7 @@ var app = angular.module("confluente");
 app.controller("activityCreateController", ["$scope", "activities", function ($scope, activities) {
     $scope.loading = false;
 
-    $scope.uploadme;
+    $scope.uploadme = "No Image";
 
     // setting standard deadline for subscription deadline field
     $scope.deadline = {
@@ -78,6 +78,12 @@ app.controller("activityCreateController", ["$scope", "activities", function ($s
     // function called when new activity is submitted
     $scope.submit = function () {
         $scope.loading = true;
+
+        var hasCoverImage = false;
+
+        if ($scope.uploadme !== "No Image")
+            hasCoverImage = true;
+
         // constructing standard activity object
         var act = {
             name: $scope.name,
@@ -90,6 +96,7 @@ app.controller("activityCreateController", ["$scope", "activities", function ($s
             participationFee: $scope.participationFee,
             published: true,
             canSubscribe: $scope.canSubscribe,
+            hasCoverImage: hasCoverImage,
         };
 
         // Checking required fields
@@ -153,8 +160,8 @@ app.controller("activityCreateController", ["$scope", "activities", function ($s
         }
 
         var fd = new FormData();
-        var imgBlob = dataURItoBlob($scope.uploadme);
-        fd.append('image', imgBlob);
+        var photo = $('#activityCreate-cover')[0].files[0];
+        fd.append('image', photo);
 
         // create new activity from variables as put on the $scope by the form
         activities.create(fd, act, {
@@ -164,7 +171,6 @@ app.controller("activityCreateController", ["$scope", "activities", function ($s
             }
         }).then(function (result) {
             $scope.loading = false;
-
             // redirect to new activity
             // window.location.href = "/activities/" + result.id + "#signup";
         });

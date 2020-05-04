@@ -6,6 +6,7 @@
     <a class="btn btn-default col-md-4 col-xs-4" ng-href="/manage/activities/{{activity.id}}" ng-if="isUserOrganizing">Edit</a>
     <div class="col-md-8 col-xs-12">
         <p ng-repeat="text in activityDescription">{{text}}</p>
+        <img ng-if="activity.hasCoverImage" src="{{activity.imageSource}}">
     </div>
     <div class="mobileshow col-xs-12">
         <hr/>
