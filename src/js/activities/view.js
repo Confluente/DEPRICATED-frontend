@@ -63,12 +63,6 @@ app.controller("activityViewController", ["$scope", "$routeParams", "activities"
         // check if the current date is passed the subscription deadline
         var now = new Date(new Date().getFullYear(), new Date().getMonth(), new Date().getDate());
         if (now > $scope.activity.subscriptionDeadline) $scope.deadlinePassed = true;
-
-        if ($scope.activity.hasCoverImage) {
-            $scope.activity.imageSource = "img/activities/" + $scope.activity.id + ".jpeg"
-        }
-
-        console.log($scope);
     });
 
     // redirects user to login page
