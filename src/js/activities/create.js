@@ -172,7 +172,7 @@ app.controller("activityCreateController", ["$scope", "activities", function ($s
         }).then(function (result) {
             $scope.loading = false;
             // redirect to new activity
-            // window.location.href = "/activities/" + result.id + "#signup";
+            window.location.href = "/activities/" + result.id + "#signup";
         });
     };
 
