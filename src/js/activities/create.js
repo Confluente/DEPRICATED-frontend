@@ -62,27 +62,19 @@ app.controller("activityCreateController", ["$scope", "activities", function ($s
         }
     };
 
-    //you need this function to convert the dataURI
-    function dataURItoBlob(dataURI) {
-        var binary = atob(dataURI.split(',')[1]);
-        var mimeString = dataURI.split(',')[0].split(':')[1].split(';')[0];
-        var array = [];
-        for (var i = 0; i < binary.length; i++) {
-            array.push(binary.charCodeAt(i));
-        }
-        return new Blob([new Uint8Array(array)], {
-            type: mimeString
-        });
-    }
-
     // function called when new activity is submitted
     $scope.submit = function () {
         $scope.loading = true;
 
         var hasCoverImage = false;
-
         if ($scope.uploadme !== "No Image")
             hasCoverImage = true;
+
+        var fd = new FormData();
+        if (hasCoverImage) {
+            var photo = $('#activityCreate-cover')[0].files[0];
+            fd.append('image', photo);
+        }
 
         // constructing standard activity object
         var act = {
@@ -159,17 +151,8 @@ app.controller("activityCreateController", ["$scope", "activities", function ($s
             return alert("Character combinations #,# and #;# are not allowed.")
         }
 
-        var fd = new FormData();
-        var photo = $('#activityCreate-cover')[0].files[0];
-        fd.append('image', photo);
-
         // create new activity from variables as put on the $scope by the form
-        activities.create(fd, act, {
-            transformRequest: angular.identity,
-            headers: {
-                'Content-Type': undefined
-            }
-        }).then(function (result) {
+        activities.create(fd, act).then(function (result) {
             $scope.loading = false;
             // redirect to new activity
             window.location.href = "/activities/" + result.id + "#signup";

@@ -55,9 +55,16 @@ app.factory("activities", ["$http", "$timeout", function ($http, $timeout) {
          * @param activity
          * @returns submitted activity
          */
-        create: function (fd, activity, hd) {
+        create: function (coverImage, activity) {
             return $http.post("/api/activities", activity).then(function (result) {
-                $http.post("/api/activities/postPicture/" + result.data.id, fd, hd);
+                if (activity.hasCoverImage) {
+                    $http.post("/api/activities/postPicture/" + result.data.id, coverImage, {
+                        transformRequest: angular.identity,
+                        headers: {
+                            'Content-Type': undefined
+                        }
+                    });
+                }
                 return result.data;
             }, function (err) {
                 // currently error not handled
@@ -68,8 +75,16 @@ app.factory("activities", ["$http", "$timeout", function ($http, $timeout) {
          * @param activity
          * @returns submitted edited activity
          */
-        edit: function (activity) {
+        edit: function (activity, changedCoverImage, coverImage) {
             return $http.put("/api/activities/" + activity.id, activity).then(function (result) {
+                if (changedCoverImage) {
+                    $http.put("/api/activity/postPicture/" + activity.id, coverImage, {
+                        transformRequest: angular.identity,
+                        headers: {
+                            'Content-Type': undefined
+                        }
+                    });
+                }
                 return result.data;
             });
         },

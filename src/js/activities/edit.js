@@ -8,6 +8,8 @@ app.controller("activityEditController", ["$scope", "$routeParams", "activities"
     var activityId = $routeParams.activityId;
     $scope.inputs = [];
 
+    $scope.uploadme = "Did not change image";
+
     $scope.userGroups = [];
 
     // setting standard deadline for subscription deadline field
@@ -96,6 +98,18 @@ app.controller("activityEditController", ["$scope", "$routeParams", "activities"
     $scope.submit = function () {
         $scope.loading = true;
 
+        var changedCoverImage = false;
+        if ($scope.uploadme !== "Did not change image") {
+            $scope.activity.hasCoverImage = true;
+            changedCoverImage = true;
+        }
+
+        var fd = new FormData();
+        if (changedCoverImage) {
+            var photo = $('#activityEdit-cover')[0].files[0];
+            fd.append('image', photo);
+        }
+
         // Checks whether required fields are empty
         $scope.empty = !$scope.activity.name || !$scope.activity.description || !$scope.activity.Organizer;
 
@@ -157,7 +171,7 @@ app.controller("activityEditController", ["$scope", "$routeParams", "activities"
         }
 
         // submit edit of activity to backend
-        activities.edit($scope.activity).then(function (result) {
+        activities.edit($scope.activity, fd, changedCoverImage).then(function (result) {
             $scope.loading = false;
             // redirect to edited activity
             window.location.href = "/activities/" + result.id + "#signup";
@@ -177,6 +191,26 @@ app.controller("activityEditController", ["$scope", "$routeParams", "activities"
         startingDay: 1
     };
 }]);
+app.directive("fileread", [
+    function() {
+        return {
+            scope: {
+                fileread: "="
+            },
+            link: function(scope, element, attributes) {
+                element.bind("change", function(changeEvent) {
+                    var reader = new FileReader();
+                    reader.onload = function(loadEvent) {
+                        scope.$apply(function() {
+                            scope.fileread = loadEvent.target.result;
+                        });
+                    }
+                    reader.readAsDataURL(changeEvent.target.files[0]);
+                });
+            }
+        }
+    }
+]);
 
 module.exports = {
     name: "Edit Activity",
