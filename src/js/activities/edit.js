@@ -171,7 +171,7 @@ app.controller("activityEditController", ["$scope", "$routeParams", "activities"
         }
 
         // submit edit of activity to backend
-        activities.edit($scope.activity, fd, changedCoverImage).then(function (result) {
+        activities.edit($scope.activity, changedCoverImage, fd).then(function (result) {
             $scope.loading = false;
             // redirect to edited activity
             window.location.href = "/activities/" + result.id + "#signup";
@@ -191,26 +191,6 @@ app.controller("activityEditController", ["$scope", "$routeParams", "activities"
         startingDay: 1
     };
 }]);
-app.directive("fileread", [
-    function() {
-        return {
-            scope: {
-                fileread: "="
-            },
-            link: function(scope, element, attributes) {
-                element.bind("change", function(changeEvent) {
-                    var reader = new FileReader();
-                    reader.onload = function(loadEvent) {
-                        scope.$apply(function() {
-                            scope.fileread = loadEvent.target.result;
-                        });
-                    }
-                    reader.readAsDataURL(changeEvent.target.files[0]);
-                });
-            }
-        }
-    }
-]);
 
 module.exports = {
     name: "Edit Activity",

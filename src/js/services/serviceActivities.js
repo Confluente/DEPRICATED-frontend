@@ -78,7 +78,7 @@ app.factory("activities", ["$http", "$timeout", function ($http, $timeout) {
         edit: function (activity, changedCoverImage, coverImage) {
             return $http.put("/api/activities/" + activity.id, activity).then(function (result) {
                 if (changedCoverImage) {
-                    $http.put("/api/activity/postPicture/" + activity.id, coverImage, {
+                    $http.put("/api/activities/postPicture/" + activity.id, coverImage, {
                         transformRequest: angular.identity,
                         headers: {
                             'Content-Type': undefined
@@ -119,3 +119,23 @@ app.factory("activities", ["$http", "$timeout", function ($http, $timeout) {
         }
     };
 }]);
+app.directive("fileread", [
+    function() {
+        return {
+            scope: {
+                fileread: "="
+            },
+            link: function(scope, element, attributes) {
+                element.bind("change", function(changeEvent) {
+                    var reader = new FileReader();
+                    reader.onload = function(loadEvent) {
+                        scope.$apply(function() {
+                            scope.fileread = loadEvent.target.result;
+                        });
+                    }
+                    reader.readAsDataURL(changeEvent.target.files[0]);
+                });
+            }
+        }
+    }
+]);
