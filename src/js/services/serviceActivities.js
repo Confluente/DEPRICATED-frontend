@@ -73,11 +73,13 @@ app.factory("activities", ["$http", "$timeout", function ($http, $timeout) {
         /**
          * Function for submitting edited activities to backend
          * @param activity
-         * @returns submitted edited activity
+         * @param keepCurrent whether to keep the current picture
+         * @param coverImage the new cover image
+         * @returns submitted edited activity (except the picture)
          */
-        edit: function (activity, changedCoverImage, coverImage) {
+        edit: function (activity, keepCurrent, coverImage) {
             return $http.put("/api/activities/" + activity.id, activity).then(function (result) {
-                if (changedCoverImage) {
+                if (!keepCurrent) {
                     $http.put("/api/activities/postPicture/" + activity.id, coverImage, {
                         transformRequest: angular.identity,
                         headers: {

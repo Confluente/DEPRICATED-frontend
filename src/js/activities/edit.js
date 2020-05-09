@@ -9,6 +9,7 @@ app.controller("activityEditController", ["$scope", "$routeParams", "activities"
     $scope.inputs = [];
 
     $scope.uploadme = "Did not change image";
+    $scope.keepCurrent = false;
 
     $scope.userGroups = [];
 
@@ -53,6 +54,10 @@ app.controller("activityEditController", ["$scope", "$routeParams", "activities"
                 {fullQuestion: 'TU/e email', type: "TU/e email", options: [''], required: 'true'}
             ];
         }
+
+        if (activity.hasCoverImage) {
+            $scope.keepCurrent = true;
+        }
     });
 
     // adds an element to the inputs variable
@@ -82,6 +87,11 @@ app.controller("activityEditController", ["$scope", "$routeParams", "activities"
     $scope.toggleSubscribe = function() {
         $scope.activity.canSubscribe = !$scope.activity.canSubscribe;
     };
+
+    // Toggles the keepCurrent variable
+    $scope.toggleKeepCurrent = function() {
+        $scope.keepCurrent = !$scope.keepCurrent;
+    }
 
     // Given an array, it moves the element from fromIndex to toIndex
     $scope.arrayMove = function(arr, fromIndex, toIndex) {
@@ -170,11 +180,14 @@ app.controller("activityEditController", ["$scope", "$routeParams", "activities"
             return alert("Character combinations #,# and #;# are not allowed.")
         }
 
+        if ($scope.activity.hasCoverImage && !changedCoverImage && !$scope.keepCurrent)
+            $scope.activity.hasCoverImage = false;
+
         // submit edit of activity to backend
-        activities.edit($scope.activity, changedCoverImage, fd).then(function (result) {
+        activities.edit($scope.activity, $scope.keepCurrent, fd).then(function (result) {
             $scope.loading = false;
             // redirect to edited activity
-            window.location.href = "/activities/" + result.id + "#signup";
+            // window.location.href = "/activities/" + result.id + "#signup";
         });
     };
 
