@@ -85,8 +85,7 @@
                         <label for="activityEdit-cover" class="col-xs-12 col-sm-2 col-md-5 control-label">Cover image</label>
                         <div class="col-xs-12 col-sm-10 col-md-7">
                             <div ng-if="activity.hasCoverImage"><input ng-click="toggleKeepCurrent()" ng-checked="keepCurrent" type="checkbox">Keep current picture</div>
-<!--                            <input id="activityEdit-coverDis" type="file" disabled ng-if="keepCurrent"/>-->
-                            <input id="activityEdit-cover" type="file" fileread="uploadme"/>
+                            <input id="activityEdit-cover" type="file" accept=".jpeg,.jpg,.png" fileread="uploadme"/>
                         </div>
                     </div>
                 </div>
