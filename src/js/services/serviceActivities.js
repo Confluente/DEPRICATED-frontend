@@ -58,7 +58,7 @@ app.factory("activities", ["$http", "$timeout", function ($http, $timeout) {
         create: function (coverImage, activity) {
             return $http.post("/api/activities", activity).then(function (result) {
                 if (activity.hasCoverImage) {
-                    $http.post("/api/activities/postPicture/" + result.data.id, coverImage, {
+                    $http.post("/api/activities/pictures/" + result.data.id, coverImage, {
                         transformRequest: angular.identity,
                         headers: {
                             'Content-Type': undefined
@@ -80,7 +80,7 @@ app.factory("activities", ["$http", "$timeout", function ($http, $timeout) {
         edit: function (activity, keepCurrent, coverImage) {
             return $http.put("/api/activities/" + activity.id, activity).then(function (result) {
                 if (!keepCurrent) {
-                    $http.put("/api/activities/postPicture/" + activity.id, coverImage, {
+                    $http.put("/api/activities/pictures/" + activity.id, coverImage, {
                         transformRequest: angular.identity,
                         headers: {
                             'Content-Type': undefined
