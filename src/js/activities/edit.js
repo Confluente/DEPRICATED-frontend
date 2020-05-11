@@ -187,7 +187,7 @@ app.controller("activityEditController", ["$scope", "$routeParams", "activities"
         activities.edit($scope.activity, $scope.keepCurrent, fd).then(function (result) {
             $scope.loading = false;
             // redirect to edited activity
-            // window.location.href = "/activities/" + result.id + "#signup";
+            window.location.href = "/activities/" + result.id + "#signup";
         });
     };
 
