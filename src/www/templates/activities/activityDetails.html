@@ -48,7 +48,7 @@
         <div class="col-xs-12 col-md-8 col-lg-6">
 
             <div>
-                <p ng-repeat="text in activityDescription">{{text}}</p>
+                <p ng-repeat="text in activityDescription track by $index">{{text}}</p>
             </div>
 
             <div ng-if="activity.canSubscribe" class="block" id="activity-signup">
