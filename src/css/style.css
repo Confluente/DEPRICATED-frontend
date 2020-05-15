@@ -574,6 +574,12 @@ input[type="checkbox"] {
     padding: 0;
 }
 
+.committee-box-small {
+    height: 300px;
+    width: 300px;
+    padding: 0;
+}
+
 .committee-link {
     text-decoration: none!important;
     cursor: pointer;
