@@ -1,65 +1,193 @@
 <div class="container">
-    <h1>Register</h1>
-    <form>
 
-        <div class="form-group">
-            <label for="userCreate-firstName">First name (required)</label>
-            <input type="text" ng-model="firstName" class="form-control" id="userCreate-firstName">
-        </div>
+    <form class="form-horizontal">
+        <header>
+            <h1>Hey {{firstName ? firstName : "you"}}!<br>
+                Welcome to the Honors community :)<br>
+                <small class="text-primary">Register for the Honors Study Association Confluente</small>
+            </h1>
+        </header>
 
-        <div class="form-group">
-            <label for="userCreate-lastName">Family name (required)</label>
-            <input type="text" ng-model="lastName" class="form-control" id="userCreate-lastName">
-        </div>
+        <fieldset class="section">
+            <legend class="h4 block">First, the basics</legend>
 
-        <div class="form-group">
-            <label for="userCreate-email">TU/e Email address (required)</label>
-            <input type="text" ng-model="email" class="form-control" id="userCreate-email">
-        </div>
+            <div class="row">
+                <div class="col-xs-12 col-md-8 col-lg-6">
 
-        <div class="form-group">
-            <label for="userCreate-major">Major</label>
-            <input type="text" ng-model="major" class="form-control" id="userCreate-major">
-        </div>
+                    <div class="form-group">
+                        <label for="userCreate-firstName" class="col-xs-12 col-sm-3 control-label">Name</label>
+                        <div class="col-xs-6 col-sm-4">
+                            <input placeholder="First name" type="text" ng-model="firstName" class="form-control" id="userCreate-firstName" required>
+                        </div>
+                        <div class="col-xs-6 col-sm-5">
+                            <input placeholder="Family name" type="text" ng-model="lastName" class="form-control" id="userCreate-lastName" required>
+                        </div>
+                    </div>
 
-        <b>Which honors track are you in:</b>
-        <select ng-model="honorsTrack" ng-options="x for x in tracks"></select><br>
-
-        <b>In which year did you start at the honors academy</b>
-        <select ng-model="generation" ng-options="x for x in generations"></select><br>
-
-        <div class="form-group">
-            <label for="userCreate-cardNumber">What is your campuscard number? (needed to give you access to the honors
-                room door)</label>
-            <input type="text" ng-model="cardNumber" class="form-control" id="userCreate-cardNumber">
-        </div>
-
-        <div class="form-group">
-            <label for="userCreate-phone">Mobile phone number</label>
-            <input type="text" ng-model="phone" class="form-control" id="userCreate-phone">
-        </div>
-
-        <div class="form-group">
-            <label for="userCreate-password">Password (required)</label>
-            <input type="password" ng-model="password" class="form-control" id="userCreate-password">
-        </div>
-
-        <div class="form-group">
-            <label>By making an account you agree with our<a href="/privacy" privacy policy>privacy policy</a></label>
-        </div>
-
-        <div class="form-group">
-            <label>Do you give consent to H.S.A. Confluente to hang pictures of you taken by H.S.A. Confluente on the
-                walls of the honors room and post them on the website (only accessible to members). At any point in time
-                you can access your right to remove them as stated in the privacy policy. (required)</label>
-            <div class="checkbox">
-                <label>
-                    <input type="checkbox" ng-model="portraitRight">yes
-                </label>
+                </div>
             </div>
-        </div>
 
-        <button type="submit" class="btn btn-default" ng-click="submit()" ng-disabled="loading">Save</button>
+            <div class="clearfix"></div>
+
+            <div class="row">
+                <div class="col-xs-12 col-md-8 col-lg-6">
+
+                    <div class="form-group">
+                        <label for="userCreate-email" class="col-xs-12 col-sm-3 control-label">Email address</label>
+                        <div class="col-xs-12 col-sm-9">
+                            <input placeholder="@student.tue.nl" type="email" ng-model="email" class="form-control" id="userCreate-email" required>
+                        </div>
+                    </div>
+
+                </div>
+                <p class="hidden-sm col-xs-12 col-md-4 control-label text-left small">
+                    Essential communication will proceed through email, as well as the promotion of events.
+                </p>
+            </div>
+
+            <div class="clearfix"></div>
+        </fieldset>
+
+        <hr>
+
+        <fieldset class="section">
+            <legend class="h4 block">Additional information (optional)</legend>
+
+            <div class="row">
+                <div class="col-xs-12 col-md-8 col-lg-6">
+
+                    <div class="form-group">
+                        <label for="userCreate-major" class="col-xs-12 col-sm-3 control-label">TU/e Major</label>
+                        <div class="col-xs-12 col-sm-9">
+                            <input type="text" ng-model="major" class="form-control" id="userCreate-major">
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="clearfix"></div>
+
+            <div class="row">
+                <div class="col-xs-12 col-md-8 col-lg-6">
+
+                    <div class="form-group">
+                        <label for="userCreate-track" class="col-xs-12 col-sm-3 control-label">Honors track</label>
+                        <div class="col-xs-12 col-sm-9">
+                            <select ng-model="honorsTrack" ng-options="x for x in tracks" class="form-control" id="userCreate-track"></select>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="clearfix"></div>
+
+            <div class="row">
+                <div class="col-xs-12 col-md-8 col-lg-6">
+
+                    <div class="form-group">
+                        <label for="userCreate-trackstart" class="col-xs-12 col-sm-3 col-sm-offset-1 control-label">started in</label>
+                        <div class="col-xs-12 col-sm-4">
+                            <select ng-model="generation" ng-options="x for x in generations" class="form-control" id="userCreate-trackstart"></select>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="clearfix block"></div>
+
+            <div class="row">
+                <div class="col-xs-12 col-md-8 col-lg-6 ">
+
+                    <div class="form-group">
+                        <label for="userCreate-cardNumber" class="col-xs-12 col-sm-3 control-label">Card number</label>
+                        <div class="col-xs-12 col-sm-9">
+                            <input type="tel" ng-model="cardNumber" class="form-control" id="userCreate-cardNumber">
+                        </div>
+                    </div>
+
+                </div>
+
+                <p class="hidden-sm col-xs-12 col-md-4 control-label text-left small">
+                    This will be used to grant you access to the Honors Room.
+                </p>
+            </div>
+
+            <div class="clearfix"></div>
+
+            <div class="row">
+                <div class="col-xs-12 col-md-8 col-lg-6">
+
+                    <div class="form-group">
+                        <label for="userCreate-phone" class="col-xs-12 col-sm-3 control-label">Mobile phone</label>
+                        <div class="col-xs-12 col-sm-9">
+                            <input type="tel" ng-model="phone" class="form-control" id="userCreate-phone">
+                        </div>
+                    </div>
+
+                </div>
+                <p class="hidden-sm col-xs-12 col-md-4 control-label text-left small">
+                    This will be used for quick contact for activities if needed.
+                </p>
+            </div>
+
+            <div class="clearfix"></div>
+        </fieldset>
+
+        <hr>
+
+        <fieldset class="section">
+
+            <legend class="h4 block">Finalize</legend>
+
+            <div class="row">
+                <div class="col-xs-12 col-md-8 col-lg-6">
+                    <div class="form-group">
+
+                        <label for="userCreate-password" class="col-xs-12 col-sm-3 control-label">Password</label>
+                        <div class="col-xs-12 col-sm-9">
+                            <input type="password" ng-model="password" class="form-control" id="userCreate-password" required>
+                        </div>
+                    </div>
+                </div>
+
+                <p class="hidden-sm col-xs-12 col-md-4 control-label text-left small">
+                    Used to login to the website.
+                </p>
+            </div>
+
+            <div class="row section">
+                <div class="bg-info small section block col-xs-12 col-md-7">
+                    <p>Your information will be stored and handled as explained in the <a href="/privacy" privacy policy>privacy policy</a>.</p>
+                    <p>At activities of H.S.A. Confluente, photos may be made of you.<br>
+                    We would like to post photos on the website, where they are only visible for members of H.S.A. Confluente.<br>
+                    If it is a really nice picture, we would like to be able to hang it in the Honors Room as well.<br>
+                    </p>
+                </div>
+            </div>
+
+            <div class="clearfix"></div>
+
+            <div class="form-group">
+                <div class="col-xs-12 col-md-8 col-lg-6">
+                    <div class="checkbox">
+                        <label>
+                            <input type="checkbox" ng-model="portraitRight" id="userCreate-consent">Yes, I am okay with that.
+                        </label>
+                    </div>
+                </div>
+
+                <p class="hidden-sm col-xs-12 col-md-4 control-label text-left small">
+                    You can always request something of yourself to be removed!
+                </p>
+            </div>
+
+        </fieldset>
+
+        <button type="submit" class="btn btn-primary" ng-click="submit()" ng-disabled="loading">Finish</button>
 
     </form>
+
 </div>

@@ -231,6 +231,10 @@ input[type="checkbox"], input[type="radio"] {
     box-shadow: none;
 }
 
+legend {
+    border: 0
+}
+
 
 /* -- Manage */
 #managePage th .fa {
