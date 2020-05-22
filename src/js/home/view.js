@@ -1,8 +1,6 @@
 var app = angular.module("confluente");
 
 app.controller("homePageController", ["$scope", "$routeParams", function ($scope, $routeParams) {
-    //document.getElementById("rightCarouselButton").click();
-
     $('.carousel').carousel({
         interval: 8000,
         duration: 1200
