@@ -79,7 +79,7 @@ app.controller("activityCreateController", ["$scope", "activities", function ($s
 
             var img = new Image();
             img.src = window.URL.createObjectURL(file);
-            img.onload = () => {
+            img.onload = function() {
                 if (img.width < img.height) {
                     wrongInput('Image width should be greater than or equal to image height!');
                 }
