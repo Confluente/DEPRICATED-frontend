@@ -72,8 +72,21 @@ app.controller("activityCreateController", ["$scope", "activities", function ($s
 
         var fd = new FormData();
         if (hasCoverImage) {
-            var photo = $('#activityCreate-cover')[0].files[0];
-            fd.append('image', photo);
+            var file = $('#activityCreate-cover')[0].files[0];
+            if (!file.type.startsWith('image/')) {
+                wrongInput('Non-image formats are not supported as pictures for activities!');
+            }
+
+            var img = new Image();
+            img.src = window.URL.createObjectURL(file);
+            img.onload = () => {
+                console.log(img.width + " " + img.height);
+                if (img.width < img.height) {
+                    wrongInput('Image width should be greater than or equal to image height!');
+                }
+            }
+
+            fd.append('image', file);
         }
 
         // constructing standard activity object
@@ -142,20 +155,18 @@ app.controller("activityCreateController", ["$scope", "activities", function ($s
 
         // If any required field is empty than do not accept the activity
         if ($scope.empty) {
-            $scope.loading = false;
-            return alert("Not all required fields have been filled in.");
+            wrongInput("Not all required fields have been filled in.");
         }
 
         if ($scope.wrongCharacters) {
-            $scope.loading = false;
-            return alert("Character combinations #,# and #;# are not allowed.")
+            wrongInput("Character combinations #,# and #;# are not allowed.");
         }
 
         // create new activity from variables as put on the $scope by the form
         activities.create(fd, act).then(function (result) {
             $scope.loading = false;
             // redirect to new activity
-            window.location.href = "/activities/" + result.id + "#signup";
+            // window.location.href = "/activities/" + result.id + "#signup";
         });
     };
 
@@ -167,10 +178,15 @@ app.controller("activityCreateController", ["$scope", "activities", function ($s
 
     $scope.dateOptions = {
         formatYear: 'yy',
-        maxDate: new Date(2029, 5, 22), // maximum date for datepicker
+        maxDate: new Date().setFullYear(new Date().getFullYear() + 10), // maximum date for datepicker
         minDate: new Date(), // minimum date for datepicker
         startingDay: 1
     };
+
+    var wrongInput = function(ErrorMessage) {
+        $scope.loading = false;
+        return alert(ErrorMessage);
+    }
 }]);
 
 module.exports = {
