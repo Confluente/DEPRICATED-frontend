@@ -14,6 +14,9 @@ app.controller("userCreateController", ["$scope", "users", function ($scope, use
     // Different generations in which students can say that started at honors academy
     $scope.generations = [2016, 2017, 2018, 2019, 2020];
 
+    // Different membership statuses
+    $scope.memberships = ["Member", "Alumni", "Associate member"];
+
     // function called when newly created user is submitted
     $scope.submit = function () {
         $scope.loading = true;
