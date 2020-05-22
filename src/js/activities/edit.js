@@ -116,8 +116,21 @@ app.controller("activityEditController", ["$scope", "$routeParams", "activities"
 
         var fd = new FormData();
         if (changedCoverImage) {
-            var photo = $('#activityEdit-cover')[0].files[0];
-            fd.append('image', photo);
+            var file = $('#activityCreate-cover')[0].files[0];
+            if (!file.type.startsWith('image/')) {
+                wrongInput('Non-image formats are not supported as pictures for activities!');
+            }
+
+            var img = new Image();
+            img.src = window.URL.createObjectURL(file);
+            img.onload = () => {
+                console.log(img.width + " " + img.height);
+                if (img.width < img.height) {
+                    wrongInput('Image width should be greater than or equal to image height!');
+                }
+            }
+
+            fd.append('image', file);
         }
 
         // Checks whether required fields are empty
@@ -170,14 +183,12 @@ app.controller("activityEditController", ["$scope", "$routeParams", "activities"
 
         // If required field are empty, do not accept activity
         if ($scope.empty) {
-            $scope.loading = false;
-            return alert("One of your fields is still empty!");
+            wrongInput("Not all required fields have been filled in.")
         }
 
         // If problematic fields contain #,# or #;# reject form
         if ($scope.wrongCharacters) {
-            $scope.loading = false;
-            return alert("Character combinations #,# and #;# are not allowed.")
+            wrongInput("Character combinations #,# and #;# are not allowed.")
         }
 
         if ($scope.activity.hasCoverImage && !changedCoverImage && !$scope.keepCurrent)
