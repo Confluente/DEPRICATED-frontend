@@ -80,7 +80,6 @@ app.controller("activityCreateController", ["$scope", "activities", function ($s
             var img = new Image();
             img.src = window.URL.createObjectURL(file);
             img.onload = () => {
-                console.log(img.width + " " + img.height);
                 if (img.width < img.height) {
                     wrongInput('Image width should be greater than or equal to image height!');
                 }
@@ -166,7 +165,7 @@ app.controller("activityCreateController", ["$scope", "activities", function ($s
         activities.create(fd, act).then(function (result) {
             $scope.loading = false;
             // redirect to new activity
-            // window.location.href = "/activities/" + result.id + "#signup";
+            window.location.href = "/activities/" + result.id + "#signup";
         });
     };
 

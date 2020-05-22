@@ -124,7 +124,6 @@ app.controller("activityEditController", ["$scope", "$routeParams", "activities"
             var img = new Image();
             img.src = window.URL.createObjectURL(file);
             img.onload = () => {
-                console.log(img.width + " " + img.height);
                 if (img.width < img.height) {
                     wrongInput('Image width should be greater than or equal to image height!');
                 }
