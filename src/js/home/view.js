@@ -1,6 +1,30 @@
 var app = angular.module("confluente");
 
-app.controller("homePageController", ["$scope", "$routeParams", function ($scope, $routeParams) {
+app.controller("homePageController", ["$scope", "activities", function ($scope, activities) {
+
+    $scope.loading = true;
+
+    $scope.acts = [];
+
+    // function for getting all activities from current date onwards from backend
+    activities.getAll().then(function (activities) {
+        $scope.activities = activities;
+
+        // getting the first 3 published activities
+        for (var i = 0; i < activities.length; i++) {
+            if (activities[i].published) {
+                $scope.acts.push(activities[i]);
+            }
+
+            if ($scope.acts.length >= 3) {
+                break;
+            }
+        }
+
+        $scope.loading = false;
+    });
+
+
     $('.carousel').carousel({
         interval: 8000,
         duration: 1200
