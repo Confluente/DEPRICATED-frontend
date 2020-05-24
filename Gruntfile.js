@@ -6,6 +6,9 @@ module.exports = function (grunt) {
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
         webpack: {
+            options: {
+                stats: !process.env.NODE_ENV || process.env.NODE_ENV === 'development'
+            },
             context: __dirname + '/src/js',
             entry: './index.js',
             dev: {
