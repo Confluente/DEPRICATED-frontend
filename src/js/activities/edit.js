@@ -116,7 +116,7 @@ app.controller("activityEditController", ["$scope", "$routeParams", "activities"
 
         var fd = new FormData();
         if (changedCoverImage) {
-            var file = $('#activityCreate-cover')[0].files[0];
+            var file = $('#activityEdit-cover')[0].files[0];
             if (!file.type.startsWith('image/')) {
                 wrongInput('Non-image formats are not supported as pictures for activities!');
             }
