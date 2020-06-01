@@ -67,8 +67,9 @@ app.controller("activityCreateController", ["$scope", "activities", function ($s
         $scope.loading = true;
 
         var hasCoverImage = false;
-        if ($scope.uploadme !== "No Image")
+        if ($scope.uploadme !== "No Image") {
             hasCoverImage = true;
+        }
 
         var fd = new FormData();
         if (hasCoverImage) {
@@ -164,6 +165,9 @@ app.controller("activityCreateController", ["$scope", "activities", function ($s
         // create new activity from variables as put on the $scope by the form
         activities.create(fd, act).then(function (result) {
             $scope.loading = false;
+
+            console.log(result.id)
+
             // redirect to new activity
             window.location.href = "/activities/" + result.id + "#signup";
         });

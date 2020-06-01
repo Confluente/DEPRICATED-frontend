@@ -67,7 +67,7 @@ app.factory("activities", ["$http", "$timeout", function ($http, $timeout) {
                 }
                 return result.data;
             }, function (err) {
-                // currently error not handled
+                console.log(err)
             });
         },
         /**
@@ -128,7 +128,7 @@ app.directive("fileread", [
                 fileread: "="
             },
             link: function(scope, element, attributes) {
-                element.bind("change", function(changeEvent) {
+                element.on("change", function(changeEvent) {
                     var reader = new FileReader();
                     reader.onload = function(loadEvent) {
                         scope.$apply(function() {

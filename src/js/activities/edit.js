@@ -196,6 +196,9 @@ app.controller("activityEditController", ["$scope", "$routeParams", "activities"
         // submit edit of activity to backend
         activities.edit($scope.activity, $scope.keepCurrent, fd).then(function (result) {
             $scope.loading = false;
+
+            console.log(result.id)
+
             // redirect to edited activity
             window.location.href = "/activities/" + result.id + "#signup";
         });
