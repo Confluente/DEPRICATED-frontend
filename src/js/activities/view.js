@@ -1,7 +1,7 @@
 var app = angular.module("confluente");
 var TableExport = require("tableexport");
 
-/**
+/**`
  * Controller for viewing activity
  */
 app.controller("activityViewController", ["$scope", "$routeParams", "activities", "users", function ($scope, $routeParams, activities, user) {
@@ -135,6 +135,22 @@ app.controller("activityViewController", ["$scope", "$routeParams", "activities"
             window.location.reload();
         });
     }
+
+    // Allow setting the 'published' attribute of activities to true
+    $scope.publishActivity = function(activityToBePublished) {
+        activityToBePublished.published = true;
+        // Set organizer to displayName of Organizer (required for API)
+        activityToBePublished.organizer = activityToBePublished.Organizer.displayName;
+        activities.edit(activityToBePublished);
+    };
+
+    // Allow setting the 'published' attribute of activities to false
+    $scope.unpublishActivity = function(activityToBeUnpublished) {
+        activityToBeUnpublished.published = false;
+        // Set organizer to displayName of Organizer (required for API)
+        activityToBeUnpublished.organizer = activityToBeUnpublished.Organizer.displayName;
+        activities.edit(activityToBeUnpublished);
+    };
 }]);
 
 module.exports = {
