@@ -7,9 +7,9 @@ app.controller("committeesController", ["$scope", "groups", function ($scope, gr
     /* Load all committees from the database and pass them to the template. */
     groups.getAllOfType("Committee").then(function(committees) {
 
-        committees.forEach(function(comm) {
-            comm.link = "/group/" + comm.id.toString();
-            comm.image = "/img/CommitteePictures/" + comm.displayName.replace(/ /g, "_").toLowerCase() + ".jpg";
+        committees.forEach(function(committee) {
+            committee.link = "/group/" + committee.id.toString();
+            committee.image = "/img/CommitteePictures/" + committee.displayName.replace(/ /g, "_").toLowerCase() + ".jpg";
         });
 
         $scope.committees = committees;

@@ -6,7 +6,7 @@
     <p>
         The association has several committees that focus on organizing activities, workshops, events and trips.
         In addition, several committees help the association in acquisition and promotion.
-        In total, H.S.A. Confluente currently consists of {{committees.length}} committees.
+        In total, H.S.A. Confluente is currently supported by {{committees.length}} committees.
     </p>
     <div class="row" id="committees">
         <div ng-repeat="committee in committees">
@@ -23,9 +23,5 @@
                 </a>
             </div>
         </div>
-        <div class="no-committees" ng-if="!committees.length && !loading">
-            Committees are gone 🦀🦀🦀.
-        </div>
-
     </div>
 </div>

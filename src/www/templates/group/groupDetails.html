@@ -15,7 +15,7 @@
             <h4>Current members</h4>
             <p ng-repeat="member in group.members">{{member.displayName}} ({{member.user_group.func}})</p>
             <div class="no-committees" ng-if="!group.members.length">
-                Members are gone 🦀🦀🦀.
+                <i>No members yet</i>
             </div>
         </div>
         <div class="col-sm-6 col-md-6">
