@@ -10,10 +10,12 @@
         <div ng-if="isUserOrganizing" class="col-xs-6">
             <ol class="breadcrumb small text-right">
                 <li><a ng-href="/manage/activities/{{activity.id}}"><b>Edit activity</b></a></li>
-                <li><a ng-click="publishActivity(activity)"
-           ng-if="isUserOrganizing && !activity.published" ng-href="/"><b>Publish Activity</b></a></li>
-           		<li><a  ng-click="unpublishActivity(activity)"
-           ng-if="isUserOrganizing && activity.published" ng-href="/"><b>Unpublish Activity</b></a></li>
+                <li ng-if="isUserOrganizing && !activity.published">
+                	<a ng-click="publishActivity(activity)" ng-href="/"><b>Publish Activity</b></a>
+                </li>
+           		<li ng-if="isUserOrganizing && activity.published">
+           			<a  ng-click="unpublishActivity(activity)" ng-href="/"><b>Unpublish Activity</b></a>
+           		</li>
             </ol>
         </div>
     </div>
