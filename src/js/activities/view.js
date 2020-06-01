@@ -142,6 +142,7 @@ app.controller("activityViewController", ["$scope", "$routeParams", "activities"
         // Set organizer to displayName of Organizer (required for API)
         activityToBePublished.organizer = activityToBePublished.Organizer.displayName;
         activities.edit(activityToBePublished);
+        window.location.reload();
     };
 
     // Allow setting the 'published' attribute of activities to false
@@ -150,6 +151,7 @@ app.controller("activityViewController", ["$scope", "$routeParams", "activities"
         // Set organizer to displayName of Organizer (required for API)
         activityToBeUnpublished.organizer = activityToBeUnpublished.Organizer.displayName;
         activities.edit(activityToBeUnpublished);
+        window.location.reload();
     };
 }]);
 
