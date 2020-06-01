@@ -47,8 +47,14 @@
                                 <td><a ng-href="/activities/{{activity.id}}#signup">{{activity.name}}</a></td>
                                 <td>{{activity.date | date:'yyyy-MM-dd'}}</td>
                                 <td>{{activity.Organizer.displayName}}</td>
-                                <td ng-if="activity.published"><i class="fa fa-check"></i></td>
-                                <td ng-if="!activity.published"></td>
+                                <td class="manage-table-action">
+                                    <a ng-if="activity.published" class="btn btn-link" ng-click="togglePublishedActivity(activity)">
+                                        <i class="fa fa-toggle-on text-success"></i>
+                                    </a>
+                                    <a ng-if="!activity.published" class="btn btn-link" ng-click="togglePublishedActivity(activity)">
+                                        <i class="fa fa-toggle-off text-warning"></i>
+                                    </a>
+                                </td>
                                 <td class="manage-table-action text-right">
                                     <a class="btn btn-link" ng-href="/manage/activities/{{activity.id}}">
                                         <i class="fa fa-cog"></i>

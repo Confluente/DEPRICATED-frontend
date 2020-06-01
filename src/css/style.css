@@ -89,7 +89,7 @@ body {
 .breadcrumb {
 
     /* Breadcrumb margin fix */
-    margin-top: -1rem;
+    margin-bottom: 0;
 
 }
 
@@ -108,8 +108,11 @@ h1, .h1, h2, .h2, h3, .h3 {
     margin-top: 1.5rem;
     margin-bottom: .25rem;
 }
-
-h4, .h4, h5, .h5, h6, .h6 {
+h4, .h4 {
+    margin-top: 1.1rem;
+    margin-bottom:0.4rem
+}
+h5, .h5, h6, .h6 {
     margin-top: 0.7rem;
     margin-bottom: 0.1rem;
 }
@@ -202,12 +205,28 @@ label {
 
 /* -- (4) Specific fixes -- */
 
+.fa.fa-toggle-on, .fa.fa-toggle-off {
+  font-size: 20px
+}
+
+/* TEMPORARY color fix */
+.text-success {
+  color: #2bcf6d
+}
+.text-warning {
+  color: #fc5628
+}
+
 .form-horizontal .checkbox {
     min-height: 0;
 }
 
-input[type="checkbox"] {
+input[type="checkbox"], input[type="radio"] {
     margin-top: 7px
+}
+
+.radio:first-of-type, .checkbox:first-of-type {
+    margin-top: 0;
 }
 
 .btn.disabled, .btn[disabled], fieldset[disabled] .btn {
@@ -302,6 +321,10 @@ input[type="checkbox"] {
 }
 
 /* -- Frontpage */
+
+#activity-overview {
+    margin-bottom: 0
+}
 
 /* - Partner bar */
 .img-logo {
@@ -609,6 +632,14 @@ i.committee-text {
 }
 
 /* -- Events */
+
+#activity-details .fa {
+    margin: 0 4px;
+}
+#activity-details {
+    padding: 0;
+}
+
 .activity-content .module {
     margin: 0 0 1em 0;
     overflow: hidden;
@@ -637,6 +668,15 @@ i.committee-text {
     width: 70%;
     height: 1.2em;
     background: linear-gradient(to right, rgba(255, 255, 255, 0), rgba(255, 255, 255, 1) 50%);
+}
+
+#activity-signup .disabled-input {
+    background: none;
+    border: none;
+    font-family: inherit;
+    width: 100%;
+    color: #aaa;
+    font-style: italic;
 }
 
 /* --Honors Academy (Education) */
