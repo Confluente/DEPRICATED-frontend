@@ -136,8 +136,8 @@
 
         </div>
 
-        <div class="hidden-xs hidden-sm col-xs-12 col-md-4 col-lg-6">
-            <img ng-if="activity.hasCoverImage" ng-src="/img/activities/{{activity.coverImage}}">
+        <div class="hidden-xs hidden-sm col-xs-12 col-md-4 col-lg-6" ng-if="activity.hasCoverImage">
+            <img class="img-responsive center" ng-src="/img/activities/{{activity.coverImage}}">
         </div>
 
     </section>
