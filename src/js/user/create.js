@@ -20,7 +20,7 @@ app.controller("userCreateController", ["$scope", "users", function ($scope, use
     // function called when newly created user is submitted
     $scope.submit = function () {
         $scope.loading = true;
-        if (!$scope.firstName || !$scope.lastName || !$scope.password || !$scope.email || !$scope.portraitRight) {
+        if (!$scope.firstName || !$scope.lastName || !$scope.password || !$scope.email || !$scope.membership) {
             $scope.loading = false;
             return alert("Not all required fields were filled in!");
         }
@@ -36,6 +36,7 @@ app.controller("userCreateController", ["$scope", "users", function ($scope, use
             email: $scope.email,
             firstName: $scope.firstName,
             lastName: $scope.lastName,
+            honorsMembership: $scope.membership,
             major: $scope.major,
             address: $scope.address,
             track: $scope.honorsTrack,
