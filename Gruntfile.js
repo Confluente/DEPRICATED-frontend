@@ -67,7 +67,7 @@ module.exports = function (grunt) {
         },
         clean: {
             dev: ['src/js/bundle.js'],
-            build: ['!build/img/activities/*, build/*'],
+            build: ['!build/img/activities/*' , 'build/*'],
             options: {
                 'no-write': false
             }
