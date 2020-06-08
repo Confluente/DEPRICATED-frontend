@@ -41,7 +41,8 @@ app.controller("activityEditController", ["$scope", "$routeParams", "activities"
                     fullQuestion: activity.questionDescriptions[i],
                     type: activity.typeOfQuestion[i],
                     options: options,
-                    required: (activity.required[i] === 'true')
+                    required: (activity.required[i] === 'true'),
+                    privacyOfQuestion: (activity.privacyOfQuestions[i] === 'true')
                 });
             }
             $scope.deadline.subscriptionDeadline = activity.subscriptionDeadline;
@@ -161,9 +162,9 @@ app.controller("activityEditController", ["$scope", "$routeParams", "activities"
                 }
                 allOptions.push(optionString);
 
-                allRequired.push(dataObj.required);
+                allRequired.push(dataObj.required.toString());
 
-                allPrivacyOfQuestion.push(dataObj.privacyOfQuestion);
+                allPrivacyOfQuestion.push(dataObj.privacyOfQuestion.toString());
 
                 // Checks whether questions are empty
                 if (!dataObj.fullQuestion || dataObj.fullQuestion === "") {
