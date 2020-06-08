@@ -127,6 +127,10 @@ label {
 
 /* -- (3) General classes -- */
 
+.text-left {
+    text-align: left !important
+}
+
 /* -- Hover for color */
 .bw {
     filter: grayscale(100%);
@@ -263,6 +267,10 @@ input[type="checkbox"], input[type="radio"] {
     border-width: 2px;
     padding: 5px 11px;
     box-shadow: none;
+}
+
+legend {
+    border: 0
 }
 
 

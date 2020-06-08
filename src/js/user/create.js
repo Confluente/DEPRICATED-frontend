@@ -14,10 +14,13 @@ app.controller("userCreateController", ["$scope", "users", function ($scope, use
     // Different generations in which students can say that started at honors academy
     $scope.generations = [2016, 2017, 2018, 2019, 2020];
 
+    // Different membership statuses
+    $scope.memberships = ["Member", "Alumni", "Associate member"];
+
     // function called when newly created user is submitted
     $scope.submit = function () {
         $scope.loading = true;
-        if (!$scope.firstName || !$scope.lastName || !$scope.password || !$scope.email || !$scope.portraitRight) {
+        if (!$scope.firstName || !$scope.lastName || !$scope.password || !$scope.email || !$scope.membership) {
             $scope.loading = false;
             return alert("Not all required fields were filled in!");
         }
@@ -33,7 +36,9 @@ app.controller("userCreateController", ["$scope", "users", function ($scope, use
             email: $scope.email,
             firstName: $scope.firstName,
             lastName: $scope.lastName,
+            honorsMembership: $scope.membership,
             major: $scope.major,
+            address: $scope.address,
             track: $scope.honorsTrack,
             honorsGeneration: $scope.generation,
             campusCardNumber: $scope.cardNumber,
