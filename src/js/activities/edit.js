@@ -8,6 +8,9 @@ app.controller("activityEditController", ["$scope", "$routeParams", "activities"
     var activityId = $routeParams.activityId;
     $scope.inputs = [];
 
+    $scope.uploadme = "Did not change image";
+    $scope.keepCurrent = false;
+
     $scope.userGroups = [];
 
     // setting standard deadline for subscription deadline field
@@ -51,6 +54,10 @@ app.controller("activityEditController", ["$scope", "$routeParams", "activities"
                 {fullQuestion: 'TU/e email', type: "TU/e email", options: [''], required: 'true'}
             ];
         }
+
+        if (activity.hasCoverImage) {
+            $scope.keepCurrent = true;
+        }
     });
 
     // adds an element to the inputs variable
@@ -81,6 +88,11 @@ app.controller("activityEditController", ["$scope", "$routeParams", "activities"
         $scope.activity.canSubscribe = !$scope.activity.canSubscribe;
     };
 
+    // Toggles the keepCurrent variable
+    $scope.toggleKeepCurrent = function() {
+        $scope.keepCurrent = !$scope.keepCurrent;
+    }
+
     // Given an array, it moves the element from fromIndex to toIndex
     $scope.arrayMove = function(arr, fromIndex, toIndex) {
         if (Math.abs(fromIndex - toIndex) <= 1 && fromIndex > 1 && toIndex < arr.length) {
@@ -95,6 +107,34 @@ app.controller("activityEditController", ["$scope", "$routeParams", "activities"
     // function called when edit of activity is submitted
     $scope.submit = function () {
         $scope.loading = true;
+
+        var changedCoverImage = false;
+        if ($scope.uploadme !== "Did not change image") {
+            $scope.activity.hasCoverImage = true;
+            changedCoverImage = true;
+        }
+
+        var fd = new FormData();
+        if (changedCoverImage) {
+            var file = $('#activityEdit-cover')[0].files[0];
+            if (!file.type.startsWith('image/')) {
+                return wrongInput('Non-image formats are not supported as pictures for activities!');
+            }
+
+            if (file.size - 1000000 > 0) {
+                return wrongInput('Image size is larger than 1MB')
+            }
+
+            var img = new Image();
+            img.src = window.URL.createObjectURL(file);
+            img.onload = function() {
+                if (img.width < img.height) {
+                    return wrongInput('Image width should be greater than or equal to image height!');
+                }
+            }
+
+            fd.append('image', file);
+        }
 
         // Checks whether required fields are empty
         $scope.empty = !$scope.activity.name || !$scope.activity.description || !$scope.activity.Organizer;
@@ -146,19 +186,23 @@ app.controller("activityEditController", ["$scope", "$routeParams", "activities"
 
         // If required field are empty, do not accept activity
         if ($scope.empty) {
-            $scope.loading = false;
-            return alert("One of your fields is still empty!");
+            return wrongInput("Not all required fields have been filled in.")
         }
 
         // If problematic fields contain #,# or #;# reject form
         if ($scope.wrongCharacters) {
-            $scope.loading = false;
-            return alert("Character combinations #,# and #;# are not allowed.")
+            return wrongInput("Character combinations #,# and #;# are not allowed.")
         }
 
+        if ($scope.activity.hasCoverImage && !changedCoverImage && !$scope.keepCurrent)
+            $scope.activity.hasCoverImage = false;
+
         // submit edit of activity to backend
-        activities.edit($scope.activity).then(function (result) {
+        activities.edit($scope.activity, $scope.keepCurrent, fd).then(function (result) {
             $scope.loading = false;
+
+            console.log(result.id)
+
             // redirect to edited activity
             window.location.href = "/activities/" + result.id + "#signup";
         });
@@ -172,10 +216,15 @@ app.controller("activityEditController", ["$scope", "$routeParams", "activities"
 
     $scope.dateOptions = {
         formatYear: 'yy',
-        maxDate: new Date(2029, 5, 22), // maximum date for datepicker
-        minDate: new Date(2019, 1, 1), // minimum date for datepicker
+        maxDate: new Date().setFullYear(new Date().getFullYear() + 10), // maximum date for datepicker
+        minDate: new Date(), // minimum date for datepicker
         startingDay: 1
     };
+
+    var wrongInput = function(ErrorMessage) {
+        $scope.loading = false;
+        return alert(ErrorMessage);
+    }
 }]);
 
 module.exports = {

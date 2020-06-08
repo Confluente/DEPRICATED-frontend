@@ -55,20 +55,38 @@ app.factory("activities", ["$http", "$timeout", function ($http, $timeout) {
          * @param activity
          * @returns submitted activity
          */
-        create: function (activity) {
+        create: function (coverImage, activity) {
             return $http.post("/api/activities", activity).then(function (result) {
+                if (activity.hasCoverImage) {
+                    $http.post("/api/activities/pictures/" + result.data.id, coverImage, {
+                        transformRequest: angular.identity,
+                        headers: {
+                            'Content-Type': undefined
+                        }
+                    });
+                }
                 return result.data;
             }, function (err) {
-                // currently error not handled
+                console.log(err)
             });
         },
         /**
          * Function for submitting edited activities to backend
          * @param activity
-         * @returns submitted edited activity
+         * @param keepCurrent whether to keep the current picture
+         * @param coverImage the new cover image
+         * @returns submitted edited activity (except the picture)
          */
-        edit: function (activity) {
+        edit: function (activity, keepCurrent, coverImage) {
             return $http.put("/api/activities/" + activity.id, activity).then(function (result) {
+                if (!keepCurrent) {
+                    $http.put("/api/activities/pictures/" + activity.id, coverImage, {
+                        transformRequest: angular.identity,
+                        headers: {
+                            'Content-Type': undefined
+                        }
+                    });
+                }
                 return result.data;
             });
         },
@@ -103,3 +121,23 @@ app.factory("activities", ["$http", "$timeout", function ($http, $timeout) {
         }
     };
 }]);
+app.directive("fileread", [
+    function() {
+        return {
+            scope: {
+                fileread: "="
+            },
+            link: function(scope, element, attributes) {
+                element.on("change", function(changeEvent) {
+                    var reader = new FileReader();
+                    reader.onload = function(loadEvent) {
+                        scope.$apply(function() {
+                            scope.fileread = loadEvent.target.result;
+                        });
+                    }
+                    reader.readAsDataURL(changeEvent.target.files[0]);
+                });
+            }
+        }
+    }
+]);
