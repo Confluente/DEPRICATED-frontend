@@ -6,7 +6,7 @@ var app = angular.module("confluente");
 app.factory("activities", ["$http", "$timeout", function ($http, $timeout) {
     return {
         /**
-         * Function for retrieving all activities from the backend
+         * Function for retrieving all published activities from the backend
          * @returns activities
          */
         getAll: function () {

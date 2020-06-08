@@ -1,0 +1,28 @@
+<div class="container">
+
+    <!-- TODO: Abstract from container div like pages -->
+
+    <h1>Committees</h1>
+    <p>
+        The association has several committees that focus on organizing activities, workshops, events and trips.
+        In addition, several committees help the association in acquisition and promotion.
+        In total, H.S.A. Confluente is currently supported by {{committees.length}} committees.
+    </p>
+    <div class="row" id="committees">
+    <!-- Draws all the committee pictures and links in a 2 by x grid -->
+        <div ng-repeat="committee in committees">
+            <div class="col-sm-12 col-xs-12 col-md-6 col-lg-6" style="padding: 15px">
+                <a href={{committee.link}} class="committee-link">
+                    <div class="committee-box bg-primary">
+                        <div class="committee-img-container"
+                             ng-style="{'background-image': 'url(' + committee.image + ')'}"></div>
+                        <div class="committee-text">
+                            {{committee.displayName}}
+                            <i class="committee-text fa fa-chevron-right" aria-hidden="true"></i>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>

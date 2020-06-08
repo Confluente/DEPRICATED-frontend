@@ -42,6 +42,13 @@ app.controller("manageController", ["$rootScope", "$scope", "$q", "$timeout", "$
         };
         $timeout(waitForRenderAndDoSomething); // Waits for first digest cycle
 
+        // Allow toggling the 'published' attribute of activities
+        $scope.togglePublishedActivity = function(activityToBeToggled) {
+            activityToBeToggled.published = !activityToBeToggled.published;
+            activityToBeToggled.organizer = activityToBeToggled.Organizer.displayName;
+            activities.edit(activityToBeToggled);
+        };
+
         $scope.$watch("f.date", function (newDate) {
             $scope.filter();
         });
