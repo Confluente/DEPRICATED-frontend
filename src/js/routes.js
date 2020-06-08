@@ -8,6 +8,7 @@ var routes = [
     require("./user/edit"),
     require("./user/delete"),
     require("./user/changePassword"),
+    require("./magazine"),
     require("./activities/"),
     require("./activities/view"),
     require("./activities/create"),

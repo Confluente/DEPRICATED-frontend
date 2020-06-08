@@ -188,6 +188,25 @@ label {
     align-items: center;
 }
 
+/* -- Mobile and Desktop show */
+.desktopshow {
+    display: block;
+}
+
+.mobileshow {
+    display: none;
+}
+
+@media screen and (max-width: 992px) {
+    .mobileshow {
+        display: block;
+    }
+
+    .desktopshow {
+        display: none;
+    }
+}
+
 /* -- Text: H.S.A. Confluente */
 .hsa {
     font-family: "Rounded Elegance", sans-serif;
@@ -609,16 +628,6 @@ input[type="checkbox"], input[type="radio"] {
     list-style-type: none;
 }
 
-.mobileshow {
-    display: none;
-}
-
-@media screen and (max-width: 992px) {
-    .mobileshow {
-        display: block;
-    }
-}
-
 
 /* --partners */
 .partner-box {
@@ -900,4 +909,21 @@ input[type="checkbox"], input[type="radio"] {
   -o-transform: translate(0px, 0px);
   -ms-transform: translate(0px, 0px);
   transform: translate3d(0px, 0px, 0px);
+}
+
+#magazine_container {
+    max-height: 100%;
+    height: calc(100vh - 8rem);
+    overflow: hidden;
+}
+#magazine_notification {
+    position: absolute;
+    bottom: 0; left: 0; right: 0; margin: 0;
+}
+.no-overflow {
+    overflow: hidden;
+}
+.magazine div {
+    background-size: contain;
+    background-repeat: no-repeat
 }
