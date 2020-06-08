@@ -118,14 +118,18 @@ app.controller("activityEditController", ["$scope", "$routeParams", "activities"
         if (changedCoverImage) {
             var file = $('#activityEdit-cover')[0].files[0];
             if (!file.type.startsWith('image/')) {
-                wrongInput('Non-image formats are not supported as pictures for activities!');
+                return wrongInput('Non-image formats are not supported as pictures for activities!');
+            }
+
+            if (file.size - 1000000 > 0) {
+                return wrongInput('Image size is larger than 1MB')
             }
 
             var img = new Image();
             img.src = window.URL.createObjectURL(file);
             img.onload = function() {
                 if (img.width < img.height) {
-                    wrongInput('Image width should be greater than or equal to image height!');
+                    return wrongInput('Image width should be greater than or equal to image height!');
                 }
             }
 
@@ -182,12 +186,12 @@ app.controller("activityEditController", ["$scope", "$routeParams", "activities"
 
         // If required field are empty, do not accept activity
         if ($scope.empty) {
-            wrongInput("Not all required fields have been filled in.")
+            return wrongInput("Not all required fields have been filled in.")
         }
 
         // If problematic fields contain #,# or #;# reject form
         if ($scope.wrongCharacters) {
-            wrongInput("Character combinations #,# and #;# are not allowed.")
+            return wrongInput("Character combinations #,# and #;# are not allowed.")
         }
 
         if ($scope.activity.hasCoverImage && !changedCoverImage && !$scope.keepCurrent)
