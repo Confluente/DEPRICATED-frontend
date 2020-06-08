@@ -15,6 +15,16 @@ app.factory("groups", ["$http", "$timeout", function ($http, $timeout) {
             });
         },
         /**
+         * Function for retrieving all groups from backend of a certain type
+         * @param type
+         * @returns groups
+         */
+        getAllOfType: function(type) {
+            return $http.get("/api/group/type/" + type).then(function (result) {
+                return result.data
+            });
+        },
+        /**
          * Function for retrieving group based on id
          * @param id
          * @returns group

@@ -8,7 +8,7 @@
 
         <div class="form-group">
             <label for="groupCreate-name">Group name</label>
-            <input type="text" ng-model="name" class="form-control" id="groupCreate-name"></input>
+            <input type="text" ng-model="name" class="form-control" id="groupCreate-name">
         </div>
 
         <div class="form-group">
@@ -24,6 +24,25 @@
         <div class="form-group">
             <label for="groupCreate-email">Email</label>
             <input type="text" ng-model="email" class="form-control" id="groupCreate-email">
+        </div>
+
+        <div class="form-group">
+            <label>Type</label>
+            <div class="radio">
+                <label>
+                    <input type="radio" ng-model="type" value="Committee" id="groupCreate-type1"/> Committee
+                </label>
+            </div>
+            <div class="radio">
+                <label>
+                    <input type="radio" ng-model="type" value="Board" id="groupCreate-type2"/> Board
+                </label>
+            </div>
+            <div class="radio">
+                <label>
+                    <input type="radio" ng-model="type" value={{temporary_input}}> Other:  <input type="text" ng-model="temporary_input" class="form-control" id="groupCreate-type3">
+                </label>
+            </div>
         </div>
 
         <div class="checkbox">
