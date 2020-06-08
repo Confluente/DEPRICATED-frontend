@@ -41,7 +41,8 @@ app.controller("activityEditController", ["$scope", "$routeParams", "activities"
                     fullQuestion: activity.questionDescriptions[i],
                     type: activity.typeOfQuestion[i],
                     options: options,
-                    required: (activity.required[i] === 'true')
+                    required: (activity.required[i] === 'true'),
+                    privacyOfQuestion: (activity.privacyOfQuestions[i] === 'true')
                 });
             }
             $scope.deadline.subscriptionDeadline = activity.subscriptionDeadline;
@@ -50,8 +51,8 @@ app.controller("activityEditController", ["$scope", "$routeParams", "activities"
         // If not subscription form was submitted initially then add the standard two questions to input
         if ($scope.inputs.length === 0) {
             $scope.inputs = [
-                {fullQuestion: 'Name', type: "name", options: [''], required: 'true'},
-                {fullQuestion: 'TU/e email', type: "TU/e email", options: [''], required: 'true'}
+                {fullQuestion: 'Name', type: "name", options: [''], required: 'true', privacyOfQuestion: 'false'},
+                {fullQuestion: 'TU/e email', type: "TU/e email", options: [''], required: 'true', privacyOfQuestion: 'false'}
             ];
         }
 
@@ -62,7 +63,7 @@ app.controller("activityEditController", ["$scope", "$routeParams", "activities"
 
     // adds an element to the inputs variable
     $scope.add = function () {
-        var dataObj = {fullQuestion: '', type: "☰ text", options: ['option 1'], required: ''};
+        var dataObj = {fullQuestion: '', type: "☰ text", options: ['option 1'], required: '', privacyOfQuestion: ''};
         $scope.inputs.push(dataObj);
     };
 
@@ -147,6 +148,7 @@ app.controller("activityEditController", ["$scope", "$routeParams", "activities"
             var allTypes = [];
             var allOptions = [];
             var allRequired = [];
+            var allPrivacyOfQuestion = [];
 
             $scope.inputs.forEach(function (dataObj) {
                 allDescriptions.push(dataObj.fullQuestion);
@@ -159,7 +161,10 @@ app.controller("activityEditController", ["$scope", "$routeParams", "activities"
                     if (dataObj.options[i].includes("#,#")) $scope.wrongCharacters = true;
                 }
                 allOptions.push(optionString);
-                allRequired.push(dataObj.required);
+
+                allRequired.push(dataObj.required.toString());
+
+                allPrivacyOfQuestion.push(dataObj.privacyOfQuestion.toString());
 
                 // Checks whether questions are empty
                 if (!dataObj.fullQuestion || dataObj.fullQuestion === "") {
@@ -180,6 +185,7 @@ app.controller("activityEditController", ["$scope", "$routeParams", "activities"
             $scope.activity.questionDescriptions = allDescriptions;
             $scope.activity.formOptions = allOptions;
             $scope.activity.required = allRequired;
+            $scope.activity.privacyOfQuestions = allPrivacyOfQuestion;
             $scope.activity.numberOfQuestions = allDescriptions.length;
             $scope.activity.subscriptionDeadline = $scope.deadline.subscriptionDeadline;
         }

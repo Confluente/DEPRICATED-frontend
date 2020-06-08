@@ -15,8 +15,8 @@ app.controller("activityCreateController", ["$scope", "activities", function ($s
 
     // setting standard inputs for subscription form (first two questions are mandatory)
     $scope.inputs = [
-        {fullQuestion: 'Name', type: "name", options: [''], required: 'true'},
-        {fullQuestion: 'TU/e email', type: "TU/e email", options: [''], required: 'true'}
+        {fullQuestion: 'Name', type: "name", options: [''], required: 'true', privacyOfQuestion: 'false'},
+        {fullQuestion: 'TU/e email', type: "TU/e email", options: [''], required: 'true', privacyOfQuestion: 'false'}
     ];
 
     // boolean for whether members can subscribe to the event and therefore whether to show the subscription form possibilities
@@ -27,7 +27,7 @@ app.controller("activityCreateController", ["$scope", "activities", function ($s
 
     // Each time a question is added, this creates a new empty object in the inputs variable
     $scope.add = function () {
-        var dataObj = {fullQuestion: '', type: "☰ text", options: ['option 1'], required: ''};
+        var dataObj = {fullQuestion: '', type: "☰ text", options: ['option 1'], required: '', privacyOfQuestion: ''};
         $scope.inputs.push(dataObj);
     };
 
@@ -119,6 +119,7 @@ app.controller("activityCreateController", ["$scope", "activities", function ($s
             var allTypes = [];
             var allOptions = [];
             var allRequired = [];
+            var allPrivacyOfQuestion = [];
 
             $scope.inputs.forEach(function (dataObj) {
                 allDescriptions.push(dataObj.fullQuestion);
@@ -133,8 +134,11 @@ app.controller("activityCreateController", ["$scope", "activities", function ($s
                 }
                 allOptions.push(optionString);
 
-                // check whether the question actually has a question
                 allRequired.push(dataObj.required);
+
+                allPrivacyOfQuestion.push(dataObj.privacyOfQuestion);
+
+                // check whether the question actually has a question
                 if (!dataObj.fullQuestion || dataObj.fullQuestion === "") {
                     $scope.empty = true;
                 }
@@ -154,6 +158,7 @@ app.controller("activityCreateController", ["$scope", "activities", function ($s
             act.questionDescriptions = allDescriptions;
             act.options = allOptions;
             act.required = allRequired;
+            act.privacyOfQuestions = allPrivacyOfQuestion;
             act.subscriptionDeadline = $scope.deadline.subscriptionDeadline;
         }
 

@@ -11,11 +11,11 @@
             <ol class="breadcrumb small text-right">
                 <li><a ng-href="/manage/activities/{{activity.id}}"><b>Edit activity</b></a></li>
                 <li ng-if="isUserOrganizing && !activity.published">
-                	<a ng-click="publishActivity(activity)" ng-href="/"><b>Publish Activity</b></a>
+                    <a ng-click="publishActivity(activity)" ng-href="/"><b>Publish Activity</b></a>
                 </li>
-           		<li ng-if="isUserOrganizing && activity.published">
-           			<a  ng-click="unpublishActivity(activity)" ng-href="/"><b>Unpublish Activity</b></a>
-           		</li>
+                <li ng-if="isUserOrganizing && activity.published">
+                    <a ng-click="unpublishActivity(activity)" ng-href="/"><b>Unpublish Activity</b></a>
+                </li>
             </ol>
         </div>
     </div>
@@ -33,9 +33,11 @@
                 <li ng-if="activity.startTime && !activity.endTime">Starting at {{activity.startTime}}</li>
                 <li ng-if="activity.endTime && !activity.startTime">Ending at {{activity.endTime}}</li>
 
-                <li ng-if="activity.location"><i class="fa fa-map-marker" aria-hidden="true"></i> {{activity.location}}</li>
+                <li ng-if="activity.location"><i class="fa fa-map-marker" aria-hidden="true"></i> {{activity.location}}
+                </li>
 
-                <li class="pull-right"><span class="small">Organized by </span><span class="hsa small">{{activity.Organizer.fullName}}</span></li>
+                <li class="pull-right"><span class="small">Organized by </span><span class="hsa small">{{activity.Organizer.fullName}}</span>
+                </li>
             </ul>
 
         </div>
@@ -57,18 +59,22 @@
 
             <div ng-if="activity.canSubscribe" class="block" id="activity-signup">
 
-                <p ng-if="!deadlinePassed && !user.loggedIn" class="small">You need to <a href="/login"><b>login</b></a> to register for this event.</p>
+                <p ng-if="!deadlinePassed && !user.loggedIn" class="small">You need to <a href="/login"><b>login</b></a>
+                    to register for this event.</p>
 
                 <ul ng-if="!deadlinePassed" class="list-inline" style="margin-bottom: 0">
                     <li ng-if="!deadlinePassed && !subscribed">
-                        <a href="#signup" ng-disabled="!user.loggedIn" class="btn btn-primary" data-toggle="collapse">Sign up</a>
+                        <a href="#signup" ng-disabled="!user.loggedIn" class="btn btn-primary" data-toggle="collapse">Sign
+                            up</a>
                     </li>
                     <li ng-if="subscribed">
-                        <a href="#signup" class="btn btn-success" data-toggle="collapse"><i class="fa fa-check"></i> Subscribed!</a>
+                        <a href="#signup" class="btn btn-success" data-toggle="collapse"><i class="fa fa-check"></i>
+                            Subscribed!</a>
                     </li>
 
                     <li ng-if="activity.participationFee">Costs: &euro;{{activity.participationFee}}</li>
-                    <li ng-if="!deadlinePassed" class="small">Registration closes on <b>{{activity.subscriptionDeadline | date:'MMMM dd, yyyy'}}</b></li>
+                    <li ng-if="!deadlinePassed" class="small">Registration closes on <b>{{activity.subscriptionDeadline
+                        | date:'MMMM dd, yyyy'}}</b></li>
                 </ul>
 
                 <div ng-if="deadlinePassed" class="list-inline small">
@@ -86,10 +92,12 @@
                             <div class="form-horizontal">
                                 <div class="form-group small">
                                     <div class="col-xs-6">
-                                        <input type="text" ng-model="user.displayName" class="disabled-input" id="activityName" disabled/>
+                                        <input type="text" ng-model="user.displayName" class="disabled-input"
+                                               id="activityName" disabled/>
                                     </div>
                                     <div class="col-xs-6">
-                                        <input type="text" ng-model="user.email" class="disabled-input text-right" id="activityEmail" disabled/>
+                                        <input type="text" ng-model="user.email" class="disabled-input text-right"
+                                               id="activityEmail" disabled/>
                                     </div>
                                 </div>
                             </div>
@@ -102,7 +110,8 @@
                                     <label for="activityView{{$index}}">{{activity.questionDescriptions[$index]}}
                                         <span ng-if="activity.required[$index] !== 'true'">(optional)</span>
                                     </label>
-                                    <input type="text" ng-model="answers[$index]" class="form-control" id="activityView{{$index}}"/>
+                                    <input type="text" ng-model="answers[$index]" class="form-control"
+                                           id="activityView{{$index}}"/>
                                 </div>
 
                                 <div class="form-group" ng-if="activity.typeOfQuestion[$index] == '◉ multiple choice'">
@@ -123,15 +132,20 @@
                                     </label>
                                     <div class="checkbox" ng-repeat="option in activity.formOptions[$index]">
                                         <label>
-                                            <input type="checkbox" value="{{option}}" ng-model="answers[$parent.$index][$index]">{{option}}
+                                            <input type="checkbox" value="{{option}}"
+                                                   ng-model="answers[$parent.$index][$index]">{{option}}
                                         </label>
                                     </div>
                                 </div>
 
                             </div>
 
-                            <button ng-if="!subscribed" type="submit" class="btn btn-primary" ng-click="submit()" ng-disabled="loading" id="submit">Submit</button>
-                            <button ng-if="subscribed" type="submit" class="btn btn-primary" ng-click="submit()" ng-disabled="loading" id="submit">Update</button>
+                            <button ng-if="!subscribed" type="submit" class="btn btn-primary" ng-click="submit()"
+                                    ng-disabled="loading" id="submit">Submit
+                            </button>
+                            <button ng-if="subscribed" type="submit" class="btn btn-primary" ng-click="submit()"
+                                    ng-disabled="loading" id="submit">Update
+                            </button>
                             <button ng-if="subscribed" class="btn btn-link" ng-click="remove()">Unsubscribe</button>
                         </div>
 
@@ -156,22 +170,27 @@
 
         <div class="small table-responsive">
             <table class="table table-hover">
+
                 <thead>
-                    <tr>
-                        <th></th>
-                        <th ng-repeat="question in activity.questionDescriptions track by $index">
-                            {{question}}
-                        </th>
-                    </tr>
+                <tr>
+                    <th></th>
+                    <th ng-repeat="question in activity.questionDescriptions track by $index"
+                        ng-if="activity.privacyOfQuestions[$index] === 'false' || isUserOrganizing">
+                        <div>{{question}}</div>
+                    </th>
+                </tr>
                 </thead>
+
                 <tbody>
-                    <tr ng-repeat="participant in activity.participants">
-                        <td>{{$index + 1}}</td>
-                        <td ng-repeat="answer in participant.subscription.answers track by $index">
-                            {{answer}}
-                        </td>
-                    </tr>
+                <tr ng-repeat="participant in activity.participants">
+                    <td>{{$index + 1}}</td>
+                    <td ng-repeat="answer in participant.subscription.answers track by $index"
+                        ng-if="activity.privacyOfQuestions[$index] === 'false' || isUserOrganizing">
+                        <div>{{answer}}</div>
+                    </td>
+                </tr>
                 </tbody>
+
             </table>
         </div>
 

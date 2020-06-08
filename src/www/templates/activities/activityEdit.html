@@ -18,20 +18,22 @@
                     <div class="form-group">
                         <label for="activityEdit-name" class="col-xs-12 col-sm-2 control-label">Name</label>
                         <div class="col-xs-12 col-sm-10 col-lg-9">
-                            <input type="text" ng-model="activity.name"  class="form-control" id="activityEdit-name">
+                            <input type="text" ng-model="activity.name" class="form-control" id="activityEdit-name">
                         </div>
                     </div>
 
                     <div class="form-group">
                         <label for="activityEdit-date" class="col-xs-12 col-sm-2 control-label">Date</label>
                         <div class="col-xs-6 col-sm-5 col-lg-4">
-                            <input type="date" ng-model="activity.date"  class="form-control" id="activityEdit-date"/>
+                            <input type="date" ng-model="activity.date" class="form-control" id="activityEdit-date"/>
                         </div>
                         <div class="col-xs-3 col-sm-2 col-sm-offset-1">
-                            <input type="text" ng-model="activity.startTime" class="form-control" placeholder="hh:mm" id="activityEdit-startTime"/>
+                            <input type="text" ng-model="activity.startTime" class="form-control" placeholder="hh:mm"
+                                   id="activityEdit-startTime"/>
                         </div>
                         <div class="col-xs-3 col-sm-2">
-                            <input type="text" ng-model="activity.endTime" class="form-control" placeholder="hh:mm" id="activityEdit-time"/>
+                            <input type="text" ng-model="activity.endTime" class="form-control" placeholder="hh:mm"
+                                   id="activityEdit-time"/>
                         </div>
                     </div>
 
@@ -41,14 +43,16 @@
                     <div class="form-group">
                         <label for="activityEdit-location" class="col-xs-12 col-sm-2 control-label">Location</label>
                         <div class="col-xs-12 col-sm-10 col-lg-9">
-                            <input type="text" ng-model="activity.location" class="form-control" id="activityEdit-location"/>
+                            <input type="text" ng-model="activity.location" class="form-control"
+                                   id="activityEdit-location"/>
                         </div>
                     </div>
 
                     <div class="form-group">
                         <label for="activityEdit-desc" class="col-xs-12 col-sm-2 control-label">Description</label>
                         <div class="col-xs-12 col-sm-10 col-lg-9">
-                            <textarea ng-model="activity.description" class="form-control" style="height:300px" id="activityEdit-desc"></textarea>
+                            <textarea ng-model="activity.description" class="form-control" style="height:300px"
+                                      id="activityEdit-desc"></textarea>
                         </div>
                     </div>
 
@@ -60,7 +64,8 @@
                 <div class="section">
 
                     <div class="form-group">
-                        <label for="activityEdit-organize" class="col-xs-12 col-sm-2 col-md-5 control-label">Organized by</label>
+                        <label for="activityEdit-organize" class="col-xs-12 col-sm-2 col-md-5 control-label">Organized
+                            by</label>
                         <div class="col-xs-12 col-sm-10 col-md-7">
                             <select ng-model="activity.organizer" class="form-control" id="activityEdit-organize"
                                     ng-options="group for group in userGroups">
@@ -73,7 +78,8 @@
                         <div class="col-xs-12 col-sm-10 col-md-7">
                             <div class="input-group">
                                 <span class="input-group-addon">€</span>
-                                <input type="text" ng-model="activity.participationFee" class="form-control" placeholder="0.00" id="activityEdit-participationFee"/>
+                                <input type="text" ng-model="activity.participationFee" class="form-control"
+                                       placeholder="0.00" id="activityEdit-participationFee"/>
                             </div>
                         </div>
                     </div>
@@ -82,9 +88,13 @@
 
                 <div class="block">
                     <div class="form-group">
-                        <label for="activityEdit-cover" class="col-xs-12 col-sm-2 col-md-5 control-label">Cover image</label>
+                        <label for="activityEdit-cover" class="col-xs-12 col-sm-2 col-md-5 control-label">Cover
+                            image</label>
                         <div class="col-xs-12 col-sm-10 col-md-7">
-                            <div ng-if="activity.hasCoverImage"><input ng-click="toggleKeepCurrent()" ng-checked="keepCurrent" type="checkbox">Keep current picture</div>
+                            <div ng-if="activity.hasCoverImage"><input ng-click="toggleKeepCurrent()"
+                                                                       ng-checked="keepCurrent" type="checkbox">Keep
+                                current picture
+                            </div>
                             <input id="activityEdit-cover" type="file" accept=".jpeg,.jpg,.png" fileread="uploadme"/>
                         </div>
                     </div>
@@ -93,14 +103,16 @@
                 <div class="block">
                     <div class="checkbox">
                         <label>
-                            <input ng-click="toggleSubscribe()" ng-checked="activity.canSubscribe" type="checkbox"> Requires subscription
+                            <input ng-click="toggleSubscribe()" ng-checked="activity.canSubscribe" type="checkbox">
+                            Requires subscription
                         </label>
                     </div>
 
                     <div class="form-group section" ng-if="activity.canSubscribe">
                         <label for="subscriptionDeadline-date" class="col-xs-12 col-sm-2 col-md-5 control-label">Deadline</label>
                         <div class="col-xs-12 col-sm-10 col-md-7">
-                            <input type="date" ng-model="deadline.subscriptionDeadline" class="form-control" id="subscriptionDeadline-date"/>
+                            <input type="date" ng-model="deadline.subscriptionDeadline" class="form-control"
+                                   id="subscriptionDeadline-date"/>
                         </div>
                     </div>
                 </div>
@@ -120,11 +132,12 @@
                 <div class="col-xs-12 col-md-8">
                     <div class="row">
 
-                        <label for="activityCreate-fullQuestion{{$index}}" class="col-xs-12 col-sm-2 control-label">Question {{$index + 1}}</label>
+                        <label for="activityEdit-fullQuestion{{$index}}" class="col-xs-12 col-sm-2 control-label">Question
+                            {{$index + 1}}</label>
 
                         <div class="col-xs-6 col-lg-7">
                             <input type="text" ng-model="input.fullQuestion" class="form-control"
-                                   id="activityCreate-fullQuestion{{$index}}"
+                                   id="activityEdit-fullQuestion{{$index}}"
                                    ng-disabled="input.type === 'name' || input.type === 'TU/e email'"/>
 
                         </div>
@@ -142,18 +155,30 @@
 
                         <div class="checkbox col-xs-6 col-sm-4 col-sm-offset-2 col-md-5 col-md-offset-1">
                             <label>
-                                <input ng-model="input.required" ng-disabled="input.type === 'name' || input.type === 'TU/e email'" type="checkbox" id="activityCreate-required{{$index}}"> Mandatory
+                                <input ng-model="input.required"
+                                       ng-disabled="input.type === 'name' || input.type === 'TU/e email'"
+                                       type="checkbox" id="activityEdit-required{{$index}}"> Mandatory
+                            </label>
+                            <label>
+                                <input ng-model="input.privacyOfQuestion"
+                                       ng-disabled="input.type === 'name' || input.type === 'TU/e email'"
+                                       type="checkbox" id="activityEdit-privacyOfQuestion{{$index}}"> Private Question
                             </label>
                         </div>
 
                         <div class="col-xs-6 col-lg-5 text-right">
                             <div class="btn-group">
-                                <button class="btn btn-link" ng-click="arrayMove(inputs, $index, $index - 1)" ng-if="$index > 2"><i class="fa fa-angle-up"></i></button>
-                                <button class="btn btn-link" ng-if="$index == 2" disabled><i class="fa fa-angle-up"></i></button>
-                                <button class="btn btn-link" ng-click="arrayMove(inputs, $index, $index + 1)" ng-if="$index < inputs.length - 1"><i class="fa fa-angle-down"></i></button>
-                                <button class="btn btn-link" ng-if="$index == inputs.length - 1" disabled><i class="fa fa-angle-down"></i></button>
+                                <button class="btn btn-link" ng-click="arrayMove(inputs, $index, $index - 1)"
+                                        ng-if="$index > 2"><i class="fa fa-angle-up"></i></button>
+                                <button class="btn btn-link" ng-if="$index == 2" disabled><i class="fa fa-angle-up"></i>
+                                </button>
+                                <button class="btn btn-link" ng-click="arrayMove(inputs, $index, $index + 1)"
+                                        ng-if="$index < inputs.length - 1"><i class="fa fa-angle-down"></i></button>
+                                <button class="btn btn-link" ng-if="$index == inputs.length - 1" disabled><i
+                                        class="fa fa-angle-down"></i></button>
                             </div>
-                            <button class="btn btn-link" ng-click="removeInput($index)"><i class="fa fa-trash-o"></i></button>
+                            <button class="btn btn-link" ng-click="removeInput($index)"><i class="fa fa-trash-o"></i>
+                            </button>
                         </div>
 
                     </div>
@@ -169,7 +194,8 @@
                                 <div class="col-xs-9 col-xs-offset-1 col-sm-5 col-sm-offset-3">
                                     <input type="text" ng-model="input.options[$index]" class="form-control">
                                 </div>
-                                <button class="btn btn-link" ng-click="removeOption($parent.$index, $index)"><i class="fa fa-trash-o"></i></button>
+                                <button class="btn btn-link" ng-click="removeOption($parent.$index, $index)"><i
+                                        class="fa fa-trash-o"></i></button>
 
                             </div>
                         </div>
@@ -180,7 +206,8 @@
                         <div class="col-xs-12 col-md-8">
                             <div class="form-group">
                                 <div class="col-xs-9 col-xs-offset-1 col-sm-5 col-sm-offset-3">
-                                    <button ng-click="addOption(input)" class="btn btn-sm btn-default" ng-if="input.options.length < 50">
+                                    <button ng-click="addOption(input)" class="btn btn-sm btn-default"
+                                            ng-if="input.options.length < 50">
                                         + Add option
                                     </button>
                                 </div>
