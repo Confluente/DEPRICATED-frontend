@@ -18,6 +18,9 @@ app.controller("userEditController", ["$scope", "$q", "$routeParams", "users", "
     // Different generations in which students can say that started at honors academy
     $scope.generations = [2016, 2017, 2018, 2019, 2020];
 
+    // Different membership statuses
+    $scope.memberships = ["Member", "Alumni", "Associate member"];
+
     // Different roles for users
     $scope.role = {
         roles: [{

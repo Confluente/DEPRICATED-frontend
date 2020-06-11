@@ -1,77 +1,208 @@
 <!-- TODO Abstract from container div -->
 <div class="container">
-    <h1>
-        <a class="btn btn-link" href="/manage"><i class="fa fa-chevron-left" aria-hidden="true"></i></a>
-        Edit user
-    </h1>
 
-    <form>
+    <ol class="breadcrumb small">
+        <li><a href="/user/profile">Profile</a></li>
+        <li class="active">Edit</li>
+    </ol>
 
-        <div class="form-group">
-            <label for="userCreate-firstName">First name (required)</label>
-            <input type="text" ng-model="user.firstName" class="form-control" id="userCreate-firstName">
-        </div>
+    <form class="form-horizontal">
+        <header>
+            <h1>
+                Edit profile
+            </h1>
+        </header>
 
-        <div class="form-group">
-            <label for="userCreate-lastName">Family name (required)</label>
-            <input type="text" ng-model="user.lastName" class="form-control" id="userCreate-lastName">
-        </div>
+        <div class="row">
 
-        <div class="form-group">
-            <label for="userCreate-email">TU/e Email address (required)</label>
-            <input type="text" ng-model="user.email" class="form-control" id="userCreate-email">
-        </div>
+            <div class="col-xs-12 col-md-8 col-lg-6">
 
-        <div class="form-group">
-            <label for="userCreate-major">Major</label>
-            <input type="text" ng-model="user.major" class="form-control" id="userCreate-major">
-        </div>
+                <fieldset class="section">
+                    <legend class="h4 section">The basics.</legend>
 
-        <div class="form-group">
-            <label for="userCreate-address">Address (Netherlands, optional)</label>
-            <input type="text" ng-model="user.address" class="form-control" id="userCreate-address">
-        </div>
+                    <div class="row">
+                        <div class="col-xs-12">
 
-        <b>Which honors track are you in:</b>
-        <select ng-model="user.track" ng-options="x for x in tracks"></select><br>
+                            <div class="form-group">
+                                <label for="userCreate-firstName" class="col-xs-12 col-sm-3 control-label">Name</label>
+                                <div class="col-xs-6 col-sm-4">
+                                    <input placeholder="First name" type="text" ng-model="user.firstName" class="form-control" id="userCreate-firstName" required>
+                                </div>
+                                <div class="col-xs-6 col-sm-5">
+                                    <input placeholder="Family name" type="text" ng-model="user.lastName" class="form-control" id="userCreate-lastName" required>
+                                </div>
+                            </div>
 
-        <b>In which year did you start at the honors academy</b>
-        <select ng-model="user.honorsGeneration" ng-options="x for x in generations"></select><br>
+                        </div>
+                    </div>
 
-        <b>What is your membership status?</b>
-        <select ng-model="user.honorsMembership" ng-options="x for x in memberships"></select><br>
+                    <div class="clearfix"></div>
 
-        <div class="form-group">
-            <label for="userCreate-cardNumber">What is your campuscard number? (needed to give you access to the honors
-                room door)</label>
-            <input type="text" ng-model="user.campusCardNumber" class="form-control" id="userCreate-cardNumber">
-        </div>
+                    <div class="row">
+                        <div class="col-xs-12">
 
-        <div class="form-group">
-            <label for="userCreate-phone">Mobile phone number</label>
-            <input type="text" ng-model="user.mobilePhoneNumber" class="form-control" id="userCreate-phone">
-        </div>
+                            <div class="form-group">
+                                <label for="userCreate-email" class="col-xs-12 col-sm-3 control-label">Email address</label>
+                                <div class="col-xs-12 col-sm-9">
+                                    <input placeholder="@student.tue.nl" type="email" ng-model="user.email" class="form-control" id="userCreate-email" required>
+                                </div>
+                            </div>
 
+                        </div>
+                    </div>
 
-        <label>Role</label>
-        <div>
-            <div ng-repeat="r in role.roles">
-                <input type="radio" ng-model="selectedRole.id" value="{{r.id}}"/>
-                <span>{{r.id}}</span>
+                    <div class="clearfix block"></div>
+
+                    <div class="row">
+                        <div class="col-xs-12">
+
+                            <div class="form-group">
+                                <label for="userCreate-member" class="col-xs-12 col-sm-3 control-label">Membership</label>
+                                <div class="col-xs-12 col-sm-9">
+                                    <select ng-model="user.honorsMembership" ng-options="x for x in memberships" class="form-control" id="userCreate-member"></select>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="clearfix"></div>
+                </fieldset>
+
+                <hr>
+
+                <fieldset class="section">
+                    <legend class="h4 block">Additional information. This part is <span class="text-primary">optional</span>.</legend>
+
+                    <div class="row">
+                        <div class="col-xs-12">
+
+                            <div class="form-group">
+                                <label for="userCreate-major" class="col-xs-12 col-sm-3 control-label">TU/e Major</label>
+                                <div class="col-xs-12 col-sm-9">
+                                    <input type="text" ng-model="user.major" class="form-control" id="userCreate-major">
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="clearfix"></div>
+
+                    <div class="row">
+                        <div class="col-xs-12">
+
+                            <div class="form-group">
+                                <label for="userCreate-track" class="col-xs-12 col-sm-3 control-label">Honors track</label>
+                                <div class="col-xs-12 col-sm-9">
+                                    <select ng-model="user.track" ng-options="x for x in tracks" class="form-control" id="userCreate-track"></select>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="clearfix"></div>
+
+                    <div class="row">
+                        <div class="col-xs-12">
+
+                            <div class="form-group">
+                                <label for="userCreate-trackstart" class="col-xs-12 col-sm-3 col-sm-offset-1 control-label">started in</label>
+                                <div class="col-xs-12 col-sm-4">
+                                    <select ng-model="user.honorsGeneration" ng-options="x for x in generations" class="form-control" id="userCreate-trackstart"></select>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="clearfix block"></div>
+
+                    <div class="row">
+                        <div class="col-xs-12">
+
+                            <div class="form-group">
+                                <label for="userCreate-cardNumber" class="col-xs-12 col-sm-3 control-label">Card number</label>
+                                <div class="col-xs-12 col-sm-9">
+                                    <input type="tel" ng-model="user.campusCardNumber" class="form-control" id="userCreate-cardNumber">
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="clearfix block"></div>
+
+                    <div class="row">
+                        <div class="col-xs-12">
+
+                            <div class="form-group">
+                                <label for="userCreate-phone" class="col-xs-12 col-sm-3 control-label">Mobile phone</label>
+                                <div class="col-xs-12 col-sm-9">
+                                    <input type="tel" ng-model="user.mobilePhoneNumber" class="form-control" id="userCreate-phone">
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="clearfix"></div>
+
+                    <div class="row">
+                        <div class="col-xs-12">
+
+                            <div class="form-group">
+                                <label for="userCreate-address" class="col-xs-12 col-sm-3 control-label">Address</label>
+                                <div class="col-xs-12 col-sm-9">
+                                    <input type="text" ng-model="user.address" class="form-control" id="userCreate-address">
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="clearfix"></div>
+                </fieldset>
+
             </div>
-        </div>
 
-        <label>Groups</label>
-        <div ng-repeat="group in groupSelection">
-            <div class="checkbox">
-                <label>
-                    <input type="checkbox" name="selectedGroups[]" value="{{group.fullName}}" ng-model="group.selected"> {{group.fullName}}
-                    <select ng-model="group.role" ng-options="x for x in groupRoles"></select><br>
-                </label>
+            <div class="block col-xs-12 col-md-4 col-lg-offset-1 col-lg-5">
+                <legend class="h4 section">Manage.</legend>
+                <div class="panel panel-default">
+                    <div class="panel-body">
+
+                        <label>Role</label>
+                        <div ng-repeat="r in role.roles">
+                            <div class="radio">
+                                <label>
+                                    <input type="radio" ng-model="selectedRole.id" value="{{r.id}}">
+                                    {{r.id}}
+                                </label>
+                            </div>
+                        </div>
+
+                        <label><br>Groups</label>
+                        <div ng-repeat="group in groupSelection">
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" name="selectedGroups[]" value="{{group.fullName}}" ng-model="group.selected">
+                                    {{group.fullName}}
+                                    <select ng-model="group.role" ng-options="x for x in groupRoles"></select>
+                                </label>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
             </div>
+
         </div>
 
-        <button type="submit" class="btn btn-default" ng-click="submit()" ng-disabled="loading">Save</button>
+        <div class="clearfix block"></div>
+
+        <button type="submit" class="btn btn-primary" ng-click="submit()" ng-disabled="loading">Save</button>
 
     </form>
 </div>
