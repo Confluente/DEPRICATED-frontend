@@ -1,56 +1,73 @@
 <!--TODO Abstract from container-->
 <div class="container">
-    <h2>Profile</h2>
-    <div class="profileTable">
-        <table>
-            <tr>
-                <td><b>First name</b></td>
-                <td>{{user.firstName}}</td>
-            </tr>
-            <tr>
-                <td><b>Last name</b></td>
-                <td>{{user.lastName}}</td>
-            </tr>
-            <tr>
-                <td><b>TU/e email</b></td>
-                <td>{{user.email}}</td>
-            </tr>
-            <tr>
-                <td><b>Major</b></td>
-                <td>{{user.major}}</td>
-            </tr>
-            <tr>
-                <td><b>Address</b></td>
-                <td>{{user.address}}</td>
-            </tr>
-            <tr>
-                <td><b>Honors track</b></td>
-                <td>{{user.track}}</td>
-            </tr>
-            <tr>
-                <td><b>Honors generation</b></td>
-                <td>{{user.honorsGeneration}}</td>
-            </tr>
-            <tr>
-                <td><b>Confluente membership</b></td>
-                <td>{{user.honorsMembership}}</td>
-            </tr>
-            <tr>
-                <td><b>Campus card number</b></td>
-                <td>{{user.campusCardNumber}}</td>
-            </tr>
-            <tr>
-                <td><b>Mobile phone number</b></td>
-                <td>{{user.mobilePhoneNumber}}</td>
-            </tr>
-            <tr>
-                <td><b>Consent to portrait right</b></td>
-                <td>{{user.consentWithPortraitRight}}</td>
-            </tr>
-        </table>
+
+    <div class="pull-right">
+        <a class="btn btn-default" href="/user/changePassword/{{user.id}}">Change password</a>
     </div>
-    <h4 ng-if="groups.length > 0">Groups</h4>
-    <p ng-repeat="group in groups"><a href="/group/{{group.id}}">{{group.fullName}}</a> <b>({{group.members[0].user_group.func}})</b></p>
-    <h4>Personal settings</h4>
-    <p><a href="/user/changePassword/{{user.id}}">Change password</a></p>
+
+    <h1>Profile</h1>
+
+    <div class="row">
+        <div class="col-xs-12 col-md-8 col-lg-6">
+            <h4>My information</h4>
+            <table class="table table-hover">
+                <tr>
+                    <th class="col-xs-6 col-sm-5">First name</th>
+                    <td class="col-xs-6 col-sm-7">{{user.firstName}}</td>
+                </tr>
+                <tr>
+                    <th>Last name</th>
+                    <td>{{user.lastName}}</td>
+                </tr>
+                <tr>
+                    <th>TU/e email</th>
+                    <td>{{user.email}}</td>
+                </tr>
+                <tr>
+                    <th>Major</th>
+                    <td>{{user.major}}</td>
+                </tr>
+                <tr>
+                    <th>Address</th>
+                    <td>{{user.address}}</td>
+                </tr>
+                <tr>
+                    <th>Honors track</th>
+                    <td>{{user.track}}</td>
+                </tr>
+                <tr>
+                    <th>Honors generation</th>
+                    <td>{{user.honorsGeneration}}</td>
+                </tr>
+                <tr>
+                    <th>Confluente membership</th>
+                    <td>{{user.honorsMembership}}</td>
+                </tr>
+                <tr>
+                    <th>Campus card number</th>
+                    <td>{{user.campusCardNumber}}</td>
+                </tr>
+                <tr>
+                    <th>Mobile phone number</th>
+                    <td>{{user.mobilePhoneNumber}}</td>
+                </tr>
+                <tr>
+                    <th>Consent to portrait right</th>
+                    <td>{{user.consentWithPortraitRight}}</td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="col-xs-12 col-md-4 col-lg-offset-1 col-lg-5">
+            <div ng-if="groups.length > 0">
+                <h4>Groups</h4>
+                <p ng-repeat="group in groups">
+                    <a href="/group/{{group.id}}">{{group.fullName}}</a>
+                    <b>({{group.members[0].user_group.func}})</b>
+                </p>
+            </div>
+        </div>
+
+    </div>
+
 </div>
