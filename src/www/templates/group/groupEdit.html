@@ -25,6 +25,20 @@
             <input type="text" ng-model="group.email" class="form-control" id="groupEdit-email">
         </div>
 
+        <div class="form-group">
+            <label>Type</label>
+            <div class="radio">
+                <label>
+                    <input type="radio" ng-model="group.type" value="Committee" id="groupCreate-type1"/> Committee
+                </label>
+            </div>
+            <div class="radio">
+                <label>
+                    <input type="radio" ng-model="group.type" value="Board" id="groupCreate-type2"/> Board
+                </label>
+            </div>
+        </div>
+
         <div class="checkbox">
             <label for="groupCreate-canOrganize">
                 <input type="checkbox" ng-model="group.canOrganize" id="groupCreate-canOrganize"> Can this group
