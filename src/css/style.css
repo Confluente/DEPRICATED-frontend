@@ -702,10 +702,10 @@ i.committee-text {
 }
 
 #magazine_container {
-    max-height: 100%;
     height: calc(100vh - 8rem);
     overflow: hidden;
 }
+
 #magazine_notification {
     position: absolute;
     bottom: 0; left: 0; right: 0; margin: 0;

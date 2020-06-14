@@ -12,18 +12,41 @@ app.controller("magazineController", ["$scope", function ($scope) {
     var window_height = $("#magazine").parent().height();
     var display = "";
     var width = 0;
+    var height = 0;
 
+    // Magazine page size: 1039 x 1476  (width x height)
+    // So the ratio is:       1 : 1.42
+    // Or:                 0.70 : 1
+
+    // Screen width: medium (md), large (lg)
     if (window_width >= 940) {
         display = "double";
-        width = window_height * 1.4;
-    } else {
+
+        if (window_width >= window_height * 0.70 * 2) {
+            width  = window_height * 0.70 * 2;
+            height = window_height;
+        } else {
+            width  = window_width;
+            height = window_width * 1.42 / 2;
+        }
+    }
+
+    // Screen width: extra small (xs), small (sm)
+    else {
         display = "single";
-        width = window_height * 0.7;
+
+        if (window_width >= window_height * 0.70) {
+            width  = window_height * 0.70;
+            height = window_height;
+        } else {
+            width = window_width;
+            height = window_width * 1.42;
+        }
     }
 
     $("#magazine").turn({
         width: width,
-        height: window_height,
+        height: height,
         autoCenter: false,
         display: display,
         acceleration: false
