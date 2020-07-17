@@ -32,6 +32,11 @@
             <input type="text" ng-model="user.address" class="form-control" id="userCreate-address">
         </div>
 
+        <div class="form-group">
+            <label for="userCreate-dateOfBirth">Date of Birth</label>
+            <input type="date" ng-model="user.dateOfBirth" class="form-control" id="userCreate-dateOfBirth">
+        </div>
+
         <b>Which honors track are you in:</b>
         <select ng-model="user.track" ng-options="x for x in tracks"></select><br>
 

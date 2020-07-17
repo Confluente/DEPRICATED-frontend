@@ -39,6 +39,7 @@ app.controller("userCreateController", ["$scope", "users", function ($scope, use
             honorsMembership: $scope.membership,
             major: $scope.major,
             address: $scope.address,
+            dateOfBirth: $scope.dateOfBirth,
             track: $scope.honorsTrack,
             honorsGeneration: $scope.generation,
             campusCardNumber: $scope.cardNumber,
