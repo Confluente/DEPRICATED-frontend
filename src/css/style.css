@@ -200,6 +200,9 @@ legend {
 
 /* NAVIGATION BAR ----------------------------------------------------------- */
 
+/* Remove border */
+.navbar { border: none }
+
 /* Icons + dropdown menu style */
 .navbar-nav .fa { margin-right: 0.7rem }
 .dropdown-menu { padding: 0 }
