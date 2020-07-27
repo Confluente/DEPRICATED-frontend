@@ -49,7 +49,6 @@
   ],
   "validateIndentation": 4,
   "disallowMixedSpacesAndTabs": true,
-  "disallowTrailingWhitespace": true,
   "requireCapitalizedConstructors": true,
   "requireDotNotation": true,
   "disallowNewlineBeforeBlockStatements": true,

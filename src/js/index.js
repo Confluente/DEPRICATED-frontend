@@ -12,6 +12,7 @@ require("./services/servicePages");
 require("./services/serviceUsers");
 require("./services/serviceGroups");
 require("./services/serviceNotifications");
+require("./services/servicePartners");
 require("./services/controllerNavbar");
 require("./responseObserver");
 

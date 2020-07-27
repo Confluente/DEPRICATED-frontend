@@ -19,6 +19,7 @@ var routes = [
     require("./group/edit"),
     require("./group/view"),
     require("./group/delete"),
+    require("./partners/internships/view"),
     require("./page/view"),
     require("./manage"),
     require("./page/manage"),
