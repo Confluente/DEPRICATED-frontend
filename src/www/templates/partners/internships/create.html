@@ -30,8 +30,7 @@
                         <label for="internshipCreate-companyName"
                                class="col-xs-12 col-sm-3 control-label">Company</label>
                         <div class="col-xs-12 col-sm-9">
-                            <input type="text" ng-model="company" class="form-control" id="internshipCreate-companyName"
-                                   required>
+                            <select ng-model="company" class="form-control" ng-options="x for x in companies" id="internshipCreate-companyName"></select>
                         </div>
                     </div>
 
@@ -46,8 +45,7 @@
                     <div class="form-group">
                         <label for="internshipCreate-category" class="col-xs-12 col-sm-3 control-label">Category</label>
                         <div class="col-xs-12 col-sm-9">
-                            <input type="text" ng-model="category" class="form-control" id="internshipCreate-category"
-                                   value="internship">
+                            <input type="text" class="form-control" ng-value="categories[0]" id="internshipCreate-category" ng-disabled="true">
                         </div>
                     </div>
 
@@ -130,7 +128,7 @@
                     works (adding quotes, links, images and much much more) check <a
                         href="https://www.markdownguide.org/basic-syntax/">this link</a>!
                 </p>
-                
+
             </div>
         </fieldset>
 

@@ -6,6 +6,12 @@ var app = angular.module("confluente");
 app.controller("internshipEditController", ["$scope", "$routeParams", "partners", "users", function ($scope, $routeParams, partners, users) {
     $scope.loading = false;
 
+    // Different companies for which internships are supported
+    $scope.companies = ["Optiver"]
+
+    // Categories that can be chosen
+    $scope.categories = ["internship"]
+
     var internshipId = $routeParams.internshipId;
 
     partners.getInternship(internshipId).then(function (internship) {
@@ -14,6 +20,8 @@ app.controller("internshipEditController", ["$scope", "$routeParams", "partners"
 
     $scope.submit = function () {
         $scope.loading = true;
+
+        $scope.internship.category = $scope.categories[0];
 
         partners.editInternship($scope.internship).then(function (result) {
             $scope.loading = false;

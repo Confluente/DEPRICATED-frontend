@@ -11,9 +11,9 @@
                 <div class="col-xs-12 col-md-8 col-lg-6">
 
                     <div class="form-group">
-                        <label for="internshipCreate-title" class="col-xs-12 col-sm-3 control-label">Title</label>
+                        <label for="internshipEdit-title" class="col-xs-12 col-sm-3 control-label">Title</label>
                         <div class="col-xs-12 col-sm-9">
-                            <input type="text" ng-model="internship.title" class="form-control" id="internshipCreate-title" required>
+                            <input type="text" ng-model="internship.title" class="form-control" id="internshipEdit-title" required>
                         </div>
                     </div>
 
@@ -26,9 +26,9 @@
                 <div class="col-xs-12 col-md-8 col-lg-6">
 
                     <div class="form-group">
-                        <label for="internshipCreate-companyName" class="col-xs-12 col-sm-3 control-label">Company</label>
+                        <label for="internshipEdit-companyName" class="col-xs-12 col-sm-3 control-label">Company</label>
                         <div class="col-xs-12 col-sm-9">
-                            <input type="text" ng-model="internship.companyName" class="form-control" id="internshipCreate-companyName" required>
+                            <select ng-model="internship.companyName" class="form-control" ng-options="x for x in companies" id="internshipEdit-companyName"></select>
                         </div>
                     </div>
 
@@ -41,9 +41,9 @@
                 <div class="col-xs-12 col-md-8 col-lg-6">
 
                     <div class="form-group">
-                        <label for="internshipCreate-category" class="col-xs-12 col-sm-3 control-label">Category</label>
+                        <label for="internshipEdit-category" class="col-xs-12 col-sm-3 control-label">Category</label>
                         <div class="col-xs-12 col-sm-9">
-                            <input type="text" ng-model="internship.category" class="form-control" id="internshipCreate-category" value="internship">
+                            <input type="text" class="form-control" ng-value="categories[0]" id="internshipEdit-category" ng-disabled="true">
                         </div>
                     </div>
 
@@ -62,9 +62,9 @@
                 <div class="col-xs-12 col-md-8 col-lg-6">
 
                     <div class="form-group">
-                        <label for="internshipCreate-email" class="col-xs-12 col-sm-3 control-label">Contact email</label>
+                        <label for="internshipEdit-email" class="col-xs-12 col-sm-3 control-label">Contact email</label>
                         <div class="col-xs-12 col-sm-9">
-                            <input type="text" ng-model="internship.contactEmail" class="form-control" id="internshipCreate-email">
+                            <input type="text" ng-model="internship.contactEmail" class="form-control" id="internshipEdit-email">
                         </div>
                     </div>
 
@@ -77,9 +77,9 @@
                 <div class="col-xs-12 col-md-8 col-lg-6">
 
                     <div class="form-group">
-                        <label for="internshipCreate-link" class="col-xs-12 col-sm-3 control-label">Link to internship</label>
+                        <label for="internshipEdit-link" class="col-xs-12 col-sm-3 control-label">Link to internship</label>
                         <div class="col-xs-12 col-sm-9">
-                            <input type="text" ng-model="internship.link" class="form-control" id="internshipCreate-link">
+                            <input type="text" ng-model="internship.link" class="form-control" id="internshipEdit-link">
                         </div>
                     </div>
 
@@ -92,9 +92,9 @@
                 <div class="col-xs-12 col-md-8 col-lg-6">
 
                     <div class="form-group">
-                        <label for="internshipCreate-educationLevel" class="col-xs-12 col-sm-3 control-label">Education level</label>
+                        <label for="internshipEdit-educationLevel" class="col-xs-12 col-sm-3 control-label">Education level</label>
                         <div class="col-xs-12 col-sm-9">
-                            <input type="text" ng-model="internship.educationLevel" class="form-control" id="internshipCreate-educationLevel">
+                            <input type="text" ng-model="internship.educationLevel" class="form-control" id="internshipEdit-educationLevel">
                         </div>
                     </div>
 
@@ -107,10 +107,10 @@
                 <div class="col-xs-12 col-md-8 col-lg-6">
 
                     <div class="form-group">
-                        <label for="internshipCreate-description" class="col-xs-12 col-sm-3 control-label">Full Description</label>
+                        <label for="internshipEdit-description" class="col-xs-12 col-sm-3 control-label">Full Description</label>
                         <div class="col-xs-12 col-sm-9">
                             <textarea ng-model="internship.description" class="form-control" style="height:300px"
-                                      id="internshipCreate-description"></textarea>
+                                      id="internshipEdit-description"></textarea>
                         </div>
                     </div>
 

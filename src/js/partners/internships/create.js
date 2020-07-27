@@ -6,6 +6,12 @@ var app = angular.module("confluente");
 app.controller("internshipCreateController", ["$rootScope", "$scope", "partners", "users", function ($rootScope, $scope, partners, users) {
     $scope.loading = false;
 
+    // Different companies for which internships are supported
+    $scope.companies = ["Optiver"]
+
+    // Categories that can be chosen
+    $scope.categories = ["internship"]
+
     // function called when submit button is pushed
     $scope.submit = function() {
         $scope.loading = true;
@@ -19,7 +25,7 @@ app.controller("internshipCreateController", ["$rootScope", "$scope", "partners"
             contactEmail: $scope.email,
             link: $scope.link,
             educationLevel: $scope.educationLevel,
-            category: $scope.category
+            category: $scope.categories[0]
         }).then(function (result) {
             $scope.loading = false;
 
