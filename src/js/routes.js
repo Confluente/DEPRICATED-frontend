@@ -23,6 +23,7 @@ var routes = [
     require("./partners/internships/create"),
     require("./partners/internships/details"),
     require("./partners/internships/edit"),
+    require("./partners/internships/delete"),
     require("./page/view"),
     require("./manage"),
     require("./page/manage"),

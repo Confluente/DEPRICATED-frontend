@@ -27,6 +27,12 @@ app.factory("partners", ["$http", "$timeout", function ($http, $timeout) {
             return $http.put("/api/partners/internships/" + internship.id, internship).then(function (result) {
                 return result.data;
             })
+        },
+
+        deleteInternship: function(id) {
+            return $http.delete("api/partners/internships/" + id).then(function (result) {
+                return result;
+            })
         }
     };
 }]);

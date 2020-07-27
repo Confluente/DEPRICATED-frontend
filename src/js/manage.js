@@ -3,8 +3,8 @@ var app = angular.module("confluente");
 /**
  * Controller for the management table
  */
-app.controller("manageController", ["$rootScope", "$scope", "$q", "$timeout", "$http", "pages", "activities", "users", "groups",
-    function ($rootScope, $scope, $q, $timeout, $http, pages, activities, users, groups) {
+app.controller("manageController", ["$rootScope", "$scope", "$q", "$timeout", "$http", "pages", "activities", "users", "groups", "partners",
+    function ($rootScope, $scope, $q, $timeout, $http, pages, activities, users, groups, partners) {
         $scope.loading = true;
         $scope.f = {
             date: new Date()
@@ -36,6 +36,19 @@ app.controller("manageController", ["$rootScope", "$scope", "$q", "$timeout", "$
                     });
                     groups.getAll().then(function (groups) {
                         $scope.groups = groups;
+                    });
+                }
+
+                $scope.user = $scope.$parent.user;
+                for (var i = 0; i < $scope.user.groups.length; i++) {
+                    if ($scope.user.groups[i].email === "acquisition@hsaconfluente.nl") {
+                        $scope.isUserInAcquisition = true;
+                    }
+                }
+
+                if ($scope.isUserInAcquisition || $rootScope.user.isAdmin) {
+                    partners.getInternships().then(function (internships) {
+                        $scope.internships = internships;
                     });
                 }
             }
@@ -102,6 +115,19 @@ app.controller("manageController", ["$rootScope", "$scope", "$q", "$timeout", "$
                 $scope.sortReverseGroups = false;
             }
             $scope.sortTypeGroups = type;
+        };
+
+        // $scope variables for tracking search & sorting in internships tab
+        $scope.sortTypeInternships = 'id';
+        $scope.sortReverseInternships = false;
+        $scope.searchQueryInternships = '';
+        $scope.sortInternships = function (type) {
+            if ($scope.sortTypeInternships === type) {
+                $scope.sortReverseInternships = !$scope.sortReverseInternships;
+            } else {
+                $scope.sortReverseInternships = false;
+            }
+            $scope.sortTypeInternships = type;
         };
 
         // function for using datepicker in form for creating activities

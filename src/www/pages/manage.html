@@ -117,7 +117,6 @@
 
         </uib-tab>
 
-
         <uib-tab index="3" heading="Groups" ng-if="user.isAdmin">
 
             <div class="row section manage-actions">
@@ -162,6 +161,46 @@
 
         </uib-tab>
 
+        <uib-tab index="4" heading="Internships" ng-if="user.isAdmin || isUserInAcquisition">
+
+            <div class="row section manage-actions">
+                <div class="col-xs-12 col-sm-6 col-md-3 col-sm-offset-6 col-md-offset-9">
+                    <input type="text" class="form-control" placeholder="Search internships" ng-model="searchQueryInternships">
+                </div>
+            </div>
+
+            <div class="row section">
+                <div class="table-responsive col-xs-12">
+                    <table class="table table-hover">
+
+                        <thead>
+                        <tr>
+                            <th class="col-xs-5" ng-click="sortInternships('title')">Name<i ng-if="(sortTypeGroups == 'title') && sortReverseInternships" class="fa fa-angle-down"></i><i ng-if="(sortTypeInternships == 'title') && !sortReverseInternships" class="fa fa-angle-up"></i></th>
+                            <th class="col-xs-4" ng-click="sortInternships('contactEmail')">Email<i ng-if="(sortTypeGroups == 'contactEmail') && sortReverseInternships" class="fa fa-angle-down"></i><i ng-if="(sortTypeInternships == 'contactEmail') && !sortReverseInternships" class="fa fa-angle-up"></i></th>
+                            <<th class="col-xs-2"></th>
+                        </tr>
+                        </thead>
+
+                        <tbody>
+                        <tr ng-repeat="internship in internships | orderBy:sortTypeInternships:sortReverseInternships | filter:searchQueryInternships">
+                            <td><a ng-href="/partners/internships/{{internship.id}}">{{internship.title}}</a></td>
+                            <td>{{internship.contactEmail}}</td>
+                            <td class="manage-table-action text-right">
+                                <a class="btn btn-link" ng-href="/manage/partners/internships/edit/{{internship.id}}">
+                                    <i class="fa fa-cog"></i>
+                                </a>
+                                <a class="btn btn-link" ng-href="/manage/partners/internships/delete/{{internship.id}}">
+                                    <i class="fa fa-trash-o"></i>
+                                </a>
+                            </td>
+                        </tr>
+                        </tbody>
+
+                    </table>
+                </div>
+            </div>
+
+        </uib-tab>
 
     </uib-tabset>
 
