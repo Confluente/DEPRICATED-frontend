@@ -13,7 +13,8 @@
                     <div class="form-group">
                         <label for="internshipCreate-title" class="col-xs-12 col-sm-3 control-label">Title</label>
                         <div class="col-xs-12 col-sm-9">
-                            <input type="text" ng-model="title" class="form-control" id="internshipCreate-title" required>
+                            <input type="text" ng-model="title" class="form-control" id="internshipCreate-title"
+                                   required>
                         </div>
                     </div>
 
@@ -26,9 +27,11 @@
                 <div class="col-xs-12 col-md-8 col-lg-6">
 
                     <div class="form-group">
-                        <label for="internshipCreate-companyName" class="col-xs-12 col-sm-3 control-label">Company</label>
+                        <label for="internshipCreate-companyName"
+                               class="col-xs-12 col-sm-3 control-label">Company</label>
                         <div class="col-xs-12 col-sm-9">
-                            <input type="text" ng-model="company" class="form-control" id="internshipCreate-companyName" required>
+                            <input type="text" ng-model="company" class="form-control" id="internshipCreate-companyName"
+                                   required>
                         </div>
                     </div>
 
@@ -43,7 +46,8 @@
                     <div class="form-group">
                         <label for="internshipCreate-category" class="col-xs-12 col-sm-3 control-label">Category</label>
                         <div class="col-xs-12 col-sm-9">
-                            <input type="text" ng-model="category" class="form-control" id="internshipCreate-category" value="internship">
+                            <input type="text" ng-model="category" class="form-control" id="internshipCreate-category"
+                                   value="internship">
                         </div>
                     </div>
 
@@ -62,7 +66,8 @@
                 <div class="col-xs-12 col-md-8 col-lg-6">
 
                     <div class="form-group">
-                        <label for="internshipCreate-email" class="col-xs-12 col-sm-3 control-label">Contact email</label>
+                        <label for="internshipCreate-email" class="col-xs-12 col-sm-3 control-label">Contact
+                            email</label>
                         <div class="col-xs-12 col-sm-9">
                             <input type="text" ng-model="email" class="form-control" id="internshipCreate-email">
                         </div>
@@ -77,7 +82,8 @@
                 <div class="col-xs-12 col-md-8 col-lg-6">
 
                     <div class="form-group">
-                        <label for="internshipCreate-link" class="col-xs-12 col-sm-3 control-label">Link to internship</label>
+                        <label for="internshipCreate-link" class="col-xs-12 col-sm-3 control-label">Link to
+                            internship</label>
                         <div class="col-xs-12 col-sm-9">
                             <input type="text" ng-model="link" class="form-control" id="internshipCreate-link">
                         </div>
@@ -92,9 +98,11 @@
                 <div class="col-xs-12 col-md-8 col-lg-6">
 
                     <div class="form-group">
-                        <label for="internshipCreate-educationLevel" class="col-xs-12 col-sm-3 control-label">Education level</label>
+                        <label for="internshipCreate-educationLevel" class="col-xs-12 col-sm-3 control-label">Education
+                            level</label>
                         <div class="col-xs-12 col-sm-9">
-                            <input type="text" ng-model="educationLevel" class="form-control" id="internshipCreate-educationLevel">
+                            <input type="text" ng-model="educationLevel" class="form-control"
+                                   id="internshipCreate-educationLevel">
                         </div>
                     </div>
 
@@ -107,18 +115,27 @@
                 <div class="col-xs-12 col-md-8 col-lg-6">
 
                     <div class="form-group">
-                        <label for="internshipCreate-description" class="col-xs-12 col-sm-3 control-label">Full Description</label>
+                        <label for="internshipCreate-description" class="col-xs-12 col-sm-3 control-label">Full
+                            Description</label>
                         <div class="col-xs-12 col-sm-9">
                             <textarea ng-model="description" class="form-control" style="height:300px"
                                       id="internshipCreate-description"></textarea>
                         </div>
-                    </div>
 
+                    </div>
                 </div>
+
+                <p class="hidden-sm col-xs-12 col-md-4 control-label text-left small">
+                    You can make the description real fancy using <b>markdown</b>! For an overview of how markdown
+                    works (adding quotes, links, images and much much more) check <a
+                        href="https://www.markdownguide.org/basic-syntax/">this link</a>!
+                </p>
+                
             </div>
         </fieldset>
 
-        <button type="submit" class="btn btn-primary" ng-click="submit()" ng-disabled="loading">Create internship</button>
+        <button type="submit" class="btn btn-primary" ng-click="submit()" ng-disabled="loading">Create internship
+        </button>
 
     </form>
 </div>
