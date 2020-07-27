@@ -1,0 +1,124 @@
+<div class="container">
+    <form class="form-horizontal">
+        <header>
+            <h1>Edit internship</h1>
+        </header>
+
+        <fieldset class="section">
+            <legend class="h4 block">General Info</legend>
+
+            <div class="row">
+                <div class="col-xs-12 col-md-8 col-lg-6">
+
+                    <div class="form-group">
+                        <label for="internshipCreate-title" class="col-xs-12 col-sm-3 control-label">Title</label>
+                        <div class="col-xs-12 col-sm-9">
+                            <input type="text" ng-model="internship.title" class="form-control" id="internshipCreate-title" required>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="clearfix"></div>
+
+            <div class="row">
+                <div class="col-xs-12 col-md-8 col-lg-6">
+
+                    <div class="form-group">
+                        <label for="internshipCreate-companyName" class="col-xs-12 col-sm-3 control-label">Company</label>
+                        <div class="col-xs-12 col-sm-9">
+                            <input type="text" ng-model="internship.companyName" class="form-control" id="internshipCreate-companyName" required>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="clearfix"></div>
+
+            <div class="row">
+                <div class="col-xs-12 col-md-8 col-lg-6">
+
+                    <div class="form-group">
+                        <label for="internshipCreate-category" class="col-xs-12 col-sm-3 control-label">Category</label>
+                        <div class="col-xs-12 col-sm-9">
+                            <input type="text" ng-model="internship.category" class="form-control" id="internshipCreate-category" value="internship">
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="clearfix"></div>
+        </fieldset>
+
+        <hr>
+
+        <fieldset class="section">
+            <legend class="h4 block">Details</legend>
+
+            <div class="row">
+                <div class="col-xs-12 col-md-8 col-lg-6">
+
+                    <div class="form-group">
+                        <label for="internshipCreate-email" class="col-xs-12 col-sm-3 control-label">Contact email</label>
+                        <div class="col-xs-12 col-sm-9">
+                            <input type="text" ng-model="internship.contactEmail" class="form-control" id="internshipCreate-email">
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="clearfix"></div>
+
+            <div class="row">
+                <div class="col-xs-12 col-md-8 col-lg-6">
+
+                    <div class="form-group">
+                        <label for="internshipCreate-link" class="col-xs-12 col-sm-3 control-label">Link to internship</label>
+                        <div class="col-xs-12 col-sm-9">
+                            <input type="text" ng-model="internship.link" class="form-control" id="internshipCreate-link">
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="clearfix"></div>
+
+            <div class="row">
+                <div class="col-xs-12 col-md-8 col-lg-6">
+
+                    <div class="form-group">
+                        <label for="internshipCreate-educationLevel" class="col-xs-12 col-sm-3 control-label">Education level</label>
+                        <div class="col-xs-12 col-sm-9">
+                            <input type="text" ng-model="internship.educationLevel" class="form-control" id="internshipCreate-educationLevel">
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="clearfix"></div>
+
+            <div class="row">
+                <div class="col-xs-12 col-md-8 col-lg-6">
+
+                    <div class="form-group">
+                        <label for="internshipCreate-description" class="col-xs-12 col-sm-3 control-label">Full Description</label>
+                        <div class="col-xs-12 col-sm-9">
+                            <textarea ng-model="internship.description" class="form-control" style="height:300px"
+                                      id="internshipCreate-description"></textarea>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </fieldset>
+
+        <button type="submit" class="btn btn-primary" ng-click="submit()" ng-disabled="loading">Edit internship</button>
+
+    </form>
+</div>
