@@ -1,13 +1,14 @@
 <div class="container">
 
     <div class="pull-right">
-        <a class="btn btn-default" href="/manage/partners/internships/create">Add Internship</a>
+        <a class="btn btn-default" href="/manage/partners/internships/create" ng-if="user.canOrganize">Add Internship</a>
     </div>
 
     <h1>Internships</h1>
+
     <div class="row">
 
-        <div class="col-sm-12 col-xs-12 col-md-4 col-lg-4" style="padding: 15px" ng-repeat="internship in internships">
+        <div class="col-xs-12 col-md-4" style="padding: 15px" ng-repeat="internship in internships">
             <div class="partner-box">
 
                 <div class="partner-img-container" style="background-image: url({{internship.imageUrl}})"></div>
@@ -21,9 +22,10 @@
                         </li>
                     </ul>
                 </div>
-                
+
             </div>
         </div>
 
     </div>
+
 </div>
