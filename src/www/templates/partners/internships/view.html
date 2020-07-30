@@ -9,20 +9,12 @@
         <div class="col-sm-12 col-xs-12 col-md-4 col-lg-4" style="padding: 15px" ng-repeat="internship in internships">
             <div class="partner-box">
                 <div class="partner-img-container" style="background-image: url({{internship.imageUrl}})">
-                    <div class="partner-overlay" style="background-color: #46166b">
-                        <a ng-href="/partners/internships/{{internship.id}}">
-                            <div class="partner-text">
-                                <h4>{{internship.title}}</h4>
-                                <p>{{internship.description}}</p>
-                            </div>
-                        </a>
-                    </div>
                 </div>
                 <div class="partner-footer">
                     <ul class="partner-btnlist">
                         <li>
                             <a href="/partners/internships/{{internship.id}}" class="btn btn-default partner-btn-small">
-                                <i class="fa fa-ellipsis-h"></i>&nbsp;&nbsp;Read more
+                                <i class="fa fa-ellipsis-h"></i>&nbsp;&nbsp;{{internship.title}}
                             </a>
                         </li>
                     </ul>
