@@ -27,7 +27,7 @@ app.controller("activityCreateController", ["$scope", "activities", function ($s
 
     // Each time a question is added, this creates a new empty object in the inputs variable
     $scope.add = function () {
-        var dataObj = {fullQuestion: '', type: "☰ text", options: ['option 1'], required: '', privacyOfQuestion: ''};
+        let dataObj = {fullQuestion: '', type: "☰ text", options: ['option 1'], required: '', privacyOfQuestion: ''};
         $scope.inputs.push(dataObj);
     };
 
