@@ -28,7 +28,7 @@
                     <div class="form-group">
                         <label for="internshipEdit-companyName" class="col-xs-12 col-sm-3 control-label">Company</label>
                         <div class="col-xs-12 col-sm-9">
-                            <select ng-model="internship.companyName" class="form-control" ng-options="x for x in companies" id="internshipEdit-companyName"></select>
+                            <select ng-model="internship.companyName" ng-change="change()" class="form-control" ng-options="name for name in companyNames" id="internshipEdit-companyName"></select>
                         </div>
                     </div>
 

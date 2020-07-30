@@ -7,7 +7,15 @@ app.controller("internshipEditController", ["$scope", "$routeParams", "partners"
     $scope.loading = false;
 
     // Different companies for which internships are supported
-    $scope.companies = ["Optiver"]
+    $scope.companies = {
+        "Optiver": "/img/partners/optiver.png",
+    }
+
+    $scope.companyNames = [];
+    for (var name in $scope.companies) {
+        $scope.companyNames.push(name);
+    }
+
 
     // Categories that can be chosen
     $scope.categories = ["internship"]
@@ -22,6 +30,7 @@ app.controller("internshipEditController", ["$scope", "$routeParams", "partners"
         $scope.loading = true;
 
         $scope.internship.category = $scope.categories[0];
+        $scope.internship.imageUrl = $scope.companies[$scope.internship.company]
 
         partners.editInternship($scope.internship).then(function (result) {
             $scope.loading = false;
