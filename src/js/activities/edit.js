@@ -1,11 +1,11 @@
-var app = angular.module("confluente");
+const app = angular.module("confluente");
 
 /**
  * Controller for editing activities
  */
 app.controller("activityEditController", ["$scope", "$routeParams", "activities", function ($scope, $routeParams, activities) {
     // get activityId from URL
-    var activityId = $routeParams.activityId;
+    const activityId = $routeParams.activityId;
     $scope.inputs = [];
 
     $scope.uploadme = "Did not change image";
@@ -26,7 +26,7 @@ app.controller("activityEditController", ["$scope", "$routeParams", "activities"
         $scope.activity = activity;
         $scope.activity.organizer = activity.Organizer.displayName;
 
-        for (var i = 0; i < $scope.$parent.user.groups.length; i++) {
+        for (let i = 0; i < $scope.$parent.user.groups.length; i++) {
             $scope.userGroups.push($scope.$parent.user.groups[i].displayName);
         }
 
@@ -154,7 +154,7 @@ app.controller("activityEditController", ["$scope", "$routeParams", "activities"
                 allDescriptions.push(dataObj.fullQuestion);
                 allTypes.push(dataObj.type);
                 var optionString = "";
-                for (var i = 0; i < dataObj.options.length; i++) {
+                for (let i = 0; i < dataObj.options.length; i++) {
                     if (i !== 0) optionString += "#;#";
                     optionString += dataObj.options[i];
                     if (dataObj.options[i].includes("#;#")) $scope.wrongCharacters = true;
@@ -175,7 +175,7 @@ app.controller("activityEditController", ["$scope", "$routeParams", "activities"
 
                 // Checks whether options of multiple choice questions are empty
                 if (dataObj.type !== "☰ text" && dataObj.type !== "name" && dataObj.type !== "TU/e email") {
-                    for (var i = 0; i < dataObj.options.length; i++) {
+                    for (let i = 0; i < dataObj.options.length; i++) {
                         if (dataObj.options[i] === "" || !dataObj.options) $scope.empty = true;
                     }
                 }
@@ -227,7 +227,7 @@ app.controller("activityEditController", ["$scope", "$routeParams", "activities"
         startingDay: 1
     };
 
-    var wrongInput = function(ErrorMessage) {
+    const wrongInput = function(ErrorMessage) {
         $scope.loading = false;
         return alert(ErrorMessage);
     }

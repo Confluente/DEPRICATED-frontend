@@ -1,4 +1,4 @@
-var app = angular.module("confluente");
+const app = angular.module("confluente");
 
 /**
  * Controller for the index of all activities
@@ -11,9 +11,9 @@ app.controller("activitiesController", ["$scope", "activities", function ($scope
         $scope.activities = activities;
 
         // Set variable 'subscribed' on all activity objects to indicate whether the current user has subscribed to them
-        for (var i = 0; i < activities.length; i++) {
+        for (let i = 0; i < activities.length; i++) {
             $scope.activities[i].subscribed = false;
-            for (var j = 0; j < $scope.activities[i].participants.length; j++) {
+            for (let j = 0; j < $scope.activities[i].participants.length; j++) {
                 if ($scope.activities[i].participants[j].id === $scope.user.id) {
                     $scope.activities[i].subscribed = true;
                     break;

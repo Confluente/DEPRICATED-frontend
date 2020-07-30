@@ -4,7 +4,7 @@ var TableExport = require("tableexport");
 /**`
  * Controller for viewing activity
  */
-app.controller("activityViewController", ["$scope", "$routeParams", "activities", "users", function ($scope, $routeParams, activities, user) {
+app.controller("activityViewController", ["$scope", "$routeParams", "activities", function ($scope, $routeParams, activities) {
     // get activityId from URL
     var activityId = $routeParams.activityId;
 
@@ -34,7 +34,7 @@ app.controller("activityViewController", ["$scope", "$routeParams", "activities"
 
         // format the subscriptions
         $scope.answers = [];
-        for (var i = 0; i < activity.numberOfQuestions; i++) {
+        for (let i = 0; i < activity.numberOfQuestions; i++) {
             if (activity.typeOfQuestion[i] === '☑ checkboxes') {
                 var list = [];
                 for (var j = 0; j < activity.formOptions[i].length; j++) {
@@ -47,7 +47,7 @@ app.controller("activityViewController", ["$scope", "$routeParams", "activities"
         }
 
         // check whether the logged in user is part of the group that is organizing the event
-        for (var i = 0; i < $scope.user.groups.length; i++) {
+        for (let i = 0; i < $scope.user.groups.length; i++) {
             if ($scope.user.groups[i].id === $scope.activity.OrganizerId) {
                 $scope.isUserOrganizing = true;
             }
@@ -74,7 +74,7 @@ app.controller("activityViewController", ["$scope", "$routeParams", "activities"
     $scope.exportTable = function() {
         $scope.clickedExport = true;
         TableExport(document.getElementsByTagName("table"));
-        TableExport.prototype.typeConfig.date.assert = function(value) { return false; };
+        TableExport.prototype.typeConfig.date.assert = function() { return false; };
     };
 
     // unsubscribes the user from the activity
@@ -93,7 +93,7 @@ app.controller("activityViewController", ["$scope", "$routeParams", "activities"
         $scope.loading = true;
         // Check if all required field are filled in
         var filledIn = true;
-        for (var i = 0; i < $scope.activity.numberOfQuestions; i++) {
+        for (let i = 0; i < $scope.activity.numberOfQuestions; i++) {
             if ($scope.activity.required[i] === 'true') {
                 if ($scope.activity.typeOfQuestion[i] === '☰ text' && $scope.answers[i] === "") {
                     filledIn = false;

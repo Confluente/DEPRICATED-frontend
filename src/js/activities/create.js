@@ -1,4 +1,4 @@
-var app = angular.module("confluente");
+const app = angular.module("confluente");
 
 /**
  * Controller for creating activities
@@ -39,7 +39,7 @@ app.controller("activityCreateController", ["$scope", "activities", function ($s
 
     // Adds option for multiple choice questions
     $scope.addOption = function (input) {
-        var option = 'option ' + (input.options.length + 1).toString();
+        const option = 'option ' + (input.options.length + 1).toString();
         input.options.push(option);
     };
 
@@ -56,7 +56,7 @@ app.controller("activityCreateController", ["$scope", "activities", function ($s
     // Given an array, it moves the element from fromIndex to toIndex
     $scope.arrayMove = function (arr, fromIndex, toIndex) {
         if (Math.abs(fromIndex - toIndex) <= 1 && fromIndex > 1 && toIndex < arr.length) {
-            var element = arr[fromIndex];
+            const element = arr[fromIndex];
             arr.splice(fromIndex, 1);
             arr.splice(toIndex, 0, element);
         }
@@ -66,14 +66,14 @@ app.controller("activityCreateController", ["$scope", "activities", function ($s
     $scope.submit = function () {
         $scope.loading = true;
 
-        var hasCoverImage = false;
+        let hasCoverImage = false;
         if ($scope.uploadme !== "No Image") {
             hasCoverImage = true;
         }
 
-        var fd = new FormData();
+        let fd = new FormData();
         if (hasCoverImage) {
-            var file = $('#activityCreate-cover')[0].files[0];
+            const file = $('#activityCreate-cover')[0].files[0];
             if (!file.type.startsWith('image/')) {
                 return wrongInput('Non-image formats are not supported as pictures for activities!');
             }
@@ -82,7 +82,7 @@ app.controller("activityCreateController", ["$scope", "activities", function ($s
                 return wrongInput('Image size is larger than 1MB')
             }
 
-            var img = new Image();
+            let img = new Image();
             img.src = window.URL.createObjectURL(file);
             img.onload = function() {
                 if (img.width < img.height) {
@@ -94,7 +94,7 @@ app.controller("activityCreateController", ["$scope", "activities", function ($s
         }
 
         // constructing standard activity object
-        var act = {
+        let act = {
             name: $scope.name,
             description: $scope.description,
             organizer: $scope.organizer,
@@ -115,19 +115,19 @@ app.controller("activityCreateController", ["$scope", "activities", function ($s
         // Adding form to activity object if members can subscribe
         if ($scope.canSubscribe) {
             // Format output correctly
-            var allDescriptions = [];
-            var allTypes = [];
-            var allOptions = [];
-            var allRequired = [];
-            var allPrivacyOfQuestion = [];
+            let allDescriptions = [];
+            let allTypes = [];
+            let allOptions = [];
+            let allRequired = [];
+            let allPrivacyOfQuestion = [];
 
             $scope.inputs.forEach(function (dataObj) {
                 allDescriptions.push(dataObj.fullQuestion);
                 allTypes.push(dataObj.type);
 
                 // SQlite database can't handle strings therefore lists are stored as , seperated lists and ; seperated lists
-                var optionString = dataObj.options[0];
-                for (var i = 1; i < dataObj.options.length; i++) {
+                let optionString = dataObj.options[0];
+                for (let i = 1; i < dataObj.options.length; i++) {
                     optionString += "#;#" + dataObj.options[i];
                     if (dataObj.options[i].includes("#;#")) $scope.wrongCharacters = true;
                     if (dataObj.options[i].includes("#,#")) $scope.wrongCharacters = true;
@@ -147,7 +147,7 @@ app.controller("activityCreateController", ["$scope", "activities", function ($s
 
                 // Check whether choices of multiple choice questions are empty
                 if (dataObj.type !== "☰ text" && dataObj.type !== "name" && dataObj.type !== "TU/e email") {
-                    for (var i = 0; i < dataObj.options.length; i++) {
+                    for (let i = 0; i < dataObj.options.length; i++) {
                         if (dataObj.options[i] === "" || !dataObj.options) $scope.empty = true;
                     }
                 }
@@ -195,10 +195,10 @@ app.controller("activityCreateController", ["$scope", "activities", function ($s
         startingDay: 1
     };
 
-    var wrongInput = function(ErrorMessage) {
+    const wrongInput = function(ErrorMessage) {
         $scope.loading = false;
         return alert(ErrorMessage);
-    }
+    };
 }]);
 
 module.exports = {

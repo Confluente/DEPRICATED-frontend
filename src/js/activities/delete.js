@@ -1,11 +1,11 @@
-var app = angular.module("confluente");
+const app = angular.module("confluente");
 
 /**
  * Controller for deleting activities
  */
 app.controller("activityDeleteController", ["$scope", "$routeParams", "activities", function ($scope, $routeParams, activity) {
     // get activityID from URL
-    var activityId = $routeParams.activityId;
+    const activityId = $routeParams.activityId;
 
     // get activity from backend via activityId, and put it on the $scope
     activity.get(activityId).then(function (activity) {
