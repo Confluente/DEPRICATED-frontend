@@ -1,11 +1,12 @@
-var app = angular.module("confluente");
+const app = angular.module("confluente");
 
 /**
  * Controller for editing pages
  */
 app.controller("pageEditController", ["$scope", "$routeParams", "pages", function ($scope, $routeParams, pages) {
     // get pageUrl from URL
-    var pageUrl = $routeParams.pageUrl;
+    const pageUrl = $routeParams.pageUrl;
+
     $scope.loading = true;
     // get page from backend by pageUrl and set it on $scope
     pages.get(pageUrl).then(function (page) {

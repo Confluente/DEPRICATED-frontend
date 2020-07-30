@@ -1,9 +1,9 @@
-var app = angular.module("confluente");
+const app = angular.module("confluente");
 
 /**
  * Factory for pages
  */
-app.factory("pages", ["$http", "$timeout", function ($http, $timeout) {
+app.factory("pages", ["$http", function ($http) {
     var pages = [];
 
     return {

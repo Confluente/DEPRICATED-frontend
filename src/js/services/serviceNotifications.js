@@ -1,9 +1,9 @@
-var app = angular.module("confluente");
+const app = angular.module("confluente");
 
 /**
  * Factory for notifications
  */
-app.factory("notifications", ["$http", "$timeout", function ($http, $timeout) {
+app.factory("notifications", ["$http", "$timeout", function ($http) {
     return {
         /**
          * sets portrait right consent for userId to answer in database

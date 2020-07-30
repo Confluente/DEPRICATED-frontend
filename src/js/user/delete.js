@@ -1,11 +1,11 @@
-var app = angular.module("confluente");
+const app = angular.module("confluente");
 
 /**
  * Controller for deleting users
  */
 app.controller("userDeleteController", ["$scope", "$routeParams", "users", function ($scope, $routeParams, user) {
     // get userId from URL
-    var userId = $routeParams.userId;
+    const userId = $routeParams.userId;
     // retrieve user from backend by userId and set on $scope
     user.get(userId).then(function (param) {
         $scope.user = param[0];
@@ -17,6 +17,7 @@ app.controller("userDeleteController", ["$scope", "$routeParams", "users", funct
         $scope.loading = true;
         user.delete($scope.user).then(function () {
             $scope.loading = false;
+
             // redirect to '/manage'
             window.location.href = "/manage";
         });

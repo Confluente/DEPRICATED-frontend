@@ -1,4 +1,4 @@
-var app = angular.module("confluente");
+const app = angular.module("confluente");
 
 app.controller("homePageController", ["$scope", "activities", function ($scope, activities) {
 
@@ -11,7 +11,7 @@ app.controller("homePageController", ["$scope", "activities", function ($scope, 
         $scope.activities = activities;
 
         // getting the first 3 published activities
-        for (var i = 0; i < activities.length; i++) {
+        for (let i = 0; i < activities.length; i++) {
             if (activities[i].published) {
                 $scope.acts.push(activities[i]);
             }
@@ -32,28 +32,28 @@ app.controller("homePageController", ["$scope", "activities", function ($scope, 
 
     //JQUERY code to enable the scroll animation triggering
     //must embed to angularjs later
-    var $animation_elements = $('.animation-element');
-    var $window = $(window);
+    let $animation_elements = $('.animation-element');
+    let $window = $(window);
 
     function check_if_in_view() {
-    var window_height = $window.height();
-    var window_top_position = $window.scrollTop();
-    var window_bottom_position = (window_top_position + window_height);
+        const window_height = $window.height();
+        const window_top_position = $window.scrollTop();
+        const window_bottom_position = (window_top_position + window_height);
 
-    $.each($animation_elements, function() {
-        var $element = $(this);
-        var element_height = $element.outerHeight();
-        var element_top_position = $element.offset().top;
-        var element_bottom_position = (element_top_position + element_height);
+        $.each($animation_elements, function () {
+            let $element = $(this);
+            const element_height = $element.outerHeight();
+            const element_top_position = $element.offset().top;
+            const element_bottom_position = (element_top_position + element_height);
 
-        //check to see if this current container is within viewport
-        if ((element_bottom_position >= window_top_position) &&
-            (element_top_position <= window_bottom_position)) {
-        $element.addClass('in-view');
-        } else {
-        $element.removeClass('in-view');
-        }
-    });
+            //check to see if this current container is within viewport
+            if ((element_bottom_position >= window_top_position) &&
+                (element_top_position <= window_bottom_position)) {
+                $element.addClass('in-view');
+            } else {
+                $element.removeClass('in-view');
+            }
+        });
     }
 
     $window.on('scroll resize', check_if_in_view);

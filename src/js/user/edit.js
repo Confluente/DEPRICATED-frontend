@@ -1,11 +1,11 @@
-var app = angular.module("confluente");
+const app = angular.module("confluente");
 
 /**
  * Controller for editing user
  */
 app.controller("userEditController", ["$scope", "$q", "$routeParams", "users", "groups", function ($scope, $q, $routeParams, user, groups) {
     // get userId from URL
-    var userId = $routeParams.userId;
+    const userId = $routeParams.userId;
 
     // Different tracks within the honors academy
     $scope.tracks = ["Artificial intelligence", "Competitive Programming and Problem Solving",
@@ -43,16 +43,16 @@ app.controller("userEditController", ["$scope", "$q", "$routeParams", "users", "
             $scope.member = param[1];
         })
     ]).then(function () {
-        var member_groups = [];
-        var i;
+        let member_groups = [];
+
         // get indices of groups of which user is member
-        for (i = 0; i < $scope.member.length; i++) {
+        for (let i = 0; i < $scope.member.length; i++) {
             member_groups.push($scope.member[i].id);
         }
 
         // Function to find the user_group of one of the groups that the user is a member of
         var findMemberGroup = function (id) {
-            for (var j = 0; j < $scope.member.length; j++) {
+            for (let j = 0; j < $scope.member.length; j++) {
                 if ($scope.member[j].id === id) {
                     return $scope.member[j];
                 }
@@ -62,7 +62,7 @@ app.controller("userEditController", ["$scope", "$q", "$routeParams", "users", "
 
         // get attributes of groups of which user is member
         $scope.groupSelection = [];
-        for (i = 0; i < $scope.groups.length; i++) {
+        for (let i = 0; i < $scope.groups.length; i++) {
             if (member_groups.includes($scope.groups[i].id)) {
                 $scope.groupSelection.push({
                     fullName: $scope.groups[i].fullName,

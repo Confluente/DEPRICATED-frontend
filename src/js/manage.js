@@ -1,4 +1,4 @@
-var app = angular.module("confluente");
+const app = angular.module("confluente");
 
 /**
  * Controller for the management table
@@ -22,7 +22,7 @@ app.controller("manageController", ["$rootScope", "$scope", "$q", "$timeout", "$
 
 
         // Have to wait for $rootScope to finish $digest() to read the $rootScope.user.isAdmin succesfully
-        var waitForRenderAndDoSomething = function() {
+        let waitForRenderAndDoSomething = function() {
             if ($http.pendingRequests.length > 0) {
                 $timeout(waitForRenderAndDoSomething); // Wait for all templates to be loaded
             } else {
@@ -54,10 +54,10 @@ app.controller("manageController", ["$rootScope", "$scope", "$q", "$timeout", "$
         });
 
         $scope.filter = function() {
-            var date = $scope.f.date;
+            let date = $scope.f.date;
             date.setDate(date.getDate() - 1);
             $scope.activities = [];
-            for (var i = 0; i < $scope.archive.length; i++) {
+            for (let i = 0; i < $scope.archive.length; i++) {
                 if ($scope.archive[i].date >= date) {
                     $scope.activities.push($scope.archive[i]);
                 }

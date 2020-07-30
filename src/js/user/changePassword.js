@@ -1,11 +1,12 @@
-var app = angular.module("confluente");
+const app = angular.module("confluente");
 
 /**
  * Controller for changing password of user
  */
 app.controller("userChangePasswordController", ["$rootScope", "$scope", "$routeParams", "users", function ($rootScope, $scope, $routeParams, user) {
     // get userId from URL
-    var userId = $routeParams.userId;
+    const userId = $routeParams.userId;
+
     // retrieve user from backend by userId and set on $scope
     user.get(userId).then(function (user) {
         $scope.user = user[0];

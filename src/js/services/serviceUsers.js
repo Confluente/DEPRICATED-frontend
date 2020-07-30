@@ -1,9 +1,9 @@
-var app = angular.module("confluente");
+const app = angular.module("confluente");
 
 /**
  * Factory for users
  */
-app.factory("users", ["$http", "$timeout", function ($http, $timeout) {
+app.factory("users", ["$http", function ($http) {
     return {
         /**
          * Function for retrieving all users from backend

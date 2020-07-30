@@ -3,7 +3,7 @@ var app = angular.module("confluente");
 /**
  * Factory for activities
  */
-app.factory("activities", ["$http", "$timeout", function ($http, $timeout) {
+app.factory("activities", ["$http", function ($http) {
     return {
         /**
          * Function for retrieving all published activities from the backend
@@ -52,6 +52,7 @@ app.factory("activities", ["$http", "$timeout", function ($http, $timeout) {
         },
         /**
          * Function for submitting created activity to backend
+         * @param coverImage
          * @param activity
          * @returns submitted activity
          */

@@ -1,4 +1,4 @@
-var app = angular.module("confluente");
+const app = angular.module("confluente");
 
 /**
  * Controller for the magazine
@@ -8,11 +8,11 @@ app.controller("magazineController", ["$scope", function ($scope) {
     // therefore, scroll to top at start
     window.scrollTo(0, 0);
 
-    var window_width = $("#magazine").parent().width();
-    var window_height = $("#magazine").parent().height();
-    var display = "";
-    var width = 0;
-    var height = 0;
+    const window_width = $("#magazine").parent().width();
+    const window_height = $("#magazine").parent().height();
+    let display,
+        width,
+        height;
 
     // Magazine page size: 1039 x 1476  (width x height)
     // So the ratio is:       1 : 1.42

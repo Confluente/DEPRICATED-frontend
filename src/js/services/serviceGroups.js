@@ -1,9 +1,9 @@
-var app = angular.module("confluente");
+const app = angular.module("confluente");
 
 /**
  * Factory for groups
  */
-app.factory("groups", ["$http", "$timeout", function ($http, $timeout) {
+app.factory("groups", ["$http", function ($http) {
     return {
         /**
          * Function for retrieving all groups from backend
@@ -49,6 +49,7 @@ app.factory("groups", ["$http", "$timeout", function ($http, $timeout) {
         /**
          * Function for submitting edited group to backend
          * @param group
+         * @param user_group
          * @returns submitted edited group
          */
         edit: function (group, user_group) {

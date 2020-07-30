@@ -1,17 +1,17 @@
-var app = angular.module("confluente");
+const app = angular.module("confluente");
 
 // import routes
-var routes = require("./../routes");
+const routes = require("./../routes");
 
 // todo add comment once know what it does
-var tabs = routes.filter(function (element, index, array) {
+const tabs = routes.filter(function (element, index, array) {
     return element.id !== undefined;
 });
 
 /**
  * Controller for the navbar
  */
-app.controller("controllerNavbar", ["serviceAuth", "$rootScope", "$scope", "$location", function (auth, $rootScope, $scope, $location) {
+app.controller("controllerNavbar", ["serviceAuth", "$rootScope", "$scope", function (auth, $rootScope, $scope) {
     $scope.tabs = tabs;
     // function called if route is changed
     $rootScope.$on("$routeChangeSuccess", function (event, current, previous) {

@@ -1,11 +1,11 @@
-var angular = require("angular");
-var ngRoute = require("angular-route");
-var ngCookies = require("angular-cookies");
+const angular = require("angular");
+const ngRoute = require("angular-route");
+const ngCookies = require("angular-cookies");
 
 require("angular-ui-bootstrap");
-var app = angular.module("confluente", ["ngRoute", "ngCookies", "ui.bootstrap", require('angular-sanitize')]);
+const app = angular.module("confluente", ["ngRoute", "ngCookies", "ui.bootstrap", require('angular-sanitize')]);
 
-var routes = require("./routes");
+const routes = require("./routes");
 require("./services/serviceAuth");
 require("./services/serviceActivities");
 require("./services/servicePages");
@@ -18,7 +18,7 @@ require("./responseObserver");
 app.config(["$routeProvider", "$locationProvider", "$httpProvider", function ($routeProvider, $locationProvider, $httpProvider) {
     // declare all routes in $routeProvider
     for (var n = 0; n < routes.length; n++) {
-        var route = routes[n];
+        const route = routes[n];
         $routeProvider.when(route.url, {
             title: route.name,
             parent: route.parent,

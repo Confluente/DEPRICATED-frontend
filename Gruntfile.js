@@ -72,6 +72,9 @@ module.exports = function (grunt) {
         },
         jshint: {
             files: ['src/js/*.js', '!src/js/bundle.js', 'src/js/app/**.js'],
+            options: {
+                'esversion': 6,
+            }
         },
         eslint: {
             all: ['<%= jshint.files %>'],

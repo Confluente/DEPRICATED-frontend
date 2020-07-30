@@ -1,11 +1,12 @@
-var app = angular.module("confluente");
+const app = angular.module("confluente");
 
 /**
  * Controller for viewing users
  */
 app.controller("userViewController", ["$rootScope", "$scope", "$routeParams", "users", function ($rootScope, $scope, $routeParams, user) {
     // get userId from URL
-    var userId = $routeParams.userId;
+    let userId = $routeParams.userId;
+
     // if requested user equals profile, get userId of logged in user
     if (userId === "profile") {
         userId = $rootScope.user.id;
