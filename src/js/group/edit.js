@@ -1,4 +1,4 @@
-var app = angular.module("confluente");
+const app = angular.module("confluente");
 
 app.controller("groupEditController", ["$scope", "$routeParams", "groups", "users", function ($scope, $routeParams, groups, users) {
     // get groupId from URL

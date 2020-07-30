@@ -1,4 +1,4 @@
-var app = angular.module("confluente");
+const app = angular.module("confluente");
 
 /**
  * Controller for creating group
@@ -18,6 +18,7 @@ app.controller("groupCreateController", ["$scope", "groups", function ($scope, g
             type: $scope.type
         }).then(function (result) {
             $scope.loading = false;
+
             // redirect to created group
             window.location.href = "/group/" + result.id;
         });

@@ -1,4 +1,4 @@
-var app = angular.module("confluente");
+const app = angular.module("confluente");
 
 /* Load all committees from the database and pass them to the template. */
 app.controller("committeesController", ["$scope", "groups", function ($scope, groups) {
