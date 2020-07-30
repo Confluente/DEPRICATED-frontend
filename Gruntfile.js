@@ -26,7 +26,11 @@ module.exports = function (grunt) {
                 entry: './index.js',
                 optimization: {
                     minimize: true,
-                    minimizer: [new TerserPlugin()],
+                    minimizer: [new TerserPlugin({
+                        terserOptions: {
+                            ecma: 6
+                        }
+                    })],
                 },
                 output: {
                     path: __dirname + '/build/js',
