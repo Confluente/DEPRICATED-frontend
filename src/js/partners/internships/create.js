@@ -3,7 +3,7 @@ var app = angular.module("confluente");
 /**
  * Controller for handling internships
  */
-app.controller("internshipCreateController", ["$rootScope", "$scope", "partners", "users", function ($rootScope, $scope, partners, users) {
+app.controller("internshipCreateController", ["$rootScope", "$scope", "partners", function ($rootScope, $scope, partners) {
     $scope.loading = false;
 
     // Different companies for which internships are supported

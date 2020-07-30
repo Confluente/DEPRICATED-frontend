@@ -3,7 +3,7 @@ var app = angular.module("confluente");
 /**
  * Controller for handling deletion of internships
  */
-app.controller("internshipDeleteController", ["$scope", "$routeParams", "partners", "users", function ($scope, $routeParams, partners, users) {
+app.controller("internshipDeleteController", ["$scope", "$routeParams", "partners", function ($scope, $routeParams, partners) {
     $scope.loading = false;
 
     var internshipId = $routeParams.internshipId;

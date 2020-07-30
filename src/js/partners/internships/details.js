@@ -5,8 +5,8 @@ var showdown = require('showdown');
 /**
  * Controller for handling internships
  */
-app.controller("internshipDetailsController", ["$scope", "$routeParams", "partners", "users",
-        function ($scope, $routeParams, partners, users) {
+app.controller("internshipDetailsController", ["$scope", "$routeParams", "partners",
+        function ($scope, $routeParams, partners) {
     $scope.loading = false;
 
     var internshipId = $routeParams.internshipId;

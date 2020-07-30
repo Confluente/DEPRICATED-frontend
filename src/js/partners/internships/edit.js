@@ -3,7 +3,7 @@ var app = angular.module("confluente");
 /**
  * Controller for handling editing of internships
  */
-app.controller("internshipEditController", ["$scope", "$routeParams", "partners", "users", function ($scope, $routeParams, partners, users) {
+app.controller("internshipEditController", ["$scope", "$routeParams", "partners", function ($scope, $routeParams, partners) {
     $scope.loading = false;
 
     // Different companies for which internships are supported
