@@ -1,7 +1,7 @@
 var app = angular.module("confluente");
 
 /**
- * Controller for handling internships
+ * Controller for handling creation of internships
  */
 app.controller("internshipCreateController", ["$rootScope", "$scope", "partners", function ($rootScope, $scope, partners) {
     $scope.loading = false;
@@ -11,6 +11,7 @@ app.controller("internshipCreateController", ["$rootScope", "$scope", "partners"
         "Optiver": "/img/partners/optiver.png",
     }
 
+    // Automatically created list of all names of companies.
     $scope.companyNames = [];
     for (var name in $scope.companies) {
         $scope.companyNames.push(name);
@@ -22,9 +23,6 @@ app.controller("internshipCreateController", ["$rootScope", "$scope", "partners"
     // function called when submit button is pushed
     $scope.submit = function() {
         $scope.loading = true;
-
-        console.log($scope)
-        console.log($scope.companies[$scope.company])
 
         // create group in backend
         partners.createInternship({
@@ -40,7 +38,7 @@ app.controller("internshipCreateController", ["$rootScope", "$scope", "partners"
             $scope.loading = false;
 
             // redirect to created internship
-            // window.location.href = "/partners/internships/" + result.id;
+            window.location.href = "/partners/internships/" + result.id;
         })
     }
 }]);
