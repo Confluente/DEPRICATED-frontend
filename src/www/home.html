@@ -88,6 +88,17 @@
                 <a href="/activities" class="btn btn-sm btn-link">See more activities</a>
             </div>
 
+            <div class='section col-xs-12 col-sm-4 col-md-5 col-lg-4'>
+                <h4>Birthdays today</h4>
+                <div id="birthday-overview" class="list-group">
+                    <a ng-repeat="act in acts" href="/user/{{user.id}}" class="list-group-item">
+                        <p class="h6">{{user.firstname}}</p>
+                        <p class="small">{{user.dateOfBirth | date:'EEEE MMMM dd'}}</p>
+                    </a>
+                </div>
+                <a href="/activities" class="btn btn-sm btn-link">See more activities</a>
+            </div>
+
         </div>
 
     </div>
