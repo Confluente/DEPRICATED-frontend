@@ -4,3 +4,4 @@ node_modules/**
 src/js/bundle.js
 .idea/**
 package-lock.json
+src/img/activities/**

@@ -60,14 +60,14 @@ module.exports = function (grunt) {
                 files: [{
                     expand: true,
                     cwd: 'src/',
-                    src: ['*', 'bootstrap/**', 'css/**', 'img/**', 'fonts/**', 'www/**'],
+                    src: ['*', 'bootstrap/**', 'css/**', '!img/activities/*', 'img/**', 'fonts/**', 'www/**', 'js-libraries/**'],
                     dest: 'build/'
                 }]
             }
         },
         clean: {
             dev: ['src/js/bundle.js'],
-            build: ['build/*'],
+            build: ['!build/img/activities/*' , 'build/*'],
             options: {
                 'no-write': false
             }

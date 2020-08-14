@@ -6,6 +6,8 @@ var app = angular.module("confluente");
 app.controller("activityCreateController", ["$scope", "activities", function ($scope, activities) {
     $scope.loading = false;
 
+    $scope.uploadme = "No Image";
+
     // setting standard deadline for subscription deadline field
     $scope.deadline = {
         subscriptionDeadline: new Date()
@@ -13,8 +15,8 @@ app.controller("activityCreateController", ["$scope", "activities", function ($s
 
     // setting standard inputs for subscription form (first two questions are mandatory)
     $scope.inputs = [
-        {fullQuestion: 'Name', type: "name", options: [''], required: 'true'},
-        {fullQuestion: 'TU/e email', type: "TU/e email", options: [''], required: 'true'}
+        {fullQuestion: 'Name', type: "name", options: [''], required: 'true', privacyOfQuestion: 'false'},
+        {fullQuestion: 'TU/e email', type: "TU/e email", options: [''], required: 'true', privacyOfQuestion: 'false'}
     ];
 
     // boolean for whether members can subscribe to the event and therefore whether to show the subscription form possibilities
@@ -25,7 +27,7 @@ app.controller("activityCreateController", ["$scope", "activities", function ($s
 
     // Each time a question is added, this creates a new empty object in the inputs variable
     $scope.add = function () {
-        var dataObj = {fullQuestion: '', type: "☰ text", options: ['option 1'], required: ''};
+        var dataObj = {fullQuestion: '', type: "☰ text", options: ['option 1'], required: '', privacyOfQuestion: ''};
         $scope.inputs.push(dataObj);
     };
 
@@ -52,7 +54,7 @@ app.controller("activityCreateController", ["$scope", "activities", function ($s
     };
 
     // Given an array, it moves the element from fromIndex to toIndex
-    $scope.arrayMove = function(arr, fromIndex, toIndex) {
+    $scope.arrayMove = function (arr, fromIndex, toIndex) {
         if (Math.abs(fromIndex - toIndex) <= 1 && fromIndex > 1 && toIndex < arr.length) {
             var element = arr[fromIndex];
             arr.splice(fromIndex, 1);
@@ -63,6 +65,34 @@ app.controller("activityCreateController", ["$scope", "activities", function ($s
     // function called when new activity is submitted
     $scope.submit = function () {
         $scope.loading = true;
+
+        var hasCoverImage = false;
+        if ($scope.uploadme !== "No Image") {
+            hasCoverImage = true;
+        }
+
+        var fd = new FormData();
+        if (hasCoverImage) {
+            var file = $('#activityCreate-cover')[0].files[0];
+            if (!file.type.startsWith('image/')) {
+                return wrongInput('Non-image formats are not supported as pictures for activities!');
+            }
+
+            if (file.size - 1000000 > 0) {
+                return wrongInput('Image size is larger than 1MB')
+            }
+
+            var img = new Image();
+            img.src = window.URL.createObjectURL(file);
+            img.onload = function() {
+                if (img.width < img.height) {
+                    return wrongInput('Image width should be greater than or equal to image height!');
+                }
+            }
+
+            fd.append('image', file);
+        }
+
         // constructing standard activity object
         var act = {
             name: $scope.name,
@@ -75,6 +105,7 @@ app.controller("activityCreateController", ["$scope", "activities", function ($s
             participationFee: $scope.participationFee,
             published: $scope.published,
             canSubscribe: $scope.canSubscribe,
+            hasCoverImage: hasCoverImage,
         };
 
         // Checking required fields
@@ -88,6 +119,7 @@ app.controller("activityCreateController", ["$scope", "activities", function ($s
             var allTypes = [];
             var allOptions = [];
             var allRequired = [];
+            var allPrivacyOfQuestion = [];
 
             $scope.inputs.forEach(function (dataObj) {
                 allDescriptions.push(dataObj.fullQuestion);
@@ -102,8 +134,11 @@ app.controller("activityCreateController", ["$scope", "activities", function ($s
                 }
                 allOptions.push(optionString);
 
-                // check whether the question actually has a question
                 allRequired.push(dataObj.required);
+
+                allPrivacyOfQuestion.push(dataObj.privacyOfQuestion);
+
+                // check whether the question actually has a question
                 if (!dataObj.fullQuestion || dataObj.fullQuestion === "") {
                     $scope.empty = true;
                 }
@@ -123,23 +158,24 @@ app.controller("activityCreateController", ["$scope", "activities", function ($s
             act.questionDescriptions = allDescriptions;
             act.options = allOptions;
             act.required = allRequired;
+            act.privacyOfQuestions = allPrivacyOfQuestion;
             act.subscriptionDeadline = $scope.deadline.subscriptionDeadline;
         }
 
         // If any required field is empty than do not accept the activity
         if ($scope.empty) {
-            $scope.loading = false;
-            return alert("Not all required fields have been filled in.");
+            return wrongInput("Not all required fields have been filled in.");
         }
 
         if ($scope.wrongCharacters) {
-            $scope.loading = false;
-            return alert("Character combinations #,# and #;# are not allowed.")
+            return wrongInput("Character combinations #,# and #;# are not allowed.");
         }
 
         // create new activity from variables as put on the $scope by the form
-        activities.create(act).then(function (result) {
+        activities.create(fd, act).then(function (result) {
             $scope.loading = false;
+
+            console.log(result.id)
 
             // redirect to new activity
             window.location.href = "/activities/" + result.id + "#signup";
@@ -154,10 +190,15 @@ app.controller("activityCreateController", ["$scope", "activities", function ($s
 
     $scope.dateOptions = {
         formatYear: 'yy',
-        maxDate: new Date(2029, 5, 22), // maximum date for datepicker
+        maxDate: new Date().setFullYear(new Date().getFullYear() + 10), // maximum date for datepicker
         minDate: new Date(), // minimum date for datepicker
         startingDay: 1
     };
+
+    var wrongInput = function(ErrorMessage) {
+        $scope.loading = false;
+        return alert(ErrorMessage);
+    }
 }]);
 
 module.exports = {

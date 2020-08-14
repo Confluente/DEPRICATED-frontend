@@ -1,4 +1,4 @@
-/* -- (1) Import fonts -- */
+/* == Import fonts ========================================================== */
 
 @font-face {
     font-family: "Rounded Elegance";
@@ -31,174 +31,78 @@
 }
 
 
-/* -- (2) Basic rules -- */
 
-*::selection {
+/* == GENERAL =============================================================== */
 
-    /* Set the text selection background */
-    background-color: #b9dbe6;
+/* Set the text selection background */
+*::selection {  background-color: #b9dbe6 }
 
-}
+/* Set the base font size */
+html { font-size: 16px }
 
+/* Add a scrollbar to *all* pages (prevents movement of the page center) */
+body {  overflow-y: scroll }
 
-html {
+/* Force the footer to the bottom of the screen */
+body { min-height: 100vh }
+#content {  flex-grow: 1 }
 
-    /* Set the base font size */
-    font-size: 16px;
-
-    /* Also add the scrollbar to pages that don't need it (prevents movement of the page center) */
-    overflow-y: scroll
-
-}
-
-body {
-
-    /* Force the footer to the bottom of the screen */
-    min-height: 100vh;
-
-}
-
-#content {
-
-    /* Force the footer to the bottom of the screen */
-    flex-grow: 1;
-
-}
-
-.navbar, .dropdown-menu {
-
-    /* No borders */
-    border: none;
-
-}
-
-.nav {
-
-    padding-right: 0;
-
-}
-
-.navbar-toggle {
-
-    /* Hamburger menu fix */
-    margin-top: 1rem;
-
-    line-height: 2rem;
-}
-
-.breadcrumb {
-
-    /* Breadcrumb margin fix */
-    margin-bottom: 0;
-
-}
-
-h1, .h1 {
-
-    /* Make header stronk */
-    font-weight: 600
-}
-
-b, strong, th {
+/* Make text stronk */
+b, strong, th, label {
     font-weight: 500
 }
+
+/* Make clickable links stronger, but keep navigation bars normal */
+a, .btn-link { font-weight: 500 }
+.nav li a { font-weight: 400 }
 
 /* Header margin */
-h1, .h1, h2, .h2, h3, .h3 {
-    margin-top: 1.5rem;
-    margin-bottom: .25rem;
-}
-h4, .h4 {
-    margin-top: 1.1rem;
-    margin-bottom:0.4rem
-}
-h5, .h5, h6, .h6 {
-    margin-top: 0.7rem;
-    margin-bottom: 0.1rem;
-}
+h1, .h1, h2, .h2, h3, .h3 { margin-top: 1.5rem; margin-bottom: .25rem }
+h4, .h4 { margin-top: 1.1rem; margin-bottom: 0.4rem }
+h5, .h5, h6, .h6 { margin-top: 0.7rem; margin-bottom: 0.1rem }
 
-label {
-    font-weight: 500
-}
+/* Hamburger menu fix */
+.navbar-toggle { margin-top: 1rem; line-height: 2rem }
 
-.row:before, .row:after {
-    display: inline-block;
-}
+/* Breadcrumb margin fix */
+.breadcrumb { margin-bottom: 0 }
 
-/* -- (3) General classes -- */
 
-.text-left {
-    text-align: left !important
-}
+/* == USEFUL CLASSES ======================================================== */
+/*    Also take a look at https://getbootstrap.com/docs/3.4/css/              */
 
-/* -- Hover for color */
-.bw {
-    filter: grayscale(100%);
-    transition: filter 0.2s
-}
 
-.bw:hover, .bw:active, .bw:focus {
-    filter: grayscale(0%);
-}
+/* Position in center */
+.center { margin-left: auto; margin-right: auto; float: none }
 
-/* -- Block */
-.block {
-    padding-top: 1rem;
-    padding-bottom: 1rem;
-    display: block
-}
+/* Text align left */
+.text-left { text-align: left !important }
 
-.section {
-    margin-top: 1rem;
-    margin-bottom: 1rem
-}
+/* Sticky */
+.sticky { position: sticky; top: 8px }
 
-/* -- Center */
-.center {
-    margin-left: auto;
-    margin-right: auto;
-    float: none
-}
+/* Add padding */
+.block { padding-top: 1rem; padding-bottom: 1rem }
 
-/* -- Sticky */
-.sticky {
-    position: sticky;
-    top: 8px
-}
+/* Add margin */
+.section { margin-top: 1rem; margin-bottom: 1rem }
 
-/* -- Flexbox */
-.flex {
-    display: flex;
-    flex-wrap: wrap
-}
+/* Logo font */
+.hsa { font-family: "Rounded Elegance", sans-serif; font-weight: 400 }
 
-.flex-end {
-    justify-content: flex-end
-}
+/* Black and white image, where the color is revealed on hover */
+.bw { filter: grayscale(100%); transition: filter 0.2s }
+.bw:hover, .bw:active, .bw:focus { filter: grayscale(0%) }
 
-.flex-column {
-    flex-direction: column;
-}
+/* Flexbox */
+.flex { display: flex; flex-wrap: wrap }
+.flex-end { justify-content: flex-end }
+.flex-column { flex-direction: column }
+.flex-around { justify-content: space-around }
+.flex-between { justify-content: space-between }
+.flex-center { align-items: center }
 
-.flex-around {
-    justify-content: space-around;
-}
-
-.flex-between {
-    justify-content: space-between;
-}
-
-.flex-center {
-    align-items: center;
-}
-
-/* -- Text: H.S.A. Confluente */
-.hsa {
-    font-family: "Rounded Elegance", sans-serif;
-    font-weight: 400;
-}
-
-/* -- Parallax scrolling effect -- */
+/* Add Parallax scrolling effect */
 .parallax {
   background-attachment: fixed;
   background-position: center;
@@ -206,44 +110,83 @@ label {
   background-size: cover;
 }
 
-
-/* -- (4) Specific fixes -- */
-
-.fa.fa-toggle-on, .fa.fa-toggle-off {
-  font-size: 20px
+/* H.S.A. Confluente logo */
+.logo {
+    background-image: url('../img/HSAConfluente.svg');
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+.logo-small {
+    background-image: url('../img/logo-small.svg');
+    width: 40px;
+    height: 42px;
+    background-size: contain;
 }
 
-/* TEMPORARY color fix */
-.text-success {
-  color: #2bcf6d
-}
-.text-warning {
-  color: #fc5628
+
+/* == SPECIFIC FIXES ======================================================== */
+/*    If you can't fix styling using thed default classes (see above)
+      and the bootstrap website, add your custom lines below.                 */
+
+/* -- Mobile and Desktop show */
+.desktopshow {
+    display: block;
 }
 
-.form-horizontal .checkbox {
-    min-height: 0;
+.mobileshow {
+    display: none;
 }
 
-input[type="checkbox"], input[type="radio"] {
-    margin-top: 7px
+@media screen and (max-width: 992px) {
+    .mobileshow {
+        display: block;
+    }
+
+    .desktopshow {
+        display: none;
+    }
 }
 
-.radio:first-of-type, .checkbox:first-of-type {
-    margin-top: 0;
+/* MANAGEMENT DASHBOARD ----------------------------------------------------- */
+
+/* Toggle size*/
+.fa.fa-toggle-on, .fa.fa-toggle-off { font-size: 20px }
+
+/* Sorting arrow fix */
+#managePage th .fa { margin-left: 6px }
+
+/* Icons fix */
+.manage-table-action { user-select: none }
+.manage-table-action .btn {
+    padding-top: 0;
+    padding-bottom: 0;
 }
 
-.btn.disabled, .btn[disabled], fieldset[disabled] .btn {
-    opacity: 0.3
+/* Tabs positioning */
+@media (min-width:992px) {
+    #managePage ul.nav { display: inline-block }
+    .manage-actions { margin-top: -47px }
 }
 
+
+/* FORMS -------------------------------------------------------------------- */
+
+/* Checkbox and radio fix */
+.form-horizontal .checkbox, .form-horizontal .radio { min-height: 0; }
+input[type="checkbox"], input[type="radio"] { margin-top: 7px }
+.radio:first-of-type, .checkbox:first-of-type { margin-top: 0 }
+
+/* Disabled button style */
+.btn.disabled, .btn[disabled], fieldset[disabled] .btn { opacity: 0.3 }
+
+/* Date input fix */
 .form-control {
-    /* Fix date input */
     line-height: 1.6rem !important;
-
+    padding: 6px 12px;
     box-shadow: none;
 }
 
+/* Design when in focus */
 .form-control:focus {
     border-width: 2px;
     padding: 5px 11px;
@@ -255,57 +198,28 @@ legend {
 }
 
 
-/* -- Manage */
-#managePage th .fa {
-    margin-left: 6px
-}
+/* NAVIGATION BAR ----------------------------------------------------------- */
 
-.manage-table-action {
-    user-select: none;
-}
-.manage-table-action .btn {
-    padding-top: 0;
-    padding-bottom: 0;
-}
+/* Remove border */
+.navbar { border: none }
 
-@media (min-width:992px) {
-    #managePage ul.nav {
-        display: inline-block;
-    }
-    .manage-actions {
-        margin-top: -47px
-    }
-}
+/* Icons + dropdown menu style */
+.navbar-nav .fa { margin-right: 0.7rem }
+.dropdown-menu { padding: 0 }
 
-/* -- Navigation bar */
-.navbar-nav .fa {
-    margin-right: 8px
-}
+/* Hover to open dropdown menu */
+@media (min-width: 992px) { .dropdown:hover .dropdown-menu { display: block } }
 
-.dropdown-menu {
-    box-shadow: none;
-    padding: 0;
-}
+/* Dropdown item styling */
+.dropdown-menu li a { padding: 0.7rem 1rem }
 
-@media (min-width: 992px) {
-    .dropdown:hover .dropdown-menu {
-        display: block;
-    }
-}
+/* Remove shadows */
+.dropdown-menu, .navbar-collapse { box-shadow: none }
 
-.dropdown-menu li a {
-    padding: 8px 12px;
-}
+/* Divider fix */
+.dropdown-menu .divider { margin: 0 }
 
-.navbar-collapse {
-    box-shadow: none
-}
-
-.dropdown-menu .divider {
-    margin: 0
-}
-
-/* -- Normal navigation */
+/* Re-initialize toggle styling */
 .navbar-toggle.nav-toggle {
     position: static;
     float: none;
@@ -318,42 +232,39 @@ legend {
     border-radius: initial;
 }
 
-.navbar, .dropdown-menu {
-    font-size: 0.93rem;
+/* Text styling */
+.navbar, .dropdown-menu { font-size: 0.93rem }
+.navbar-brand { line-height: 1.1rem; font-size: 1rem; letter-spacing: 0.2px }
+
+
+/* FRONTPAGE ---------------------------------------------------------------- */
+
+/* Slogan */
+#frontpage-slogan {
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    font-size: 68%;
 }
 
-.navbar-brand {
-    line-height: 1.1rem;
-    font-size: 1rem;
-    letter-spacing: 0.2px;
+/* Partner bar logos */
+.img-logo { height: 26px; margin: 1rem 15px }
+#tno-logo { height: 36px; margin-top: 0; margin-bottom: 0 }
+
+/* List of activities bottom fix */
+#activity-overview { margin-bottom: 0 }
+
+/* Big info numbers */
+.info_graphic {
+    font-size: 3rem;
+    margin: 0;
+    line-height: 1.2;
+    font-family: 'League Spartan', 'Helvetica Neue', Arial, sans-serif
 }
 
-/* -- Frontpage */
+/* Image carousel container */
+#hero { display: block; height: 46vh; margin-top: -1rem }
 
-#activity-overview {
-    margin-bottom: 0
-}
-
-/* - Partner bar */
-.img-logo {
-    height: 26px;
-    margin: 1rem 15px;
-}
-
-#tno-logo {
-    height: 36px;
-    margin-top: 0;
-    margin-bottom: 0;
-}
-
-
-/* - Header container */
-#hero {
-    display: block;
-    height: 46vh;
-    margin-top: -1rem;
-}
-
+/* Image carousel ajust image to container */
 #hero .carousel-image {
     height: 100%;
     width: 100%;
@@ -361,15 +272,12 @@ legend {
     background-repeat: no-repeat;
     background-size: cover;
 }
+.carousel-inner, .carousel-inner > * { height: 100% }
 
-.carousel-inner, .carousel-inner > * {
-    height: 100%;
-}
+/* Image carousel transition */
+.carousel-inner > .item { transition: transform 0.6s cubic-bezier(.86,0,.07,1) }
 
-.carousel-inner > .item {
-    transition: transform 0.6s cubic-bezier(.86,0,.07,1);
-}
-
+/* Image carousel add gradient */
 .hero-accent {
     height: inherit;
     position: absolute;
@@ -377,16 +285,8 @@ legend {
     right: 0;
     background: linear-gradient(to top, rgba(0,0,0,.3), 30%, rgba(0,0,0,0));
 }
-#hero-image-1 {
-    background-image: URL('/img/frontpage-hero/slide1.jpeg');
-}
-#hero-image-2 {
-    background-image: URL('/img/frontpage-hero/slide2.jpg');
-}
-#hero-image-3 {
-    background-image: URL('/img/frontpage-hero/slide3.jpg');
-}
 
+/* Image carousel caption styling */
 .hero-caption {
     height: inherit;
     color: #fff;
@@ -394,20 +294,12 @@ legend {
     position: absolute;
     bottom: 0;
 }
-.hero-caption .h1 {
-    text-shadow: 0 1px 2px rgba(0,0,0,.6)
-}
-.hero-caption a:hover {
-    text-decoration: none;
-}
-.hero-caption .fa {
-    margin-right: 8px
-}
+.hero-caption .h1 { text-shadow: 0 1px 2px rgba(0,0,0,.6) }
+.hero-caption a:hover { text-decoration: none }
+.hero-caption .fa { margin-right: 8px }
 
-.carousel-indicators {
-    user-select: none;
-}
-
+/* Image carousel slide indicators */
+.carousel-indicators { user-select: none }
 .carousel-indicators li {
     display: inline-block;
     border-radius: 0;
@@ -416,58 +308,20 @@ legend {
     background-color: transparent;
     transition: background-color 0.6s cubic-bezier(.19,1,.22,1);
 }
-
 .carousel-indicators li, .carousel-indicators .active {
     width: 38px;
     height: 8px;
     margin: 1px
 }
-
-.carousel-indicators .active {
-    background: #fff;
-}
+.carousel-indicators .active { background: #fff }
 
 
-#main-logo {
-    width: 160px;
-    height: 160px;
-}
+/* FOOTER ------------------------------------------------------------------- */
 
-#frontpage-slogan {
-    letter-spacing: 3px;
-    text-transform: uppercase;
-    font-size: 68%;
-}
-
-/* - Stats */
-.info_graphic {
-    font-size: 3.6rem;
-    font-weight: 600;
-    margin: 0;
-    line-height: 1.2;
-}
-
-/* -- Footer */
-#footer {
-    margin-bottom: 20px;
-    margin-top: 40px;
-}
-
-.logo-small {
-    background-image: url('../img/logo-small.svg');
-    width: 40px;
-    height: 42px;
-    background-size: contain;
-}
-
-.logo {
-    background-image: url('../img/HSAConfluente.svg');
-    background-size: contain;
-    background-repeat: no-repeat;
-}
+#footer { margin-bottom: 20px; margin-top: 40px }
 
 
-/* -- committees */
+/* COMMITTEES --------------------------------------------------------------- */
 #carousel {
     position: relative;
     height: 400px;
@@ -476,112 +330,55 @@ legend {
     margin-top: 20px;
 }
 
-#carousel div {
-    position: absolute;
-    transition: transform 1s, left 1s, opacity 1s, z-index 0s;
-    opacity: 1;
-}
-
-#carousel div img {
+#committees img {
     width: 600px;
-    transition: width 1s;
 }
 
-@media (max-width: 768px) {
-    #carousel {
-        height: 266px;
-    }
-
-    #carousel div img {
-        width: 400px;
-    }
-}
-
-@media (max-width: 500px) {
-    #carousel {
-        height: 200px;
-    }
-
-    #carousel div img {
-        width: 300px;
-    }
-}
-
-
-#carousel div.hideLeft {
-    left: 0;
-    opacity: 0;
-    transform: translateY(75%) translateX(-50%);
-}
-
-#carousel div.hideRight {
-    left: 100%;
-    opacity: 0;
-    transform: translateY(75%) translateX(-50%);
-}
-
-#carousel div.prev {
-    z-index: 5;
-    left: 30%;
-    transform: translateY(50px) translateX(-50%);
-    opacity: 0.6;
-}
-
-#carousel div.prevLeftSecond {
-    z-index: 4;
-    left: 15%;
-    transform: translateY(50%) translateX(-50%);
-    opacity: 0.3;
-}
-
-#carousel div.selected {
-    z-index: 10;
-    left: 50%;
-    transform: translateY(0px) translateX(-50%);
-}
-
-#carousel div.next {
-    z-index: 5;
-    left: 70%;
-    transform: translateY(50px) translateX(-50%);
-    opacity: 0.6;
-}
-
-#carousel div.nextRightSecond {
-    z-index: 4;
-    left: 85%;
-    transform: translateY(50%) translateX(-50%);
-    opacity: 0.3;
-}
-
-#carousel div .textBox {
-    position: absolute;
-    z-index: 999;
-    margin: 0 auto;
-    left: 0;
-    right: 0;
-    top: 0;
-    background-color: rgba(0, 0, 0, 0.3);
+.committee-img-container {
+    position: relative;
+    height: calc(100% - 40px);
     width: 100%;
-    height: 100%;
-    color: white;
-    padding: 20px;
-    pointer-events: none;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    background-origin: content-box;
+    border-bottom: solid;
+    border-color: #296e82bf;
 }
 
-#carousel div .text {
-    top: 30%;
-    height: 70%;
-    font-size: 1.2em;
+.committee-box {
+    height: 360px;
+    border: 1px solid #ddd;
+    padding: 0;
 }
 
-#carousel div .titletext {
-    top: 0;
-    height: 30%;
-    font-size: 2em;
+.committee-box-small {
+    height: 300px;
+    width: 300px;
+    padding: 0;
 }
 
-/* -- Boards */
+.committee-link {
+    text-decoration: none!important;
+    cursor: pointer;
+}
+
+.committee-text {
+    padding-left: 10px;
+    color: white!important;
+    vertical-align: middle;
+    line-height: 38px;
+    font-size: 30px;
+    font-weight: normal;
+}
+
+i.committee-text {
+    font-size: 15px!important;
+    margin-right: 10px;
+    float: right;
+}
+
+/* BOARDS ------------------------------------------------------------------- */
 
 .board-column {
     display: flex;
@@ -617,18 +414,8 @@ legend {
     list-style-type: none;
 }
 
-.mobileshow {
-    display: none;
-}
 
-@media screen and (max-width: 992px) {
-    .mobileshow {
-        display: block;
-    }
-}
-
-
-/* --partners */
+/* PARTNERS ----------------------------------------------------------------- */
 .partner-box {
     height: 220px;
     border: 1px solid #ddd;
@@ -703,7 +490,7 @@ legend {
     content: "\f141";
 }
 
-/* -- Events */
+/* EVENTS ------------------------------------------------------------------- */
 
 #activity-details .fa {
     margin: 0 4px;
@@ -751,7 +538,7 @@ legend {
     font-style: italic;
 }
 
-/* --Honors Academy (Education) */
+/* HONORS ACADEMY (EDUCATION) ----------------------------------------------- */
 .HA-col-container {
     display: flex;
     width: 100%;
@@ -776,8 +563,10 @@ legend {
     width: 100%;
 }
 
+/* LOGIN PAGE --------------------------------------------------------------- */
+
 .login-input {
-    font-family: Montserrat-Bold;
+    font-weight: bolder;
     font-size: 15px;
     line-height: 1.2;
     color: #333;
@@ -786,6 +575,10 @@ legend {
     background: #fff;
     height: 50px;
     border-radius: 25px;
+    padding: 0 30px 0 30px;
+}
+
+.login-input:focus {
     padding: 0 30px 0 30px;
 }
 
@@ -825,7 +618,8 @@ legend {
     }
 }
 
-/* --tracks */
+/* TRACKS ------------------------------------------------------------------- */
+
 .track-title {
     padding-left: 0;
     width: 100%;
@@ -908,4 +702,21 @@ legend {
   -o-transform: translate(0px, 0px);
   -ms-transform: translate(0px, 0px);
   transform: translate3d(0px, 0px, 0px);
+}
+
+#magazine_container {
+    height: calc(100vh - 8rem);
+    overflow: hidden;
+}
+
+#magazine_notification {
+    position: absolute;
+    bottom: 0; left: 0; right: 0; margin: 0;
+}
+.no-overflow {
+    overflow: hidden;
+}
+.magazine div {
+    background-size: contain;
+    background-repeat: no-repeat
 }
